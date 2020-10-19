@@ -21,7 +21,7 @@ function App() {
         </Route>
         <Route path="/admin" component={AdminLayout} />
         <Route path="/admin/rtl" component={RtlLayout} />
-        <Route path="/login/admin" component={AuthLayout} />
+        <Route path="/admin/login" component={AuthLayout} />
       </Switch>
     </Router>
   );

@@ -52,7 +52,7 @@ export default function Pages(props) {
   const getBgImage = () => {
     if (window.location.pathname.indexOf("/auth/register-page") !== -1) {
       return register;
-    } else if (window.location.pathname.indexOf("/auth/login-page") !== -1) {
+    } else if (window.location.pathname.indexOf("/auth/dashboard") !== -1) {
       return login;
     } else if (window.location.pathname.indexOf("/auth/pricing-page") !== -1) {
       return pricing;
@@ -65,7 +65,7 @@ export default function Pages(props) {
     }
   };
   const getActiveRoute = routes => {
-    let activeRoute = "Default Brand Text";
+    let activeRoute = "CryptoLuxury";
     for (let i = 0; i < routes.length; i++) {
       if (routes[i].collapse) {
         let collapseActiveRoute = getActiveRoute(routes[i].views);
@@ -92,7 +92,7 @@ export default function Pages(props) {
         >
           <Switch>
             {getRoutes(routes)}
-            <Redirect from="/auth" to="/auth/login-page" />
+            <Redirect from="/auth" to="/admin/login" />
           </Switch>
           <Footer white />
         </div>
