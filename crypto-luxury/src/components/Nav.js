@@ -21,16 +21,16 @@ const Navigation = () => {
             <div style={{
                 marginLeft: "15%"
             }}>
-            <DropdownButton className="bgnav" variant="warning" title="Products" id="basic-nav-dropdown">
+            <NavDropdown className="bgnav" variant="warning" title="Products" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.2">Luxury Watches</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">Cards</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="#action/3.4">All Products</NavDropdown.Item>
-            </DropdownButton>
+            </NavDropdown>
             </div>
             </Nav>
             <div>
-                
+            <Button variant="outline-warning">Account</Button>
             </div>
             <div style={{
                 marginLeft: "1%"

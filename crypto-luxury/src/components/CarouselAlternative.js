@@ -17,14 +17,15 @@ export default() => {
                 height: "4vh",
                 background: "grey",
                 width: "100%",
-                margin: ".1%",
-                marginTop: "0"
+                margin: ".2%",
+                marginTop: "0",
+                alignSelf: "center"
             }}>
                 <h6 style={{
                     fontSize: ".8rem",
                     textAlign: "center",
                     paddingTop: ".5%",
-                    paddingBottom: ".2%"
+                    paddingBottom: ".2%",
                 }}>White-Glove complimentary on all orders over $100,000</h6>
             </div>
             
