@@ -17,7 +17,7 @@ const CarouselTwo = () => {
                 <Carousel.Item>
                 <img
                 style={{
-                    height: "92vh"
+                    height: "70vh"
                 }}
                     className="d-block w-100"
                     src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1506&q=80"
@@ -32,7 +32,7 @@ const CarouselTwo = () => {
                 <Carousel.Item>
                 <img
                 style={{
-                    height: "92vh"
+                    height: "70vh"
                 }}
                     className="d-block w-100"
                     src="https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
@@ -49,7 +49,7 @@ const CarouselTwo = () => {
                 <Carousel.Item>
                 <img
                 style={{
-                    height: "92vh"
+                    height: "70vh"
                 }}
                     className="d-block w-100"
                     src="https://images.unsplash.com/photo-1520697830682-bbb6e85e2b0b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
