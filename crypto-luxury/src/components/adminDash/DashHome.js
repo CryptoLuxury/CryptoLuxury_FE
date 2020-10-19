@@ -5,7 +5,28 @@ const DashHome = () => {
 
     return (
 
-        <div>Admin dash showing</div>
+        <div style={{
+            width: "100%",
+            background: "black",
+            height: "20vh",
+            display: "flex",
+            flexFlow: "row nowrap"
+        }}>
+            
+            <div style={{
+                background: 
+            }}>
+                one
+            </div>
+            <div>
+                two
+            </div>
+            <div>
+                three
+            </div>
+
+        </div>
+
 
     )
 }
