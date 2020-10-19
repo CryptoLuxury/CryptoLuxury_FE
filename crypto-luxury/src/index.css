@@ -12,3 +12,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.carousel li.slide {
+  height: 100vh;
+}
+.carousel thumb {
+  display: none;
+}

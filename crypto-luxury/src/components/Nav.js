@@ -8,7 +8,7 @@ const Navigation = () => {
 
     return (
         <div>
-            <Navbar bg="dark" variant="dark">
+            <Navbar bg="dark" variant="dark" sticky="top">
             <div style={{
                 marginRight: "3%"
             }}>
