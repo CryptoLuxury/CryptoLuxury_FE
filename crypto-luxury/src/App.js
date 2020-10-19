@@ -3,7 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LandingPage from './components/LandingPage';
 
-import AdminLayout from "../src/adminDash/src/layouts/Admin.js";
+import AdminLayout from "../src/adminDash/src/layouts/Admin";
+import AuthLayout from "../src/adminDash/src/layouts/Auth";
+import RtlLayout from "../src/adminDash/src/layouts/RTL";
 
 import { createBrowserHistory } from "history";
 
@@ -18,6 +20,8 @@ function App() {
           <LandingPage />
         </Route>
         <Route path="/admin" component={AdminLayout} />
+        <Route path="/admin/rtl" component={RtlLayout} />
+        <Route path="/login/admin" component={AuthLayout} />
       </Switch>
     </Router>
   );
