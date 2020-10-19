@@ -8,6 +8,9 @@ import Carousel from "./CarouselTwo";
 import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
 
+//typing
+import Typing from "react-typing-animation";
+
 export default() => {
 
     return (
@@ -25,13 +28,16 @@ export default() => {
                 marginTop: "0",
                 alignSelf: "center"
             }}>
+                <Typing speed={5}>
                 <h6 style={{
                     fontSize: ".8rem",
                     textAlign: "center",
                     paddingTop: ".5%",
                     paddingBottom: ".2%",
                 }}>White-Glove complimentary on all orders over $100,000</h6>
+                </Typing>
             </div>
+
             
             <div>
                 <Carousel />
@@ -106,7 +112,9 @@ export default() => {
                     background: "#d1a303",
                     height: "100%",
                     width: "50%",
-                    alignSelf: "center"
+                    alignSelf: "center",
+                    margin: ".1%",
+                    borderRadius: "1%"
                 }}>
                     one
                 </div>
@@ -116,7 +124,9 @@ export default() => {
                     background: "#d1a303",
                     height: "100%",
                     width: "50%",
-                    alignSelf: "center"
+                    alignSelf: "center",
+                    margin: ".1%",
+                    borderRadius: "1%"
                 }}>
                     two
                 </div>
