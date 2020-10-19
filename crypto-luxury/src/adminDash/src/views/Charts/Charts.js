@@ -10,15 +10,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import Timeline from "@material-ui/icons/Timeline";
 
 // core components
-import Heading from "components/Heading/Heading.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
+import Heading from "../../components/Heading/Heading.js";
+import GridContainer from "../../components/Grid/GridContainer.js";
+import GridItem from "../../components/Grid/GridItem.js";
 
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardIcon from "components/Card/CardIcon.js";
-import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
+import Card from "../../components/Card/Card.js";
+import CardHeader from "../../components/Card/CardHeader.js";
+import CardIcon from "../../components/Card/CardIcon.js";
+import CardBody from "../../components/Card/CardBody.js";
+import CardFooter from "../../components/Card/CardFooter.js";
 
 import {
   roundedLineChart,
@@ -28,9 +28,9 @@ import {
   multipleBarsChart,
   colouredLinesChart,
   pieChart
-} from "variables/charts.js";
+} from "../../variables/charts.js";
 
-import styles from "assets/jss/material-dashboard-pro-react/views/chartsStyle.js";
+import styles from "../../assets/jss/material-dashboard-pro-react/views/chartsStyle.js";
 
 const useStyles = makeStyles(styles);
 

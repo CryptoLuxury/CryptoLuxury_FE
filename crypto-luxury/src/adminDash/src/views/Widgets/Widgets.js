@@ -10,28 +10,28 @@ import Code from "@material-ui/icons/Code";
 import Cloud from "@material-ui/icons/Cloud";
 import FormatQuote from "@material-ui/icons/FormatQuote";
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Table from "components/Table/Table.js";
-import Button from "components/CustomButtons/Button.js";
-import Timeline from "components/Timeline/Timeline.js";
-import CustomTabs from "components/CustomTabs/CustomTabs.js";
-import Tasks from "components/Tasks/Tasks.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardAvatar from "components/Card/CardAvatar.js";
-import CardText from "components/Card/CardText.js";
-import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
+import GridContainer from "../../components/Grid/GridContainer.js";
+import GridItem from "../../components/Grid/GridItem.js";
+import Table from "../../components/Table/Table.js";
+import Button from "../../components/CustomButtons/Button.js";
+import Timeline from "../../components/Timeline/Timeline.js";
+import CustomTabs from "../../components/CustomTabs/CustomTabs.js";
+import Tasks from "../../components/Tasks/Tasks.js";
+import Card from "../../components/Card/Card.js";
+import CardHeader from "../../components/Card/CardHeader.js";
+import CardAvatar from "../../components/Card/CardAvatar.js";
+import CardText from "../../components/Card/CardText.js";
+import CardBody from "../../components/Card/CardBody.js";
+import CardFooter from "../../components/Card/CardFooter.js";
 
-import { widgetStories, bugs, website, server } from "variables/general.js";
+import { widgetStories, bugs, website, server } from "../../variables/general.js";
 
-import image from "assets/img/faces/card-profile1-square.jpg";
+import image from "../../assets/img/faces/card-profile1-square.jpg";
 
 import {
   cardTitle,
   roseColor
-} from "assets/jss/material-dashboard-pro-react.js";
+} from "../../assets/jss/material-dashboard-pro-react.js";
 
 const styles = {
   cardTitle,

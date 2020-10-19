@@ -8,18 +8,18 @@ import Dvr from "@material-ui/icons/Dvr";
 import Favorite from "@material-ui/icons/Favorite";
 import Close from "@material-ui/icons/Close";
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import CardIcon from "components/Card/CardIcon.js";
-import CardHeader from "components/Card/CardHeader.js";
-import ReactTable from "components/ReactTable/ReactTable.js";
+import GridContainer from "../../components/Grid/GridContainer.js";
+import GridItem from "../../components/Grid/GridItem.js";
+import Button from "../../components/CustomButtons/Button.js";
+import Card from "../../components/Card/Card.js";
+import CardBody from "../../components/Card/CardBody.js";
+import CardIcon from "../../components/Card/CardIcon.js";
+import CardHeader from "../../components/Card/CardHeader.js";
+import ReactTable from "../../components/ReactTable/ReactTable.js";
 
-import { dataTable } from "variables/general.js";
+import { dataTable } from "../../variables/general.js";
 
-import { cardTitle } from "assets/jss/material-dashboard-pro-react.js";
+import { cardTitle } from "../../assets/jss/material-dashboard-pro-react.js";
 
 const styles = {
   cardIconTitle: {

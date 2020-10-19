@@ -14,20 +14,20 @@ import Add from "@material-ui/icons/Add";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Table from "components/Table/Table.js";
-import Button from "components/CustomButtons/Button.js";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import CardIcon from "components/Card/CardIcon.js";
-import CardHeader from "components/Card/CardHeader.js";
+import GridContainer from "../../components/Grid/GridContainer.js";
+import GridItem from "../../components/Grid/GridItem.js";
+import Table from "../../components/Table/Table.js";
+import Button from "../../components/CustomButtons/Button.js";
+import Card from "../../components/Card/Card.js";
+import CardBody from "../../components/Card/CardBody.js";
+import CardIcon from "../../components/Card/CardIcon.js";
+import CardHeader from "../../components/Card/CardHeader.js";
 
-import styles from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.js";
+import styles from "../../assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.js";
 
-import product1 from "assets/img/product1.jpg";
-import product2 from "assets/img/product2.jpg";
-import product3 from "assets/img/product3.jpg";
+import product1 from "../../assets/img/product1.jpg";
+import product2 from "../../assets/img/product2.jpg";
+import product3 from "../../assets/img/product3.jpg";
 
 const useStyles = makeStyles(styles);
 
