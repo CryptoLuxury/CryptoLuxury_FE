@@ -10,7 +10,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Input from "@material-ui/core/Input";
 
-import styles from "assets/jss/material-dashboard-pro-react/components/customInputStyle.js";
+import styles from "../../assets/jss/material-dashboard-pro-react/components/customInputStyle.js";
 
 const useStyles = makeStyles(styles);
 

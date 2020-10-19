@@ -6,9 +6,9 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 
 // core components
-import Badge from "components/Badge/Badge.js";
+import Badge from "../../components/Badge/Badge.js";
 
-import styles from "assets/jss/material-dashboard-pro-react/components/timelineStyle.js";
+import styles from "../../assets/jss/material-dashboard-pro-react/components/timelineStyle.js";
 
 const useStyles = makeStyles(styles);
 

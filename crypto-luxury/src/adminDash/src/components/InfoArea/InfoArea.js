@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
-import styles from "assets/jss/material-dashboard-pro-react/components/infoStyle";
+import styles from "../../assets/jss/material-dashboard-pro-react/components/infoStyle";
 
 const useStyles = makeStyles(styles);
 

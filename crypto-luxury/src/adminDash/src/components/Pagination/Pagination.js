@@ -6,7 +6,7 @@ import cx from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
-import styles from "assets/jss/material-dashboard-pro-react/components/paginationStyle.js";
+import styles from "../../assets/jss/material-dashboard-pro-react/components/paginationStyle.js";
 
 const useStyles = makeStyles(styles);
 

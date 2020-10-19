@@ -3,10 +3,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // core components
-import Button from "components/CustomButtons/Button.js";
+import Button from "../../components/CustomButtons/Button.js";
 
-import defaultImage from "assets/img/image_placeholder.jpg";
-import defaultAvatar from "assets/img/placeholder.jpg";
+import defaultImage from "../../assets/img/image_placeholder.jpg";
+import defaultAvatar from "../../assets/img/placeholder.jpg";
 
 export default function ImageUpload(props) {
   const [file, setFile] = React.useState(null);

@@ -19,11 +19,11 @@ import Switch from "@material-ui/core/Switch";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 // core components
-import CustomInput from "components/CustomInput/CustomInput.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
+import CustomInput from "../../components/CustomInput/CustomInput.js";
+import GridContainer from "../../components/Grid/GridContainer.js";
+import GridItem from "../../components/Grid/GridItem.js";
 
-import styles from "assets/jss/material-dashboard-pro-react/customSelectStyle.js";
+import styles from "../../assets/jss/material-dashboard-pro-react/customSelectStyle.js";
 
 const newStyles = {
   ...styles,

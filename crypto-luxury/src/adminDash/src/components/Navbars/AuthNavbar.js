@@ -22,9 +22,9 @@ import LockOpen from "@material-ui/icons/LockOpen";
 import MonetizationOn from "@material-ui/icons/MonetizationOn";
 
 // core components
-import Button from "components/CustomButtons/Button";
+import Button from "../../components/CustomButtons/Button";
 
-import styles from "assets/jss/material-dashboard-pro-react/components/authNavbarStyle.js";
+import styles from "../../assets/jss/material-dashboard-pro-react/components/authNavbarStyle.js";
 
 const useStyles = makeStyles(styles);
 

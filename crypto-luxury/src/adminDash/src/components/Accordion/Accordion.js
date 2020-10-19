@@ -10,7 +10,7 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 // @material-ui/icons
 import ExpandMore from "@material-ui/icons/ExpandMore";
 
-import styles from "assets/jss/material-dashboard-pro-react/components/accordionStyle.js";
+import styles from "../../assets/jss/material-dashboard-pro-react/components/accordionStyle.js";
 
 const useStyles = makeStyles(styles);
 
