@@ -14,6 +14,7 @@ import LoginPage from "./views/Pages/LoginPage.js";
 import Notifications from "./views/Components/Notifications.js";
 import Panels from "./views/Components/Panels.js";
 import PricingPage from "./views/Pages/PricingPage.js";
+import Orders from "./views/Pages/OrderPage.js";
 import RTLSupport from "./views/Pages/RTLSupport.js";
 import ReactTables from "./views/Tables/ReactTables.js";
 import RegisterPage from "./views/Pages/RegisterPage.js";
@@ -53,6 +54,14 @@ var dashRoutes = [
     rtlName: "لوحة القيادة",
     icon: Login,
     component: LoginPage,
+    layout: "/admin"
+  },
+  {
+    path: "/orders",
+    name: "Orders",
+    rtlName: "لوحة القيادة",
+    icon: Login,
+    component: Orders,
     layout: "/admin"
   },
   {

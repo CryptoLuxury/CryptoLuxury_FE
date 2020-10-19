@@ -281,7 +281,7 @@ export default function Dashboard() {
           <Card product className={classes.cardHover}>
             <CardHeader image className={classes.cardHeaderHover}>
               <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={priceImage1} alt="..." />
+                <img src="https://i.pinimg.com/736x/77/b8/d9/77b8d9a94f64f0a34aafb405125b301a.jpg" alt="blastoise" />
               </a>
             </CardHeader>
             <CardBody>
@@ -340,7 +340,7 @@ export default function Dashboard() {
           <Card product className={classes.cardHover}>
             <CardHeader image className={classes.cardHeaderHover}>
               <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={priceImage2} alt="..." />
+                <img src="https://cdn.swisswatchexpo.com/productphotos/7/2/rolex-president-datejust-yellow-gold-pyramid-diamond-bezel-watch-69258-28273_010e2.jpg" alt="rolex presidential" />
               </a>
             </CardHeader>
             <CardBody>
@@ -399,7 +399,7 @@ export default function Dashboard() {
           <Card product className={classes.cardHover}>
             <CardHeader image className={classes.cardHeaderHover}>
               <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={priceImage3} alt="..." />
+                <img src="https://cdn-products.chronext.com/V/2/V26422/V26422_1_det.png" alt="king air vector" />
               </a>
             </CardHeader>
             <CardBody>
