@@ -4,13 +4,17 @@ import styled from "styled-components";
 import {Container} from "react-bootstrap";
 import Carousel from "./CarouselTwo";
 
+//react-reveal
+import Slide from "react-reveal/Slide";
+import Fade from "react-reveal/Fade";
+
 export default() => {
 
     return (
         <Container style={{
             height: "92vh",
             display: "flex",
-            flexFlow: "column nowrap"
+            flexFlow: "column nowrap",
         }}>
 
             <div style={{
@@ -32,7 +36,7 @@ export default() => {
             <div>
                 <Carousel />
             </div>
-
+            <Fade bottom duration={1000}>
             <div style={{
                 height: "35vh",
                 background: "white",
@@ -45,31 +49,36 @@ export default() => {
             }}>
                 
                 <div style={{
-                    background: "red",
+                    background: "#101010",
                     width: "100%",
-                    margin: ".1%"
+                    margin: ".1%",
+                    borderRadius: "1%"
                 }}>
                     one
                 </div>
                 <div style={{
-                    background: "darkred",
+                    background: "#141414",
                     width: "100%",
-                    margin: ".1%"
+                    margin: ".1%",
+                    borderRadius: "1%"
                 }}>
                     two
                 </div>
                 <div style={{
-                    background: "green",
+                    background: "#181818",
                     width: "100%",
-                    margin: ".1%"
+                    margin: ".1%",
+                    borderRadius: "1%"
                 }}>
                     three
                 </div>
 
             </div>
+            </Fade>
+            <Fade up>
             <div style={{
                 height: "30vh",
-                background: "blue",
+                background: "#959595",
                 width: "100%",
                 display: "flex",
                 flexFlow: "row nowrap",
@@ -79,10 +88,11 @@ export default() => {
             }}>
                 another something here maybe a promotion
             </div>
-
+            </Fade>
+            
             <div style={{
                 height: "30vh",
-                background: "purple",
+                background: "white",
                 width: "100%",
                 display: "flex",
                 flexFlow: "row nowrap",
@@ -90,25 +100,27 @@ export default() => {
                 margin: ".2%",
                 alignSelf: "center",
                 marginBottom: ".35%",
-                marginBottom: "5%" //TEMPORARY
             }}>
-                
+            <Slide left duration={750}>
                 <div style={{
-                    background: "lightgreen",
+                    background: "#d1a303",
                     height: "100%",
                     width: "50%",
                     alignSelf: "center"
                 }}>
                     one
                 </div>
+            </Slide>
+            <Slide right duration={750}>
                 <div style={{
-                    background: "lightblue",
+                    background: "#d1a303",
                     height: "100%",
                     width: "50%",
                     alignSelf: "center"
                 }}>
                     two
                 </div>
+            </Slide>
 
             </div>
         

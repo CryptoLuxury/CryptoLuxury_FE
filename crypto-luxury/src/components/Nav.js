@@ -15,9 +15,9 @@ const Navigation = () => {
             <Navbar.Brand href="#home">Crypto Luxury</Navbar.Brand>
             </div>
             <Nav className="mr-auto">
-            <Nav.Link style={{color: "gold"}} href="/">Home</Nav.Link>
-            <Nav.Link style={{color: "gold"}} href="#pricing">Team</Nav.Link>
-            <Nav.Link style={{color: "gold"}} href="#pricing">Services</Nav.Link>
+            <Nav.Link style={{color: "#EAB709"}} href="/">Home</Nav.Link>
+            <Nav.Link style={{color: "#EAB709"}} href="#pricing">Team</Nav.Link>
+            <Nav.Link style={{color: "#EAB709"}} href="#pricing">Services</Nav.Link>
             <div style={{
                 marginLeft: "15%"
             }}>
