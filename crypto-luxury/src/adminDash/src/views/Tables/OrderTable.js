@@ -1,5 +1,8 @@
 import React from "react";
 
+//alerts
+import SweetAlert from "react-bootstrap-sweetalert";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -20,8 +23,9 @@ import ReactTable from "../../components/ReactTable/ReactTable.js";
 import { dataTable } from "../../variables/general.js";
 
 import { cardTitle } from "../../assets/jss/material-dashboard-pro-react.js";
+import styles from "../../assets/jss/material-dashboard-pro-react/views/sweetAlertStyle.js";
 
-const styles = {
+const stylesTwo = {
   cardIconTitle: {
     ...cardTitle,
     marginTop: "15px",
@@ -29,9 +33,30 @@ const styles = {
   }
 };
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(stylesTwo);
 
 export default function ReactTables() {
+
+    const [alert,setAlert] = React.useState(null);
+    const hideAlert = () => {
+      setAlert(null);
+    }
+    const successAlert = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "-100px" }}
+          title="Good job!"
+          onConfirm={() => this.hideAlert()}
+          onCancel={() => this.hideAlert()}
+          confirmBtnCssClass={
+            classes.button + " " + classes.success
+          }
+        >
+        You've clicked LIKE button on 
+        </SweetAlert>
+      );
+    }
   const [data, setData] = React.useState(
     dataTable.dataRows.map((prop, key) => {
       return {
@@ -50,19 +75,9 @@ export default function ReactTables() {
               simple
               onClick={() => {
                 let obj = data.find(o => o.id === key);
-                alert(
-                  "You've clicked LIKE button on \n{ \nName: " +
-                    obj.name +
-                    ", \nposition: " +
-                    obj.position +
-                    ", \noffice: " +
-                    obj.office +
-                    ", \nage: " +
-                    obj.age +
-                    "\n}."
-                );
+                setAlert()
               }}
-              color="info"
+              color="warning"
               className="like"
             >
               <Favorite />
@@ -124,8 +139,8 @@ export default function ReactTables() {
     <GridContainer>
       <GridItem xs={12}>
         <Card>
-          <CardHeader color="primary" icon>
-            <CardIcon color="primary">
+          <CardHeader color="warning" icon>
+            <CardIcon color="warning">
               <Assignment />
             </CardIcon>
             <h4 className={classes.cardIconTitle}>All Orders</h4>

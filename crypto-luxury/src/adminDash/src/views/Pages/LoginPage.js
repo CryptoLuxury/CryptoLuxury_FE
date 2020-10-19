@@ -1,5 +1,8 @@
 import React from "react";
 
+//reactstrap
+import Container from "react-bootstrap/Container";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -37,7 +40,7 @@ export default function LoginPage() {
   });
   const classes = useStyles();
   return (
-    <div className={classes.container}>
+    <Container>
       <GridContainer justify="center">
         <GridItem xs={12} sm={6} md={4}>
           <form>
@@ -123,6 +126,6 @@ export default function LoginPage() {
           </form>
         </GridItem>
       </GridContainer>
-    </div>
+    </Container>
   );
 }

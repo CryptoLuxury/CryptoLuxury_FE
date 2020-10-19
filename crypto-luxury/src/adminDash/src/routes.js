@@ -28,6 +28,7 @@ import ValidationForms from "./views/Forms/ValidationForms.js";
 import VectorMap from "./views/Maps/VectorMap.js";
 import Widgets from "./views/Widgets/Widgets.js";
 import Wizard from "./views/Forms/Wizard.js";
+import TeamPage from "./views/Pages/TeamPage.js";
 
 // @material-ui/icons
 import Apps from "@material-ui/icons/Apps";
@@ -38,6 +39,8 @@ import Login from '@material-ui/icons/VpnKey';
 import Place from "@material-ui/icons/Place";
 import Timeline from "@material-ui/icons/Timeline";
 import WidgetsIcon from "@material-ui/icons/Widgets";
+import OrdersIcon from '@material-ui/icons/ListAlt';
+import GroupIcon from '@material-ui/icons/Group';
 
 var dashRoutes = [
   {
@@ -60,8 +63,16 @@ var dashRoutes = [
     path: "/orders",
     name: "Orders",
     rtlName: "لوحة القيادة",
-    icon: Login,
+    icon: OrdersIcon,
     component: Orders,
+    layout: "/admin"
+  },
+  {
+    path: "/team",
+    name: "Team",
+    rtlName: "لوحة القيادة",
+    icon: GroupIcon,
+    component: TeamPage,
     layout: "/admin"
   },
   {

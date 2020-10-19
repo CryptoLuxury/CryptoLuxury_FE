@@ -365,8 +365,8 @@ var rtlServer = [
 // #############################
 
 const dataTable = {
-  headerRow: ["Name", "Position", "Office", "Age", "Actions"],
-  footerRow: ["Name", "Position", "Office", "Age", "Actions"],
+  headerRow: ["Name", "Order ID", "Product", "Status", "Actions"],
+  footerRow: ["Name", "Order ID", "Product", "Status", "Actions"],
   dataRows: [
     ["Tiger Nixon", "System Architect", "Edinburgh", "61"],
     ["Garrett Winters", "Accountant", "Tokyo", "63"],
