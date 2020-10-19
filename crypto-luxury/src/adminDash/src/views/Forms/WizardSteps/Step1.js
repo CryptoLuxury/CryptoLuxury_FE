@@ -10,10 +10,10 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import PictureUpload from "components/CustomUpload/PictureUpload.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
+import GridContainer from "../../../components/Grid/GridContainer.js";
+import GridItem from "../../../components/Grid/GridItem.js";
+import PictureUpload from "../../../components/CustomUpload/PictureUpload.js";
+import CustomInput from "../../../components/CustomInput/CustomInput.js";
 
 const style = {
   infoText: {

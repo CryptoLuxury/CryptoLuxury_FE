@@ -1,10 +1,13 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Button, Navbar, Nav, Form, FormControl, NavDropdown, DropdownButton } from "react-bootstrap";
 import styled from "styled-components";
 
 import "./Nav.css";
 
 const Navigation = () => {
+
+    let history = useHistory();
 
     return (
         <div>
@@ -30,7 +33,7 @@ const Navigation = () => {
             </div>
             </Nav>
             <div>
-            <Button variant="outline-warning">Account</Button>
+            <Button onClick={() => history.push('/admin/login')} variant="outline-warning">Account</Button>
             </div>
             <div style={{
                 marginLeft: "1%"

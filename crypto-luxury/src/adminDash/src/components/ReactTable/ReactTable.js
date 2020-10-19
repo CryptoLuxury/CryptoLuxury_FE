@@ -9,7 +9,7 @@ import {
 } from "react-table";
 import classnames from "classnames";
 // A great library for fuzzy filtering/sorting items
-import matchSorter from "match-sorter";
+import { matchSorter as ReactComponent } from "match-sorter";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";

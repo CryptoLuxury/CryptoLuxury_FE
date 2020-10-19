@@ -17,15 +17,15 @@ import Email from "@material-ui/icons/Email";
 import Check from "@material-ui/icons/Check";
 
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import InfoArea from "components/InfoArea/InfoArea.js";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
+import GridContainer from "../../components/Grid/GridContainer.js";
+import GridItem from "../../components/Grid/GridItem.js";
+import Button from "../../components/CustomButtons/Button.js";
+import CustomInput from "../../components/CustomInput/CustomInput.js";
+import InfoArea from "../../components/InfoArea/InfoArea.js";
+import Card from "../../components/Card/Card.js";
+import CardBody from "../../components/Card/CardBody.js";
 
-import styles from "assets/jss/material-dashboard-pro-react/views/registerPageStyle";
+import styles from "../../assets/jss/material-dashboard-pro-react/views/registerPageStyle";
 
 const useStyles = makeStyles(styles);
 

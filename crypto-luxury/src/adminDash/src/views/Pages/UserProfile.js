@@ -7,20 +7,20 @@ import InputLabel from "@material-ui/core/InputLabel";
 import PermIdentity from "@material-ui/icons/PermIdentity";
 
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Clearfix from "components/Clearfix/Clearfix.js";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardIcon from "components/Card/CardIcon.js";
-import CardAvatar from "components/Card/CardAvatar.js";
+import GridContainer from "../../components/Grid/GridContainer.js";
+import GridItem from "../../components/Grid/GridItem.js";
+import Button from "../../components/CustomButtons/Button.js";
+import CustomInput from "../../components/CustomInput/CustomInput.js";
+import Clearfix from "../../components/Clearfix/Clearfix.js";
+import Card from "../../components/Card/Card.js";
+import CardBody from "../../components/Card/CardBody.js";
+import CardHeader from "../../components/Card/CardHeader.js";
+import CardIcon from "../../components/Card/CardIcon.js";
+import CardAvatar from "../../components/Card/CardAvatar.js";
 
-import styles from "assets/jss/material-dashboard-pro-react/views/userProfileStyles.js";
+import styles from "../../assets/jss/material-dashboard-pro-react/views/userProfileStyles.js";
 
-import avatar from "assets/img/faces/marc.jpg";
+import avatar from "../../assets/img/faces/marc.jpg";
 
 const useStyles = makeStyles(styles);
 

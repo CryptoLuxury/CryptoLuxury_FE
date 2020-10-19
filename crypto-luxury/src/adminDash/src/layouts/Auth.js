@@ -5,18 +5,18 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 // core components
-import AuthNavbar from "components/Navbars/AuthNavbar.js";
-import Footer from "components/Footer/Footer.js";
+import AuthNavbar from "../components/Navbars/AuthNavbar.js";
+import Footer from "../components/Footer/Footer.js";
 
-import routes from "routes.js";
+import routes from "../routes.js";
 
-import styles from "assets/jss/material-dashboard-pro-react/layouts/authStyle.js";
+import styles from "../assets/jss/material-dashboard-pro-react/layouts/authStyle.js";
 
-import register from "assets/img/register.jpeg";
-import login from "assets/img/login.jpeg";
-import lock from "assets/img/lock.jpeg";
-import error from "assets/img/clint-mckoy.jpg";
-import pricing from "assets/img/bg-pricing.jpeg";
+import register from "../assets/img/register.jpeg";
+import login from "../assets/img/login.jpeg";
+import lock from "../assets/img/lock.jpeg";
+import error from "../assets/img/clint-mckoy.jpg";
+import pricing from "../assets/img/bg-pricing.jpeg";
 
 const useStyles = makeStyles(styles);
 
@@ -52,7 +52,7 @@ export default function Pages(props) {
   const getBgImage = () => {
     if (window.location.pathname.indexOf("/auth/register-page") !== -1) {
       return register;
-    } else if (window.location.pathname.indexOf("/auth/login-page") !== -1) {
+    } else if (window.location.pathname.indexOf("/auth/dashboard") !== -1) {
       return login;
     } else if (window.location.pathname.indexOf("/auth/pricing-page") !== -1) {
       return pricing;
@@ -65,7 +65,7 @@ export default function Pages(props) {
     }
   };
   const getActiveRoute = routes => {
-    let activeRoute = "Default Brand Text";
+    let activeRoute = "CryptoLuxury";
     for (let i = 0; i < routes.length; i++) {
       if (routes[i].collapse) {
         let collapseActiveRoute = getActiveRoute(routes[i].views);
@@ -92,7 +92,7 @@ export default function Pages(props) {
         >
           <Switch>
             {getRoutes(routes)}
-            <Redirect from="/auth" to="/auth/login-page" />
+            <Redirect from="/auth" to="/admin/login" />
           </Switch>
           <Footer white />
         </div>

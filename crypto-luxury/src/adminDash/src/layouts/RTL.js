@@ -10,14 +10,14 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 import { makeStyles } from "@material-ui/core/styles";
 
 // core components
-import AdminNavbar from "components/Navbars/AdminNavbar.js";
-import Footer from "components/Footer/Footer.js";
-import Sidebar from "components/Sidebar/Sidebar.js";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
+import AdminNavbar from "../components/Navbars/AdminNavbar.js";
+import Footer from "../components/Footer/Footer.js";
+import Sidebar from "../components/Sidebar/Sidebar.js";
+import FixedPlugin from "../components/FixedPlugin/FixedPlugin.js";
 
-import routes from "routes.js";
+import routes from "../routes.js";
 
-import styles from "assets/jss/material-dashboard-pro-react/layouts/rtlStyle.js";
+import styles from "../assets/jss/material-dashboard-pro-react/layouts/rtlStyle.js";
 
 var ps;
 
@@ -28,12 +28,12 @@ export default function RTL(props) {
   // states and functions
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [miniActive, setMiniActive] = React.useState(false);
-  const [image, setImage] = React.useState(require("assets/img/sidebar-2.jpg"));
+  const [image, setImage] = React.useState(require("../assets/img/sidebar-2.jpg"));
   const [color, setColor] = React.useState("blue");
   const [bgColor, setBgColor] = React.useState("black");
   // const [hasImage, setHasImage] = React.useState(true);
   const [fixedClasses, setFixedClasses] = React.useState("dropdown");
-  const [logo, setLogo] = React.useState(require("assets/img/logo-white.svg"));
+  const [logo, setLogo] = React.useState(require("../assets/img/logo-white.svg"));
   // styles
   const classes = useStyles();
   const mainPanelClasses =
@@ -73,10 +73,10 @@ export default function RTL(props) {
   const handleBgColorClick = bgColor => {
     switch (bgColor) {
       case "white":
-        setLogo(require("assets/img/logo.svg"));
+        setLogo(require("../assets/img/logo.svg"));
         break;
       default:
-        setLogo(require("assets/img/logo-white.svg"));
+        setLogo(require("../assets/img/logo-white.svg"));
         break;
     }
     setBgColor(bgColor);

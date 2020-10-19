@@ -15,17 +15,17 @@ import Contacts from "@material-ui/icons/Contacts";
 import FiberManualRecord from "@material-ui/icons/FiberManualRecord";
 
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Button from "components/CustomButtons/Button.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardText from "components/Card/CardText.js";
-import CardIcon from "components/Card/CardIcon.js";
-import CardBody from "components/Card/CardBody.js";
+import GridContainer from "../../components/Grid/GridContainer.js";
+import GridItem from "../../components/Grid/GridItem.js";
+import CustomInput from "../../components/CustomInput/CustomInput.js";
+import Button from "../../components/CustomButtons/Button.js";
+import Card from "../../components/Card/Card.js";
+import CardHeader from "../../components/Card/CardHeader.js";
+import CardText from "../../components/Card/CardText.js";
+import CardIcon from "../../components/Card/CardIcon.js";
+import CardBody from "../../components/Card/CardBody.js";
 
-import styles from "assets/jss/material-dashboard-pro-react/views/regularFormsStyle";
+import styles from "../../assets/jss/material-dashboard-pro-react/views/regularFormsStyle";
 
 const useStyles = makeStyles(styles);
 
