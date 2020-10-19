@@ -26,7 +26,8 @@ export default() => {
                 width: "100%",
                 margin: ".2%",
                 marginTop: "0",
-                alignSelf: "center"
+                alignSelf: "center",
+                borderRadius: "1%"
             }}>
                 <Typing speed={5}>
                 <h6 style={{
