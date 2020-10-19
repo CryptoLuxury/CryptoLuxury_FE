@@ -38,7 +38,9 @@ export default() => {
                 width: "100%",
                 display: "flex",
                 flexFlow: "row nowrap",
-                justifyContent: "space-evenly"
+                justifyContent: "space-evenly",
+                margin: ".2%",
+                alignSelf: "center"
             }}>
                 
                 <div style={{
@@ -61,6 +63,50 @@ export default() => {
                     margin: ".1%"
                 }}>
                     three
+                </div>
+
+            </div>
+            <div style={{
+                height: "30vh",
+                background: "blue",
+                width: "100%",
+                display: "flex",
+                flexFlow: "row nowrap",
+                justifyContent: "space-evenly",
+                margin: ".2%",
+                alignSelf: "center"
+            }}>
+                another something here maybe a promotion
+            </div>
+
+            <div style={{
+                height: "30vh",
+                background: "purple",
+                width: "100%",
+                display: "flex",
+                flexFlow: "row nowrap",
+                justifyContent: "space-evenly",
+                margin: ".2%",
+                alignSelf: "center",
+                marginBottom: ".35%",
+                marginBottom: "5%" //TEMPORARY
+            }}>
+                
+                <div style={{
+                    background: "lightgreen",
+                    height: "100%",
+                    width: "50%",
+                    alignSelf: "center"
+                }}>
+                    one
+                </div>
+                <div style={{
+                    background: "lightblue",
+                    height: "100%",
+                    width: "50%",
+                    alignSelf: "center"
+                }}>
+                    two
                 </div>
 
             </div>
