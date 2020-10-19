@@ -1,6 +1,6 @@
-import Dashboard from "views/Dashboard/Dashboard.js";
+import Dashboard from "./views/Dashboard/Dashboard.js";
 
-import Dashboard from "views/Dashboard.js";
+
 import Icons from "views/Icons.js";
 
 

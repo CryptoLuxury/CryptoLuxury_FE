@@ -2,7 +2,7 @@ import {
   defaultFont,
   dangerColor,
   whiteColor
-} from "assets/jss/material-dashboard-pro-react.js";
+} from "../../assets/jss/material-dashboard-pro-react.js";
 
 import customDropdownStyle from "assets/jss/material-dashboard-pro-react/components/customDropdownStyle.js";
 
