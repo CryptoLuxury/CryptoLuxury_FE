@@ -1,5 +1,7 @@
 import React from "react";
 
+import AddForm from "../Forms/NormalProduct";
+
 //reactstrap
 import Container from "react-bootstrap/Container";
 import Button from "../../components/CustomButtons/Button";
@@ -15,8 +17,6 @@ import Close from "@material-ui/icons/Close";
 import { makeStyles } from "@material-ui/core/styles";
 
 // core components
-import OrderTables from "../Tables/OrderTable";
-import { Modal as ReactComponent } from "../Components/Modal";
 
 import styles from "../../assets/jss/material-dashboard-pro-react/views/errorPageStyles.js";
 
@@ -63,13 +63,12 @@ export default function ProductManager() {
                 >
                     <Close className={classes.modalClose} />
                 </Button>
-                <h4 className={classes.modalTitle}>Add a Product</h4>
                 </DialogTitle>
                 <DialogContent
                 id="modal-slide-description"
                 className={classes.modalBody}
                 >
-                <h5>Are you sure you want to do this?</h5>
+                <AddForm />
                 </DialogContent>
                 <DialogActions
                 className={classes.modalFooter + " " + classes.modalFooterCenter}
@@ -77,11 +76,11 @@ export default function ProductManager() {
                 <Button style={{
                     margin: "0 auto"
                 }}
-                onClick={() => setModal(false)}>Never Mind</Button>
+                onClick={() => setModal(false)}>Cancel</Button>
                 <Button style={{
                     margin: "0 auto"
-                }} onClick={() => setModal(false)} color="success">
-                    Yes
+                }} onClick={() => setModal(false)} color="warning">
+                    Submit
                 </Button>
                 </DialogActions>
             </Dialog>
