@@ -14,6 +14,7 @@ import LoginPage from "./views/Pages/LoginPage.js";
 import Notifications from "./views/Components/Notifications.js";
 import Panels from "./views/Components/Panels.js";
 import PricingPage from "./views/Pages/PricingPage.js";
+import Orders from "./views/Pages/OrderPage.js";
 import RTLSupport from "./views/Pages/RTLSupport.js";
 import ReactTables from "./views/Tables/ReactTables.js";
 import RegisterPage from "./views/Pages/RegisterPage.js";
@@ -27,6 +28,7 @@ import ValidationForms from "./views/Forms/ValidationForms.js";
 import VectorMap from "./views/Maps/VectorMap.js";
 import Widgets from "./views/Widgets/Widgets.js";
 import Wizard from "./views/Forms/Wizard.js";
+import TeamPage from "./views/Pages/TeamPage.js";
 
 // @material-ui/icons
 import Apps from "@material-ui/icons/Apps";
@@ -37,6 +39,8 @@ import Login from '@material-ui/icons/VpnKey';
 import Place from "@material-ui/icons/Place";
 import Timeline from "@material-ui/icons/Timeline";
 import WidgetsIcon from "@material-ui/icons/Widgets";
+import OrdersIcon from '@material-ui/icons/ListAlt';
+import GroupIcon from '@material-ui/icons/Group';
 
 var dashRoutes = [
   {
@@ -53,6 +57,22 @@ var dashRoutes = [
     rtlName: "لوحة القيادة",
     icon: Login,
     component: LoginPage,
+    layout: "/admin"
+  },
+  {
+    path: "/orders",
+    name: "Orders",
+    rtlName: "لوحة القيادة",
+    icon: OrdersIcon,
+    component: Orders,
+    layout: "/admin"
+  },
+  {
+    path: "/team",
+    name: "Team",
+    rtlName: "لوحة القيادة",
+    icon: GroupIcon,
+    component: TeamPage,
     layout: "/admin"
   },
   {

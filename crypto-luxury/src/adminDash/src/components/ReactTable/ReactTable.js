@@ -18,12 +18,14 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Switch from "@material-ui/core/Switch";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import Button from "../CustomButtons/Button";
 // core components
 import CustomInput from "../../components/CustomInput/CustomInput.js";
 import GridContainer from "../../components/Grid/GridContainer.js";
 import GridItem from "../../components/Grid/GridItem.js";
 
 import styles from "../../assets/jss/material-dashboard-pro-react/customSelectStyle.js";
+import buttonsStyle from "../../assets/jss/material-dashboard-pro-react/views/buttonsStyle.js";
 
 const newStyles = {
   ...styles,
@@ -245,7 +247,8 @@ function Table({ columns, data }) {
                 type="button"
                 onClick={() => nextPage()}
                 disabled={!canNextPage}
-                className="-btn"
+                rounded
+                color="warning"
               >
                 Next
               </button>

@@ -3,6 +3,7 @@ import React from "react";
 import ChartistGraph from "react-chartist";
 // react plugin for creating vector maps
 import { VectorMap } from "react-jvectormap";
+import Container from "react-bootstrap/Container";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -37,6 +38,11 @@ import CardIcon from "../../components/Card/CardIcon.js";
 import CardBody from "../../components/Card/CardBody.js";
 import CardFooter from "../../components/Card/CardFooter.js";
 
+//undraws
+import Mailbox from "./mailbox.svg";
+import Sales from "./Sales.svg";
+import Cube from "./cube.svg";
+
 import {
   dailySalesChart,
   emailsSubscriptionChart,
@@ -44,10 +50,6 @@ import {
 } from "../../variables/charts";
 
 import styles from "../../assets/jss/material-dashboard-pro-react/views/dashboardStyle.js";
-
-import priceImage1 from "../../assets/img/card-2.jpeg";
-import priceImage2 from "../../assets/img/card-3.jpeg";
-import priceImage3 from "../../assets/img/card-1.jpeg";
 import Success from "../../components/Typography/Success.js";
 
 const useStyles = makeStyles(styles);
@@ -136,15 +138,17 @@ export default function Dashboard() {
       </GridContainer>
       <GridContainer>
         <GridItem xs={12} sm={12} md={4}>
-          <Card chart className={classes.cardHover}>
-            <CardHeader color="info" className={classes.cardHeaderHover}>
-              <ChartistGraph
-                className="ct-chart-white-colors"
-                data={dailySalesChart.data}
-                type="Line"
-                options={dailySalesChart.options}
-                listener={dailySalesChart.animation}
-              />
+          <Card className={classes.cardHover}>
+            <CardHeader color="warning" className={classes.cardHeaderHover}>
+              <Container>
+              <img src={Sales} alt="finance chart from undraw" style={{
+                height: "100px",
+                width: "100px",
+                display: "flex",
+                justifyContent: "center",
+                margin: "0 auto"
+              }} />
+              </Container>
             </CardHeader>
             <CardBody>
               <div className={classes.cardHoverUnder}>
@@ -179,7 +183,7 @@ export default function Dashboard() {
             </CardBody>
             <CardFooter chart>
               <div className={classes.stats}>
-                <AccessTime /> updated 4 minutes ago
+                <AccessTime /> Updated Just Now
               </div>
             </CardFooter>
           </Card>
@@ -187,14 +191,15 @@ export default function Dashboard() {
         <GridItem xs={12} sm={12} md={4}>
           <Card chart className={classes.cardHover}>
             <CardHeader color="warning" className={classes.cardHeaderHover}>
-              <ChartistGraph
-                className="ct-chart-white-colors"
-                data={emailsSubscriptionChart.data}
-                type="Bar"
-                options={emailsSubscriptionChart.options}
-                responsiveOptions={emailsSubscriptionChart.responsiveOptions}
-                listener={emailsSubscriptionChart.animation}
-              />
+            <Container>
+            <img src={Mailbox} alt="a mailbox" style={{
+              height: "100px",
+              width: "100px",
+              display: "flex",
+              justifyContent: "center",
+              margin: "0 auto"
+            }} />
+            </Container>
             </CardHeader>
             <CardBody>
               <div className={classes.cardHoverUnder}>
@@ -232,13 +237,15 @@ export default function Dashboard() {
         <GridItem xs={12} sm={12} md={4}>
           <Card chart className={classes.cardHover}>
             <CardHeader color="danger" className={classes.cardHeaderHover}>
-              <ChartistGraph
-                className="ct-chart-white-colors"
-                data={completedTasksChart.data}
-                type="Line"
-                options={completedTasksChart.options}
-                listener={completedTasksChart.animation}
-              />
+            <Container>
+            <img src={Cube} alt="a cube i made :)" style={{
+              height: "100px",
+              width: "100px",
+              display: "flex",
+              justifyContent: "center",
+              margin: "0 auto"
+            }} />
+            </Container>
             </CardHeader>
             <CardBody>
               <div className={classes.cardHoverUnder}>
@@ -281,7 +288,7 @@ export default function Dashboard() {
           <Card product className={classes.cardHover}>
             <CardHeader image className={classes.cardHeaderHover}>
               <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={priceImage1} alt="..." />
+                <img src="https://i.pinimg.com/736x/77/b8/d9/77b8d9a94f64f0a34aafb405125b301a.jpg" alt="blastoise" />
               </a>
             </CardHeader>
             <CardBody>
@@ -340,7 +347,7 @@ export default function Dashboard() {
           <Card product className={classes.cardHover}>
             <CardHeader image className={classes.cardHeaderHover}>
               <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={priceImage2} alt="..." />
+                <img src="https://cdn.swisswatchexpo.com/productphotos/7/2/rolex-president-datejust-yellow-gold-pyramid-diamond-bezel-watch-69258-28273_010e2.jpg" alt="rolex presidential" />
               </a>
             </CardHeader>
             <CardBody>
@@ -399,7 +406,7 @@ export default function Dashboard() {
           <Card product className={classes.cardHover}>
             <CardHeader image className={classes.cardHeaderHover}>
               <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={priceImage3} alt="..." />
+                <img src="https://cdn-products.chronext.com/V/2/V26422/V26422_1_det.png" alt="king air vector" />
               </a>
             </CardHeader>
             <CardBody>
