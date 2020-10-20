@@ -32,6 +32,8 @@ import MoneyIcon from '@material-ui/icons/LocalAtm';
 import LowPriorityIcon from '@material-ui/icons/LowPriority';
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import ListAltIcon from '@material-ui/icons/ListAlt';
+import CodeIcon from '@material-ui/icons/Code';
 
 // core components
 import GridContainer from "../../components/Grid/GridContainer.js";
@@ -251,22 +253,22 @@ export default function Dashboard() {
               <div className={classes.cardHoverUnder}>
                 <Tooltip
                   id="tooltip-top"
-                  title="Refresh"
+                  title="Manage Tickets"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button simple color="info" justIcon>
-                    <Refresh className={classes.underChartIcons} />
+                  <Button simple color="warning" justIcon>
+                    <ListAltIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="Change Date"
+                  title="Create Dev Ticket"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
                   <Button color="transparent" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
+                    <CodeIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
               </div>
