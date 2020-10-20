@@ -29,6 +29,7 @@ import VectorMap from "./views/Maps/VectorMap.js";
 import Widgets from "./views/Widgets/Widgets.js";
 import Wizard from "./views/Forms/Wizard.js";
 import TeamPage from "./views/Pages/TeamPage.js";
+import ProjectManager from "./views/Pages/ProductManager";
 
 // @material-ui/icons
 import Apps from "@material-ui/icons/Apps";
@@ -41,6 +42,7 @@ import Timeline from "@material-ui/icons/Timeline";
 import WidgetsIcon from "@material-ui/icons/Widgets";
 import OrdersIcon from '@material-ui/icons/ListAlt';
 import GroupIcon from '@material-ui/icons/Group';
+import BuildIcon from '@material-ui/icons/Build';
 
 var dashRoutes = [
   {
@@ -68,11 +70,11 @@ var dashRoutes = [
     layout: "/admin"
   },
   {
-    path: "/products",
-    name: "Products",
+    path: "/productmanager",
+    name: "Product Manager",
     rtlName: "لوحة القيادة",
-    icon: OrdersIcon,
-    component: Orders,
+    icon: BuildIcon,
+    component: ProjectManager,
     layout: "/admin"
   },
   {

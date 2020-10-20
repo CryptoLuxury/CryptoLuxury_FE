@@ -36,7 +36,9 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import CodeIcon from '@material-ui/icons/Code';
 import FlightIcon from '@material-ui/icons/FlightTakeoff';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import ViewIcon from '@material-ui/icons/Visibility';
+import DeleteIcon from '@material-ui/icons/DeleteForever';
+import CameraIcon from '@material-ui/icons/Camera';
 
 // core components
 import GridContainer from "../../components/Grid/GridContainer.js";
@@ -77,12 +79,8 @@ export default function Dashboard() {
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
-                <Danger>
-                  <Success />
-                </Danger>
-                <a href="#pablo" onClick={e => e.preventDefault()}>
-                  View Status
-                </a>
+                <CameraIcon />
+                <a href="/admin/orders">View Status</a>
               </div>
             </CardFooter>
           </Card>
@@ -295,12 +293,12 @@ export default function Dashboard() {
               <div className={classes.cardHoverUnder}>
                 <Tooltip
                   id="tooltip-top"
-                  title="View"
+                  title="Details"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
                   <Button color="warning" simple justIcon>
-                    <ArtTrack className={classes.underChartIcons} />
+                    <ViewIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
                 <Tooltip
@@ -309,18 +307,18 @@ export default function Dashboard() {
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button color="success" simple justIcon>
+                  <Button color="transparent" simple justIcon>
                     <Edit className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="Remove"
+                  title="Delete"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
                   <Button color="danger" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
+                    <DeleteIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
               </div>
@@ -338,7 +336,7 @@ export default function Dashboard() {
                 <h4>$15,954/card</h4>
               </div>
               <div className={`${classes.stats} ${classes.productStats}`}>
-                <Place /> International
+                <FlightIcon /> International
               </div>
             </CardFooter>
           </Card>
@@ -354,12 +352,12 @@ export default function Dashboard() {
               <div className={classes.cardHoverUnder}>
                 <Tooltip
                   id="tooltip-top"
-                  title="View"
+                  title="Details"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button color="transparent" simple justIcon>
-                    <ArtTrack className={classes.underChartIcons} />
+                  <Button color="warning" simple justIcon>
+                    <ViewIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
                 <Tooltip
@@ -368,18 +366,18 @@ export default function Dashboard() {
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button color="success" simple justIcon>
-                    <Refresh className={classes.underChartIcons} />
+                  <Button color="transparent" simple justIcon>
+                    <Edit className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="Remove"
+                  title="Delete"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
                   <Button color="danger" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
+                    <DeleteIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
               </div>
@@ -397,7 +395,7 @@ export default function Dashboard() {
                 <h4>$49,999/kit</h4>
               </div>
               <div className={`${classes.stats} ${classes.productStats}`}>
-                <Place /> International
+                <FlightIcon /> International
               </div>
             </CardFooter>
           </Card>
@@ -413,12 +411,12 @@ export default function Dashboard() {
               <div className={classes.cardHoverUnder}>
                 <Tooltip
                   id="tooltip-top"
-                  title="View"
+                  title="Details"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button color="transparent" simple justIcon>
-                    <ArtTrack className={classes.underChartIcons} />
+                  <Button color="warning" simple justIcon>
+                    <ViewIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
                 <Tooltip
@@ -427,18 +425,18 @@ export default function Dashboard() {
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button color="success" simple justIcon>
+                  <Button color="transparent" simple justIcon>
                     <Edit className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="Remove"
+                  title="Delete"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
                   <Button color="danger" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
+                    <DeleteIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
               </div>
