@@ -1,6 +1,6 @@
 import React from "react";
 
-import AddForm from "../Forms/NormalProduct";
+import AddWatch from "../Forms/AddWatch";
 
 //reactstrap
 import Container from "react-bootstrap/Container";
@@ -29,22 +29,22 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function ProductManager() {
 
   const classes = useStyles();
-  const [modal, setModal] = React.useState(false);
+  const [watchModal, setWatchModal] = React.useState(false);
 
   return (
     <Container>
         <h2>Product Manager</h2>
-        <Button color="warning" round onClick={() => setModal(true)}>Add Product</Button>
+        <Button color="warning" round onClick={() => setWatchModal(true)}>Add Watch</Button>
         <div>
             <Dialog
                 classes={{
                 root: classes.center,
                 paper: classes.modal
                 }}
-                open={modal}
+                open={watchModal}
                 transition={Transition}
                 keepMounted
-                onClose={() => setModal(false)}
+                onClose={() => setWatchModal(false)}
                 aria-labelledby="modal-slide-title"
                 aria-describedby="modal-slide-description"
             >
@@ -58,17 +58,18 @@ export default function ProductManager() {
                     className={classes.modalCloseButton}
                     key="close"
                     aria-label="Close"
-                    color="transparent"
-                    onClick={() => setModal(false)}
+                    color="danger"
+                    onClick={() => setWatchModal(false)}
                 >
                     <Close className={classes.modalClose} />
                 </Button>
                 </DialogTitle>
                 <DialogContent
+                style={{width: "750px"}}
                 id="modal-slide-description"
                 className={classes.modalBody}
                 >
-                <AddForm />
+                <AddWatch />
                 </DialogContent>
                 <DialogActions
                 className={classes.modalFooter + " " + classes.modalFooterCenter}
@@ -76,15 +77,16 @@ export default function ProductManager() {
                 <Button style={{
                     margin: "0 auto"
                 }}
-                onClick={() => setModal(false)}>Cancel</Button>
+                onClick={() => setWatchModal(false)}>Cancel</Button>
                 <Button style={{
                     margin: "0 auto"
-                }} onClick={() => setModal(false)} color="warning">
+                }} onClick={() => setWatchModal(false)} color="warning">
                     Submit
                 </Button>
                 </DialogActions>
             </Dialog>
         </div>
+
     </Container>
   );
 }
