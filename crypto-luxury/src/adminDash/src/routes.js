@@ -44,19 +44,19 @@ import GroupIcon from '@material-ui/icons/Group';
 
 var dashRoutes = [
   {
-    path: "/dashboard",
-    name: "Dashboard",
-    rtlName: "لوحة القيادة",
-    icon: DashboardIcon,
-    component: Dashboard,
-    layout: "/admin"
-  },
-  {
     path: "/login",
     name: "Login",
     rtlName: "لوحة القيادة",
     icon: Login,
     component: LoginPage,
+    layout: "/admin"
+  },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    rtlName: "لوحة القيادة",
+    icon: DashboardIcon,
+    component: Dashboard,
     layout: "/admin"
   },
   {

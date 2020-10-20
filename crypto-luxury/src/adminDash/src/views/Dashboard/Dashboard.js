@@ -25,11 +25,17 @@ import Edit from "@material-ui/icons/Edit";
 import Place from "@material-ui/icons/Place";
 import ArtTrack from "@material-ui/icons/ArtTrack";
 import Language from "@material-ui/icons/Language";
+import BlurOnIcon from '@material-ui/icons/BlurOn';
+import TaskIcon from '@material-ui/icons/AssignmentTurnedIn';
+import AccountIcon from '@material-ui/icons/AccountBalanceWallet';
+import MoneyIcon from '@material-ui/icons/LocalAtm';
+import LowPriorityIcon from '@material-ui/icons/LowPriority';
+import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 // core components
 import GridContainer from "../../components/Grid/GridContainer.js";
 import GridItem from "../../components/Grid/GridItem.js";
-import Table from "../../components/Table/Table.js";
 import Button from "../../components/CustomButtons/Button.js";
 import Danger from "../../components/Typography/Danger.js";
 import Card from "../../components/Card/Card.js";
@@ -42,12 +48,6 @@ import CardFooter from "../../components/Card/CardFooter.js";
 import Mailbox from "./mailbox.svg";
 import Sales from "./Sales.svg";
 import Cube from "./cube.svg";
-
-import {
-  dailySalesChart,
-  emailsSubscriptionChart,
-  completedTasksChart
-} from "../../variables/charts";
 
 import styles from "../../assets/jss/material-dashboard-pro-react/views/dashboardStyle.js";
 import Success from "../../components/Typography/Success.js";
@@ -63,7 +63,7 @@ export default function Dashboard() {
           <Card>
             <CardHeader color="warning" stats icon>
               <CardIcon color="warning">
-                <Icon></Icon>
+                <BlurOnIcon />
               </CardIcon>
               <p className={classes.cardCategory}>Today's Orders</p>
               <h3 className={classes.cardTitle}>
@@ -84,8 +84,8 @@ export default function Dashboard() {
         </GridItem>
         <GridItem xs={12} sm={6} md={6} lg={3}>
           <Card>
-            <CardHeader color="success" stats icon>
-              <CardIcon color="success">
+            <CardHeader color="warning" stats icon>
+              <CardIcon color="warning">
                 <Store />
               </CardIcon>
               <p className={classes.cardCategory}>Revenue</p>
@@ -101,9 +101,9 @@ export default function Dashboard() {
         </GridItem>
         <GridItem xs={12} sm={6} md={6} lg={3}>
           <Card>
-            <CardHeader color="danger" stats icon>
-              <CardIcon color="danger">
-                <Icon></Icon>
+            <CardHeader color="warning" stats icon>
+              <CardIcon color="warning">
+                <TaskIcon />
               </CardIcon>
               <p className={classes.cardCategory}>Completed Orders</p>
               <h3 className={classes.cardTitle}>34</h3>
@@ -118,9 +118,9 @@ export default function Dashboard() {
         </GridItem>
         <GridItem xs={12} sm={6} md={6} lg={3}>
           <Card>
-            <CardHeader color="info" stats icon>
-              <CardIcon color="info">
-                <i className="fab fa-twitter" />
+            <CardHeader color="warning" stats icon>
+              <CardIcon color="warning">
+                <AccountIcon />
               </CardIcon>
               <p className={classes.cardCategory}>Crypto Balance</p>
               <h3 className={classes.cardTitle}>
@@ -154,22 +154,22 @@ export default function Dashboard() {
               <div className={classes.cardHoverUnder}>
                 <Tooltip
                   id="tooltip-top"
-                  title="Refresh"
+                  title="Orders"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button simple color="info" justIcon>
-                    <Refresh className={classes.underChartIcons} />
+                  <Button simple color="warning" justIcon>
+                    <LowPriorityIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="Change Date"
+                  title="View Sales"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
                   <Button color="transparent" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
+                    <MoneyIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
               </div>
@@ -205,27 +205,27 @@ export default function Dashboard() {
               <div className={classes.cardHoverUnder}>
                 <Tooltip
                   id="tooltip-top"
-                  title="Refresh"
+                  title="Manage"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button simple color="info" justIcon>
-                    <Refresh className={classes.underChartIcons} />
+                  <Button simple color="warning" justIcon>
+                    <SubscriptionsIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="Change Date"
+                  title="New Campaign"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
                   <Button color="transparent" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
+                    <MailOutlineIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
               </div>
               <h4 className={classes.cardTitle}>Email Subscribers</h4>
-              <p className={classes.cardCategory}>Performance</p>
+              <p className={classes.cardCategory}>Manage your audience</p>
             </CardBody>
             <CardFooter chart>
               <div className={classes.stats}>
@@ -236,7 +236,7 @@ export default function Dashboard() {
         </GridItem>
         <GridItem xs={12} sm={12} md={4}>
           <Card chart className={classes.cardHover}>
-            <CardHeader color="danger" className={classes.cardHeaderHover}>
+            <CardHeader color="warning" className={classes.cardHeaderHover}>
             <Container>
             <img src={Cube} alt="a cube i made :)" style={{
               height: "100px",
