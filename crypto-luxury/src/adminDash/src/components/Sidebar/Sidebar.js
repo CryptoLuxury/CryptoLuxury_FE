@@ -561,7 +561,7 @@ class Sidebar extends React.Component {
 }
 
 Sidebar.defaultProps = {
-  bgColor: "black"
+  bgColor: "white",
 };
 
 Sidebar.propTypes = {

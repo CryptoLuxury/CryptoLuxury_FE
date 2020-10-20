@@ -63,7 +63,9 @@ import Success from "../../components/Typography/Success.js";
 const useStyles = makeStyles(styles);
 
 export default function Dashboard() {
+  
   const classes = useStyles();
+
   return (
     <div>
       <GridContainer>
@@ -81,7 +83,7 @@ export default function Dashboard() {
             <CardFooter stats>
               <div className={classes.stats}>
                 <CameraIcon />
-                <a href="/admin/orders">View Status</a>
+                <a href="/admin/orders" style={{color: "#d48d05"}}>View Status</a>
               </div>
             </CardFooter>
           </Card>
@@ -98,7 +100,7 @@ export default function Dashboard() {
             <CardFooter stats>
               <div className={classes.stats}>
                 <MoneyIcon />
-                <a href="/admin/orders">Sales</a>
+                <a href="/admin/orders" style={{color: "#d48d05"}}>Sales</a>
               </div>
             </CardFooter>
           </Card>
@@ -115,7 +117,7 @@ export default function Dashboard() {
             <CardFooter stats>
               <div className={classes.stats}>
                 <LocalOffer />
-                <a href="/admin/orders">Manage Orders</a>
+                <a href="/admin/orders" style={{color: "#d48d05"}}>Manage Orders</a>
               </div>
             </CardFooter>
           </Card>
@@ -134,7 +136,7 @@ export default function Dashboard() {
             <CardFooter stats>
               <div className={classes.stats}>
                 <Update />
-                <a href="/admin/orders">Payments</a>
+                <a href="/admin/orders" style={{color: "#d48d05"}}>Payments</a>
               </div>
             </CardFooter>
           </Card>
