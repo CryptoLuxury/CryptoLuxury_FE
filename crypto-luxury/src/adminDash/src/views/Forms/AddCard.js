@@ -73,7 +73,7 @@ export default function AddCard() {
         marginBottom: "3%"
       }}>
         <label>Description</label>
-        <input placeholder = "Price" name="description" type="text-field" />
+        <input placeholder = "Description" name="description" type="text-field" />
       </div>
       <div style={{
         display: "flex",

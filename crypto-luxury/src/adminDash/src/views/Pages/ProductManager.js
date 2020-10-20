@@ -20,6 +20,7 @@ import Close from "@material-ui/icons/Close";
 import { makeStyles } from "@material-ui/core/styles";
 
 // core components
+import ProductsTable from "../Tables/ProductsTable";
 
 import styles from "../../assets/jss/material-dashboard-pro-react/views/errorPageStyles.js";
 
@@ -47,7 +48,7 @@ export default function ProductManager() {
         price: null,
     })
 
-  const handleSubmit = (e) => {
+  const handleWatchSubmit = (e) => {
     e.preventDefault();
     axios.post(``, watchProduct)
     .then(res => {
@@ -164,7 +165,7 @@ export default function ProductManager() {
                 id="modal-slide-description"
                 className={classes.modalBody}
                 >
-                <AddWatch />
+                <AddCard />
                 </DialogContent>
                 <DialogActions
                 className={classes.modalFooter + " " + classes.modalFooterCenter}
@@ -182,6 +183,9 @@ export default function ProductManager() {
             </Dialog>
         </div>
 
+        </Container>
+        <Container>
+            <ProductsTable />
         </Container>
 
     </Container>

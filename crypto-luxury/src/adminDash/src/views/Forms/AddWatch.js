@@ -49,7 +49,7 @@ export default function AddWatch() {
 
   return (
     <Container>
-    <h2>Add New Card</h2>
+    <h2>Add New Watch</h2>
       <form>
       <div style={{
         display: "flex",
@@ -73,7 +73,7 @@ export default function AddWatch() {
         marginBottom: "3%"
       }}>
         <label>Description</label>
-        <input placeholder = "Price" name="description" type="text-field" onChange={handleChange} />
+        <input placeholder = "Description" name="description" type="text-field" onChange={handleChange} />
       </div>
       <div style={{
         display: "flex",
