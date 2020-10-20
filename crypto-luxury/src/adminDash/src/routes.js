@@ -68,6 +68,14 @@ var dashRoutes = [
     layout: "/admin"
   },
   {
+    path: "/products",
+    name: "Products",
+    rtlName: "لوحة القيادة",
+    icon: OrdersIcon,
+    component: Orders,
+    layout: "/admin"
+  },
+  {
     path: "/team",
     name: "Team",
     rtlName: "لوحة القيادة",

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-dom";
 // react plugin for creating charts
 import ChartistGraph from "react-chartist";
 // react plugin for creating vector maps
@@ -34,6 +35,8 @@ import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import CodeIcon from '@material-ui/icons/Code';
+import FlightIcon from '@material-ui/icons/FlightTakeoff';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 // core components
 import GridContainer from "../../components/Grid/GridContainer.js";
@@ -95,8 +98,8 @@ export default function Dashboard() {
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
-                <DateRange />
-                Last 30 Days
+                <MoneyIcon />
+                <a href="/admin/orders">Sales</a>
               </div>
             </CardFooter>
           </Card>
@@ -113,7 +116,7 @@ export default function Dashboard() {
             <CardFooter stats>
               <div className={classes.stats}>
                 <LocalOffer />
-                Last 30 Days
+                <a href="/admin/orders">Manage Orders</a>
               </div>
             </CardFooter>
           </Card>
@@ -132,7 +135,7 @@ export default function Dashboard() {
             <CardFooter stats>
               <div className={classes.stats}>
                 <Update />
-                Resolve
+                <a href="/admin/orders">Payments</a>
               </div>
             </CardFooter>
           </Card>
@@ -175,13 +178,8 @@ export default function Dashboard() {
                   </Button>
                 </Tooltip>
               </div>
-              <h4 className={classes.cardTitle}>Daily Sales</h4>
-              <p className={classes.cardCategory}>
-                <span className={classes.successText}>
-                  <ArrowUpward className={classes.upArrowCardCategory} /> 55%
-                </span>{" "}
-                increase in today sales.
-              </p>
+              <h4 className={classes.cardTitle}>Sales</h4>
+              <p className={classes.cardCategory}>View and Track Sales</p>
             </CardBody>
             <CardFooter chart>
               <div className={classes.stats}>
@@ -301,7 +299,7 @@ export default function Dashboard() {
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button color="transparent" simple justIcon>
+                  <Button color="warning" simple justIcon>
                     <ArtTrack className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
@@ -312,7 +310,7 @@ export default function Dashboard() {
                   classes={{ tooltip: classes.tooltip }}
                 >
                   <Button color="success" simple justIcon>
-                    <Refresh className={classes.underChartIcons} />
+                    <Edit className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
                 <Tooltip
@@ -430,7 +428,7 @@ export default function Dashboard() {
                   classes={{ tooltip: classes.tooltip }}
                 >
                   <Button color="success" simple justIcon>
-                    <Refresh className={classes.underChartIcons} />
+                    <Edit className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
                 <Tooltip
@@ -458,7 +456,7 @@ export default function Dashboard() {
                 <h4>$49,542/kit</h4>
               </div>
               <div className={`${classes.stats} ${classes.productStats}`}>
-                <Place /> International
+                <FlightIcon /> International
               </div>
             </CardFooter>
           </Card>
