@@ -1,4 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+
+import { useHistory } from "react-dom";
+
+import axios from "axios";
+
 import { Link } from "react-dom";
 // react plugin for creating charts
 import ChartistGraph from "react-chartist";
@@ -57,17 +62,116 @@ import Sales from "./Sales.svg";
 import Cube from "./cube.svg";
 import Blastoise from "./blastoise.png";
 
+import Slide from "@material-ui/core/Slide";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
+// @material-ui/icons
+import Close from "@material-ui/icons/Close";
+
 import styles from "../../assets/jss/material-dashboard-pro-react/views/dashboardStyle.js";
 import Success from "../../components/Typography/Success.js";
 
 const useStyles = makeStyles(styles);
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="down" ref={ref} {...props} />;
+});
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 export default function Dashboard() {
   
   const classes = useStyles();
+  const [devTicketModal, setDevTicketModal] = useState(false);
+  const [devTicket, setDevTicket] = useState({
+    name: "",
+    email: "",
+    message: ""
+  })
+
+  const handleDevChange = (e) => {
+    e.preventDefault();
+    setDevTicket({
+      ...devTicket,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleDevTicketSubmit = (e) => {
+    e.preventDefault();
+    axios.post(`https://crypto-luxury.herokuapp.com/api/form/devTicket`, devTicket)
+    .then(res => {
+      alert("POST SUCCESS")
+      console.log(res, "<---- THIS WAS POSTED")
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
 
   return (
     <div>
+      <div>
+        <Dialog
+          classes={{
+            root: classes.center,
+            paper: classes.modal
+          }}
+          open={devTicketModal}
+          transition={Transition}
+          keepMounted
+          onClose={() => setDevTicketModal(false)}
+          aria-labelledby="modal-slide-title"
+          aria-describedby="modal-slide-description"
+        >
+          <DialogTitle
+            id="classic-modal-slide-title"
+            disableTypography
+            className={classes.modalHeader}
+          >
+            <Button
+              justIcon
+              className={classes.modalCloseButton}
+              key="close"
+              aria-label="Close"
+              color="transparent"
+              onClick={() => setDevTicketModal(false)}
+            >
+              <Close className={classes.modalClose} />
+            </Button>
+            <h4 className={classes.modalTitle}>Submit a Dev Ticket</h4>
+          </DialogTitle>
+          <DialogContent
+            id="modal-slide-description"
+            className={classes.modalBody}
+          >
+          <form>
+            <div>
+              <label>Name</label>
+              <input placeholder="Input your name" name="name" type="text" onChange={handleDevChange} />
+            </div>
+            <div>
+            <label>Name</label>
+            <input placeholder="Input your email" name="email" type="text" onChange={handleDevChange} />
+          </div>
+            <div>
+              <label>Describe your issue</label>
+              <input placeholder="What's the issue?" name="message" type="text-field" onChange={handleDevChange} />
+            </div>
+          </form>
+          </DialogContent>
+          <DialogActions
+            className={classes.modalFooter + " " + classes.modalFooterCenter}
+          >
+            <Button onClick={() => setDevTicketModal(false)}>Cancel</Button>
+            <Button onClick={handleDevTicketSubmit} color="warning">
+              Submit
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
       <GridContainer>
         <GridItem xs={12} sm={6} md={6} lg={3}>
           <Card>
@@ -266,7 +370,7 @@ export default function Dashboard() {
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button color="transparent" simple justIcon>
+                  <Button color="transparent" simple justIcon onClick={() => setDevTicketModal(true)} >
                     <CodeIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>

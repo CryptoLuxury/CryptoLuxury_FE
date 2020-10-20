@@ -48,11 +48,29 @@ export default function ProductManager() {
         price: null,
     })
 
+    const handleWatchChange = (e) => {
+        e.preventDefault();
+        setWatchProduct({
+        ...watchProduct,
+        [e.target.name]: e.target.value
+        })
+    }
+
+    const handleCardChange = (e) => {
+        e.preventDefault();
+        setCardProduct({
+        ...cardProduct,
+        [e.target.name]: e.target.value
+        })
+    }
+
   const handleWatchSubmit = (e) => {
     e.preventDefault();
-    axios.post(``, watchProduct)
+    axios.post(`https://crypto-luxury.herokuapp.com/api/form/watchOrders`, watchProduct)
     .then(res => {
-      console.log("######", watchProduct)
+        alert("POST SUCCESS")
+        setWatchModal(false)
+        console.log(res)
     })
     .catch(err => {
       console.log(err, "There was an error")
@@ -112,7 +130,47 @@ export default function ProductManager() {
                 id="modal-slide-description"
                 className={classes.modalBody}
                 >
-                <AddWatch />
+                <Container>
+                <h2>Add New Watch</h2>
+                  <form>
+                  <div style={{
+                    display: "flex",
+                    flexFlow: "column nowrap",
+                    justifyContent: "center",
+                    alignSelf: "center",
+                    width: "60%",
+                    marginLeft: "7.5%",
+                    marginBottom: "3%"
+                  }}>
+                    <label>Title</label>
+                    <input placeholder = "title" name="title" type="text" onChange={handleWatchChange} />
+                  </div>
+                  <div style={{
+                    display: "flex",
+                    flexFlow: "column nowrap",
+                    justifyContent: "center",
+                    alignSelf: "center",
+                    width: "60%",
+                    marginLeft: "7.5%",
+                    marginBottom: "3%"
+                  }}>
+                    <label>Description</label>
+                    <input placeholder = "Description" name="description" type="text-field" onChange={handleWatchChange} />
+                  </div>
+                  <div style={{
+                    display: "flex",
+                    flexFlow: "column nowrap",
+                    justifyContent: "center",
+                    alignSelf: "center",
+                    width: "60%",
+                    marginLeft: "7.5%",
+                    marginBottom: "3%"
+                  }}>
+                    <label>Price</label>
+                    <input type='number' step="1" placeholder='Price Value' onChange={handleWatchChange} />
+                  </div>
+                  </form>
+                </Container>
                 </DialogContent>
                 <DialogActions
                 className={classes.modalFooter + " " + classes.modalFooterCenter}
@@ -165,7 +223,47 @@ export default function ProductManager() {
                 id="modal-slide-description"
                 className={classes.modalBody}
                 >
-                <AddCard />
+                <Container>
+                <h2>Add New Card</h2>
+                  <form>
+                  <div style={{
+                    display: "flex",
+                    flexFlow: "column nowrap",
+                    justifyContent: "center",
+                    alignSelf: "center",
+                    width: "60%",
+                    marginLeft: "7.5%",
+                    marginBottom: "3%"
+                  }}>
+                    <label>Title</label>
+                    <input placeholder = "title" name="title" type="text" onChange={handleCardChange} />
+                  </div>
+                  <div style={{
+                    display: "flex",
+                    flexFlow: "column nowrap",
+                    justifyContent: "center",
+                    alignSelf: "center",
+                    width: "60%",
+                    marginLeft: "7.5%",
+                    marginBottom: "3%"
+                  }}>
+                    <label>Description</label>
+                    <input placeholder = "Description" name="description" type="text-field" onChange={handleCardChange} />
+                  </div>
+                  <div style={{
+                    display: "flex",
+                    flexFlow: "column nowrap",
+                    justifyContent: "center",
+                    alignSelf: "center",
+                    width: "60%",
+                    marginLeft: "7.5%",
+                    marginBottom: "3%"
+                  }}>
+                    <label>Price</label>
+                    <input type='number' step="1" placeholder='Price Value' onChange={handleCardChange} />
+                  </div>
+                  </form>
+                </Container>
                 </DialogContent>
                 <DialogActions
                 className={classes.modalFooter + " " + classes.modalFooterCenter}

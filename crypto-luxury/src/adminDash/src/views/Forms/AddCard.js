@@ -61,7 +61,7 @@ export default function AddCard() {
         marginBottom: "3%"
       }}>
         <label>Title</label>
-        <input placeholder = "title" name="title" type="text" />
+        <input placeholder = "title" name="title" type="text" onChange={handleCardChange} />
       </div>
       <div style={{
         display: "flex",
@@ -73,7 +73,7 @@ export default function AddCard() {
         marginBottom: "3%"
       }}>
         <label>Description</label>
-        <input placeholder = "Description" name="description" type="text-field" />
+        <input placeholder = "Description" name="description" type="text-field" onChange={handleCardChange} />
       </div>
       <div style={{
         display: "flex",
@@ -85,7 +85,7 @@ export default function AddCard() {
         marginBottom: "3%"
       }}>
         <label>Price</label>
-        <input type='number' step="1" placeholder='Price Value' />
+        <input type='number' step="1" placeholder='Price Value' onChange={handleCardChange} />
       </div>
       </form>
     </Container>
