@@ -41,6 +41,7 @@ import CardFooter from "../../components/Card/CardFooter.js";
 //undraws
 import Mailbox from "./mailbox.svg";
 import Sales from "./Sales.svg";
+import Cube from "./cube.svg";
 
 import {
   dailySalesChart,
@@ -49,10 +50,6 @@ import {
 } from "../../variables/charts";
 
 import styles from "../../assets/jss/material-dashboard-pro-react/views/dashboardStyle.js";
-
-import priceImage1 from "../../assets/img/card-2.jpeg";
-import priceImage2 from "../../assets/img/card-3.jpeg";
-import priceImage3 from "../../assets/img/card-1.jpeg";
 import Success from "../../components/Typography/Success.js";
 
 const useStyles = makeStyles(styles);
@@ -144,7 +141,7 @@ export default function Dashboard() {
           <Card className={classes.cardHover}>
             <CardHeader color="warning" className={classes.cardHeaderHover}>
               <Container>
-              <img src={Mailbox} alt="mailbox" style={{
+              <img src={Sales} alt="finance chart from undraw" style={{
                 height: "100px",
                 width: "100px",
                 display: "flex",
@@ -195,7 +192,7 @@ export default function Dashboard() {
           <Card chart className={classes.cardHover}>
             <CardHeader color="warning" className={classes.cardHeaderHover}>
             <Container>
-            <img src={Sales} alt="finance chart" style={{
+            <img src={Mailbox} alt="a mailbox" style={{
               height: "100px",
               width: "100px",
               display: "flex",
@@ -240,13 +237,15 @@ export default function Dashboard() {
         <GridItem xs={12} sm={12} md={4}>
           <Card chart className={classes.cardHover}>
             <CardHeader color="danger" className={classes.cardHeaderHover}>
-              <ChartistGraph
-                className="ct-chart-white-colors"
-                data={completedTasksChart.data}
-                type="Line"
-                options={completedTasksChart.options}
-                listener={completedTasksChart.animation}
-              />
+            <Container>
+            <img src={Cube} alt="a cube i made :)" style={{
+              height: "100px",
+              width: "100px",
+              display: "flex",
+              justifyContent: "center",
+              margin: "0 auto"
+            }} />
+            </Container>
             </CardHeader>
             <CardBody>
               <div className={classes.cardHoverUnder}>
