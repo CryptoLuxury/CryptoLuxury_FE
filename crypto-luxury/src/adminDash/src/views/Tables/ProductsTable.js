@@ -11,6 +11,7 @@ import Close from "@material-ui/icons/Close";
 import Check from "@material-ui/icons/Check";
 import Remove from "@material-ui/icons/Remove";
 import Add from "@material-ui/icons/Add";
+import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 
 // core components
@@ -90,83 +91,75 @@ export default function Products() {
   });
   return (
     <GridContainer>
+    <GridItem xs={12}>
+    <Card>
+      <CardHeader color="warning" icon>
+        <CardIcon color="warning">
+          <DynamicFeedIcon />
+        </CardIcon>
+        <h4 className={classes.cardIconTitle}>All Products</h4>
+      </CardHeader>
+      <CardBody>
+        <Table
+          tableHead={[
+            "#",
+            "Product Name",
+            "Category",
+            "Qty",
+            "Price",
+            "Manage"
+          ]}
+          tableData={[
+            [
+              "1",
+              "Blastoise PSA Graded",
+              "Card",
+              "13",
+              "$ 14,599",
+              fillButtons
+            ],
+            ["2", "Rolex Day Date", "Watch", "8", "$ 47,599", roundButtons],
+            ["3", "Rolex President", "Watch", "19", "$ 39,999", simpleButtons],
+            [
+              "4",
+              "Charizard PSA Graded",
+              "Card",
+              "47",
+              "€ 4,350",
+              roundButtons
+            ],
+          ]}
+          customCellClasses={[classes.center, classes.right, classes.right]}
+          customClassesForCells={[0, 4, 5]}
+          customHeadCellClasses={[
+            classes.center,
+            classes.right,
+            classes.right
+          ]}
+          customHeadClassesForCells={[0, 4, 5]}
+        />
+      </CardBody>
+    </Card>
+  </GridItem>
       <GridItem xs={12}>
         <Card>
           <CardHeader color="warning" icon>
             <CardIcon color="warning">
               <Assignment />
             </CardIcon>
-            <h4 className={classes.cardIconTitle}>All Cards</h4>
-          </CardHeader>
-          <CardBody>
-            <Table
-              tableHead={[
-                "#",
-                "Name",
-                "Total",
-                "Since",
-                "Salary",
-                "Actions"
-              ]}
-              tableData={[
-                [
-                  "1",
-                  "Andrew Mike",
-                  "Develop",
-                  "2013",
-                  "€ 99,225",
-                  fillButtons
-                ],
-                ["2", "John Doe", "Design", "2012", "€ 89,241", roundButtons],
-                ["3", "Alex Mike", "Design", "2010", "€ 92,144", simpleButtons],
-                [
-                  "4",
-                  "Mike Monday",
-                  "Marketing",
-                  "2013",
-                  "€ 49,990",
-                  roundButtons
-                ],
-                [
-                  "5",
-                  "Paul Dickens",
-                  "Communication",
-                  "2015",
-                  "€ 69,201",
-                  fillButtons
-                ]
-              ]}
-              customCellClasses={[classes.center, classes.right, classes.right]}
-              customClassesForCells={[0, 4, 5]}
-              customHeadCellClasses={[
-                classes.center,
-                classes.right,
-                classes.right
-              ]}
-              customHeadClassesForCells={[0, 4, 5]}
-            />
-          </CardBody>
-        </Card>
-      </GridItem>
-      <GridItem xs={12}>
-        <Card>
-          <CardHeader color="rose" icon>
-            <CardIcon color="rose">
-              <Assignment />
-            </CardIcon>
-            <h4 className={classes.cardIconTitle}>Striped Table</h4>
+            <h4 className={classes.cardIconTitle}>All Products</h4>
           </CardHeader>
           <CardBody>
             <Table
               striped
               tableHead={[
-                "#",
+                "ID (#)",
                 "",
                 "Product Name",
                 "Type",
                 "Qty",
                 "Price",
-                "Amount"
+                "Sold"
               ]}
               tableData={[
                 [
@@ -183,11 +176,11 @@ export default function Products() {
                       root: classes.checkRoot
                     }}
                   />,
-                  "Moleskine Agenda",
-                  "Office",
-                  "25",
-                  "€ 49",
-                  "€ 1,225"
+                  "Blastoise PSA 10",
+                  "Card",
+                  "15",
+                  "$ 40,000",
+                  "4"
                 ],
                 [
                   "2",
@@ -203,11 +196,11 @@ export default function Products() {
                       root: classes.checkRoot
                     }}
                   />,
-                  "Stabilo Pen",
-                  "Office",
-                  "30",
-                  "€ 10",
-                  "€ 300"
+                  "Rolex Day Date",
+                  "Watch",
+                  "20",
+                  "$ 19,299",
+                  "11"
                 ],
                 [
                   "3",
@@ -223,11 +216,11 @@ export default function Products() {
                       root: classes.checkRoot
                     }}
                   />,
-                  "A4 Paper Pack",
-                  "Office",
-                  "50",
-                  "€ 10.99",
-                  "€ 109"
+                  "Rolex President",
+                  "Watch",
+                  "3",
+                  "$ 14,349",
+                  "2"
                 ],
                 [
                   "4",
@@ -243,11 +236,11 @@ export default function Products() {
                       root: classes.checkRoot
                     }}
                   />,
-                  "Apple iPad",
-                  "Communication",
-                  "10",
-                  "€ 499.00",
-                  "€ 4,990"
+                  "PSA Graded Charizard",
+                  "Card",
+                  "9",
+                  "$ 4,449",
+                  "24"
                 ],
                 [
                   "5",
