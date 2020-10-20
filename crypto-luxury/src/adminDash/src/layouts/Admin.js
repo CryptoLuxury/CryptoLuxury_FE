@@ -27,7 +27,7 @@ export default function Dashboard(props) {
   // states and functions
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [miniActive, setMiniActive] = React.useState(false);
-  const [image, setImage] = React.useState(require("../assets/img/sidebar-2.jpg"));
+  const [image, setImage] = React.useState(require("../assets/img/Marble.png"));
   const [color, setColor] = React.useState("orange");
   const [bgColor, setBgColor] = React.useState("white");
   // const [hasImage, setHasImage] = React.useState(true);
