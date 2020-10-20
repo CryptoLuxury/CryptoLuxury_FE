@@ -1,6 +1,8 @@
 /*eslint-disable*/
 import React, { useState } from "react";
 
+import axios from "axios";
+
 //styling
 import Container from "react-bootstrap/Container";
 // @material-ui/core components
@@ -46,6 +48,21 @@ export default function ValidationForms() {
 
   const handleChange = (e) => {
     e.preventDefault();
+    setWatchOroduct({
+      ...watchProduct,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post(``, watchProduct)
+    .then(res => {
+      console.log("######", watchProduct)
+    })
+    .catch(err => {
+      console.log(err, "There was an error")
+    })
   }
 
   return (
