@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Icon from "@material-ui/core/Icon";
+import LockIcon from '@material-ui/icons/Lock';
 
 // @material-ui/icons
 import Face from "@material-ui/icons/Face";
@@ -75,9 +76,9 @@ export default function LoginPage() {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <Icon className={classes.inputAdornmentIcon}>
+                        <LockIcon className={classes.inputAdornmentIcon}>
                           lock_outline
-                        </Icon>
+                        </LockIcon>
                       </InputAdornment>
                     ),
                     type: "password",
