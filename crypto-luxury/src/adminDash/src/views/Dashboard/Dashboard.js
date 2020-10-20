@@ -3,6 +3,7 @@ import React from "react";
 import ChartistGraph from "react-chartist";
 // react plugin for creating vector maps
 import { VectorMap } from "react-jvectormap";
+import Container from "react-bootstrap/Container";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -36,6 +37,8 @@ import CardHeader from "../../components/Card/CardHeader.js";
 import CardIcon from "../../components/Card/CardIcon.js";
 import CardBody from "../../components/Card/CardBody.js";
 import CardFooter from "../../components/Card/CardFooter.js";
+
+import Mailbox from "./mailbox.svg";
 
 import {
   dailySalesChart,
@@ -136,15 +139,15 @@ export default function Dashboard() {
       </GridContainer>
       <GridContainer>
         <GridItem xs={12} sm={12} md={4}>
-          <Card chart className={classes.cardHover}>
+          <Card className={classes.cardHover}>
             <CardHeader color="info" className={classes.cardHeaderHover}>
-              <ChartistGraph
-                className="ct-chart-white-colors"
-                data={dailySalesChart.data}
-                type="Line"
-                options={dailySalesChart.options}
-                listener={dailySalesChart.animation}
-              />
+              <Container>
+              <img src={Mailbox} alt="mailbox" style={{
+                height: "100px",
+                width: "100px",
+                margin: "0 auto"
+              }} />
+              </Container>
             </CardHeader>
             <CardBody>
               <div className={classes.cardHoverUnder}>
@@ -179,7 +182,7 @@ export default function Dashboard() {
             </CardBody>
             <CardFooter chart>
               <div className={classes.stats}>
-                <AccessTime /> updated 4 minutes ago
+                <AccessTime /> updated Just Now
               </div>
             </CardFooter>
           </Card>
