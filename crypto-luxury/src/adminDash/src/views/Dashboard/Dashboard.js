@@ -55,6 +55,7 @@ import CardFooter from "../../components/Card/CardFooter.js";
 import Mailbox from "./mailbox.svg";
 import Sales from "./Sales.svg";
 import Cube from "./cube.svg";
+import Blastoise from "./blastoise.png";
 
 import styles from "../../assets/jss/material-dashboard-pro-react/views/dashboardStyle.js";
 import Success from "../../components/Typography/Success.js";
@@ -286,7 +287,7 @@ export default function Dashboard() {
           <Card product className={classes.cardHover}>
             <CardHeader image className={classes.cardHeaderHover}>
               <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src="https://i.pinimg.com/736x/77/b8/d9/77b8d9a94f64f0a34aafb405125b301a.jpg" alt="blastoise" />
+                <img src={Blastoise} alt="blastoise" />
               </a>
             </CardHeader>
             <CardBody>

@@ -309,7 +309,7 @@ const defaultBoxShadow = {
 const tooltip = {
   padding: "10px 15px",
   minWidth: "130px",
-  color: whiteColor,
+  color: warningColor,
   lineHeight: "1.7em",
   background: "rgba(" + hexToRgb(grayColor[6]) + ",0.9)",
   border: "none",

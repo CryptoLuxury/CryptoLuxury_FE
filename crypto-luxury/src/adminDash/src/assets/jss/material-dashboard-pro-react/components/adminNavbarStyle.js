@@ -13,15 +13,15 @@ import {
 
 const headerStyle = () => ({
   appBar: {
-    backgroundColor: "transparent",
-    boxShadow: "none",
+    backgroundColor: "#F7E0BA",
+    boxShadow: "3.5px",
     borderBottom: "0",
     marginBottom: "0",
     position: "absolute",
     width: "100%",
     paddingTop: "10px",
     zIndex: "1029",
-    color: grayColor[6],
+    color: warningColor[2],
     border: "0",
     borderRadius: "3px",
     padding: "10px 0",
@@ -52,7 +52,7 @@ const headerStyle = () => ({
     }
   },
   primary: {
-    backgroundColor: primaryColor[0],
+    backgroundColor: warningColor[3],
     color: whiteColor,
     ...defaultBoxShadow
   },
@@ -80,7 +80,7 @@ const headerStyle = () => ({
     float: "left",
     padding: "0 0 0 15px",
     display: "block",
-    color: grayColor[6]
+    color: warningColor[0]
   },
   sidebarMinimizeRTL: {
     padding: "0 15px 0 0 !important"
