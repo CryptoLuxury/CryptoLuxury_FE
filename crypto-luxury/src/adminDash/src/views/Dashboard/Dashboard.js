@@ -38,7 +38,9 @@ import CardIcon from "../../components/Card/CardIcon.js";
 import CardBody from "../../components/Card/CardBody.js";
 import CardFooter from "../../components/Card/CardFooter.js";
 
+//undraws
 import Mailbox from "./mailbox.svg";
+import Sales from "./Sales.svg";
 
 import {
   dailySalesChart,
@@ -140,11 +142,13 @@ export default function Dashboard() {
       <GridContainer>
         <GridItem xs={12} sm={12} md={4}>
           <Card className={classes.cardHover}>
-            <CardHeader color="info" className={classes.cardHeaderHover}>
+            <CardHeader color="warning" className={classes.cardHeaderHover}>
               <Container>
               <img src={Mailbox} alt="mailbox" style={{
                 height: "100px",
                 width: "100px",
+                display: "flex",
+                justifyContent: "center",
                 margin: "0 auto"
               }} />
               </Container>
@@ -182,7 +186,7 @@ export default function Dashboard() {
             </CardBody>
             <CardFooter chart>
               <div className={classes.stats}>
-                <AccessTime /> updated Just Now
+                <AccessTime /> Updated Just Now
               </div>
             </CardFooter>
           </Card>
@@ -190,14 +194,15 @@ export default function Dashboard() {
         <GridItem xs={12} sm={12} md={4}>
           <Card chart className={classes.cardHover}>
             <CardHeader color="warning" className={classes.cardHeaderHover}>
-              <ChartistGraph
-                className="ct-chart-white-colors"
-                data={emailsSubscriptionChart.data}
-                type="Bar"
-                options={emailsSubscriptionChart.options}
-                responsiveOptions={emailsSubscriptionChart.responsiveOptions}
-                listener={emailsSubscriptionChart.animation}
-              />
+            <Container>
+            <img src={Sales} alt="finance chart" style={{
+              height: "100px",
+              width: "100px",
+              display: "flex",
+              justifyContent: "center",
+              margin: "0 auto"
+            }} />
+            </Container>
             </CardHeader>
             <CardBody>
               <div className={classes.cardHoverUnder}>
