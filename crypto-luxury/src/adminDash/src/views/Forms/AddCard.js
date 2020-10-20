@@ -35,14 +35,14 @@ import styles from "../../assets/jss/material-dashboard-pro-react/views/validati
 
 const useStyles = makeStyles(styles);
 
-export default function AddWatch() {
+export default function AddCard() {
 
   const classes = useStyles();
 
   const handleChange = (e) => {
     e.preventDefault();
-    setWatchOroduct({
-      ...watchProduct,
+    setCardProduct({
+      ...cardProduct,
       [e.target.name]: e.target.value
     })
   }
@@ -61,7 +61,7 @@ export default function AddWatch() {
         marginBottom: "3%"
       }}>
         <label>Title</label>
-        <input placeholder = "title" name="title" type="text" onChange={handleChange} />
+        <input placeholder = "title" name="title" type="text" />
       </div>
       <div style={{
         display: "flex",
@@ -73,7 +73,7 @@ export default function AddWatch() {
         marginBottom: "3%"
       }}>
         <label>Description</label>
-        <input placeholder = "Price" name="description" type="text-field" onChange={handleChange} />
+        <input placeholder = "Price" name="description" type="text-field" />
       </div>
       <div style={{
         display: "flex",
@@ -85,7 +85,7 @@ export default function AddWatch() {
         marginBottom: "3%"
       }}>
         <label>Price</label>
-        <input type='number' step="1" placeholder='Price Value' onChange={handleChange} />
+        <input type='number' step="1" placeholder='Price Value' />
       </div>
       </form>
     </Container>

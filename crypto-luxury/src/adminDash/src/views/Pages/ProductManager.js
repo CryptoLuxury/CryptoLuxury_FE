@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+
+import axios from "axios";
 
 import AddWatch from "../Forms/AddWatch";
+import AddCard from "../Forms/AddCard";
 
 //reactstrap
 import Container from "react-bootstrap/Container";
@@ -30,11 +33,50 @@ export default function ProductManager() {
 
   const classes = useStyles();
   const [watchModal, setWatchModal] = React.useState(false);
+  const [cardModal, setCardModal] = React.useState(false);
+
+    // useState
+    const [cardProduct, setCardProduct] = useState({
+        title: "",
+        description: "",
+        price: null,
+    })
+    const [watchProduct, setWatchProduct] = useState({
+        title: "",
+        description: "",
+        price: null,
+    })
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post(``, watchProduct)
+    .then(res => {
+      console.log("######", watchProduct)
+    })
+    .catch(err => {
+      console.log(err, "There was an error")
+    })
+  }
+
+  const handleCardSubmit = (e) => {
+    e.preventDefault();
+    axios.post(``, cardProduct)
+    .then(res => {
+      console.log("######", cardProduct)
+    })
+    .catch(err => {
+      console.log(err, "There was an error")
+    })
+  }
 
   return (
     <Container>
         <h2>Product Manager</h2>
-        <Button color="warning" round onClick={() => setWatchModal(true)}>Add Watch</Button>
+        <Container style={{
+            display: "flex",
+            flexDirection: "row"
+        }}>
+        <Button color="warning" round style={{margin: "3%"}} onClick={() => setWatchModal(true)}>Add Watch</Button>
         <div>
             <Dialog
                 classes={{
@@ -80,12 +122,67 @@ export default function ProductManager() {
                 onClick={() => setWatchModal(false)}>Cancel</Button>
                 <Button style={{
                     margin: "0 auto"
-                }} onClick={() => setWatchModal(false)} color="warning">
+                }} onClick={handleWatchSubmit} color="warning">
                     Submit
                 </Button>
                 </DialogActions>
             </Dialog>
         </div>
+
+        <Button color="warning" round style={{margin: "3%"}} onClick={() => setCardModal(true)}>Add Card</Button>
+        <div>
+            <Dialog
+                classes={{
+                root: classes.center,
+                paper: classes.modal
+                }}
+                open={cardModal}
+                transition={Transition}
+                keepMounted
+                onClose={() => setCardModal(false)}
+                aria-labelledby="modal-slide-title"
+                aria-describedby="modal-slide-description"
+            >
+                <DialogTitle
+                id="classic-modal-slide-title"
+                disableTypography
+                className={classes.modalHeader}
+                >
+                <Button
+                    justIcon
+                    className={classes.modalCloseButton}
+                    key="close"
+                    aria-label="Close"
+                    color="danger"
+                    onClick={() => setCardModal(false)}
+                >
+                    <Close className={classes.modalClose} />
+                </Button>
+                </DialogTitle>
+                <DialogContent
+                style={{width: "750px"}}
+                id="modal-slide-description"
+                className={classes.modalBody}
+                >
+                <AddWatch />
+                </DialogContent>
+                <DialogActions
+                className={classes.modalFooter + " " + classes.modalFooterCenter}
+                >
+                <Button style={{
+                    margin: "0 auto"
+                }}
+                onClick={() => setCardModal(false)}>Cancel</Button>
+                <Button style={{
+                    margin: "0 auto"
+                }} onClick={handleCardSubmit} color="warning">
+                    Submit
+                </Button>
+                </DialogActions>
+            </Dialog>
+        </div>
+
+        </Container>
 
     </Container>
   );
