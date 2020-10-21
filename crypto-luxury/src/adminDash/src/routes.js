@@ -30,6 +30,8 @@ import Widgets from "./views/Widgets/Widgets.js";
 import Wizard from "./views/Forms/Wizard.js";
 import TeamPage from "./views/Pages/TeamPage.js";
 import ProjectManager from "./views/Pages/ProductManager";
+import Tickets from "./views/Pages/Tickets";
+import DevTickets from "./views/Pages/DevTickets";
 
 // @material-ui/icons
 import Apps from "@material-ui/icons/Apps";
@@ -43,6 +45,9 @@ import WidgetsIcon from "@material-ui/icons/Widgets";
 import OrdersIcon from '@material-ui/icons/ListAlt';
 import GroupIcon from '@material-ui/icons/Group';
 import BuildIcon from '@material-ui/icons/Build';
+import HealingIcon from '@material-ui/icons/Healing';
+import AssignmentLateIcon from '@material-ui/icons/AssignmentLate';
+import CallMergeIcon from '@material-ui/icons/CallMerge';
 
 var dashRoutes = [
   {
@@ -87,72 +92,27 @@ var dashRoutes = [
   },
   {
     collapse: true,
-    name: "Components",
+    name: "Ticket Center",
     rtlName: "المكونات",
-    icon: Apps,
+    icon: HealingIcon,
     state: "componentsCollapse",
     views: [
       {
-        path: "/buttons",
-        name: "Buttons",
+        path: "/tickets",
+        name: "Help Tickets",
         rtlName: "وصفت",
-        mini: "B",
+        icon: AssignmentLateIcon,
         rtlMini: "ب",
-        component: Buttons,
+        component: Tickets,
         layout: "/admin"
       },
       {
-        path: "/grid-system",
-        name: "Grid System",
-        rtlName: "نظام الشبكة",
-        mini: "GS",
-        rtlMini: "زو",
-        component: GridSystem,
-        layout: "/admin"
-      },
-      {
-        path: "/panels",
-        name: "Panels",
-        rtlName: "لوحات",
-        mini: "P",
-        rtlMini: "ع",
-        component: Panels,
-        layout: "/admin"
-      },
-      {
-        path: "/sweet-alert",
-        name: "Sweet Alert",
-        rtlName: "الحلو تنبيه",
-        mini: "SA",
-        rtlMini: "ومن",
-        component: SweetAlert,
-        layout: "/admin"
-      },
-      {
-        path: "/notifications",
-        name: "Notifications",
-        rtlName: "إخطارات",
-        mini: "N",
-        rtlMini: "ن",
-        component: Notifications,
-        layout: "/admin"
-      },
-      {
-        path: "/icons",
-        name: "Icons",
-        rtlName: "الرموز",
-        mini: "I",
-        rtlMini: "و",
-        component: Icons,
-        layout: "/admin"
-      },
-      {
-        path: "/typography",
-        name: "Typography",
-        rtlName: "طباعة",
-        mini: "T",
-        rtlMini: "ر",
-        component: Typography,
+        path: "/devtickets",
+        name: "Dev Tickets",
+        rtlName: "وصفت",
+        icon: CallMergeIcon,
+        rtlMini: "ب",
+        component: DevTickets,
         layout: "/admin"
       }
     ]
