@@ -89,7 +89,7 @@ export default function CartTable() {
   });
   return (
     <GridContainer>
-      <GridItem xs={10} md={12} lg={20} style={{
+      <GridItem xs={10} md={18} lg={24} style={{
         margin: "0 auto"
       }}>
         <Card>

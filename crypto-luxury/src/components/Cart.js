@@ -118,13 +118,6 @@ const Cart = () => {
             }}>Team</Button>
             </GridItem>
             <GridItem>
-            <Button onClick={() => {
-                history.push("/contact")
-            }} color="warning" style={{
-                width: "100px"
-            }}>Contact Us</Button>
-            </GridItem>
-            <GridItem>
             <Dropdown>
             <Dropdown.Toggle variant="dark"  style={{
                 width: "100px",

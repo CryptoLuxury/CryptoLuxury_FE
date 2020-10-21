@@ -100,13 +100,6 @@ const LandingPage = () => {
         <GridContainer>
         <GridItem>
         <Button onClick={() => {
-            history.push("/")
-        }} color="warning" style={{
-            width: "100px"
-        }}>Home</Button>
-        </GridItem>
-        <GridItem>
-        <Button onClick={() => {
             history.push("/team")
         }} color="warning" style={{
             width: "100px"
