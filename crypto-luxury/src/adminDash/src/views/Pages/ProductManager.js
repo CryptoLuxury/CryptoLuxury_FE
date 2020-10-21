@@ -79,7 +79,7 @@ export default function ProductManager() {
 
   const handleCardSubmit = (e) => {
     e.preventDefault();
-    axios.post(``, cardProduct)
+    axios.post(`https://crypto-luxury.herokuapp.com/api/form/cardOrders`, cardProduct)
     .then(res => {
       console.log("######", cardProduct)
     })

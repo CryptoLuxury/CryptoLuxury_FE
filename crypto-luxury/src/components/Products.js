@@ -1,24 +1,32 @@
 import React from "react";
 
+import axios from "axios";
+
 import { useHistory } from "react-router-dom";
 
-import TopSection from './CarouselAlternative';
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import ProductCard from "./ProductCard";
 import Dropdown from "react-bootstrap/Dropdown";
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-
-import Navbar from "react-bootstrap/Navbar";
 import GridContainer from "./dashComps/GridContainer";
 import GridItem from "./dashComps/GridItem";
+
 import Button from "./dashComps/Button";
 
+import Navbar from "react-bootstrap/Navbar";
 
-const LandingPage = () => {
+import Typing from "react-typing-animation";
+
+//import other components
+import CartTable from "./dashComps/CartTable";
+
+const Products = () => {
 
     let history = useHistory();
 
     return (
-        <div>
+        <Container>
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="/">
             Crypto Luxury
@@ -57,9 +65,30 @@ const LandingPage = () => {
             </GridItem>
             </GridContainer>
         </Navbar>
-            <div><TopSection /></div>
-        </div>
-    );
-};
 
-export default LandingPage;
+            <div style={{
+                height: "4vh",
+                background: "grey",
+                width: "100%",
+                marginTop: "0",
+                alignSelf: "center",
+                borderRadius: "1%",
+                alignSelf: "center"
+            }}>
+                <Typing speed={5}>
+                <h6 style={{
+                    fontSize: ".8rem",
+                    textAlign: "center",
+                    paddingTop: ".5%",
+                    paddingBottom: ".2%",
+                }}>All of our cards are PSA approved!  Send us a message to learn more.</h6>
+                </Typing>
+            </div>
+            <Row>
+                <ProductCard />
+            </Row>
+        </Container>
+    )
+}
+
+export default Products;
