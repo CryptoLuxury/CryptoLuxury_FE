@@ -3,6 +3,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Checkbox from "@material-ui/core/Checkbox";
 
+import Container from "react-bootstrap/Container";
+
 // material-ui icons
 import Assignment from "@material-ui/icons/Assignment";
 import Person from "@material-ui/icons/Person";
@@ -12,6 +14,7 @@ import Check from "@material-ui/icons/Check";
 import Remove from "@material-ui/icons/Remove";
 import Add from "@material-ui/icons/Add";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import Delete from '@material-ui/icons/DeleteForever';
 
 // core components
 import GridContainer from "../../adminDash/src/components/Grid/GridContainer.js";
@@ -89,9 +92,7 @@ export default function CartTable() {
   });
   return (
     <GridContainer>
-      <GridItem xs={10} md={18} lg={24} style={{
-        margin: "0 auto"
-      }}>
+      <Container>
         <Card>
           <CardHeader color="warning" icon>
             <CardIcon color="warning">
@@ -99,7 +100,10 @@ export default function CartTable() {
             </CardIcon>
             <h4 className={classes.cardIconTitle}>Your Cart</h4>
           </CardHeader>
-          <CardBody>
+          <CardBody style={{
+            display: "flex",
+            flexFlow: "column nowrap"
+          }}>
             <Table
               tableHead={[
                 "",
@@ -126,29 +130,12 @@ export default function CartTable() {
                     <small className={classes.tdNumberSmall}>$</small> 15,549
                   </span>,
                   <span key="key">
-                    1{` `}
-                    <div className={classes.buttonGroup}>
-                      <Button
-                        color="info"
-                        size="sm"
-                        round
-                        className={classes.firstButton}
-                      >
-                        <Remove className={classes.icon} />
-                      </Button>
-                      <Button
-                        color="info"
-                        size="sm"
-                        round
-                        className={classes.lastButton}
-                      >
-                        <Add className={classes.icon} />
-                      </Button>
-                    </div>
+                    {` `}1{` `}
                   </span>,
                   <Button simple className={classes.actionButton} key="key">
                     <Close className={classes.icon} />
-                  </Button>
+                  </Button>,
+                  <Button color="danger"><Delete /></Button>
                 ],
                 [
                   <div className={classes.imgContainer} key="key">
@@ -270,7 +257,7 @@ export default function CartTable() {
             />
           </CardBody>
         </Card>
-      </GridItem>
+      </Container>
     </GridContainer>
   );
 }

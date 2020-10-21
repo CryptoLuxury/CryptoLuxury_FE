@@ -69,19 +69,6 @@ export default function ReactTables() {
           // we've added some custom button actions
           <div className="actions-right">
             {/* use this button to add a like kind of action */}
-            <Button
-              justIcon
-              round
-              simple
-              onClick={() => {
-                let obj = data.find(o => o.id === key);
-                setAlert()
-              }}
-              color="warning"
-              className="like"
-            >
-              <Favorite />
-            </Button>{" "}
             {/* use this button to add a edit kind of action */}
             <Button
               justIcon
@@ -145,7 +132,9 @@ export default function ReactTables() {
             </CardIcon>
             <h4 className={classes.cardIconTitle}>All Orders</h4>
           </CardHeader>
-          <CardBody>
+          <CardBody style={{
+            margin: "0 auto"
+          }}>
             <ReactTable
               columns={[
                 {
@@ -159,10 +148,6 @@ export default function ReactTables() {
                 {
                   Header: "Product",
                   accessor: "product"
-                },
-                {
-                  Header: "Status",
-                  accessor: "status"
                 },
                 {
                   Header: "Actions",

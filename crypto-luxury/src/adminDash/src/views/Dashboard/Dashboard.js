@@ -56,6 +56,8 @@ import CardIcon from "../../components/Card/CardIcon.js";
 import CardBody from "../../components/Card/CardBody.js";
 import CardFooter from "../../components/Card/CardFooter.js";
 
+import SweetAlert from "react-bootstrap-sweetalert";
+
 //undraws
 import Mailbox from "./mailbox.svg";
 import Sales from "./Sales.svg";
@@ -90,6 +92,39 @@ export default function Dashboard() {
     email: "",
     message: ""
   })
+  const [alert, setAlert] = React.useState(null);
+  const hideAlert = () => {
+    setAlert(null);
+  }
+
+  const successAlert = () => {
+    setAlert(
+      <SweetAlert
+        success
+        style={{ display: "block", marginTop: "100px" }}
+        title="Success!"
+        onConfirm={() => hideAlert()}
+        onCancel={() => hideAlert()}
+        confirmBtnCssClass={classes.button + " " + classes.success}
+      >
+        You've submitted a ticket!
+      </SweetAlert>
+    );
+  };
+
+  const errorAlert = () => {
+    setAlert(
+      <SweetAlert
+        style={{ display: "block", marginTop: "100px" }}
+        title="Auto close alert!"
+        onConfirm={() => hideAlert()}
+        showConfirm={false}
+      >
+        I will close in 2 seconds.
+      </SweetAlert>
+    );
+    setTimeout(hideAlert, 2000);
+  };
 
   const handleDevChange = (e) => {
     e.preventDefault();
@@ -103,16 +138,20 @@ export default function Dashboard() {
     e.preventDefault();
     axios.post(`https://crypto-luxury.herokuapp.com/api/form/devTicket`, devTicket)
     .then(res => {
-      alert("POST SUCCESS")
-      console.log(res, "<---- THIS WAS POSTED")
+      alert();
+      setTimeout(() => {
+        setDevTicketModal(false)
+      }, 1000)
     })
     .catch(err => {
-      console.log(err)
+      errorAlert()
     })
   }
 
   return (
     <div>
+    {alert}
+    {errorAlert}
       <div>
         <Dialog
           classes={{
