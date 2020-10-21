@@ -38,9 +38,6 @@ export default function TicketsPage() {
       </Row>
       <Row>
         <div>
-        <button onClick={() => {
-          console.log(openTickets)
-        }}>click</button>
         { openTickets.map(ticket => ( 
           <ContactTicket ticketInfo={ticket} key={ticket.id}/> 
       ))}

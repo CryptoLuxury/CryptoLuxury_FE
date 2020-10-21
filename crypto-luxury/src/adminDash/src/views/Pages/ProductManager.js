@@ -102,7 +102,7 @@ export default function ProductManager() {
       setAlert(
         <SweetAlert
           warning
-          style={{ display: "block", marginTop: "-100px" }}
+          style={{ display: "block", marginTop: "100px" }}
           title="Are you sure?"
           onConfirm={() => successDelete()}
           onCancel={() => cancelDetele()}
@@ -120,7 +120,7 @@ export default function ProductManager() {
       setAlert(
         <SweetAlert
           success
-          style={{ display: "block", marginTop: "-100px" }}
+          style={{ display: "block", marginTop: "100px" }}
           title="Deleted!"
           onConfirm={() => hideAlert()}
           onCancel={() => hideAlert()}
@@ -134,7 +134,7 @@ export default function ProductManager() {
       setAlert(
         <SweetAlert
           danger
-          style={{ display: "block", marginTop: "-100px" }}
+          style={{ display: "block", marginTop: "100px" }}
           title="Cancelled"
           onConfirm={() => hideAlert()}
           onCancel={() => hideAlert()}
@@ -180,7 +180,7 @@ export default function ProductManager() {
 
   const handleWatchSubmit = (e) => {
     e.preventDefault();
-    axios.post(`https://crypto-luxury.herokuapp.com/api/form/watches`, watchProduct)
+    axios.post(`https://crypto-luxury.herokuapp.com/api/store/watches`, watchProduct)
     .then(res => {
         successAlertWatch();
         setWatchModal(false)
@@ -194,7 +194,7 @@ export default function ProductManager() {
 
   const handleCardSubmit = (e) => {
     e.preventDefault();
-    axios.post(`https://crypto-luxury.herokuapp.com/api/form/cards`, cardProduct)
+    axios.post(`https://crypto-luxury.herokuapp.com/api/store/cards`, cardProduct)
     .then(res => {
       successAlertCard();
       console.log("######", cardProduct)
@@ -402,8 +402,11 @@ export default function ProductManager() {
                 </DialogActions>
             </Dialog>
         </div>
-        <div>
-          <Button color="danger" onClick={handleSure}>Delete All Products</Button>
+        <div style={{
+          paddingTop: "2.4%",
+          marginLeft: "1%"
+        }}>
+          <Button round color="danger" onClick={Sure}>Delete All Products</Button>
         </div>
         </Container>
         <Row style={{

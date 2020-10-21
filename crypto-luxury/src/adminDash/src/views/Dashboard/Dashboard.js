@@ -406,7 +406,9 @@ export default function Dashboard() {
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button simple color="warning" justIcon>
+                  <Button simple onClick={() => {
+                    history.push('/admin/tickets')
+                  }} color="warning" justIcon>
                     <ListAltIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
