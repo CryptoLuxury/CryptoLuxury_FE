@@ -16,6 +16,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Icon from "@material-ui/core/Icon";
 
+import Form from "react-bootstrap/Form";
+
 // @material-ui/icons
 // import ContentCopy from "@material-ui/icons/ContentCopy";
 import Store from "@material-ui/icons/Store";
@@ -203,20 +205,20 @@ export default function Dashboard() {
             id="modal-slide-description"
             className={classes.modalBody}
           >
-          <form>
-            <div>
-              <label>Name</label>
-              <input placeholder="Input your name" name="name" type="text" onChange={handleDevChange} />
-            </div>
-            <div>
-            <label>Name</label>
-            <input placeholder="Input your email" name="email" type="text" onChange={handleDevChange} />
-          </div>
-            <div>
-              <label>Describe your issue</label>
-              <input placeholder="What's the issue?" name="message" type="text-field" onChange={handleDevChange} />
-            </div>
-          </form>
+          <Form>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter Name..." onChange={handleDevChange} name="name" />
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Email</Form.Label>
+          <Form.Control type="email" placeholder="name@example.com" onChange={handleDevChange} name="email" />
+        </Form.Group>
+          <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Message</Form.Label>
+          <Form.Control as="textarea" rows="8" onChange={handleDevChange} name="message" />
+        </Form.Group>
+          </Form>
           </DialogContent>
           <DialogActions
             className={classes.modalFooter + " " + classes.modalFooterCenter}
