@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 
@@ -7,10 +7,11 @@ import { useHistory } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import ProductCard from "./ProductCard";
+import WatchCard from "./WatchCard";
 import Dropdown from "react-bootstrap/Dropdown";
 import GridContainer from "./dashComps/GridContainer";
 import GridItem from "./dashComps/GridItem";
+import CardCard from "./CardCard";
 
 import Button from "./dashComps/Button";
 
@@ -22,9 +23,6 @@ import Navbar from "react-bootstrap/Navbar";
 
 import Typing from "react-typing-animation";
 
-//import other components
-import CartTable from "./dashComps/CartTable";
-
 const Products = () => {
 
     let history = useHistory();
@@ -32,6 +30,26 @@ const Products = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [ watches, setWatches ] = useState([]);
+    const [ cards, setCards ] = useState([]);
+
+    useEffect(() => {
+      axios.get(`https://crypto-luxury.herokuapp.com/api/store/watches`)
+      .then(res => {
+        setWatches([
+          ...res.data
+        ])
+      })
+    }, []);
+
+    useEffect(() => {
+      axios.get(`https://crypto-luxury.herokuapp.com/api/store/cards`)
+      .then(res => {
+        setWatches([
+          ...res.data
+        ])
+      })
+    }, []);
 
     const [contact, setContact] = useState({
         name: "",
@@ -162,8 +180,47 @@ const Products = () => {
                 </Typing>
             </div>
             <Row>
-                <ProductCard />
+                <div style={{
+                  marginTop: "4%",
+                  display: "flex",
+                  justifyContent: "center"
+                }}>
+                  <h3 style={{
+                    display: "flex",
+                    justifyContent: "center"
+                  }}>Watches</h3>
+                </div>
             </Row>
+            <Row>
+              <div style={{
+                margin: "2%"
+              }}>
+                { watches.map(watch => ( 
+                <WatchCard watchInfo={watch} key={watch.id}/> 
+                ))}
+              </div>
+            </Row>
+            <Row>
+              <div style={{
+                marginTop: "4%",
+                display: "flex",
+                justifyContent: "center"
+              }}>
+                <h3 style={{
+                  display: "flex",
+                  justifyContent: "center"
+                }}>Cards</h3>
+              </div>
+            </Row>
+            <Row>
+              <div style={{
+                margin: "2%"
+              }}>
+                { cards.map(card => ( 
+                <CardCard cardInfo={card} key={card.id}/> 
+                ))}
+              </div>
+          </Row>
         </Container>
     )
 }

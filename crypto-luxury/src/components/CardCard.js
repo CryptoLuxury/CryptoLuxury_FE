@@ -17,13 +17,16 @@ import FlightIcon from '@material-ui/icons/FlightTakeoff';
 import Edit from "@material-ui/icons/Edit";
 import ViewIcon from '@material-ui/icons/Visibility';
 import DeleteIcon from '@material-ui/icons/DeleteForever';
+import AddIcon from '@material-ui/icons/AddShoppingCart';
 
 
 import Container from "react-bootstrap/Container"
 
 const useStyles = makeStyles(styles);
 
-const ProductCard = () => {
+const ProductCard = ({cardInfo}) => {
+
+    const { title, price, description } = cardInfo;
 
     const classes = useStyles();
 
@@ -35,9 +38,9 @@ const ProductCard = () => {
       }}>
         <Card product className={classes.cardHover}>
         <CardHeader image className={classes.cardHeaderHover}>
-          <a href="#pablo" onClick={e => e.preventDefault()}>
+          <div>
             <img src="https://cdn-products.chronext.com/V/2/V26422/V26422_1_det.png" alt="king air vector" />
-          </a>
+          </div>
         </CardHeader>
         <CardBody>
           <div className={classes.cardHoverUnder}>
@@ -57,33 +60,23 @@ const ProductCard = () => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button color="transparent" simple justIcon>
-                <Edit className={classes.underChartIcons} />
-              </Button>
-            </Tooltip>
-            <Tooltip
-              id="tooltip-top"
-              title="Delete"
-              placement="bottom"
-              classes={{ tooltip: classes.tooltip }}
-            >
-              <Button color="danger" simple justIcon>
-                <DeleteIcon className={classes.underChartIcons} />
+              <Button color="warning" simple justIcon>
+                <AddIcon className={classes.underChartIcons} />
               </Button>
             </Tooltip>
           </div>
           <h4 className={classes.cardProductTitle}>
             <a href="#pablo" onClick={e => e.preventDefault()}>
-              Rolex Air King
+              {cardInfo.title}
             </a>
           </h4>
           <p className={classes.cardProductDesciprion}>
-          This is an example of what you could put here regarding cards or watches, or whatever really.
+            {cardInfo.description}
           </p>
         </CardBody>
         <CardFooter product>
           <div className={classes.price}>
-            <h4>$49,542/kit</h4>
+            <h4>${cardInfo.price} /kit</h4>
           </div>
           <div className={`${classes.stats} ${classes.productStats}`}>
             <FlightIcon /> International

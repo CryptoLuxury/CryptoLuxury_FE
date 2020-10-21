@@ -33,7 +33,9 @@ export default function DevTicketsPage() {
         <h2>Manage Dev Tickets</h2>
       </Row>
       <Row>
-        <div>
+        <div style={{
+          margin: "2%"
+        }}>
         { openDevTickets.map(ticket => ( 
           <DevTicket ticketInfo={ticket} key={ticket.id}/> 
       ))}
