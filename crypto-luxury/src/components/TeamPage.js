@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -25,6 +26,8 @@ const useStyles = makeStyles(styles);
 
 const TeamPage = () => {
 
+  let history = useHistory();
+
     const classes = useStyles();
     const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
     React.useEffect(() => {
@@ -45,30 +48,33 @@ const TeamPage = () => {
         </Navbar.Brand>
         <GridContainer>
         <GridItem>
-        <Button color="warning" style={{
+        <Button onClick={() => {
+            history.push("/")
+        }} color="warning" style={{
             width: "100px"
-        }}>Team</Button>
+        }}>Home</Button>
         </GridItem>
         <GridItem>
-        <Button color="warning" style={{
+        <Button onClick={() => {
+            history.push("/products")
+        }} color="warning" style={{
             width: "100px"
-        }}>Contact Us</Button>
+        }}>Products</Button>
         </GridItem>
         <GridItem>
         <Dropdown>
         <Dropdown.Toggle variant="dark"  style={{
             width: "100px",
             marginTop: "4%"
-        }} id="dropdown-basic">
-            Products
+        }} 
+        id="dropdown-basic">
+            Account
         </Dropdown.Toggle>
-
+    
         <Dropdown.Menu>
             <Dropdown.Item href="/cart">Your Cart</Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item href="/products">Products</Dropdown.Item>
-            <Dropdown.Item href="/team">Team</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Contact Us</Dropdown.Item>
+            <Dropdown.Item href="/contact">Contact Us</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item href="/login">Login</Dropdown.Item>
             <Dropdown.Item href="/register">Register</Dropdown.Item>

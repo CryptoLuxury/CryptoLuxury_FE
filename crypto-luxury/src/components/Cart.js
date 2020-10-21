@@ -32,12 +32,23 @@ const Cart = () => {
             </Navbar.Brand>
             <GridContainer>
             <GridItem>
-            <Button color="warning" style={{
+            <Button onClick={() => {
+                history.push("/")
+            }} color="warning" style={{
+                width: "100px"
+            }}>Home</Button>
+            </GridItem>
+            <GridItem>
+            <Button onClick={() => {
+                history.push("/team")
+            }} color="warning" style={{
                 width: "100px"
             }}>Team</Button>
             </GridItem>
             <GridItem>
-            <Button color="warning" style={{
+            <Button onClick={() => {
+                history.push("/contact")
+            }} color="warning" style={{
                 width: "100px"
             }}>Contact Us</Button>
             </GridItem>
@@ -47,7 +58,7 @@ const Cart = () => {
                 width: "100px",
                 marginTop: "4%"
             }} id="dropdown-basic">
-                Products
+                Account
             </Dropdown.Toggle>
 
             <Dropdown.Menu>

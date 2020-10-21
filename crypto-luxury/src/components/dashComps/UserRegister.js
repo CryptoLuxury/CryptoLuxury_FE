@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Switch, Route, Redirect } from "react-router-dom";
-
+import { useHistory } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -38,6 +37,8 @@ import Dropdown from "react-bootstrap/Dropdown";
 const useStyles = makeStyles(styles);
 
 export default function Pages(props) {
+
+  let history = useHistory();
 
   const [ userRegister, setUserRegister ] = useState({
     name: "",
@@ -76,30 +77,40 @@ export default function Pages(props) {
     </Navbar.Brand>
     <GridContainer>
     <GridItem>
-    <Button color="warning" style={{
+    <Button onClick={() => {
+        history.push("/")
+    }} color="warning" style={{
+        width: "100px"
+    }}>Home</Button>
+    </GridItem>
+    <GridItem>
+    <Button onClick={() => {
+        history.push("/team")
+    }} color="warning" style={{
         width: "100px"
     }}>Team</Button>
     </GridItem>
     <GridItem>
-    <Button color="warning" style={{
+    <Button onClick={() => {
+        history.push("/products")
+    }} color="warning" style={{
         width: "100px"
-    }}>Contact Us</Button>
+    }}>Products</Button>
     </GridItem>
     <GridItem>
     <Dropdown>
     <Dropdown.Toggle variant="dark"  style={{
         width: "100px",
         marginTop: "4%"
-    }} id="dropdown-basic">
-        Products
+    }} 
+    id="dropdown-basic">
+        Account
     </Dropdown.Toggle>
 
     <Dropdown.Menu>
         <Dropdown.Item href="/cart">Your Cart</Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item href="/products">Products</Dropdown.Item>
-        <Dropdown.Item href="/team">Team</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Contact Us</Dropdown.Item>
+        <Dropdown.Item href="/contact">Contact Us</Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item href="/login">Login</Dropdown.Item>
         <Dropdown.Item href="/register">Register</Dropdown.Item>

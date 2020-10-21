@@ -28,43 +28,46 @@ const Products = () => {
     return (
         <Container>
         <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="/">
-            Crypto Luxury
-            </Navbar.Brand>
-            <GridContainer>
-            <GridItem>
-            <Button color="warning" style={{
-                width: "100px"
-            }}>Team</Button>
-            </GridItem>
-            <GridItem>
-            <Button color="warning" style={{
-                width: "100px"
-            }}>Contact Us</Button>
-            </GridItem>
-            <GridItem>
-            <Dropdown>
-            <Dropdown.Toggle variant="dark"  style={{
-                width: "100px",
-                marginTop: "4%"
-            }} id="dropdown-basic">
-                Products
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-                <Dropdown.Item href="/cart">Your Cart</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item href="/products">Products</Dropdown.Item>
-                <Dropdown.Item href="/team">Team</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Contact Us</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item href="/login">Login</Dropdown.Item>
-                <Dropdown.Item href="/register">Register</Dropdown.Item>
-            </Dropdown.Menu>
-            </Dropdown>
-            </GridItem>
-            </GridContainer>
-        </Navbar>
+        <Navbar.Brand href="/">
+        Crypto Luxury
+        </Navbar.Brand>
+        <GridContainer>
+        <GridItem>
+        <Button onClick={() => {
+            history.push("/")
+        }} color="warning" style={{
+            width: "100px"
+        }}>Home</Button>
+        </GridItem>
+        <GridItem>
+        <Button onClick={() => {
+            history.push("/team")
+        }} color="warning" style={{
+            width: "100px"
+        }}>Team</Button>
+        </GridItem>
+        <GridItem>
+        <Dropdown>
+        <Dropdown.Toggle variant="dark"  style={{
+            width: "100px",
+            marginTop: "4%"
+        }} 
+        id="dropdown-basic">
+            Account
+        </Dropdown.Toggle>
+    
+        <Dropdown.Menu>
+            <Dropdown.Item href="/cart">Your Cart</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item href="/contact">Contact Us</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item href="/login">Login</Dropdown.Item>
+            <Dropdown.Item href="/register">Register</Dropdown.Item>
+        </Dropdown.Menu>
+        </Dropdown>
+        </GridItem>
+        </GridContainer>
+    </Navbar>
 
             <div style={{
                 height: "4vh",
