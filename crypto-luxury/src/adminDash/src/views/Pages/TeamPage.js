@@ -62,8 +62,11 @@ export default function TeamPage() {
         <h3>Manage the Team</h3>
         </Row>
         <Row>
-          <Col>
-            <Button rounded color="warning" onClick={handleShow}>Add Team Member</Button>
+          <Col style={{
+            marginTop: "2%",
+            marginBottom: "2%"
+          }}>
+            <Button rounded color="warning" onClick={handleShow}>Add New Member</Button>
           </Col>
         </Row>
         <Row>
@@ -73,7 +76,7 @@ export default function TeamPage() {
           >
             <CardAvatar profile className={classes.cardAvatar}>
               <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={avatar} alt="team member Carl sachs" />
+                <img src={avatar} alt="generic avatar with a mask for the rona" />
               </a>
             </CardAvatar>
             <CardBody profile>
@@ -85,9 +88,13 @@ export default function TeamPage() {
                 }}>Developer</h6>
             </CardBody>
             <CardFooter className={classes.justifyContentCenter}>
+            <div style={{
+              margin: "0 auto"
+            }}>
               <Button color="warning" round>
-                Unlock
+                Message
               </Button>
+            </div>
             </CardFooter>
           </Card>
           <Card
@@ -96,7 +103,7 @@ export default function TeamPage() {
         >
           <CardAvatar profile className={classes.cardAvatar}>
             <a href="#pablo" onClick={e => e.preventDefault()}>
-              <img src={avatar} alt="team member Carl sachs" />
+              <img src={avatar} alt="generic avatar with a mask for the rona" />
             </a>
           </CardAvatar>
           <CardBody profile>
@@ -108,9 +115,13 @@ export default function TeamPage() {
               }}>Developer</h6>
           </CardBody>
           <CardFooter className={classes.justifyContentCenter}>
+          <div style={{
+            margin: "0 auto"
+          }}>
             <Button color="warning" round>
-              Unlock
+              Message
             </Button>
+          </div>
           </CardFooter>
         </Card>
         <Card
@@ -119,7 +130,7 @@ export default function TeamPage() {
         >
         <CardAvatar profile className={classes.cardAvatar}>
           <a href="#pablo" onClick={e => e.preventDefault()}>
-            <img src={avatar} alt="team member Carl sachs" />
+            <img src={avatar} alt="generic avatar with a mask for the rona" />
           </a>
         </CardAvatar>
         <CardBody profile>
@@ -131,9 +142,13 @@ export default function TeamPage() {
             }}>Co-Founder</h6>
         </CardBody>
         <CardFooter className={classes.justifyContentCenter}>
+        <div style={{
+          margin: "0 auto"
+        }}>
           <Button color="warning" round>
-            Unlock
+            Message
           </Button>
+        </div>
         </CardFooter>
         </Card>
             </Row>

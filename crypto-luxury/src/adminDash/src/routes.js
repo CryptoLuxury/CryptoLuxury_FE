@@ -32,6 +32,7 @@ import TeamPage from "./views/Pages/TeamPage.js";
 import ProjectManager from "./views/Pages/ProductManager";
 import Tickets from "./views/Pages/Tickets";
 import DevTickets from "./views/Pages/DevTickets";
+import SubscriberPage from "./views/Pages/SubcriberPage";
 
 // @material-ui/icons
 import Apps from "@material-ui/icons/Apps";
@@ -48,6 +49,7 @@ import BuildIcon from '@material-ui/icons/Build';
 import HealingIcon from '@material-ui/icons/Healing';
 import AssignmentLateIcon from '@material-ui/icons/AssignmentLate';
 import CallMergeIcon from '@material-ui/icons/CallMerge';
+import EmailIcon from '@material-ui/icons/AlternateEmail';
 
 var dashRoutes = [
   {
@@ -113,6 +115,15 @@ var dashRoutes = [
         icon: CallMergeIcon,
         rtlMini: "ب",
         component: DevTickets,
+        layout: "/admin"
+      },
+      {
+        path: "/subscribers",
+        name: "Subscribers",
+        rtlName: "وصفت",
+        icon: EmailIcon,
+        rtlMini: "ب",
+        component: SubscriberPage,
         layout: "/admin"
       }
     ]
