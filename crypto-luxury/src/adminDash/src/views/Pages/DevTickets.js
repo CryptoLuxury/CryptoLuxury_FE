@@ -4,6 +4,7 @@ import axios from "axios";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+import SweetAlert from "react-bootstrap-sweetalert";
 
 // core components
 import Container from "react-bootstrap/Container";
@@ -18,17 +19,24 @@ export default function DevTicketsPage() {
 
   const classes = useStyles();
   const [ openDevTickets, setOpenDevTickets ] = useState([]);
+  const [alert, setAlert] = React.useState(null);
+  const hideAlert = () => {
+    setAlert(null);
+  }
 
   useEffect(() => {
-    axios.get(`https://crypto-luxury.herokuapp.com/api/form/contact`)
+    axios.get(`https://crypto-luxury.herokuapp.com/api/form/devTicket/`)
     .then(res => {
       setOpenDevTickets([
         ...res.data
       ])
     })
   }, []);
+
+
   return (
     <Container>
+    {alert}
       <Row>
         <h2>Manage Dev Tickets</h2>
       </Row>

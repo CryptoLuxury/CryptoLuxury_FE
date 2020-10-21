@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { useHistory } from "react-dom";
+import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 
@@ -84,6 +84,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export default function Dashboard() {
+
+  let history = useHistory();
   
   const classes = useStyles();
   const [devTicketModal, setDevTicketModal] = useState(false);
@@ -115,15 +117,31 @@ export default function Dashboard() {
   const errorAlert = () => {
     setAlert(
       <SweetAlert
-        style={{ display: "block", marginTop: "100px" }}
-        title="Auto close alert!"
+        danger
+        style={{ display: "block", marginTop: "80px" }}
+        title="Error!"
         onConfirm={() => hideAlert()}
-        showConfirm={false}
+        onCancel={() => hideAlert()}
+        confirmBtnCssClass={classes.button + " " + classes.success}
       >
-        I will close in 2 seconds.
+        That's not supposed to happen :(
       </SweetAlert>
     );
-    setTimeout(hideAlert, 2000);
+  };
+
+  const ComingSoon = () => {
+    setAlert(
+      <SweetAlert
+        danger
+        style={{ display: "block", marginTop: "80px" }}
+        title="Not Yet!"
+        onConfirm={() => hideAlert()}
+        onCancel={() => hideAlert()}
+        confirmBtnCssClass={classes.button + " " + classes.success}
+      >
+        The "New Campaign" feature is in development
+      </SweetAlert>
+    );
   };
 
   const handleDevChange = (e) => {
@@ -138,7 +156,7 @@ export default function Dashboard() {
     e.preventDefault();
     axios.post(`https://crypto-luxury.herokuapp.com/api/form/devTicket`, devTicket)
     .then(res => {
-      alert();
+      successAlert();
       setTimeout(() => {
         setDevTicketModal(false)
       }, 1000)
@@ -151,7 +169,6 @@ export default function Dashboard() {
   return (
     <div>
     {alert}
-    {errorAlert}
       <div>
         <Dialog
           classes={{
@@ -211,10 +228,14 @@ export default function Dashboard() {
           </DialogActions>
         </Dialog>
       </div>
-      <GridContainer>
+      <GridContainer style={{
+        marginBottom: "3%"
+      }}>
         <GridItem xs={12} sm={6} md={6} lg={3}>
           <Card>
-            <CardHeader color="warning" stats icon>
+            <CardHeader color="warning" stats icon style={{
+              paddingBottom: "5%"
+            }}>
               <CardIcon color="warning">
                 <BlurOnIcon />
               </CardIcon>
@@ -223,65 +244,47 @@ export default function Dashboard() {
                 5
               </h3>
             </CardHeader>
-            <CardFooter stats>
-              <div className={classes.stats}>
-                <CameraIcon />
-                <a href="/admin/orders" style={{color: "#d48d05"}}>View Status</a>
-              </div>
-            </CardFooter>
           </Card>
         </GridItem>
         <GridItem xs={12} sm={6} md={6} lg={3}>
           <Card>
-            <CardHeader color="warning" stats icon>
+            <CardHeader color="warning" stats icon style={{
+              paddingBottom: "5%"
+            }}>
               <CardIcon color="warning">
                 <Store />
               </CardIcon>
               <p className={classes.cardCategory}>Revenue</p>
               <h3 className={classes.cardTitle}>$65,285</h3>
             </CardHeader>
-            <CardFooter stats>
-              <div className={classes.stats}>
-                <MoneyIcon />
-                <a href="/admin/orders" style={{color: "#d48d05"}}>Sales</a>
-              </div>
-            </CardFooter>
           </Card>
         </GridItem>
         <GridItem xs={12} sm={6} md={6} lg={3}>
           <Card>
-            <CardHeader color="warning" stats icon>
+            <CardHeader color="warning" stats icon style={{
+              paddingBottom: "5%"
+            }}>
               <CardIcon color="warning">
                 <TaskIcon />
               </CardIcon>
               <p className={classes.cardCategory}>Completed Orders</p>
               <h3 className={classes.cardTitle}>34</h3>
             </CardHeader>
-            <CardFooter stats>
-              <div className={classes.stats}>
-                <LocalOffer />
-                <a href="/admin/orders" style={{color: "#d48d05"}}>Manage Orders</a>
-              </div>
-            </CardFooter>
           </Card>
         </GridItem>
         <GridItem xs={12} sm={6} md={6} lg={3}>
           <Card>
-            <CardHeader color="warning" stats icon>
+            <CardHeader color="warning" stats icon style={{
+              paddingBottom: "5%"
+            }}>
               <CardIcon color="warning">
                 <AccountIcon />
               </CardIcon>
               <p className={classes.cardCategory}>Crypto Balance</p>
               <h3 className={classes.cardTitle}>
-                *******
+                13.7 /btc
               </h3>
             </CardHeader>
-            <CardFooter stats>
-              <div className={classes.stats}>
-                <Update />
-                <a href="/admin/orders" style={{color: "#d48d05"}}>Payments</a>
-              </div>
-            </CardFooter>
           </Card>
         </GridItem>
       </GridContainer>
@@ -307,23 +310,27 @@ export default function Dashboard() {
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button simple color="warning" justIcon>
+                  <Button simple color="warning" onClick={() => {
+                    history.push('/admin/orders')
+                  }} justIcon>
                     <LowPriorityIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="View Sales"
+                  title="View Products"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button color="transparent" simple justIcon>
+                  <Button color="transparent" onClick={() => {
+                    history.push('/admin/productmanager')
+                  }} simple justIcon>
                     <MoneyIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
               </div>
-              <h4 className={classes.cardTitle}>Sales</h4>
-              <p className={classes.cardCategory}>View and Track Sales</p>
+              <h4 className={classes.cardTitle}>Orders</h4>
+              <p className={classes.cardCategory}>View and Manage Orders</p>
             </CardBody>
             <CardFooter chart>
               <div className={classes.stats}>
@@ -359,11 +366,11 @@ export default function Dashboard() {
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="New Campaign"
+                  title="Coming Soon"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button color="transparent" simple justIcon>
+                  <Button onClick={ComingSoon} color="transparent" simple justIcon>
                     <MailOutlineIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>

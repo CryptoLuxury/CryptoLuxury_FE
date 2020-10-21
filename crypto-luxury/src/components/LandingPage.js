@@ -18,9 +18,17 @@ import Button from "./dashComps/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
+import SweetAlert from "react-bootstrap-sweetalert";
+import { makeStyles } from "@material-ui/core/styles";
+
+import styles from "./dashComps/dashboardStyle";
+
+const useStyles = makeStyles(styles);
+
 
 const LandingPage = () => {
 
+    const classes = useStyles();
     let history = useHistory();
     const [show, setShow] = useState(false);
 
@@ -32,6 +40,40 @@ const LandingPage = () => {
         email: "",
         message: ""
       })
+      const [alert, setAlert] = React.useState(null);
+      const hideAlert = () => {
+        setAlert(null);
+      }
+    
+      const successAlert = () => {
+        setAlert(
+          <SweetAlert
+            success
+            style={{ display: "block", marginTop: "100px" }}
+            title="Submitted!"
+            onConfirm={() => hideAlert()}
+            onCancel={() => hideAlert()}
+            confirmBtnCssClass={classes.button + " " + classes.success}
+          >
+            We've received your ticket, and will get back to you shortly!
+          </SweetAlert>
+        );
+      };
+
+      const errorAlert = () => {
+        setAlert(
+          <SweetAlert
+            danger
+            style={{ display: "block", marginTop: "80px" }}
+            title="Error!"
+            onConfirm={() => hideAlert()}
+            onCancel={() => hideAlert()}
+            confirmBtnCssClass={classes.button + " " + classes.success}
+          >
+            That's not supposed to happen :( Try again!
+          </SweetAlert>
+        );
+      };
   
       const handleContactChange = (e) => {
         e.preventDefault();
@@ -45,8 +87,7 @@ const LandingPage = () => {
         e.preventDefault();
         axios.post(`https://crypto-luxury.herokuapp.com/api/form/contact`, contact)
         .then(res => {
-          alert("POST SUCCESS")
-          console.log(res)
+          successAlert()
           setTimeout(() => {
             setShow(false)
           }, 1500);
@@ -59,6 +100,7 @@ const LandingPage = () => {
 
     return (
         <Container>
+        {alert}
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Submit a Ticket</Modal.Title>

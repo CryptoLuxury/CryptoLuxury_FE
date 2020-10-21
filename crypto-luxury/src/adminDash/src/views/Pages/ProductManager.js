@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 
-import AddWatch from "../Forms/AddWatch";
-import AddCard from "../Forms/AddCard";
+import ProductManagerCard from "./ProductManagerCardWatch";
+
+import SweetAlert from "react-bootstrap-sweetalert";
 
 //reactstrap
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import Button from "../../components/CustomButtons/Button";
 import Slide from "@material-ui/core/Slide";
 import Dialog from "@material-ui/core/Dialog";
@@ -19,10 +21,7 @@ import Close from "@material-ui/icons/Close";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
-// core components
-import ProductsTable from "../Tables/ProductsTable";
-
-import styles from "../../assets/jss/material-dashboard-pro-react/views/errorPageStyles.js";
+import styles from "../../assets/jss/material-dashboard-pro-react/hoverCardStyle";
 
 const useStyles = makeStyles(styles);
 
@@ -48,6 +47,121 @@ export default function ProductManager() {
         price: null,
     })
 
+    const [watches, setWatches] = useState([]);
+    const [cards, setCards] = useState([]);
+    const [alert, setAlert] = React.useState(null);
+    const hideAlert = () => {
+      setAlert(null);
+    }
+  
+    const successAlertWatch = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "100px" }}
+          title="Watch Added!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          You've added a new watch!  Sell them bitches!
+        </SweetAlert>
+      );
+    };
+    const successAlertCard = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "100px" }}
+          title="Card Added!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          You've added a new card!  Sell them bitches!
+        </SweetAlert>
+      );
+    };
+
+    const errorAlert = () => {
+      setAlert(
+        <SweetAlert
+          danger
+          style={{ display: "block", marginTop: "80px" }}
+          title="Oh No!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          That didn't work!  Try again or reach out to Carl!
+        </SweetAlert>
+      );
+    };
+
+    const Sure = () => {
+      setAlert(
+        <SweetAlert
+          warning
+          style={{ display: "block", marginTop: "-100px" }}
+          title="Are you sure?"
+          onConfirm={() => successDelete()}
+          onCancel={() => cancelDetele()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+          cancelBtnCssClass={classes.button + " " + classes.danger}
+          confirmBtnText="Yes, delete it!"
+          cancelBtnText="Cancel"
+          showCancel
+        >
+          You will not be able to recover this imaginary file!
+        </SweetAlert>
+      );
+    };
+    const successDelete = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "-100px" }}
+          title="Deleted!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          Your imaginary file has been deleted.
+        </SweetAlert>
+      );
+    };
+    const cancelDetele = () => {
+      setAlert(
+        <SweetAlert
+          danger
+          style={{ display: "block", marginTop: "-100px" }}
+          title="Cancelled"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          Your imaginary file is safe :)
+        </SweetAlert>
+      );
+    };
+
+    useEffect(() => {
+      axios.get(`https://crypto-luxury.herokuapp.com/api/store/watches`)
+      .then(res => {
+        setWatches([
+          ...res.data
+        ])
+      })
+    }, []);
+    useEffect(() => {
+      axios.get(`https://crypto-luxury.herokuapp.com/api/store/cards`)
+      .then(res => {
+        setCards([
+          ...res.data
+        ])
+      })
+    }, []);
+
     const handleWatchChange = (e) => {
         e.preventDefault();
         setWatchProduct({
@@ -66,30 +180,38 @@ export default function ProductManager() {
 
   const handleWatchSubmit = (e) => {
     e.preventDefault();
-    axios.post(`https://crypto-luxury.herokuapp.com/api/form/watchOrders`, watchProduct)
+    axios.post(`https://crypto-luxury.herokuapp.com/api/form/watches`, watchProduct)
     .then(res => {
-        alert("POST SUCCESS")
+        successAlertWatch();
         setWatchModal(false)
         console.log(res)
     })
     .catch(err => {
+      errorAlert();
       console.log(err, "There was an error")
     })
   }
 
   const handleCardSubmit = (e) => {
     e.preventDefault();
-    axios.post(`https://crypto-luxury.herokuapp.com/api/form/cardOrders`, cardProduct)
+    axios.post(`https://crypto-luxury.herokuapp.com/api/form/cards`, cardProduct)
     .then(res => {
+      successAlertCard();
       console.log("######", cardProduct)
     })
     .catch(err => {
+      errorAlert();
       console.log(err, "There was an error")
     })
   }
 
+  const handleSure = () => {
+    
+  }
+
   return (
     <Container>
+    {alert}
         <h2>Product Manager</h2>
         <Container style={{
             display: "flex",
@@ -280,11 +402,32 @@ export default function ProductManager() {
                 </DialogActions>
             </Dialog>
         </div>
-
+        <div>
+          <Button color="danger" onClick={handleSure}>Delete All Products</Button>
+        </div>
         </Container>
-        <Container>
-            <ProductsTable />
-        </Container>
+        <Row style={{
+          marginBottom: "10%"
+        }}>
+        <div style={{
+          margin: "2%"
+        }}>
+          { watches.map(watch => ( 
+          <ProductManagerCard watchInfo={watch} key={watch.id}/> 
+          ))}
+        </div>
+        </Row>
+        <Row style={{
+          marginBottom: "10%"
+        }}>
+        <div style={{
+          margin: "2%"
+        }}>
+          { cards.map(card => ( 
+          <ProductManagerCard cardInfo={card} key={card.id}/> 
+          ))}
+        </div>
+        </Row>
 
     </Container>
   );
