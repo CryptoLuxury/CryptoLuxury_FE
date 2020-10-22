@@ -20,6 +20,8 @@ import CardBody from "./dashComps/CardBody.js";
 import AccountIcon from '@material-ui/icons/AccountBalanceWallet';
 import Timeline from "./dashComps/Timeline";
 
+import Testimonies from "./Testimonies";
+
 //modal
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -304,6 +306,9 @@ const LandingPage = () => {
               </Card>
             </GridItem>
           </GridContainer>
+          <div>
+              <Testimonies />
+          </div>
         </Container>
     );
 };
