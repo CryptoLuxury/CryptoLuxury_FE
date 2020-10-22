@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 
+import { useHistory } from "react-router-dom";
+
 import axios from "axios";
 
-import ProductManagerCard from "./ProductManagerCardWatch";
+import ProductManagerCardWatch from "./ProductManagerCardWatch";
+import ProductManagerCardCard from "./ProductManagerCardCard";
 
 import SweetAlert from "react-bootstrap-sweetalert";
+import Form from "react-bootstrap/Form";
 
 //reactstrap
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Button from "../../components/CustomButtons/Button";
 import Slide from "@material-ui/core/Slide";
 import Dialog from "@material-ui/core/Dialog";
@@ -31,6 +36,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function ProductManager() {
 
+  let history = useHistory();
+
   const classes = useStyles();
   const [watchModal, setWatchModal] = React.useState(false);
   const [cardModal, setCardModal] = React.useState(false);
@@ -39,12 +46,12 @@ export default function ProductManager() {
     const [cardProduct, setCardProduct] = useState({
         title: "",
         description: "",
-        price: null,
+        price: "",
     })
     const [watchProduct, setWatchProduct] = useState({
         title: "",
         description: "",
-        price: null,
+        price: "",
     })
 
     const [watches, setWatches] = useState([]);
@@ -98,13 +105,13 @@ export default function ProductManager() {
       );
     };
 
-    const Sure = () => {
+    const SureWatch = () => {
       setAlert(
         <SweetAlert
           warning
           style={{ display: "block", marginTop: "100px" }}
           title="Are you sure?"
-          onConfirm={() => successDelete()}
+          onConfirm={() => handleSureWatch()}
           onCancel={() => cancelDetele()}
           confirmBtnCssClass={classes.button + " " + classes.success}
           cancelBtnCssClass={classes.button + " " + classes.danger}
@@ -112,7 +119,25 @@ export default function ProductManager() {
           cancelBtnText="Cancel"
           showCancel
         >
-          You will not be able to recover this imaginary file!
+          You will not be able to recover these watch listings!
+        </SweetAlert>
+      );
+    };
+    const SureCard = () => {
+      setAlert(
+        <SweetAlert
+          warning
+          style={{ display: "block", marginTop: "100px" }}
+          title="Are you sure?"
+          onConfirm={() => handleSureCard()}
+          onCancel={() => cancelDetele()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+          cancelBtnCssClass={classes.button + " " + classes.danger}
+          confirmBtnText="Yes, delete it!"
+          cancelBtnText="Cancel"
+          showCancel
+        >
+          You will not be able to recover these card listings!
         </SweetAlert>
       );
     };
@@ -121,12 +146,12 @@ export default function ProductManager() {
         <SweetAlert
           success
           style={{ display: "block", marginTop: "100px" }}
-          title="Deleted!"
+          title="Wiped!"
           onConfirm={() => hideAlert()}
           onCancel={() => hideAlert()}
           confirmBtnCssClass={classes.button + " " + classes.success}
         >
-          Your imaginary file has been deleted.
+          Changes take effect on next reload!
         </SweetAlert>
       );
     };
@@ -135,15 +160,34 @@ export default function ProductManager() {
         <SweetAlert
           danger
           style={{ display: "block", marginTop: "100px" }}
-          title="Cancelled"
+          title="Aborted!"
           onConfirm={() => hideAlert()}
           onCancel={() => hideAlert()}
           confirmBtnCssClass={classes.button + " " + classes.success}
         >
-          Your imaginary file is safe :)
+          We knew you didnt want to do that...
         </SweetAlert>
       );
     };
+    const handleSureWatch = () => {
+      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/watches`)
+      .then(res => {
+        successDelete();
+      })
+      .catch(err => {
+        errorAlert();
+      })
+    }
+
+    const handleSureCard = () => {
+      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/cards`)
+      .then(res => {
+        successDelete();
+      })
+      .catch(err => {
+        errorAlert();
+      })
+    }
 
     useEffect(() => {
       axios.get(`https://crypto-luxury.herokuapp.com/api/store/watches`)
@@ -184,11 +228,9 @@ export default function ProductManager() {
     .then(res => {
         successAlertWatch();
         setWatchModal(false)
-        console.log(res)
     })
     .catch(err => {
       errorAlert();
-      console.log(err, "There was an error")
     })
   }
 
@@ -197,20 +239,16 @@ export default function ProductManager() {
     axios.post(`https://crypto-luxury.herokuapp.com/api/store/cards`, cardProduct)
     .then(res => {
       successAlertCard();
-      console.log("######", cardProduct)
     })
     .catch(err => {
       errorAlert();
-      console.log(err, "There was an error")
     })
   }
 
-  const handleSure = () => {
-    
-  }
-
   return (
-    <Container>
+    <Container style={{
+      paddingBottom: "5%"
+    }}>
     {alert}
         <h2>Product Manager</h2>
         <Container style={{
@@ -254,44 +292,20 @@ export default function ProductManager() {
                 >
                 <Container>
                 <h2>Add New Watch</h2>
-                  <form>
-                  <div style={{
-                    display: "flex",
-                    flexFlow: "column nowrap",
-                    justifyContent: "center",
-                    alignSelf: "center",
-                    width: "60%",
-                    marginLeft: "7.5%",
-                    marginBottom: "3%"
-                  }}>
-                    <label>Title</label>
-                    <input placeholder = "title" name="title" type="text" onChange={handleWatchChange} />
-                  </div>
-                  <div style={{
-                    display: "flex",
-                    flexFlow: "column nowrap",
-                    justifyContent: "center",
-                    alignSelf: "center",
-                    width: "60%",
-                    marginLeft: "7.5%",
-                    marginBottom: "3%"
-                  }}>
-                    <label>Description</label>
-                    <input placeholder = "Description" name="description" type="text-field" onChange={handleWatchChange} />
-                  </div>
-                  <div style={{
-                    display: "flex",
-                    flexFlow: "column nowrap",
-                    justifyContent: "center",
-                    alignSelf: "center",
-                    width: "60%",
-                    marginLeft: "7.5%",
-                    marginBottom: "3%"
-                  }}>
-                    <label>Price</label>
-                    <input type='number' step="1" placeholder='Price Value' onChange={handleWatchChange} />
-                  </div>
-                  </form>
+                <Form>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control type="text" placeholder="Title..." onChange={handleWatchChange} name="title" />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Price</Form.Label>
+                <Form.Control type="Price" placeholder="'100', '100,000'" onChange={handleWatchChange} name="price" />
+                </Form.Group>
+                  <Form.Group controlId="exampleForm.ControlTextarea1">
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control as="textarea" rows="3" onChange={handleWatchChange} name="description" />
+                </Form.Group>
+                </Form>
                 </Container>
                 </DialogContent>
                 <DialogActions
@@ -347,44 +361,20 @@ export default function ProductManager() {
                 >
                 <Container>
                 <h2>Add New Card</h2>
-                  <form>
-                  <div style={{
-                    display: "flex",
-                    flexFlow: "column nowrap",
-                    justifyContent: "center",
-                    alignSelf: "center",
-                    width: "60%",
-                    marginLeft: "7.5%",
-                    marginBottom: "3%"
-                  }}>
-                    <label>Title</label>
-                    <input placeholder = "title" name="title" type="text" onChange={handleCardChange} />
-                  </div>
-                  <div style={{
-                    display: "flex",
-                    flexFlow: "column nowrap",
-                    justifyContent: "center",
-                    alignSelf: "center",
-                    width: "60%",
-                    marginLeft: "7.5%",
-                    marginBottom: "3%"
-                  }}>
-                    <label>Description</label>
-                    <input placeholder = "Description" name="description" type="text-field" onChange={handleCardChange} />
-                  </div>
-                  <div style={{
-                    display: "flex",
-                    flexFlow: "column nowrap",
-                    justifyContent: "center",
-                    alignSelf: "center",
-                    width: "60%",
-                    marginLeft: "7.5%",
-                    marginBottom: "3%"
-                  }}>
-                    <label>Price</label>
-                    <input type='number' step="1" placeholder='Price Value' onChange={handleCardChange} />
-                  </div>
-                  </form>
+                <Form>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                  <Form.Label>Listing Title</Form.Label>
+                  <Form.Control type="text" placeholder="Title..." onChange={handleCardChange} name="title" />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Price (USD)</Form.Label>
+                <Form.Control type="Price" placeholder="'100', '100,000'" onChange={handleCardChange} name="price" />
+                </Form.Group>
+                  <Form.Group controlId="exampleForm.ControlTextarea1">
+                  <Form.Label>Listing Description</Form.Label>
+                  <Form.Control as="textarea" rows="3" onChange={handleCardChange} name="description" />
+                </Form.Group>
+                </Form>
                 </Container>
                 </DialogContent>
                 <DialogActions
@@ -406,30 +396,45 @@ export default function ProductManager() {
           paddingTop: "2.4%",
           marginLeft: "1%"
         }}>
-          <Button round color="danger" onClick={Sure}>Delete All Products</Button>
+          <Button round color="danger" onClick={SureWatch}>Delete All Watches</Button>
+        </div>
+        <div style={{
+          paddingTop: "2.4%",
+          marginLeft: "1%"
+        }}>
+          <Button round color="danger" onClick={SureCard}>Delete All Cards</Button>
         </div>
         </Container>
         <Row style={{
-          marginBottom: "10%"
+          display: "flex",
+          justifyContent: "space-evenly",
+          marginBottom: "5%"
         }}>
-        <div style={{
-          margin: "2%"
+        <Col style={{
+          margin: "2%",
+          display: "flex",
+          flexFlow: "row nowrap"
         }}>
           { watches.map(watch => ( 
-          <ProductManagerCard watchInfo={watch} key={watch.id}/> 
+          <ProductManagerCardWatch watchInfo={watch} key={watch.id}/> 
           ))}
-        </div>
+        </Col>
         </Row>
         <Row style={{
-          marginBottom: "10%"
+          marginBottom: "5%",
+          display: "flex",
+          justifyContent: "space-evenly",
+          paddingBottom: "3%"
         }}>
-        <div style={{
-          margin: "2%"
+        <Col style={{
+          margin: "2%",
+          display: "flex",
+          flexFlow: "row nowrap",
         }}>
           { cards.map(card => ( 
-          <ProductManagerCard cardInfo={card} key={card.id}/> 
+          <ProductManagerCardCard cardInfo={card} key={card.id}/> 
           ))}
-        </div>
+        </Col>
         </Row>
 
     </Container>
