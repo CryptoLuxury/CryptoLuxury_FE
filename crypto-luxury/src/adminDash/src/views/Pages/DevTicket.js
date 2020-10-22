@@ -2,13 +2,14 @@ import React, {useState} from "react";
 import axios from "axios";
 
 import { makeStyles } from "@material-ui/core/styles";
+import Button from "../../components/CustomButtons/Button";
 import styles from "../../assets/jss/material-dashboard-pro-react/views/errorPageStyles.js";
 
 import Card from "react-bootstrap/Card";
 import SweetAlert from "react-bootstrap-sweetalert";
 const useStyles = makeStyles(styles);
 
-const ContactTicket = ({ticketInfo}, {deleteButton}) => {
+const ContactTicket = ({ticketInfo}) => {
 
     const classes = useStyles();
 
@@ -65,7 +66,7 @@ const ContactTicket = ({ticketInfo}, {deleteButton}) => {
                 <Card.Text>
                     {message}
                 </Card.Text>
-                <button onClick={handleDelete}>Delete</button>
+                <Button color="danger" onClick={handleDelete}>Delete</Button>
             </Card.Body>
             </Card>
     )

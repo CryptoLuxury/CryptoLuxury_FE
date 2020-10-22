@@ -89,7 +89,15 @@ export default function TeamPage() {
     );
   };
 
-  const handleMemberSubmit = (e) => {
+  const handleMembersChange = (e) => {
+    e.preventDefault();
+    setMembers({
+      ...members,
+      [e.target.name]: e.target.value
+    })
+  }
+
+    const handleMemberSubmit = (e) => {
     e.preventDefault();
     axios.post(`https://crypto-luxury.herokuapp.com/api/team`, members)
     .then(res => {
@@ -97,14 +105,6 @@ export default function TeamPage() {
     })
     .catch(err => {
       errorAlert();
-    })
-  }
-
-  const handleMemberChange = (e) => {
-    e.preventDefault();
-    setMembers({
-      ...members,
-      [e.target.name]: e.target.value
     })
   }
 
@@ -120,11 +120,11 @@ export default function TeamPage() {
                   <Form>
                   <Form.Group controlId="exampleForm.ControlInput1">
                   <Form.Label>Name</Form.Label>
-                  <Form.Control type="text" placeholder="Name..." name="name" onChange={handleMemberChange} />
+                  <Form.Control type="text" placeholder="Name..." name="name" onChange={handleMembersChange} />
                   </Form.Group>
                   <Form.Group controlId="exampleForm.ControlInput1">
                   <Form.Label>Role</Form.Label>
-                  <Form.Control type="text" placeholder="Developer" name="role" onChange={handleMemberChange} />
+                  <Form.Control type="text" placeholder="Developer" name="role" onChange={handleMembersChange} />
                   </Form.Group>
                   </Form>
                   </Modal.Body>
@@ -148,7 +148,10 @@ export default function TeamPage() {
             <Button rounded color="warning" onClick={handleShow}>Add New Member</Button>
           </Col>
         </Row>
-        <Row>
+        <Row style={{
+          marginTop: "3%",
+          marginBottom: "3%"
+        }}>
         <Col style={{
           margin: "2%",
           display: "flex",

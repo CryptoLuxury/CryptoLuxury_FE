@@ -1,38 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useHistory } from "react-router-dom";
 
 import axios from "axios";
-
-import { Link } from "react-dom";
-// react plugin for creating charts
-import ChartistGraph from "react-chartist";
-// react plugin for creating vector maps
-import { VectorMap } from "react-jvectormap";
-import Container from "react-bootstrap/Container";
-
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Icon from "@material-ui/core/Icon";
 
 import Form from "react-bootstrap/Form";
-
-// @material-ui/icons
-// import ContentCopy from "@material-ui/icons/ContentCopy";
 import Store from "@material-ui/icons/Store";
-// import InfoOutline from "@material-ui/icons/InfoOutline";
-import Warning from "@material-ui/icons/Warning";
-import DateRange from "@material-ui/icons/DateRange";
-import LocalOffer from "@material-ui/icons/LocalOffer";
-import Update from "@material-ui/icons/Update";
-import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import AccessTime from "@material-ui/icons/AccessTime";
-import Refresh from "@material-ui/icons/Refresh";
-import Edit from "@material-ui/icons/Edit";
-import Place from "@material-ui/icons/Place";
-import ArtTrack from "@material-ui/icons/ArtTrack";
-import Language from "@material-ui/icons/Language";
 import BlurOnIcon from '@material-ui/icons/BlurOn';
 import TaskIcon from '@material-ui/icons/AssignmentTurnedIn';
 import AccountIcon from '@material-ui/icons/AccountBalanceWallet';
@@ -42,21 +20,22 @@ import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import CodeIcon from '@material-ui/icons/Code';
-import FlightIcon from '@material-ui/icons/FlightTakeoff';
-import ViewIcon from '@material-ui/icons/Visibility';
-import DeleteIcon from '@material-ui/icons/DeleteForever';
-import CameraIcon from '@material-ui/icons/Camera';
 
 // core components
 import GridContainer from "../../components/Grid/GridContainer.js";
 import GridItem from "../../components/Grid/GridItem.js";
 import Button from "../../components/CustomButtons/Button.js";
-import Danger from "../../components/Typography/Danger.js";
 import Card from "../../components/Card/Card.js";
 import CardHeader from "../../components/Card/CardHeader.js";
 import CardIcon from "../../components/Card/CardIcon.js";
 import CardBody from "../../components/Card/CardBody.js";
 import CardFooter from "../../components/Card/CardFooter.js";
+
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import WatchCard from "../Pages/ProductManagerCardWatch";
+import CardCard from "../Pages/ProductManagerCardCard";
 
 import SweetAlert from "react-bootstrap-sweetalert";
 
@@ -96,6 +75,8 @@ export default function Dashboard() {
     email: "",
     message: ""
   })
+  const [watches, setWatches] = useState([]);
+  const [cards, setCards] = useState([]);
   const [alert, setAlert] = React.useState(null);
   const hideAlert = () => {
     setAlert(null);
@@ -167,6 +148,23 @@ export default function Dashboard() {
       errorAlert()
     })
   }
+
+  useEffect(() => {
+    axios.get(`https://crypto-luxury.herokuapp.com/api/store/watches`)
+    .then(res => {
+      setWatches([
+        ...res.data
+      ])
+    })
+  }, []);
+  useEffect(() => {
+    axios.get(`https://crypto-luxury.herokuapp.com/api/store/cards`)
+    .then(res => {
+      setCards([
+        ...res.data
+      ])
+    })
+  }, []);
 
   return (
     <div>
@@ -438,185 +436,42 @@ export default function Dashboard() {
       </GridContainer>
       <h3>Manage Products</h3>
       <br />
-      <GridContainer>
-        <GridItem xs={12} sm={12} md={4}>
-          <Card product className={classes.cardHover}>
-            <CardHeader image className={classes.cardHeaderHover}>
-              <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={Blastoise} alt="blastoise" />
-              </a>
-            </CardHeader>
-            <CardBody>
-              <div className={classes.cardHoverUnder}>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Details"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button color="warning" simple justIcon>
-                    <ViewIcon className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Edit"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button color="transparent" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Delete"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button color="danger" simple justIcon>
-                    <DeleteIcon className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-              </div>
-              <h4 className={classes.cardProductTitle}>
-                <a href="#pablo" onClick={e => e.preventDefault()}>
-                  High-PSA Rated Card
-                </a>
-              </h4>
-              <p className={classes.cardProductDesciprion}>
-                This is an example of what you could put here regarding cards or watches, or whatever really.
-              </p>
-            </CardBody>
-            <CardFooter product>
-              <div className={classes.price}>
-                <h4>$15,954/card</h4>
-              </div>
-              <div className={`${classes.stats} ${classes.productStats}`}>
-                <FlightIcon /> International
-              </div>
-            </CardFooter>
-          </Card>
-        </GridItem>
-        <GridItem xs={12} sm={12} md={4}>
-          <Card product className={classes.cardHover}>
-            <CardHeader image className={classes.cardHeaderHover}>
-              <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src="https://cdn.swisswatchexpo.com/productphotos/7/2/rolex-president-datejust-yellow-gold-pyramid-diamond-bezel-watch-69258-28273_010e2.jpg" alt="rolex presidential" />
-              </a>
-            </CardHeader>
-            <CardBody>
-              <div className={classes.cardHoverUnder}>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Details"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button color="warning" simple justIcon>
-                    <ViewIcon className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Edit"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button color="transparent" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Delete"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button color="danger" simple justIcon>
-                    <DeleteIcon className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-              </div>
-              <h4 className={classes.cardProductTitle}>
-                <a href="#pablo" onClick={e => e.preventDefault()}>
-                  Rolex Presidential
-                </a>
-              </h4>
-              <p className={classes.cardProductDesciprion}>
-              This is an example of what you could put here regarding cards or watches, or whatever really.
-              </p>
-            </CardBody>
-            <CardFooter product>
-              <div className={classes.price}>
-                <h4>$49,999/kit</h4>
-              </div>
-              <div className={`${classes.stats} ${classes.productStats}`}>
-                <FlightIcon /> International
-              </div>
-            </CardFooter>
-          </Card>
-        </GridItem>
-        <GridItem xs={12} sm={12} md={4}>
-          <Card product className={classes.cardHover}>
-            <CardHeader image className={classes.cardHeaderHover}>
-              <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src="https://cdn-products.chronext.com/V/2/V26422/V26422_1_det.png" alt="king air vector" />
-              </a>
-            </CardHeader>
-            <CardBody>
-              <div className={classes.cardHoverUnder}>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Details"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button color="warning" simple justIcon>
-                    <ViewIcon className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Edit"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button color="transparent" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Delete"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button color="danger" simple justIcon>
-                    <DeleteIcon className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-              </div>
-              <h4 className={classes.cardProductTitle}>
-                <a href="#pablo" onClick={e => e.preventDefault()}>
-                  Rolex Air King
-                </a>
-              </h4>
-              <p className={classes.cardProductDesciprion}>
-              This is an example of what you could put here regarding cards or watches, or whatever really.
-              </p>
-            </CardBody>
-            <CardFooter product>
-              <div className={classes.price}>
-                <h4>$49,542/kit</h4>
-              </div>
-              <div className={`${classes.stats} ${classes.productStats}`}>
-                <FlightIcon /> International
-              </div>
-            </CardFooter>
-          </Card>
-        </GridItem>
-      </GridContainer>
+      <Container>
+        <Row style={{
+          marginBottom: "5%",
+          display: "flex",
+          justifyContent: "space-evenly",
+          paddingBottom: "3%"
+        }}>
+        <Col style={{
+          margin: "2%",
+          display: "flex",
+          flexFlow: "row nowrap",
+        }}>
+        { watches.map(watch => ( 
+          <WatchCard watchInfo={watch} key={watch.id}/> 
+          ))}
+          </Col>
+        </Row>
+
+        <Row style={{
+          marginBottom: "5%",
+          display: "flex",
+          justifyContent: "space-evenly",
+          paddingBottom: "3%"
+        }}>
+        <Col style={{
+          margin: "2%",
+          display: "flex",
+          flexFlow: "row nowrap",
+        }}>
+        { cards.map(card => ( 
+          <CardCard cardInfo={card} key={card.id}/> 
+          ))}
+          </Col>
+        </Row>
+        
+      </Container>
     </div>
   );
 }

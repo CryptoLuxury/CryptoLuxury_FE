@@ -184,7 +184,10 @@ const TeamPage = () => {
         }}>We at Crypto Luxury are committed to bringing you the highest-quality service to match our high-quality products and prices.  Meet the people responsible.</h5>
         </div>
     </Row>
-    <Row>
+    <Row style={{
+      marginTop: "3%",
+      marginBottom: "3%"
+    }}>
         <Col>
         { team.map(member => ( 
           <TeamCard membersInfo={member} key={member.id}/> 

@@ -200,9 +200,9 @@ export default function ProductManager() {
     useEffect(() => {
       axios.get(`https://crypto-luxury.herokuapp.com/api/store/cards`)
       .then(res => {
-        setCards(
+        setCards([
           ...res.data
-      )
+        ])
       })
     }, []);
 
