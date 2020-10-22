@@ -39,7 +39,7 @@ const ProductCard = ({watchInfo}) => {
         <Card product className={classes.cardHover}>
         <CardHeader image className={classes.cardHeaderHover}>
           <div>
-            <img src="https://cdn-products.chronext.com/V/2/V26422/V26422_1_det.png" alt="king air vector" />
+            <img src="https://cdn.swisswatchexpo.com/productphotos/7/2/rolex-president-datejust-yellow-gold-pyramid-diamond-bezel-watch-69258-28273_010e2.jpg" alt="king air vector" />
           </div>
         </CardHeader>
         <CardBody>
@@ -66,17 +66,28 @@ const ProductCard = ({watchInfo}) => {
             </Tooltip>
           </div>
           <h4 className={classes.cardProductTitle}>
-            <a href="#pablo" onClick={e => e.preventDefault()}>
-              {watchInfo.title}
+            <a style={{
+              color: "#eba92d",
+              display: "flex",
+              justifyContent: "center",
+              textAlign: "center"
+            }} href="#pablo" onClick={e => e.preventDefault()}>
+              {title}
             </a>
           </h4>
-          <p className={classes.cardProductDesciprion}>
-            {watchInfo.description}
+          <p style={{
+            color: "#997023",
+            display: "flex",
+            justifyContent: "center",
+            textAlign: "center",
+            height: "5vh"
+          }} className={classes.cardProductDesciprion}>
+            {description}
           </p>
         </CardBody>
         <CardFooter product>
           <div className={classes.price}>
-            <h4>${watchInfo.price} /kit</h4>
+            <h4 style={{textAlign: "center", color: "#389c66"}}><span style={{color: "#187d20"}}>$</span>{price} <span style={{color: "#0a381f"}}>/kit</span></h4>
           </div>
           <div className={`${classes.stats} ${classes.productStats}`}>
             <FlightIcon /> International

@@ -200,9 +200,9 @@ export default function ProductManager() {
     useEffect(() => {
       axios.get(`https://crypto-luxury.herokuapp.com/api/store/cards`)
       .then(res => {
-        setCards([
+        setCards(
           ...res.data
-        ])
+      )
       })
     }, []);
 
@@ -406,14 +406,15 @@ export default function ProductManager() {
         </div>
         </Container>
         <Row style={{
+          marginBottom: "5%",
           display: "flex",
           justifyContent: "space-evenly",
-          marginBottom: "5%"
+          paddingBottom: "3%"
         }}>
         <Col style={{
           margin: "2%",
           display: "flex",
-          flexFlow: "row nowrap"
+          flexFlow: "row nowrap",
         }}>
           { watches.map(watch => ( 
           <ProductManagerCardWatch watchInfo={watch} key={watch.id}/> 

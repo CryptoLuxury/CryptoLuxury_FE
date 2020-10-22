@@ -19,8 +19,7 @@ import ViewIcon from '@material-ui/icons/Visibility';
 import DeleteIcon from '@material-ui/icons/DeleteForever';
 import AddIcon from '@material-ui/icons/AddShoppingCart';
 
-
-import Container from "react-bootstrap/Container"
+import blastoise from "./blastoise.png";
 
 const useStyles = makeStyles(styles);
 
@@ -39,7 +38,7 @@ const ProductCard = ({cardInfo}) => {
         <Card product className={classes.cardHover}>
         <CardHeader image className={classes.cardHeaderHover}>
           <div>
-            <img src="https://cdn-products.chronext.com/V/2/V26422/V26422_1_det.png" alt="king air vector" />
+            <img src={blastoise} alt="blastoise" />
           </div>
         </CardHeader>
         <CardBody>
@@ -50,7 +49,7 @@ const ProductCard = ({cardInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button color="warning" simple justIcon>
+              <Button color="transparent" simple justIcon>
                 <ViewIcon className={classes.underChartIcons} />
               </Button>
             </Tooltip>
@@ -66,17 +65,28 @@ const ProductCard = ({cardInfo}) => {
             </Tooltip>
           </div>
           <h4 className={classes.cardProductTitle}>
-            <a href="#pablo" onClick={e => e.preventDefault()}>
-              {cardInfo.title}
+            <a style={{
+              color: "#eba92d",
+              display: "flex",
+              justifyContent: "center",
+              textAlign: "center"
+            }} href="#pablo" onClick={e => e.preventDefault()}>
+              {title}
             </a>
           </h4>
-          <p className={classes.cardProductDesciprion}>
-            {cardInfo.description}
+          <p style={{
+            color: "#997023",
+            display: "flex",
+            justifyContent: "center",
+            textAlign: "center",
+            height: "5vh"
+          }} className={classes.cardProductDesciprion}>
+            {description}
           </p>
         </CardBody>
         <CardFooter product>
           <div className={classes.price}>
-            <h4>${cardInfo.price} /kit</h4>
+            <h4 style={{textAlign: "center", color: "#389c66"}}><span style={{color: "#187d20"}}>$</span>{price} <span style={{color: "#0a381f"}}>/card</span></h4>
           </div>
           <div className={`${classes.stats} ${classes.productStats}`}>
             <FlightIcon /> International

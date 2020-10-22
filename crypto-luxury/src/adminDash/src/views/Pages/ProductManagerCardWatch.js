@@ -88,7 +88,7 @@ const ProductManagerCardWatch = ({watchInfo}) => {
               justifyContent: "center",
               textAlign: "center",
               height: "5vh"
-            }}className={classes.cardProductDesciprion}>
+            }} className={classes.cardProductDesciprion}>
               {description}
             </p>
           </CardBody>

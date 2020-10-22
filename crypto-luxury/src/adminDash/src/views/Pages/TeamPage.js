@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import axios from "axios";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,11 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col"
-import Card from "../../components/Card/Card";
-import CardHeader from "../../components/Card/CardHeader";
-import CardAvatar from "../../components/Card/CardAvatar";
-import CardBody from "../../components/Card/CardBody";
-import CardFooter from "../../components/Card/CardFooter";
+import TeamCard from "./TeamCard";
 
 import Button from "../../components/CustomButtons/Button";
 
@@ -19,16 +17,28 @@ import avatar from "./avatar.png";
 
 import styles from "../../assets/jss/material-dashboard-pro-react/views/errorPageStyles.js";
 import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
+
+import SweetAlert from "react-bootstrap-sweetalert";
 
 const useStyles = makeStyles(styles);
 
 export default function TeamPage() {
 
   const [show, setShow] = useState(false);
+  const [members, setMembers] = useState({
+    name: "",
+    role: ""
+  });
+  const [ team, setTeam ] = useState([]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const classes = useStyles();
+  const [alert, setAlert] = React.useState(null);
+  const hideAlert = () => {
+    setAlert(null);
+  }
 
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   React.useEffect(() => {
@@ -40,21 +50,90 @@ export default function TeamPage() {
       window.clearTimeout(id);
     };
   });
+
+  useEffect(() => {
+    axios.get(`https://crypto-luxury.herokuapp.com/api/team`)
+    .then(res => {
+      setTeam([
+        ...res.data
+      ])
+    })
+  }, []);
+
+  const successAlert = () => {
+    setAlert(
+      <SweetAlert
+        success
+        style={{ display: "block", marginTop: "100px" }}
+        title="New Member!"
+        onConfirm={() => hideAlert()}
+        onCancel={() => hideAlert()}
+        confirmBtnCssClass={classes.button + " " + classes.success}
+      >
+        Welcome them to the Team!
+      </SweetAlert>
+    );
+  };
+  const errorAlert = () => {
+    setAlert(
+      <SweetAlert
+        danger
+        style={{ display: "block", marginTop: "80px" }}
+        title="Oh No!"
+        onConfirm={() => hideAlert()}
+        onCancel={() => hideAlert()}
+        confirmBtnCssClass={classes.button + " " + classes.success}
+      >
+        That didn't work!  Try again or reach out to Carl!
+      </SweetAlert>
+    );
+  };
+
+  const handleMemberSubmit = (e) => {
+    e.preventDefault();
+    axios.post(`https://crypto-luxury.herokuapp.com/api/team`, members)
+    .then(res => {
+      successAlert();
+    })
+    .catch(err => {
+      errorAlert();
+    })
+  }
+
+  const handleMemberChange = (e) => {
+    e.preventDefault();
+    setMembers({
+      ...members,
+      [e.target.name]: e.target.value
+    })
+  }
+
+
   return (
     <Container>
+    {alert}
                   <Modal show={show} onHide={handleClose}>
                   <Modal.Header closeButton>
                     <Modal.Title>New Member</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                  
+                  <Form>
+                  <Form.Group controlId="exampleForm.ControlInput1">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control type="text" placeholder="Name..." name="name" onChange={handleMemberChange} />
+                  </Form.Group>
+                  <Form.Group controlId="exampleForm.ControlInput1">
+                  <Form.Label>Role</Form.Label>
+                  <Form.Control type="text" placeholder="Developer" name="role" onChange={handleMemberChange} />
+                  </Form.Group>
+                  </Form>
                   </Modal.Body>
                   <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                       Close
                     </Button>
-                    <Button color="warning" onClick={handleClose}>
-                      Save Changes
+                    <Button color="warning" onClick={handleMemberSubmit}>
+                      LETS GOOO!
                     </Button>
                   </Modal.Footer>
                 </Modal>
@@ -70,88 +149,16 @@ export default function TeamPage() {
           </Col>
         </Row>
         <Row>
-            <Card
-            profile
-            className={classes.customCardClass + " " + classes[cardAnimaton]}
-          >
-            <CardAvatar profile className={classes.cardAvatar}>
-              <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={avatar} alt="generic avatar with a mask for the rona" />
-              </a>
-            </CardAvatar>
-            <CardBody profile>
-              <h4 className={classes.cardTitle} style={{
-                  color: "#e0a72b"
-              }}>Carl Sachs</h4>
-                <h6 style={{
-                    color: "#523c0d"
-                }}>Developer</h6>
-            </CardBody>
-            <CardFooter className={classes.justifyContentCenter}>
-            <div style={{
-              margin: "0 auto"
-            }}>
-              <Button color="warning" round>
-                Message
-              </Button>
-            </div>
-            </CardFooter>
-          </Card>
-          <Card
-          profile
-          className={classes.customCardClass + " " + classes[cardAnimaton]}
-        >
-          <CardAvatar profile className={classes.cardAvatar}>
-            <a href="#pablo" onClick={e => e.preventDefault()}>
-              <img src={avatar} alt="generic avatar with a mask for the rona" />
-            </a>
-          </CardAvatar>
-          <CardBody profile>
-            <h4 className={classes.cardTitle} style={{
-                color: "#e0a72b"
-            }}>Will Ryan</h4>
-              <h6 style={{
-                  color: "#523c0d"
-              }}>Developer</h6>
-          </CardBody>
-          <CardFooter className={classes.justifyContentCenter}>
-          <div style={{
-            margin: "0 auto"
-          }}>
-            <Button color="warning" round>
-              Message
-            </Button>
-          </div>
-          </CardFooter>
-        </Card>
-        <Card
-        profile
-        className={classes.customCardClass + " " + classes[cardAnimaton]}
-        >
-        <CardAvatar profile className={classes.cardAvatar}>
-          <a href="#pablo" onClick={e => e.preventDefault()}>
-            <img src={avatar} alt="generic avatar with a mask for the rona" />
-          </a>
-        </CardAvatar>
-        <CardBody profile>
-          <h4 className={classes.cardTitle} style={{
-              color: "#e0a72b"
-          }}>Neko</h4>
-            <h6 style={{
-                color: "#523c0d"
-            }}>Co-Founder</h6>
-        </CardBody>
-        <CardFooter className={classes.justifyContentCenter}>
-        <div style={{
-          margin: "0 auto"
+        <Col style={{
+          margin: "2%",
+          display: "flex",
+          flexFlow: "row nowrap",
         }}>
-          <Button color="warning" round>
-            Message
-          </Button>
-        </div>
-        </CardFooter>
-        </Card>
-            </Row>
+          { team.map(member => ( 
+          <TeamCard membersInfo={member} key={member.id}/> 
+          ))}
+        </Col>
+        </Row>
     </Container>
   );
 }

@@ -45,7 +45,7 @@ const Products = () => {
     useEffect(() => {
       axios.get(`https://crypto-luxury.herokuapp.com/api/store/cards`)
       .then(res => {
-        setWatches([
+        setCards([
           ...res.data
         ])
       })
@@ -179,48 +179,38 @@ const Products = () => {
                 }}>All of our cards are PSA approved!  Send us a message to learn more.</h6>
                 </Typing>
             </div>
-            <Row>
-                <div style={{
-                  marginTop: "4%",
-                  display: "flex",
-                  justifyContent: "center"
-                }}>
-                  <h3 style={{
-                    display: "flex",
-                    justifyContent: "center"
-                  }}>Watches</h3>
-                </div>
+            <Row style={{
+              marginBottom: "5%",
+              display: "flex",
+              justifyContent: "space-evenly",
+              paddingBottom: "3%"
+            }}>
+            <Col style={{
+              margin: "2%",
+              display: "flex",
+              flexFlow: "row nowrap",
+            }}>
+              { watches.map(watch => ( 
+              <WatchCard watchInfo={watch} key={watch.id}/> 
+              ))}
+            </Col>
             </Row>
-            <Row>
-              <div style={{
-                margin: "2%"
-              }}>
-                { watches.map(watch => ( 
-                <WatchCard watchInfo={watch} key={watch.id}/> 
-                ))}
-              </div>
+            <Row style={{
+              marginBottom: "5%",
+              display: "flex",
+              justifyContent: "space-evenly",
+              paddingBottom: "3%"
+            }}>
+            <Col style={{
+              margin: "2%",
+              display: "flex",
+              flexFlow: "row nowrap",
+            }}>
+              { cards.map(card => ( 
+              <CardCard cardInfo={card} key={card.id}/> 
+              ))}
+            </Col>
             </Row>
-            <Row>
-              <div style={{
-                marginTop: "4%",
-                display: "flex",
-                justifyContent: "center"
-              }}>
-                <h3 style={{
-                  display: "flex",
-                  justifyContent: "center"
-                }}>Cards</h3>
-              </div>
-            </Row>
-            <Row>
-              <div style={{
-                margin: "2%"
-              }}>
-                { cards.map(card => ( 
-                <CardCard cardInfo={card} key={card.id}/> 
-                ))}
-              </div>
-          </Row>
         </Container>
     )
 }

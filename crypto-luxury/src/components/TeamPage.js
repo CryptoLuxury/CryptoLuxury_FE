@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -9,6 +9,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
 import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Navbar from "react-bootstrap/Navbar";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -16,14 +17,7 @@ import GridContainer from "./dashComps/GridContainer";
 import GridItem from "./dashComps/GridItem";
 import Button from "./dashComps/Button";
 
-//card
-import Card from "./dashComps/Card.js";
-import CardAvatar from "./dashComps/CardAvatar";
-import CardBody from "./dashComps/CardBody";
-import CustomInput from "./dashComps/CustomInput";
-import CardFooter from "./dashComps/CardFooter"
-
-import avatar from "./avatar.png"
+import TeamCard from "./dashComps/TeamCardTwo";
 
 import styles from "./dashComps/lockScreenPageStyle.js";
 
@@ -70,6 +64,8 @@ const TeamPage = () => {
 
     const classes = useStyles();
     const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+    const [team, setTeam ] = useState([]);
+
     React.useEffect(() => {
       let id = setTimeout(function() {
         setCardAnimation("");
@@ -79,6 +75,15 @@ const TeamPage = () => {
         window.clearTimeout(id);
       };
     });
+
+    useEffect(() => {
+      axios.get(`https://crypto-luxury.herokuapp.com/api/team`)
+      .then(res => {
+        setTeam([
+          ...res.data
+        ])
+      })
+    }, []);
 
     return (
         <Container>
@@ -180,75 +185,11 @@ const TeamPage = () => {
         </div>
     </Row>
     <Row>
-    <Card
-    profile
-    className={classes.customCardClass + " " + classes[cardAnimaton]}
-  >
-    <CardAvatar profile className={classes.cardAvatar}>
-      <a href="#pablo" onClick={e => e.preventDefault()}>
-        <img src={avatar} alt="team member Carl sachs" />
-      </a>
-    </CardAvatar>
-    <CardBody profile>
-      <h4 className={classes.cardTitle} style={{
-          color: "#e0a72b"
-      }}>Carl Sachs</h4>
-        <h6 style={{
-            color: "#523c0d"
-        }}>Developer</h6>
-    </CardBody>
-    <CardFooter className={classes.justifyContentCenter}>
-      <Button color="warning" round>
-        Unlock
-      </Button>
-    </CardFooter>
-  </Card>
-  <Card
-  profile
-  className={classes.customCardClass + " " + classes[cardAnimaton]}
->
-  <CardAvatar profile className={classes.cardAvatar}>
-    <a href="#pablo" onClick={e => e.preventDefault()}>
-      <img src={avatar} alt="team member Carl sachs" />
-    </a>
-  </CardAvatar>
-  <CardBody profile>
-    <h4 className={classes.cardTitle} style={{
-        color: "#e0a72b"
-    }}>Will Ryan</h4>
-      <h6 style={{
-          color: "#523c0d"
-      }}>Developer</h6>
-  </CardBody>
-  <CardFooter className={classes.justifyContentCenter}>
-    <Button color="warning" round>
-      Unlock
-    </Button>
-  </CardFooter>
-</Card>
-<Card
-profile
-className={classes.customCardClass + " " + classes[cardAnimaton]}
->
-<CardAvatar profile className={classes.cardAvatar}>
-  <a href="#pablo" onClick={e => e.preventDefault()}>
-    <img src={avatar} alt="team member Carl sachs" />
-  </a>
-</CardAvatar>
-<CardBody profile>
-  <h4 className={classes.cardTitle} style={{
-      color: "#e0a72b"
-  }}>Neko</h4>
-    <h6 style={{
-        color: "#523c0d"
-    }}>Co-Founder</h6>
-</CardBody>
-<CardFooter className={classes.justifyContentCenter}>
-  <Button color="warning" round>
-    Unlock
-  </Button>
-</CardFooter>
-</Card>
+        <Col>
+        { team.map(member => ( 
+          <TeamCard membersInfo={member} key={member.id}/> 
+          ))}
+        </Col>
     </Row>
 </Container>
     )
