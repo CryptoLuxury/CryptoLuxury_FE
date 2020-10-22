@@ -2,6 +2,7 @@ import React from "react";
 import cx from "classnames";
 import PropTypes from "prop-types";
 import Fade from "react-reveal/Fade";
+import Wobble from "react-reveal/Wobble";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -43,9 +44,11 @@ export default function Timeline(props) {
         return (
           <li className={classes.item} key={key}>
             {prop.badgeIcon ? (
+              <Wobble>
               <div className={timelineBadgeClasses}>
                 <prop.badgeIcon className={classes.badgeIcon} />
               </div>
+              </Wobble>
             ) : null}
             <div className={panelClasses}>
               {prop.title ? (

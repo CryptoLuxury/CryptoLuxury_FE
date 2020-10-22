@@ -92,17 +92,20 @@ const stories = [
     titleColor: "warning",
     body: (
       <div>
-      
+      <Slide right>
         <p>
           Called I Miss the Old Kanye That’s all it was Kanye And I love you
           like Kanye loves Kanye Famous viewing @ Figueroa and 12th in downtown
           LA 11:10PM
         </p>
+        </Slide>
+        <Slide right>
         <p>
           What if Kanye made a song about Kanye Royère doesn{"'"}t make a Polar
           bear bed but the Polar bear couch is my favorite piece of furniture we
           own It wasn’t any Kanyes Set on his goals Kanye
         </p>
+        </Slide>
       </div>
     ),
     footer: (
@@ -120,7 +123,7 @@ const stories = [
     title: "White Glove",
     titleColor: "warning",
     body: (
-      <Slide right>
+      <Slide left>
       <p>
         Wifey made the best Father{"'"}s Day meal ever. So thankful so happy so
         blessed. Thank you for making my family We just had fun with the
