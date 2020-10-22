@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import axios from "axios";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -18,6 +20,7 @@ import AddIcon from '@material-ui/icons/AddShoppingCart';
 import SweepIcon from '@material-ui/icons/DeleteSweep';
 
 import blastoise from "../Dashboard/blastoise.png";
+import { ContactPhone } from "@material-ui/icons";
 
 
 const useStyles = makeStyles(styles);
@@ -25,7 +28,19 @@ const useStyles = makeStyles(styles);
 const ProductManagerCardWatch = ({watchInfo}) => {
 
     const classes = useStyles();
-    const { title, price, description } = watchInfo;
+    const { id, title, price, description, bitpay } = watchInfo;
+
+    const handleDeleteListing = (id) => {
+      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/watches/:${id}`)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    } 
+
+    console.log(id)
 
     return (
       <div style={{
@@ -67,7 +82,7 @@ const ProductManagerCardWatch = ({watchInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button color="danger" simple justIcon>
+              <Button color="danger" onClick={handleDeleteListing({id})} simple justIcon>
                 <SweepIcon className={classes.underChartIcons} />
               </Button>
             </Tooltip>

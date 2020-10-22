@@ -26,7 +26,7 @@ const useStyles = makeStyles(styles);
 
 const ProductCard = ({watchInfo}) => {
 
-    const { title, price, description } = watchInfo;
+    const { title, price, description, bitpay } = watchInfo;
 
     const classes = useStyles();
 
@@ -64,6 +64,18 @@ const ProductCard = ({watchInfo}) => {
                 <AddIcon className={classes.underChartIcons} />
               </Button>
             </Tooltip>
+            <Tooltip
+            id="tooltip-top"
+            title="Purchase with Crypto"
+            placement="bottom"
+            classes={{ tooltip: classes.tooltip }}
+          >
+            <Button color="success" onClick={() => {
+              window.open(`${bitpay}`)
+            }} simple justIcon>
+              <AddIcon className={classes.underChartIcons} />
+            </Button>
+          </Tooltip>
           </div>
           <h4 className={classes.cardProductTitle}>
             <a style={{

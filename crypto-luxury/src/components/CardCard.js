@@ -18,6 +18,7 @@ import Edit from "@material-ui/icons/Edit";
 import ViewIcon from '@material-ui/icons/Visibility';
 import DeleteIcon from '@material-ui/icons/DeleteForever';
 import AddIcon from '@material-ui/icons/AddShoppingCart';
+import AccountIcon from '@material-ui/icons/AccountBalanceWallet';
 
 import blastoise from "./blastoise.png";
 
@@ -25,7 +26,7 @@ const useStyles = makeStyles(styles);
 
 const ProductCard = ({cardInfo}) => {
 
-    const { title, price, description } = cardInfo;
+    const { title, price, description, bitpay } = cardInfo;
 
     const classes = useStyles();
 
@@ -63,6 +64,18 @@ const ProductCard = ({cardInfo}) => {
                 <AddIcon className={classes.underChartIcons} />
               </Button>
             </Tooltip>
+            <Tooltip
+            id="tooltip-top"
+            title="Purchase with Crypto"
+            placement="bottom"
+            classes={{ tooltip: classes.tooltip }}
+          >
+            <Button color="success" simple onClick={() => {
+              window.open(`${bitpay}`)
+            }} justIcon>
+              <AccountIcon className={classes.underChartIcons} />
+            </Button>
+          </Tooltip>
           </div>
           <h4 className={classes.cardProductTitle}>
             <a style={{

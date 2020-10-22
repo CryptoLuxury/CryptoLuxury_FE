@@ -47,11 +47,13 @@ export default function ProductManager() {
         title: "",
         description: "",
         price: "",
+        bitpay: ""
     })
     const [watchProduct, setWatchProduct] = useState({
         title: "",
         description: "",
         price: "",
+        bitpay: ""
     })
 
     const [watches, setWatches] = useState([]);
@@ -305,6 +307,10 @@ export default function ProductManager() {
                   <Form.Label>Description</Form.Label>
                   <Form.Control as="textarea" rows="3" onChange={handleWatchChange} name="description" />
                 </Form.Group>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>BitPay Product Link</Form.Label>
+                <Form.Control type="text" placeholder="Title..." onChange={handleWatchChange} name="bitpay" />
+              </Form.Group>
                 </Form>
                 </Container>
                 </DialogContent>
@@ -373,6 +379,10 @@ export default function ProductManager() {
                   <Form.Group controlId="exampleForm.ControlTextarea1">
                   <Form.Label>Listing Description</Form.Label>
                   <Form.Control as="textarea" rows="3" onChange={handleCardChange} name="description" />
+                </Form.Group>
+                  <Form.Group controlId="exampleForm.ControlInput1">
+                  <Form.Label>Bitpay Product Link</Form.Label>
+                  <Form.Control type="text" placeholder="Title..." onChange={handleCardChange} name="bitpay" />
                 </Form.Group>
                 </Form>
                 </Container>

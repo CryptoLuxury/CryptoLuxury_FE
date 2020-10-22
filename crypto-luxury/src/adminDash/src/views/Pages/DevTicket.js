@@ -13,7 +13,7 @@ const ContactTicket = ({ticketInfo}) => {
 
     const classes = useStyles();
 
-    const { name, message } = ticketInfo;
+    const { name,  message } = ticketInfo;
     const [alert, setAlert] = React.useState(null);
     const hideAlert = () => {
       setAlert(null);
