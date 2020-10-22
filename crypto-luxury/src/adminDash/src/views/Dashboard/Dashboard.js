@@ -13,7 +13,6 @@ import Store from "@material-ui/icons/Store";
 import AccessTime from "@material-ui/icons/AccessTime";
 import BlurOnIcon from '@material-ui/icons/BlurOn';
 import TaskIcon from '@material-ui/icons/AssignmentTurnedIn';
-import AccountIcon from '@material-ui/icons/AccountBalanceWallet';
 import MoneyIcon from '@material-ui/icons/LocalAtm';
 import LowPriorityIcon from '@material-ui/icons/LowPriority';
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
@@ -50,6 +49,8 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
+import AccountIcon from '@material-ui/icons/AccountBalanceWallet';
+
 // @material-ui/icons
 import Close from "@material-ui/icons/Close";
 
@@ -306,28 +307,40 @@ export default function Dashboard() {
               <div className={classes.cardHoverUnder}>
                 <Tooltip
                   id="tooltip-top"
-                  title="Orders"
+                  title="Product Manager"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button simple color="warning" onClick={() => {
-                    history.push('/admin/orders')
+                  <Button simple color="transparent" onClick={() => {
+                    history.push('/admin/productmanager')
                   }} justIcon>
                     <LowPriorityIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="View Products"
+                  title="View Crypto Sales"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button color="transparent" onClick={() => {
-                    history.push('/admin/productmanager')
+                  <Button color="warning" onClick={() => {
+                    window.open('https://bitpay.com/dashboard/payments')
                   }} simple justIcon>
-                    <MoneyIcon className={classes.underChartIcons} />
+                    <AccountIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
+                <Tooltip
+                id="tooltip-top"
+                title="View Fiat Sales"
+                placement="bottom"
+                classes={{ tooltip: classes.tooltip }}
+              >
+                <Button color="warning" onClick={() => {
+                  console.log("hello")
+                }} simple justIcon>
+                  <MoneyIcon className={classes.underChartIcons} />
+                </Button>
+              </Tooltip>
               </div>
               <h4 className={classes.cardTitle}>Orders</h4>
               <p className={classes.cardCategory}>View and Manage Orders</p>
@@ -360,7 +373,9 @@ export default function Dashboard() {
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
-                  <Button simple color="warning" justIcon>
+                  <Button simple color="warning" onClick={() => {
+                    history.push('/admin/subscribers')
+                  }} justIcon>
                     <SubscriptionsIcon className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>

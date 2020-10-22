@@ -12,17 +12,12 @@ const CarouselTwo = () => {
     };
 
     return (
-        <div >
+        <div>
             <Carousel activeIndex={index} onSelect={handleSelect}>
-                <Carousel.Item>
-                <img
-                style={{
+                <Carousel.Item >
+                <img src="https://i.imgur.com/6rrabit.png" alt="team educating on cards" style={{
                     height: "70vh"
-                }}
-                    className="d-block w-100"
-                    src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1506&q=80"
-                    alt="Random picture for now"
-                />
+                }} />
         
                 <Carousel.Caption>
                     <h3>Meet the Team</h3>
@@ -34,9 +29,8 @@ const CarouselTwo = () => {
                 style={{
                     height: "70vh"
                 }}
-                    className="d-block w-100"
-                    src="https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
-                    alt="Third slide"
+                    src="https://i.imgur.com/pFcAmJd.png"
+                    alt="Japanese Card"
                 />
         
                 <Carousel.Caption>

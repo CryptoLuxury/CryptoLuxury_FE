@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 import {Container} from "react-bootstrap";
-import Carousel from "./CarouselTwo";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 //react-reveal
 import Slide from "react-reveal/Slide";
@@ -39,10 +40,6 @@ export default() => {
                 </Typing>
             </div>
 
-            
-            <div>
-                <Carousel />
-            </div>
             <Fade bottom duration={1000}>
             <div style={{
                 height: "35vh",

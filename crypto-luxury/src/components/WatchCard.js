@@ -18,6 +18,7 @@ import Edit from "@material-ui/icons/Edit";
 import ViewIcon from '@material-ui/icons/Visibility';
 import DeleteIcon from '@material-ui/icons/DeleteForever';
 import AddIcon from '@material-ui/icons/AddShoppingCart';
+import AccountIcon from '@material-ui/icons/AccountBalanceWallet';
 
 
 import Container from "react-bootstrap/Container"
@@ -73,7 +74,7 @@ const ProductCard = ({watchInfo}) => {
             <Button color="success" onClick={() => {
               window.open(`${bitpay}`)
             }} simple justIcon>
-              <AddIcon className={classes.underChartIcons} />
+              <AccountIcon className={classes.underChartIcons} />
             </Button>
           </Tooltip>
           </div>

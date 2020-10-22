@@ -1,6 +1,7 @@
 import React from "react";
 
 import Card from "react-bootstrap/Card";
+import Button from "../../components/CustomButtons/Button";
 
 const ContactTicket = ({ticketInfo}) => {
 
@@ -14,6 +15,7 @@ const ContactTicket = ({ticketInfo}) => {
                 <Card.Text>
                     {ticketInfo.message}
                 </Card.Text>
+                <Button round color="danger">Delete</Button>
             </Card.Body>
             </Card>
     )

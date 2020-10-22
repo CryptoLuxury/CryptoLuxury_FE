@@ -58,16 +58,6 @@ const ProductManagerCardWatch = ({watchInfo}) => {
             <div className={classes.cardHoverUnder}>
               <Tooltip
                 id="tooltip-top"
-                title="View Listing"
-                placement="bottom"
-                classes={{ tooltip: classes.tooltip }}
-              >
-                <Button color="warning" simple justIcon>
-                  <ViewIcon className={classes.underChartIcons} />
-                </Button>
-              </Tooltip>
-              <Tooltip
-                id="tooltip-top"
                 title="Edit Listing"
                 placement="bottom"
                 classes={{ tooltip: classes.tooltip }}

@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 
 import axios from "axios";
+import Fade from "react-reveal/Fade";
+import Slide from "react-reveal/Slide";
 
 import { useHistory } from "react-router-dom";
 
@@ -13,6 +15,10 @@ import Navbar from "react-bootstrap/Navbar";
 import GridContainer from "./dashComps/GridContainer";
 import GridItem from "./dashComps/GridItem";
 import Button from "./dashComps/Button";
+import Card from "./dashComps/Card.js";
+import CardBody from "./dashComps/CardBody.js";
+import AccountIcon from '@material-ui/icons/AccountBalanceWallet';
+import Timeline from "./dashComps/Timeline";
 
 //modal
 import Modal from "react-bootstrap/Modal";
@@ -24,6 +30,115 @@ import { makeStyles } from "@material-ui/core/styles";
 import styles from "./dashComps/dashboardStyle";
 
 const useStyles = makeStyles(styles);
+
+const stories = [
+  {
+    // First story
+    inverted: true,
+    badgeColor: "warning",
+    badgeIcon: AccountIcon,
+    title: "PSA Rated",
+    titleColor: "warning",
+    body: (
+      <Slide right>
+      <p>
+        Wifey made the best Father{"'"}s Day meal ever. So thankful so happy so
+        blessed. Thank you for making my family We just had fun with the
+        “future” theme !!! It was a fun night all together ... The always rude
+        Kanye Show at 2am Sold Out Famous viewing @ Figueroa and 12th in
+        downtown.
+      </p>
+      </Slide>
+    ),
+    footer: (
+      <Button color="warning" style={{
+        margin: "0 auto",
+        marginTop: "4%",
+        alignSelf: "center"
+      }}>View Cards</Button>
+    )
+  },
+  {
+    // Second story
+    badgeColor: "warning",
+    badgeIcon: AccountIcon,
+    title: "Luxury",
+    titleColor: "warning",
+    body: (
+      <Slide left>
+      <p>
+        Wifey made the best Father{"'"}s Day meal ever. So thankful so happy so
+        blessed. Thank you for making my family We just had fun with the
+        “future” theme !!! It was a fun night all together ... The always rude
+        Kanye Show at 2am Sold Out Famous viewing @ Figueroa and 12th in
+        downtown.
+      </p>
+      </Slide>
+    ),
+    footer: (
+      <Button color="warning" style={{
+        margin: "0 auto",
+        marginTop: "4%",
+        alignSelf: "center"
+      }}>View Watches</Button>
+    )
+  },
+  {
+    // Third story
+    inverted: true,
+    badgeColor: "warning",
+    badgeIcon: AccountIcon,
+    title: "Vaulting",
+    titleColor: "warning",
+    body: (
+      <div>
+      
+        <p>
+          Called I Miss the Old Kanye That’s all it was Kanye And I love you
+          like Kanye loves Kanye Famous viewing @ Figueroa and 12th in downtown
+          LA 11:10PM
+        </p>
+        <p>
+          What if Kanye made a song about Kanye Royère doesn{"'"}t make a Polar
+          bear bed but the Polar bear couch is my favorite piece of furniture we
+          own It wasn’t any Kanyes Set on his goals Kanye
+        </p>
+      </div>
+    ),
+    footer: (
+      <Button color="warning" style={{
+        margin: "0 auto",
+        marginTop: "4%",
+        alignSelf: "center"
+      }}>Learn More</Button>
+    )
+  },
+  {
+    // Fourth story
+    badgeColor: "warning",
+    badgeIcon: AccountIcon,
+    title: "White Glove",
+    titleColor: "warning",
+    body: (
+      <Slide right>
+      <p>
+        Wifey made the best Father{"'"}s Day meal ever. So thankful so happy so
+        blessed. Thank you for making my family We just had fun with the
+        “future” theme !!! It was a fun night all together ... The always rude
+        Kanye Show at 2am Sold Out Famous viewing @ Figueroa and 12th in
+        downtown.
+      </p>
+      </Slide>
+    ),
+    footer: (
+      <Button color="warning" style={{
+        margin: "0 auto",
+        marginTop: "4%",
+        alignSelf: "center"
+      }}>Learn More</Button>
+    )
+  }
+];
 
 
 const LandingPage = () => {
@@ -161,12 +276,10 @@ const LandingPage = () => {
             marginTop: "4%"
         }} 
         id="dropdown-basic">
-            Account
+            Menu
         </Dropdown.Toggle>
     
         <Dropdown.Menu>
-            <Dropdown.Item href="/cart">Your Cart</Dropdown.Item>
-            <Dropdown.Divider />
             <Dropdown.Item onClick={() => {
                 setShow(true)
               }}>Contact Us</Dropdown.Item>
@@ -179,6 +292,15 @@ const LandingPage = () => {
         </GridContainer>
     </Navbar>
             <div><TopSection /></div>
+            <GridContainer>
+            <GridItem xs={12}>
+              <Card plain>
+                <CardBody plain>
+                  <Timeline stories={stories} />
+                </CardBody>
+              </Card>
+            </GridItem>
+          </GridContainer>
         </Container>
     );
 };
