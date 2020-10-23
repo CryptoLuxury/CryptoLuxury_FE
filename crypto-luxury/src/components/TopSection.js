@@ -37,7 +37,6 @@ export default() => {
             display: "flex",
             flexFlow: "column nowrap",
         }}>
-            <Fade bottom>
             <div className="typingone" style={{
                 height: "4vh",
                 width: "100%",
@@ -56,7 +55,6 @@ export default() => {
                 }}>White-Glove complimentary on all orders over $100,000</h6>
                 </Typing>
             </div>
-            </Fade>
 
             <Fade bottom duration={1000}>
             <Row style={{
