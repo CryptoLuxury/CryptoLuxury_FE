@@ -85,10 +85,22 @@ export default() => {
                     <div>
                     <Carousel vertical={true} autoplay dots={false}>
                     <div>
-                      <h3 style={contentStyle}>10% OFF Select Watches</h3>
+                      <h3 style={{
+                        height: '160px',
+                        color: '#fff',
+                        lineHeight: '160px',
+                        textAlign: 'center',
+                        background: '#a16f0b',
+                      }}>10% OFF Select Watches</h3>
                     </div>
                     <div>
-                      <h3 style={contentStyle}>25% OFF Select Pokemon Cards</h3>
+                      <h3 style={{
+                        height: '160px',
+                        color: '#fff',
+                        lineHeight: '160px',
+                        textAlign: 'center',
+                        background: '#ffaf0f',
+                      }}>25% OFF Select Pokemon Cards</h3>
                     </div>
                   </Carousel>
                     </div>
@@ -100,12 +112,24 @@ export default() => {
                     marginBottom: "0"
                 }}>
                 <div>
-                <Carousel autoplay dots={false} vertical={true}>
+                <Carousel vertical autoplay dots={false}>
                 <div>
-                  <h3 style={contentStyle2}>Vaulting Available Free on ALL ORDERS!</h3>
+                  <h3 style={{
+                    height: '160px',
+                    color: '#fff',
+                    lineHeight: '160px',
+                    textAlign: 'center',
+                    background: '#ffaf0f',
+                  }}>Vaulting Available Free on ALL ORDERS!</h3>
                 </div>
                 <div>
-                  <h3 style={contentStyle2}>White-Glove Complimentary on orders over $100,000!</h3>
+                  <h3 style={{
+                    height: '160px',
+                    color: '#fff',
+                    lineHeight: '160px',
+                    textAlign: 'center',
+                    background: '#a16f0b',
+                  }}>White-Glove Complimentary on orders over $100,000!</h3>
                 </div>
               </Carousel>
                 </div>

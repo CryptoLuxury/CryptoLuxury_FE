@@ -2,6 +2,9 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Footer from "./dashComps/Footer";
+
+import SweetAlert from "react-bootstrap-sweetalert";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 //modal
@@ -17,13 +20,56 @@ import GridContainer from "./dashComps/GridContainer";
 import GridItem from "./dashComps/GridItem";
 import Button from "./dashComps/Button";
 
-import TeamCard from "./dashComps/TeamCardTwo";
+import TeamCardTwo from "./dashComps/TeamCardTwo";
 
 import styles from "./dashComps/lockScreenPageStyle.js";
 
 const useStyles = makeStyles(styles);
 
 const TeamPage = () => {
+
+  const [devTicketModal, setDevTicketModal] = useState(false);
+  const [devTicket, setDevTicket] = useState({
+    name: "",
+    email: "",
+    message: ""
+  })
+  const [watches, setWatches] = useState([]);
+  const [cards, setCards] = useState([]);
+  const [alert, setAlert] = React.useState(null);
+  const hideAlert = () => {
+    setAlert(null);
+  }
+
+  const successAlert = () => {
+    setAlert(
+      <SweetAlert
+        success
+        style={{ display: "block", marginTop: "100px" }}
+        title="Success!"
+        onConfirm={() => hideAlert()}
+        onCancel={() => hideAlert()}
+        confirmBtnCssClass={classes.button + " " + classes.success}
+      >
+        You've submitted a developer ticket!
+      </SweetAlert>
+    );
+  };
+
+  const errorAlert = () => {
+    setAlert(
+      <SweetAlert
+        danger
+        style={{ display: "block", marginTop: "80px" }}
+        title="Error!"
+        onConfirm={() => hideAlert()}
+        onCancel={() => hideAlert()}
+        confirmBtnCssClass={classes.button + " " + classes.success}
+      >
+        That's not supposed to happen :(
+      </SweetAlert>
+    );
+  };
 
   const [show, setShow] = useState(false);
 
@@ -123,34 +169,43 @@ const TeamPage = () => {
         </Modal>
         <Navbar bg="dark" variant="light" className="marblebar" sticky="top">
         <Container>
-        <div>
+        <Row style={{
+          display: "flex",
+          margin: "0 auto",
+          flexFlow: "row wrap",
+          justifyContent: "space-between"
+        }}>
+        <Row style={{
+          margin: "0 auto"
+        }}>
         <Navbar.Brand href="/" style={{color: "#e39c0e"}}>
         Crypto Luxury
         </Navbar.Brand>
-        </div>
-        <div>
-        <GridContainer>
-        <GridItem>
+        </Row>
+        <Row style={{
+          margin: "0 auto"
+        }}>
+        <Col>
         <Button onClick={() => {
             history.push("/")
         }} color="warning" style={{
             width: "100px"
         }}>Home</Button>
-        </GridItem>
-        <GridItem>
+        </Col>
+        <Col>
         <Button onClick={() => {
             history.push("/products")
         }} color="warning" style={{
             width: "100px"
         }}>Products</Button>
-        </GridItem>
-        <GridItem>
+        </Col>
+        <Col>
         <Button onClick={handleShow} color="warning" style={{
           width: "100px"
       }}>Contact</Button>
-        </GridItem>
-        </GridContainer>
-        </div>
+        </Col>
+      </Row>
+      </Row>
         </Container>
         
     </Navbar>
@@ -175,16 +230,17 @@ const TeamPage = () => {
         }}>We at Crypto Luxury are committed to bringing you the highest-quality service to match our high-quality products and prices.  Meet the people responsible.</h5>
         </div>
     </Row>
-    <Row style={{
-      marginTop: "3%",
-      marginBottom: "3%"
+    <Col style={{
+      marginTop: "5%"
     }}>
-        <Col>
+        <Row style={{
+          marginBottom: "7.5%"
+        }}>
         { team.map(member => ( 
-          <TeamCard membersInfo={member} key={member.id}/> 
+          <TeamCardTwo membersInfo={member} key={member.id}/> 
           ))}
-        </Col>
-    </Row>
+        </Row>
+    </Col>
     </Container>
     <Row>
         <Footer />

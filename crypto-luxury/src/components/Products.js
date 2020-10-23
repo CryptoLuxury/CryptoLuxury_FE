@@ -120,34 +120,43 @@ const Products = () => {
         </Modal>
         <Navbar bg="dark" variant="light" className="marblebar" sticky="top">
         <Container>
-        <div>
+        <Row style={{
+          display: "flex",
+          margin: "0 auto",
+          flexFlow: "row wrap",
+          justifyContent: "space-between"
+        }}>
+        <Row style={{
+          margin: "0 auto"
+        }}>
         <Navbar.Brand href="/" style={{color: "#e39c0e"}}>
         Crypto Luxury
         </Navbar.Brand>
-        </div>
-        <div>
-        <GridContainer>
-        <GridItem>
+        </Row>
+        <Row style={{
+          margin: "0 auto"
+        }}>
+        <Col>
         <Button onClick={() => {
             history.push("/")
         }} color="warning" style={{
             width: "100px"
         }}>Home</Button>
-        </GridItem>
-        <GridItem>
+        </Col>
+        <Col>
         <Button onClick={() => {
             history.push("/team")
         }} color="warning" style={{
             width: "100px"
         }}>Team</Button>
-        </GridItem>
-        <GridItem>
+        </Col>
+        <Col>
         <Button onClick={handleShow} color="warning" style={{
           width: "100px"
       }}>Contact</Button>
-        </GridItem>
-        </GridContainer>
-        </div>
+        </Col>
+      </Row>
+      </Row>
         </Container>
         
     </Navbar>

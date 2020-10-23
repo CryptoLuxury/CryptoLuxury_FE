@@ -3,12 +3,7 @@ import React from "react";
 import avatar from "./avatar.png";
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "../../assets/jss/material-dashboard-pro-react/views/dashboardStyle.js";
-
-import Tooltip from "@material-ui/core/Tooltip";
-import Icon from "@material-ui/core/Icon";
-import Button from "../../components/CustomButtons/Button";
 import Card from "../../components/Card/Card.js";
-import CardHeader from "../../components/Card/CardHeader.js";
 import CardBody from "../../components/Card/CardBody.js";
 import CardFooter from "../../components/Card/CardFooter.js";
 import CardAvatar from "../../components/Card/CardAvatar";
@@ -30,10 +25,10 @@ const TeamCard = ({membersInfo}) => {
 
   const classes = useStyles();
 
-    const { name, role } = membersInfo;
+  const { name, role } = membersInfo;
 
     return (
-
+      <div>
         <Card
         profile
         className={classes.customCardClass + " " + classes[cardAnimaton]}
@@ -52,16 +47,9 @@ const TeamCard = ({membersInfo}) => {
             }}>{role}</h6>
         </CardBody>
         <CardFooter className={classes.justifyContentCenter}>
-        <div style={{
-          margin: "0 auto"
-        }}>
-          <Button color="warning" round>
-            Message
-          </Button>
-        </div>
         </CardFooter>
       </Card>
-
+        </div>
     )
 }
 
