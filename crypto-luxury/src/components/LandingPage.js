@@ -280,24 +280,9 @@ const LandingPage = () => {
         }}>Products</Button>
         </GridItem>
         <GridItem>
-        <Dropdown>
-        <Dropdown.Toggle variant="dark"  style={{
-            width: "100px",
-            marginTop: "4%"
-        }} 
-        id="dropdown-basic">
-            Menu
-        </Dropdown.Toggle>
-    
-        <Dropdown.Menu>
-            <Dropdown.Item onClick={() => {
-                setShow(true)
-              }}>Contact Us</Dropdown.Item>
-              <Dropdown.Divider />
-            <Dropdown.Item href="/login">Login</Dropdown.Item>
-            <Dropdown.Item href="/register">Register</Dropdown.Item>
-        </Dropdown.Menu>
-        </Dropdown>
+        <Button onClick={handleShow} color="warning" style={{
+          width: "100px"
+      }}>Contact</Button>
         </GridItem>
         </GridContainer>
     </Navbar>
