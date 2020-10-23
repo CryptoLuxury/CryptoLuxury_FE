@@ -11,7 +11,7 @@ import { useHistory } from "react-router-dom";
 
 import Marble from "./Marble.png";
 
-import TopSection from './CarouselAlternative';
+import TopSection from './TopSection';
 import Container from "react-bootstrap/Container";
 import Dropdown from "react-bootstrap/Dropdown";
 import 'react-responsive-carousel/lib/styles/carousel.min.css';

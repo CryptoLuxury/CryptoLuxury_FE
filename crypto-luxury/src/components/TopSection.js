@@ -4,10 +4,14 @@ import styled from "styled-components";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import "./TopSection.css";
+
 import {Container} from "react-bootstrap";
 
 import { Card } from 'antd';
 import 'antd/dist/antd.css';
+import marbleLight from "./dashComps/marbleLight.png";
+import marbleDark from "./marbleDark.png";
 
 //react-reveal
 import Slide from "react-reveal/Slide";
@@ -34,9 +38,8 @@ export default() => {
             flexFlow: "column nowrap",
         }}>
 
-            <div style={{
+            <div className="typingone" style={{
                 height: "4vh",
-                background: "grey",
                 width: "100%",
                 margin: ".2%",
                 marginTop: "0",
@@ -49,6 +52,7 @@ export default() => {
                     textAlign: "center",
                     paddingTop: ".5%",
                     paddingBottom: ".2%",
+                    color: "white"
                 }}>White-Glove complimentary on all orders over $100,000</h6>
                 </Typing>
             </div>

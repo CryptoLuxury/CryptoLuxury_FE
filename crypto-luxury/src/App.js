@@ -6,8 +6,6 @@ import LandingPage from './components/LandingPage';
 import AdminLayout from "../src/adminDash/src/layouts/Admin";
 import AuthLayout from "../src/adminDash/src/layouts/Auth";
 import RtlLayout from "../src/adminDash/src/layouts/RTL";
-import UserLoginLayout from "./components/dashComps/UserLog";
-import UserRegisterLayout from "./components/dashComps/UserRegister";
 import Cart from "./components/Cart";
 import Products from "./components/Products";
 import Team from "./components/TeamPage";
@@ -29,8 +27,6 @@ function App() {
         <Route path="/admin" component={AdminLayout} />
         <Route path="/admin/rtl" component={RtlLayout} />
         <Route path="/admin/login" component={AuthLayout} />
-        <Route path="/login" component={UserLoginLayout} />
-        <Route path="/register" component={UserRegisterLayout} />
         <Route path="/cart" component={Cart} />
         <Route path="/products" component={Products} />
         <Route path="/team" component={Team} />
