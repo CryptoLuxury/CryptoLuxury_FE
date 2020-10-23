@@ -277,6 +277,17 @@ export default function ProductManager() {
         })
     }
 
+
+    const handleDeleteListing = (id) => {
+      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/watches/:${id}`)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    } 
+
   const handleWatchSubmit = (e) => {
     e.preventDefault();
     axios.post(`https://crypto-luxury.herokuapp.com/api/store/watches`, watchProduct)

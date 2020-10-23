@@ -40,8 +40,6 @@ const ProductManagerCardWatch = ({watchInfo}) => {
       })
     } 
 
-    console.log(id)
-
     return (
       <div style={{
         height: "60vh",

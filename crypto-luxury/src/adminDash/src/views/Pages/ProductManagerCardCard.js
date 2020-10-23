@@ -23,8 +23,10 @@ const useStyles = makeStyles(styles);
 
 const ProductManagerCardCard = ({cardInfo}) => {
 
+  
+
     const classes = useStyles();
-    const { title, price, description } = cardInfo;
+    const { id, title, price, description } = cardInfo;
 
     return (
       <div style={{

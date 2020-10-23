@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import {Container} from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import HealthCard from 'react-health-card';
+
+import {Container} from "react-bootstrap";
 
 import { Card } from 'antd';
 import 'antd/dist/antd.css';
@@ -15,10 +15,17 @@ import Fade from "react-reveal/Fade";
 
 //typing
 import Typing from "react-typing-animation";
-
-const { Meta } = Card;
+import { Carousel } from 'antd';
 
 export default() => {
+
+    const contentStyle = {
+        height: '160px',
+        color: '#fff',
+        lineHeight: '160px',
+        textAlign: 'center',
+        background: '#364d79',
+      };
 
     return (
         <Container style={{
@@ -45,43 +52,50 @@ export default() => {
                 }}>White-Glove complimentary on all orders over $100,000</h6>
                 </Typing>
             </div>
+            <Row>
+            
+            </Row>
 
             <Fade bottom duration={1000}>
             <Row style={{
-                background: "white",
                 width: "100%",
                 display: "flex",
-                flexFlow: "row nowrap",
-                justifyContent: "space-evenly",
+                justifyContent: "center",
                 margin: ".2%",
                 alignSelf: "center"
             }}>
-                
-                <Col>
-                <Card
-                hoverable
-                style={{ width: 240 }}
-                cover={<img alt="watchbox" src="https://images.pexels.com/photos/380782/pexels-photo-380782.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />}
-              >
-                <Meta title="10% OFF Select Watches" description="" />
-              </Card>
-                </Col>
-                <Col style={{
-                    background: "#141414",
-                    width: "100%",
-                    margin: ".1%",
-                    borderRadius: "1%"
+
+
+            <Carousel autoplay>
+                <div style={{
+                    background: "red"
                 }}>
-                    two
-                </Col>
-                <Col style={{
-                    background: "#181818",
-                    width: "100%",
-                    margin: ".1%",
-                    borderRadius: "1%"
+                <h3>1</h3>
+                </div>
+                <div style={{
+                    background: "green"
                 }}>
-                    three
-                </Col>
+                <h3>2</h3>
+                </div>
+                <div style={{
+                    background: "purple"
+                }}>
+                <h3>3</h3>
+                </div>
+                <div style={{
+                    background: "blue"
+                }}>
+                <h3>4</h3>
+                </div>
+            </Carousel>
+
+
+
+
+
+
+
+
 
             </Row>
             </Fade>
