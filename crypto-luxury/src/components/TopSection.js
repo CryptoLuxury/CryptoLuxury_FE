@@ -37,7 +37,7 @@ export default() => {
             display: "flex",
             flexFlow: "column nowrap",
         }}>
-
+            <Fade bottom>
             <div className="typingone" style={{
                 height: "4vh",
                 width: "100%",
@@ -56,9 +56,7 @@ export default() => {
                 }}>White-Glove complimentary on all orders over $100,000</h6>
                 </Typing>
             </div>
-            <Row>
-            
-            </Row>
+            </Fade>
 
             <Fade bottom duration={1000}>
             <Row style={{
@@ -68,38 +66,6 @@ export default() => {
                 margin: ".2%",
                 alignSelf: "center"
             }}>
-
-
-            <Carousel autoplay>
-                <div style={{
-                    background: "red"
-                }}>
-                <h3>1</h3>
-                </div>
-                <div style={{
-                    background: "green"
-                }}>
-                <h3>2</h3>
-                </div>
-                <div style={{
-                    background: "purple"
-                }}>
-                <h3>3</h3>
-                </div>
-                <div style={{
-                    background: "blue"
-                }}>
-                <h3>4</h3>
-                </div>
-            </Carousel>
-
-
-
-
-
-
-
-
 
             </Row>
             </Fade>
