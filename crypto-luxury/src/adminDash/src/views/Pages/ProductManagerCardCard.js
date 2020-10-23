@@ -80,7 +80,7 @@ const ProductManagerCardCard = ({cardInfo}) => {
             textAlign: "center",
             height: "5vh"
           }}className={classes.cardProductDesciprion}>
-            {description}, testing
+            {description}
           </p>
         </CardBody>
         <CardFooter product>
