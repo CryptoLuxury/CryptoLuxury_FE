@@ -5,6 +5,9 @@ import Fade from "react-reveal/Fade";
 import Slide from "react-reveal/Slide";
 import Footer from "./dashComps/Footer";
 
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import "./Navbar.css"
 
 import { useHistory } from "react-router-dom";
@@ -295,15 +298,17 @@ const LandingPage = () => {
         
     </Navbar>
             <div><TopSection /></div>
-            <GridContainer>
-            <GridItem xs={12}>
+            <Container>
+            <Row xs={12}>
+              <Col>
               <Card plain>
                 <CardBody plain>
                   <Timeline stories={stories} />
                 </CardBody>
               </Card>
-            </GridItem>
-          </GridContainer>
+              </Col>
+            </Row>
+          </Container>
           <div>
               <Testimonies />
           </div>

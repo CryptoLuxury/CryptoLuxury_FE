@@ -42,7 +42,7 @@ export default function Timeline(props) {
             [classes.timelineSimpleBadge]: simple
           });
         return (
-          <li className={classes.item} key={key} style={{width: "85%", margin: "0 auto"}}>
+          <li className={classes.item} key={key} style={{width: "95%", margin: "0 auto"}}>
             {prop.badgeIcon ? (
               <Wobble>
               <div className={timelineBadgeClasses}>
