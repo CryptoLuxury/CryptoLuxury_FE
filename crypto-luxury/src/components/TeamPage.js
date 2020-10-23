@@ -86,7 +86,7 @@ const TeamPage = () => {
     }, []);
 
     return (
-        <Container>
+        <div>
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Submit a Ticket</Modal.Title>
@@ -106,7 +106,7 @@ const TeamPage = () => {
             </Form.Text>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Example textarea</Form.Label>
+          <Form.Label>Message</Form.Label>
           <Form.Control as="textarea" rows="3" />
         </Form.Group>
           </Form>
@@ -121,10 +121,14 @@ const TeamPage = () => {
           </Button>
         </Modal.Footer>
         </Modal>
-        <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/">
+        <Navbar bg="dark" variant="light" className="marblebar" sticky="top">
+        <Container>
+        <div>
+        <Navbar.Brand href="/" style={{color: "#e39c0e"}}>
         Crypto Luxury
         </Navbar.Brand>
+        </div>
+        <div>
         <GridContainer>
         <GridItem>
         <Button onClick={() => {
@@ -141,29 +145,16 @@ const TeamPage = () => {
         }}>Products</Button>
         </GridItem>
         <GridItem>
-        <Dropdown>
-        <Dropdown.Toggle variant="dark"  style={{
-            width: "100px",
-            marginTop: "4%"
-        }} 
-        id="dropdown-basic">
-            Account
-        </Dropdown.Toggle>
-    
-        <Dropdown.Menu>
-            <Dropdown.Item href="/cart">Your Cart</Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item onClick={() => {
-              setShow(true)
-            }}>Contact Us</Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item href="/login">Login</Dropdown.Item>
-            <Dropdown.Item href="/register">Register</Dropdown.Item>
-        </Dropdown.Menu>
-        </Dropdown>
+        <Button onClick={handleShow} color="warning" style={{
+          width: "100px"
+      }}>Contact</Button>
         </GridItem>
         </GridContainer>
+        </div>
+        </Container>
+        
     </Navbar>
+    <Container>
     <Row>
         <div style={{
             width: "70%",
@@ -194,10 +185,11 @@ const TeamPage = () => {
           ))}
         </Col>
     </Row>
-    <div>
+    </Container>
+    <Row>
         <Footer />
-    </div>
-</Container>
+    </Row>
+</div>
     )
 }
 

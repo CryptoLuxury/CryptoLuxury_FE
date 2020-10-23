@@ -50,6 +50,7 @@ export default function Timeline(props) {
               </div>
               </Wobble>
             ) : null}
+            <Fade bottom>
             <div className={panelClasses}>
               {prop.title ? (
                 <div className={classes.timelineHeading}>
@@ -68,6 +69,7 @@ export default function Timeline(props) {
                 <div className={classes.timelineFooter}>{prop.footer}</div></Fade>
               ) : null}
             </div>
+            </Fade>
           </li>
         );
       })}
