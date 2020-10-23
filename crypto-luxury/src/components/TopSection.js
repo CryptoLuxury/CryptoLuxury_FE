@@ -7,14 +7,7 @@ import Col from "react-bootstrap/Col";
 import "./TopSection.css";
 
 import {Container} from "react-bootstrap";
-
-import { Card } from 'antd';
 import 'antd/dist/antd.css';
-import marbleLight from "./dashComps/marbleLight.png";
-import marbleDark from "./marbleDark.png";
-
-//react-reveal
-import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
 
 //typing
@@ -29,6 +22,13 @@ export default() => {
         lineHeight: '160px',
         textAlign: 'center',
         background: '#364d79',
+      };
+      const contentStyle2 = {
+        height: '160px',
+        color: '#fff',
+        lineHeight: '160px',
+        textAlign: 'center',
+        background: 'red',
       };
 
     return (
@@ -69,59 +69,60 @@ export default() => {
 
             </Row>
             </Fade>
-            <Fade up>
-            <div style={{
-                height: "30vh",
-                background: "#959595",
-                width: "100%",
-                display: "flex",
-                flexFlow: "row nowrap",
-                justifyContent: "space-evenly",
-                margin: ".2%",
-                alignSelf: "center"
-            }}>
-                another something here maybe a promotion
-            </div>
-            </Fade>
-            
-            <div style={{
-                height: "30vh",
+            <Row style={{
                 background: "white",
-                width: "100%",
                 display: "flex",
-                flexFlow: "row nowrap",
-                justifyContent: "space-evenly",
-                margin: ".2%",
+                justifyContent: "row nowrap",
+                width: "100%",
+                margin: ".1%",
                 alignSelf: "center",
-                marginBottom: ".35%",
             }}>
-            <Slide left duration={750}>
-                <div style={{
-                    background: "#d1a303",
-                    height: "100%",
-                    width: "50%",
+                <Col style={{
                     alignSelf: "center",
                     margin: ".1%",
                     borderRadius: "1%"
                 }}>
-                    one
-                </div>
-            </Slide>
-            <Slide right duration={750}>
-                <div style={{
-                    background: "#d1a303",
-                    height: "100%",
-                    width: "50%",
+                    <div>
+                    <Carousel vertical={true} autoplay dots={false}>
+                    <div>
+                      <h3 style={contentStyle}>1</h3>
+                    </div>
+                    <div>
+                      <h3 style={contentStyle}>2</h3>
+                    </div>
+                    <div>
+                      <h3 style={contentStyle}>3</h3>
+                    </div>
+                    <div>
+                      <h3 style={contentStyle}>4</h3>
+                    </div>
+                  </Carousel>
+                    </div>
+                </Col>
+                <Col style={{
                     alignSelf: "center",
                     margin: ".1%",
                     borderRadius: "1%"
                 }}>
-                    two
+                <div>
+                <Carousel autoplay dots={false} vertical={true}>
+                <div>
+                  <h3 style={contentStyle2}>1</h3>
                 </div>
-            </Slide>
+                <div>
+                  <h3 style={contentStyle2}>2</h3>
+                </div>
+                <div>
+                  <h3 style={contentStyle2}>3</h3>
+                </div>
+                <div>
+                  <h3 style={contentStyle2}>4</h3>
+                </div>
+              </Carousel>
+                </div>
+                </Col>
 
-            </div>
-        
+            </Row>
         </Container>
     )
 }
