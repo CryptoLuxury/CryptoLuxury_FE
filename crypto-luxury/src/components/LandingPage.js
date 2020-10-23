@@ -5,7 +5,11 @@ import Fade from "react-reveal/Fade";
 import Slide from "react-reveal/Slide";
 import Footer from "./dashComps/Footer";
 
+import "./Navbar.css"
+
 import { useHistory } from "react-router-dom";
+
+import Marble from "./Marble.png";
 
 import TopSection from './CarouselAlternative';
 import Container from "react-bootstrap/Container";
@@ -220,7 +224,7 @@ const LandingPage = () => {
       }
 
     return (
-        <Container>
+        <div>
         {alert}
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -256,8 +260,8 @@ const LandingPage = () => {
           </Button>
         </Modal.Footer>
         </Modal>
-        <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/">
+        <Navbar bg="dark" variant="light" className="marblebar" sticky="top">
+        <Navbar.Brand href="/" style={{color: "#e39c0e"}}>
         Crypto Luxury
         </Navbar.Brand>
         <GridContainer>
@@ -313,7 +317,7 @@ const LandingPage = () => {
           <div>
               <Footer />
           </div>
-        </Container>
+        </div>
     );
 };
 

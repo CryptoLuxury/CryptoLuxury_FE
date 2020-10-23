@@ -15,7 +15,7 @@ import FormatQuote from "@material-ui/icons/FormatQuote";
 import { makeStyles } from "@material-ui/core/styles";
 
 import image from "./dashComps/card-profile1-square.jpg";
-import image2 from "./card-profile2-square.jpg";
+import image2 from "./avatar.png";
 
 import {
     cardTitle,
