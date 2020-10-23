@@ -1,6 +1,8 @@
 import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
+
+import { loadStripe } from '@stripe/stripe-js';
 import Tooltip from "@material-ui/core/Tooltip";
 import Icon from "@material-ui/core/Icon";
 import styles from "./dashComps/dashboardStyle.js";
@@ -11,6 +13,7 @@ import CardHeader from "./dashComps/CardHeader.js";
 import CardIcon from "./dashComps/CardIcon.js";
 import CardBody from "./dashComps/CardBody.js";
 import CardFooter from "./dashComps/CardFooter.js";
+import SweetAlert from "react-bootstrap-sweetalert";
 
 //icons
 import FlightIcon from '@material-ui/icons/FlightTakeoff';
@@ -24,11 +27,52 @@ import blastoise from "./blastoise.png";
 
 const useStyles = makeStyles(styles);
 
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
 const ProductCard = ({cardInfo}) => {
 
     const { title, price, description, bitpay } = cardInfo;
 
     const classes = useStyles();
+
+      const [alert, setAlert] = React.useState(null);
+  const hideAlert = () => {
+    setAlert(null);
+  }
+
+    const errorAlert = () => {
+      setAlert(
+        <SweetAlert
+          danger
+          style={{ display: "block", marginTop: "80px" }}
+          title="Error!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          That's not supposed to happen :(
+        </SweetAlert>
+      );
+    };
+  
+    const handleStripeClick = async (event) => {
+      // Get Stripe.js instance
+      const stripe = await stripePromise;
+  
+      // Call your backend to create the Checkout Session
+      const response = await fetch(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, { method: 'POST' });
+  
+      const session = await response.json();
+  
+      // When the customer clicks on the button, redirect them to Checkout.
+      const result = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+  
+      if (result.error) {
+        errorAlert();
+      }
+    };
 
     return (
       <div style={{
@@ -36,6 +80,7 @@ const ProductCard = ({cardInfo}) => {
         width: "33%",
         marginTop: "5%"
       }}>
+      {alert}
         <Card product className={classes.cardHover}>
         <CardHeader image className={classes.cardHeaderHover}>
           <div>
@@ -60,7 +105,7 @@ const ProductCard = ({cardInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button color="warning" simple justIcon>
+              <Button onClick={handleStripeClick} color="warning" simple justIcon>
                 <AddIcon className={classes.underChartIcons} />
               </Button>
             </Tooltip>

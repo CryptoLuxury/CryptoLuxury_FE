@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import axios from "axios";
 import Fade from "react-reveal/Fade";
 import Slide from "react-reveal/Slide";
+import Footer from "./dashComps/Footer";
 
 import { useHistory } from "react-router-dom";
 
@@ -308,6 +309,9 @@ const LandingPage = () => {
           </GridContainer>
           <div>
               <Testimonies />
+          </div>
+          <div>
+              <Footer />
           </div>
         </Container>
     );

@@ -1,31 +1,82 @@
 import React from "react";
 
+import { loadStripe } from '@stripe/stripe-js';
+
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
-import Icon from "@material-ui/core/Icon";
 import styles from "./dashComps/dashboardStyle.js";
 import Button from "./dashComps/Button.js";
-import Danger from "./dashComps/Danger.js";
 import Card from "./dashComps/Card.js";
 import CardHeader from "./dashComps/CardHeader.js";
-import CardIcon from "./dashComps/CardIcon.js";
 import CardBody from "./dashComps/CardBody.js";
 import CardFooter from "./dashComps/CardFooter.js";
+import SweetAlert from "react-bootstrap-sweetalert";
 
 //icons
 import FlightIcon from '@material-ui/icons/FlightTakeoff';
-import Edit from "@material-ui/icons/Edit";
 import ViewIcon from '@material-ui/icons/Visibility';
-import DeleteIcon from '@material-ui/icons/DeleteForever';
 import AddIcon from '@material-ui/icons/AddShoppingCart';
 import AccountIcon from '@material-ui/icons/AccountBalanceWallet';
 
-
-import Container from "react-bootstrap/Container"
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const useStyles = makeStyles(styles);
 
 const ProductCard = ({watchInfo}) => {
+
+  const [alert, setAlert] = React.useState(null);
+  const hideAlert = () => {
+    setAlert(null);
+  }
+
+  const successAlert = () => {
+    setAlert(
+      <SweetAlert
+        success
+        style={{ display: "block", marginTop: "100px" }}
+        title="Success!"
+        onConfirm={() => hideAlert()}
+        onCancel={() => hideAlert()}
+        confirmBtnCssClass={classes.button + " " + classes.success}
+      >
+        You've submitted a ticket!
+      </SweetAlert>
+    );
+  };
+
+    const errorAlert = () => {
+    setAlert(
+      <SweetAlert
+        danger
+        style={{ display: "block", marginTop: "80px" }}
+        title="Error!"
+        onConfirm={() => hideAlert()}
+        onCancel={() => hideAlert()}
+        confirmBtnCssClass={classes.button + " " + classes.success}
+      >
+        That's not supposed to happen :(
+      </SweetAlert>
+    );
+  };
+
+  const handleStripeClick = async (event) => {
+    // Get Stripe.js instance
+    const stripe = await stripePromise;
+
+    // Call your backend to create the Checkout Session
+    const response = await fetch(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, { method: 'POST' });
+
+    const session = await response.json();
+
+    // When the customer clicks on the button, redirect them to Checkout.
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+
+    if (result.error) {
+      errorAlert();
+    }
+  };
 
     const { title, price, description, bitpay } = watchInfo;
 
@@ -37,6 +88,7 @@ const ProductCard = ({watchInfo}) => {
         width: "33%",
         marginTop: "5%"
       }}>
+      {alert}
         <Card product className={classes.cardHover}>
         <CardHeader image className={classes.cardHeaderHover}>
           <div>
@@ -61,7 +113,7 @@ const ProductCard = ({watchInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button color="warning" simple justIcon>
+              <Button onClick={handleStripeClick} color="warning" simple justIcon>
                 <AddIcon className={classes.underChartIcons} />
               </Button>
             </Tooltip>

@@ -12,6 +12,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import GridContainer from "./dashComps/GridContainer";
 import GridItem from "./dashComps/GridItem";
 import CardCard from "./CardCard";
+import Footer from "./dashComps/Footer";
 
 import Button from "./dashComps/Button";
 
@@ -211,6 +212,9 @@ const Products = () => {
               ))}
             </Col>
             </Row>
+            <div>
+                <Footer />
+            </div>
         </Container>
     )
 }

@@ -15,6 +15,7 @@ import FormatQuote from "@material-ui/icons/FormatQuote";
 import { makeStyles } from "@material-ui/core/styles";
 
 import image from "./dashComps/card-profile1-square.jpg";
+import image2 from "./card-profile2-square.jpg";
 
 import {
     cardTitle,
@@ -81,11 +82,14 @@ const Testimonies = ( ) => {
 
     return (
         <Container>
-        <GridItem xs={12} sm={12} md={11}>
+        <GridItem xs={12} sm={12} md={11} style={{marginBottom: "10%"}}>
             <Card testimonial>
+            <Fade top>
             <div className={classes.testimonialIcon}>
                 <FormatQuote />
             </div>
+            </Fade>
+            <Fade bottom>
             <CardBody>
                 <h5 className={classes.cardTestimonialDescription}>
                 Your products, all the kits that I have downloaded from your
@@ -93,17 +97,84 @@ const Testimonies = ( ) => {
                 mixtures, cards... everything. Keep up the great work!
                 </h5>
             </CardBody>
+            </Fade>
             <CardFooter testimonial>
-                <h4 className={classes.cardTitle}>Alec Thompson</h4>
-                <h6 className={classes.cardCategory}>@ALECTHOMPSON</h6>
+            <Fade bottom>
+            <h4 className={classes.cardTitle}>Will Ryan</h4>
+            </Fade>
+            <Fade bottom>
+            <h6 className={classes.cardCategory}>@WilliamRyan</h6>
+            </Fade>
                 <CardAvatar testimonial testimonialFooter>
                 <div>
-                    <img src={image} alt="..." />
+                    <img src={image2} alt="business owner one" />
                 </div>
                 </CardAvatar>
             </CardFooter>
             </Card>
         </GridItem>
+        <GridItem xs={12} sm={12} md={11} style={{marginBottom: "10%"}}>
+        <Card testimonial>
+        <Fade top>
+        <div className={classes.testimonialIcon}>
+            <FormatQuote />
+        </div>
+        </Fade>
+        <Fade bottom>
+        <CardBody>
+            <h5 className={classes.cardTestimonialDescription}>
+            Your products, all the kits that I have downloaded from your
+            site and worked with are sooo cool! I love the color
+            mixtures, cards... everything. Keep up the great work!
+            </h5>
+        </CardBody>
+        </Fade>
+        <CardFooter testimonial>
+        <Fade bottom>
+            <h4 className={classes.cardTitle}>Will Ryan</h4>
+            </Fade>
+            <Fade bottom>
+            <h6 className={classes.cardCategory}>@WilliamRyan</h6>
+            </Fade>
+            <CardAvatar testimonial testimonialFooter>
+            <div>
+                <img src={image} alt="business owner two" />
+            </div>
+            </CardAvatar>
+        </CardFooter>
+        </Card>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={11} style={{marginBottom: "10%"}}>
+        <Card testimonial>
+        <Fade top>
+        <div className={classes.testimonialIcon}>
+            <FormatQuote />
+        </div>
+        </Fade>
+        <Fade bottom>
+        <CardBody>
+            <h5 className={classes.cardTestimonialDescription}>
+            Your products, all the kits that I have downloaded from your
+            site and worked with are sooo cool! I love the color
+            mixtures, cards... everything. Keep up the great work!
+            </h5>
+        </CardBody>
+        </Fade>
+        <CardFooter testimonial>
+        <Fade bottom>
+            <h4 className={classes.cardTitle}>Will Ryan</h4>
+            </Fade>
+            <Fade bottom>
+            <h6 className={classes.cardCategory}>@WilliamRyan</h6>
+            </Fade>
+            <CardAvatar testimonial testimonialFooter>
+            <div>
+                <img src={image2} alt="business owner three" />
+            </div>
+            </CardAvatar>
+        </CardFooter>
+        </Card>
+    </GridItem>
         </Container>
     )
 }
