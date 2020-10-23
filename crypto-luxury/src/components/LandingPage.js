@@ -260,10 +260,15 @@ const LandingPage = () => {
           </Button>
         </Modal.Footer>
         </Modal>
+
         <Navbar bg="dark" variant="light" className="marblebar" sticky="top">
+        <Container>
+        <div>
         <Navbar.Brand href="/" style={{color: "#e39c0e"}}>
         Crypto Luxury
         </Navbar.Brand>
+        </div>
+        <div>
         <GridContainer>
         <GridItem>
         <Button onClick={() => {
@@ -285,6 +290,9 @@ const LandingPage = () => {
       }}>Contact</Button>
         </GridItem>
         </GridContainer>
+        </div>
+        </Container>
+        
     </Navbar>
             <div><TopSection /></div>
             <GridContainer>
