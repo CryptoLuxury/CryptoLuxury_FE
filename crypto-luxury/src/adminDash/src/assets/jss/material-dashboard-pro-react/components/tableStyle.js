@@ -92,7 +92,7 @@ const tableStyle = theme => ({
   },
   tableRowHover: {
     "&:hover": {
-      backgroundColor: grayColor[13]
+      backgroundColor: warningColor[13]
     }
   },
   warningRow: {

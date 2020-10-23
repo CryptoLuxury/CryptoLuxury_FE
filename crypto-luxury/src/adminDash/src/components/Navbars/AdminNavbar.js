@@ -66,9 +66,6 @@ export default function AdminNavbar(props) {
             {brandText}
           </Button>
         </div>
-        <Hidden smDown implementation="css">
-          <AdminNavbarLinks rtlActive={rtlActive} />
-        </Hidden>
         <Hidden mdUp implementation="css">
           <Button
             className={classes.appResponsive}

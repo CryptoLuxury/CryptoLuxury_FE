@@ -1,35 +1,13 @@
-import Buttons from "./views/Components/Buttons.js";
-import Calendar from "./views/Calendar/Calendar.js";
-import Charts from "./views/Charts/Charts.js";
+
 import Dashboard from "./views/Dashboard/Dashboard.js";
-import ErrorPage from "./views/Pages/ErrorPage.js";
-import ExtendedForms from "./views/Forms/ExtendedForms.js";
-import ExtendedTables from "./views/Tables/ExtendedTables.js";
-import FullScreenMap from "./views/Maps/FullScreenMap.js";
-import GoogleMaps from "./views/Maps/GoogleMaps.js";
-import GridSystem from "./views/Components/GridSystem.js";
-import Icons from "./views/Components/Icons.js";
-import LockScreenPage from "./views/Pages/LockScreenPage.js";
 import LoginPage from "./views/Pages/LoginPage.js";
-import Notifications from "./views/Components/Notifications.js";
-import Panels from "./views/Components/Panels.js";
-import PricingPage from "./views/Pages/PricingPage.js";
 import Orders from "./views/Pages/OrderPage.js";
-import RTLSupport from "./views/Pages/RTLSupport.js";
-import ReactTables from "./views/Tables/ReactTables.js";
-import RegisterPage from "./views/Pages/RegisterPage.js";
-import RegularForms from "./views/Forms/RegularForms.js";
-import RegularTables from "./views/Tables/RegularTables.js";
-import SweetAlert from "./views/Components/SweetAlert.js";
-import TimelinePage from "./views/Pages/Timeline.js";
-import Typography from "./views/Components/Typography.js";
-import UserProfile from "./views/Pages/UserProfile.js";
-import ValidationForms from "./views/Forms/ValidationForms.js";
-import VectorMap from "./views/Maps/VectorMap.js";
-import Widgets from "./views/Widgets/Widgets.js";
-import Wizard from "./views/Forms/Wizard.js";
+
 import TeamPage from "./views/Pages/TeamPage.js";
 import ProjectManager from "./views/Pages/ProductManager";
+import Tickets from "./views/Pages/Tickets";
+import DevTickets from "./views/Pages/DevTickets";
+import SubscriberPage from "./views/Pages/SubcriberPage";
 
 // @material-ui/icons
 import Apps from "@material-ui/icons/Apps";
@@ -43,6 +21,10 @@ import WidgetsIcon from "@material-ui/icons/Widgets";
 import OrdersIcon from '@material-ui/icons/ListAlt';
 import GroupIcon from '@material-ui/icons/Group';
 import BuildIcon from '@material-ui/icons/Build';
+import HealingIcon from '@material-ui/icons/Healing';
+import AssignmentLateIcon from '@material-ui/icons/AssignmentLate';
+import CallMergeIcon from '@material-ui/icons/CallMerge';
+import EmailIcon from '@material-ui/icons/AlternateEmail';
 
 var dashRoutes = [
   {
@@ -87,72 +69,36 @@ var dashRoutes = [
   },
   {
     collapse: true,
-    name: "Components",
+    name: "Ticket Center",
     rtlName: "المكونات",
-    icon: Apps,
+    icon: HealingIcon,
     state: "componentsCollapse",
     views: [
       {
-        path: "/buttons",
-        name: "Buttons",
+        path: "/tickets",
+        name: "Help Tickets",
         rtlName: "وصفت",
-        mini: "B",
+        icon: AssignmentLateIcon,
         rtlMini: "ب",
-        component: Buttons,
+        component: Tickets,
         layout: "/admin"
       },
       {
-        path: "/grid-system",
-        name: "Grid System",
-        rtlName: "نظام الشبكة",
-        mini: "GS",
-        rtlMini: "زو",
-        component: GridSystem,
+        path: "/devtickets",
+        name: "Dev Tickets",
+        rtlName: "وصفت",
+        icon: CallMergeIcon,
+        rtlMini: "ب",
+        component: DevTickets,
         layout: "/admin"
       },
       {
-        path: "/panels",
-        name: "Panels",
-        rtlName: "لوحات",
-        mini: "P",
-        rtlMini: "ع",
-        component: Panels,
-        layout: "/admin"
-      },
-      {
-        path: "/sweet-alert",
-        name: "Sweet Alert",
-        rtlName: "الحلو تنبيه",
-        mini: "SA",
-        rtlMini: "ومن",
-        component: SweetAlert,
-        layout: "/admin"
-      },
-      {
-        path: "/notifications",
-        name: "Notifications",
-        rtlName: "إخطارات",
-        mini: "N",
-        rtlMini: "ن",
-        component: Notifications,
-        layout: "/admin"
-      },
-      {
-        path: "/icons",
-        name: "Icons",
-        rtlName: "الرموز",
-        mini: "I",
-        rtlMini: "و",
-        component: Icons,
-        layout: "/admin"
-      },
-      {
-        path: "/typography",
-        name: "Typography",
-        rtlName: "طباعة",
-        mini: "T",
-        rtlMini: "ر",
-        component: Typography,
+        path: "/subscribers",
+        name: "Subscribers",
+        rtlName: "وصفت",
+        icon: EmailIcon,
+        rtlMini: "ب",
+        component: SubscriberPage,
         layout: "/admin"
       }
     ]

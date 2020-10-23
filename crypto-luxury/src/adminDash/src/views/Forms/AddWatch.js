@@ -39,14 +39,6 @@ export default function AddWatch() {
 
   const classes = useStyles();
 
-  const handleChange = (e) => {
-    e.preventDefault();
-    setWatchOroduct({
-      ...watchProduct,
-      [e.target.name]: e.target.value
-    })
-  }
-
   return (
     <Container>
     <h2>Add New Watch</h2>
@@ -61,7 +53,7 @@ export default function AddWatch() {
         marginBottom: "3%"
       }}>
         <label>Title</label>
-        <input placeholder = "title" name="title" type="text" onChange={handleChange} />
+        <input placeholder = "title" name="title" type="text" onChange={handleWatchChange} />
       </div>
       <div style={{
         display: "flex",
@@ -73,7 +65,7 @@ export default function AddWatch() {
         marginBottom: "3%"
       }}>
         <label>Description</label>
-        <input placeholder = "Description" name="description" type="text-field" onChange={handleChange} />
+        <input placeholder = "Description" name="description" type="text-field" onChange={handleWatchChange} />
       </div>
       <div style={{
         display: "flex",
@@ -85,7 +77,7 @@ export default function AddWatch() {
         marginBottom: "3%"
       }}>
         <label>Price</label>
-        <input type='number' step="1" placeholder='Price Value' onChange={handleChange} />
+        <input type='number' step="1" placeholder='Price Value' onChange={handleWatchChange} />
       </div>
       </form>
     </Container>

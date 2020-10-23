@@ -2,7 +2,8 @@ import {
   successColor,
   tooltip,
   cardTitle,
-  grayColor
+  grayColor,
+  warningColor
 } from "../../../../assets/jss/material-dashboard-pro-react.js";
 
 import hoverCardStyle from "../../../../assets/jss/material-dashboard-pro-react/hoverCardStyle.js";
@@ -13,7 +14,8 @@ const dashboardStyle = {
   cardTitle: {
     ...cardTitle,
     marginTop: "0px",
-    marginBottom: "3px"
+    marginBottom: "3px",
+    color: successColor[0]
   },
   cardIconTitle: {
     ...cardTitle,
@@ -74,7 +76,7 @@ const dashboardStyle = {
     height: "17px"
   },
   price: {
-    color: "inherit",
+    color: "success",
     "& h4": {
       marginBottom: "0px",
       marginTop: "0px"

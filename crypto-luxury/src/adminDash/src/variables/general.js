@@ -153,7 +153,7 @@ const widgetStories = [
         buttonProps={{
           round: true,
           style: { marginBottom: "0" },
-          color: "info"
+          color: "warning"
         }}
         dropdownList={[
           "Action",
@@ -365,8 +365,8 @@ var rtlServer = [
 // #############################
 
 const dataTable = {
-  headerRow: ["Name", "Order ID", "Product", "Status", "Actions"],
-  footerRow: ["Name", "Order ID", "Product", "Status", "Actions"],
+  headerRow: ["Name", "Position", "Location", "Age", "Actions"],
+  footerRow: ["Name", "Position", "Location", "Age", "Actions"],
   dataRows: [
     ["Tiger Nixon", "System Architect", "Edinburgh", "61"],
     ["Garrett Winters", "Accountant", "Tokyo", "63"],

@@ -96,7 +96,7 @@ const adminNavbarLinksStyle = theme => ({
       border: "1px solid " + whiteColor,
       right: "5px",
       fontSize: "9px",
-      background: dangerColor[0],
+      background: dangerColor[4],
       color: whiteColor,
       minWidth: "16px",
       height: "16px",

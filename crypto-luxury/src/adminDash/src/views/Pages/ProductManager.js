@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 
-import AddWatch from "../Forms/AddWatch";
-import AddCard from "../Forms/AddCard";
+import ProductManagerCardWatch from "./ProductManagerCardWatch";
+import ProductManagerCardCard from "./ProductManagerCardCard";
+
+import SweetAlert from "react-bootstrap-sweetalert";
+import Form from "react-bootstrap/Form";
 
 //reactstrap
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Button from "../../components/CustomButtons/Button";
 import Slide from "@material-ui/core/Slide";
 import Dialog from "@material-ui/core/Dialog";
@@ -19,10 +26,7 @@ import Close from "@material-ui/icons/Close";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
-// core components
-import ProductsTable from "../Tables/ProductsTable";
-
-import styles from "../../assets/jss/material-dashboard-pro-react/views/errorPageStyles.js";
+import styles from "../../assets/jss/material-dashboard-pro-react/hoverCardStyle";
 
 const useStyles = makeStyles(styles);
 
@@ -32,6 +36,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function ProductManager() {
 
+  let history = useHistory();
+
   const classes = useStyles();
   const [watchModal, setWatchModal] = React.useState(false);
   const [cardModal, setCardModal] = React.useState(false);
@@ -40,38 +46,276 @@ export default function ProductManager() {
     const [cardProduct, setCardProduct] = useState({
         title: "",
         description: "",
-        price: null,
+        price: "",
+        bitpay: ""
     })
     const [watchProduct, setWatchProduct] = useState({
         title: "",
         description: "",
-        price: null,
+        price: "",
+        bitpay: ""
     })
+
+    const [watches, setWatches] = useState([]);
+    const [cards, setCards] = useState([]);
+    const [alert, setAlert] = React.useState(null);
+    const hideAlert = () => {
+      setAlert(null);
+    }
+  
+    const successAlertWatch = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "100px" }}
+          title="Watch Added!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          You've added a new watch!  Sell them bitches!
+        </SweetAlert>
+      );
+    };
+    const successAlertCard = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "100px" }}
+          title="Card Added!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          You've added a new card!  Sell them bitches!
+        </SweetAlert>
+      );
+    };
+
+    const editAlertSuccessWatch = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "100px" }}
+          title="Confirmed!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          You've edited this watch!
+        </SweetAlert>
+      );
+    };
+
+    const editAlertSuccessCard = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "100px" }}
+          title="Confirmed!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          You've edited this card!
+        </SweetAlert>
+      );
+    };
+
+    const errorAlert = () => {
+      setAlert(
+        <SweetAlert
+          danger
+          style={{ display: "block", marginTop: "80px" }}
+          title="Oh No!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          That didn't work!  Try again or reach out to Carl!
+        </SweetAlert>
+      );
+    };
+
+    const SureWatch = () => {
+      setAlert(
+        <SweetAlert
+          warning
+          style={{ display: "block", marginTop: "100px" }}
+          title="Are you sure?"
+          onConfirm={() => handleSureWatch()}
+          onCancel={() => cancelDetele()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+          cancelBtnCssClass={classes.button + " " + classes.danger}
+          confirmBtnText="Yes, delete it!"
+          cancelBtnText="Cancel"
+          showCancel
+        >
+          You will not be able to recover these watch listings!
+        </SweetAlert>
+      );
+    };
+    const SureCard = () => {
+      setAlert(
+        <SweetAlert
+          warning
+          style={{ display: "block", marginTop: "100px" }}
+          title="Are you sure?"
+          onConfirm={() => handleSureCard()}
+          onCancel={() => cancelDetele()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+          cancelBtnCssClass={classes.button + " " + classes.danger}
+          confirmBtnText="Yes, delete it!"
+          cancelBtnText="Cancel"
+          showCancel
+        >
+          You will not be able to recover these card listings!
+        </SweetAlert>
+      );
+    };
+    const successDelete = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "100px" }}
+          title="Wiped!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          Changes take effect on next reload!
+        </SweetAlert>
+      );
+    };
+    const cancelDetele = () => {
+      setAlert(
+        <SweetAlert
+          danger
+          style={{ display: "block", marginTop: "100px" }}
+          title="Aborted!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          We knew you didnt want to do that...
+        </SweetAlert>
+      );
+    };
+
+    const handleEditWatch = (e, id) => {
+      e.preventDefault();
+      axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches:${id}` , watchProduct)
+      .then(res => {
+        editAlertSuccessWatch();
+      })
+      .catch(err => {
+        errorAlert();
+      })
+    } 
+
+    const handleEditCard = (e, id) => {
+      e.preventDefault();
+      axios.put(`https://crypto-luxury.herokuapp.com/api/store/card:${id}` , cardProduct)
+      .then(res => {
+        editAlertSuccessWatch();
+      })
+      .catch(err => {
+        errorAlert();
+      })
+    } 
+
+    const handleSureWatch = () => {
+      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/watches`)
+      .then(res => {
+        successDelete();
+      })
+      .catch(err => {
+        errorAlert();
+      })
+    }
+
+    const handleSureCard = () => {
+      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/cards`)
+      .then(res => {
+        successDelete();
+      })
+      .catch(err => {
+        errorAlert();
+      })
+    }
+
+    useEffect(() => {
+      axios.get(`https://crypto-luxury.herokuapp.com/api/store/watches`)
+      .then(res => {
+        setWatches([
+          ...res.data
+        ])
+      })
+    }, []);
+    useEffect(() => {
+      axios.get(`https://crypto-luxury.herokuapp.com/api/store/cards`)
+      .then(res => {
+        setCards([
+          ...res.data
+        ])
+      })
+    }, []);
+
+    const handleWatchChange = (e) => {
+        e.preventDefault();
+        setWatchProduct({
+        ...watchProduct,
+        [e.target.name]: e.target.value
+        })
+    }
+
+    const handleCardChange = (e) => {
+        e.preventDefault();
+        setCardProduct({
+        ...cardProduct,
+        [e.target.name]: e.target.value
+        })
+    }
+
+
+    const handleDeleteListing = (id) => {
+      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/watches/:${id}`)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    } 
 
   const handleWatchSubmit = (e) => {
     e.preventDefault();
-    axios.post(``, watchProduct)
+    axios.post(`https://crypto-luxury.herokuapp.com/api/store/watches`, watchProduct)
     .then(res => {
-      console.log("######", watchProduct)
+        successAlertWatch();
+        setWatchModal(false)
     })
     .catch(err => {
-      console.log(err, "There was an error")
+      errorAlert();
     })
   }
 
   const handleCardSubmit = (e) => {
     e.preventDefault();
-    axios.post(``, cardProduct)
+    axios.post(`https://crypto-luxury.herokuapp.com/api/store/cards`, cardProduct)
     .then(res => {
-      console.log("######", cardProduct)
+      successAlertCard();
     })
     .catch(err => {
-      console.log(err, "There was an error")
+      errorAlert();
     })
   }
 
   return (
-    <Container>
+    <Container style={{
+      paddingBottom: "5%"
+    }}>
+    {alert}
         <h2>Product Manager</h2>
         <Container style={{
             display: "flex",
@@ -112,7 +356,27 @@ export default function ProductManager() {
                 id="modal-slide-description"
                 className={classes.modalBody}
                 >
-                <AddWatch />
+                <Container>
+                <h2>Add New Watch</h2>
+                <Form>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control type="text" placeholder="Title..." onChange={handleWatchChange} name="title" />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Price</Form.Label>
+                <Form.Control type="Price" placeholder="'100', '100,000'" onChange={handleWatchChange} name="price" />
+                </Form.Group>
+                  <Form.Group controlId="exampleForm.ControlTextarea1">
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control as="textarea" rows="3" onChange={handleWatchChange} name="description" />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>BitPay Product Link</Form.Label>
+                <Form.Control type="text" placeholder="Title..." onChange={handleWatchChange} name="bitpay" />
+              </Form.Group>
+                </Form>
+                </Container>
                 </DialogContent>
                 <DialogActions
                 className={classes.modalFooter + " " + classes.modalFooterCenter}
@@ -165,7 +429,27 @@ export default function ProductManager() {
                 id="modal-slide-description"
                 className={classes.modalBody}
                 >
-                <AddCard />
+                <Container>
+                <h2>Add New Card</h2>
+                <Form>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                  <Form.Label>Listing Title</Form.Label>
+                  <Form.Control type="text" placeholder="Title..." onChange={handleCardChange} name="title" />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Price (USD)</Form.Label>
+                <Form.Control type="Price" placeholder="'100', '100,000'" onChange={handleCardChange} name="price" />
+                </Form.Group>
+                  <Form.Group controlId="exampleForm.ControlTextarea1">
+                  <Form.Label>Listing Description</Form.Label>
+                  <Form.Control as="textarea" rows="3" onChange={handleCardChange} name="description" />
+                </Form.Group>
+                  <Form.Group controlId="exampleForm.ControlInput1">
+                  <Form.Label>Bitpay Product Link</Form.Label>
+                  <Form.Control type="text" placeholder="Title..." onChange={handleCardChange} name="bitpay" />
+                </Form.Group>
+                </Form>
+                </Container>
                 </DialogContent>
                 <DialogActions
                 className={classes.modalFooter + " " + classes.modalFooterCenter}
@@ -182,11 +466,51 @@ export default function ProductManager() {
                 </DialogActions>
             </Dialog>
         </div>
-
+        <div style={{
+          paddingTop: "2.4%",
+          marginLeft: "1%"
+        }}>
+          <Button round color="danger" onClick={SureWatch}>Delete All Watches</Button>
+        </div>
+        <div style={{
+          paddingTop: "2.4%",
+          marginLeft: "1%"
+        }}>
+          <Button round color="danger" onClick={SureCard}>Delete All Cards</Button>
+        </div>
         </Container>
-        <Container>
-            <ProductsTable />
-        </Container>
+        <Row style={{
+          marginBottom: "5%",
+          display: "flex",
+          justifyContent: "space-evenly",
+          paddingBottom: "3%"
+        }}>
+        <Col style={{
+          margin: "2%",
+          display: "flex",
+          flexFlow: "row nowrap",
+        }}>
+          { watches.map(watch => ( 
+          <ProductManagerCardWatch watchInfo={watch} key={watch.id}/> 
+          ))}
+        </Col>
+        </Row>
+        <Row style={{
+          marginBottom: "5%",
+          display: "flex",
+          justifyContent: "space-evenly",
+          paddingBottom: "3%"
+        }}>
+        <Col style={{
+          margin: "2%",
+          display: "flex",
+          flexFlow: "row nowrap",
+        }}>
+          { cards.map(card => ( 
+          <ProductManagerCardCard cardInfo={card} key={card.id}/> 
+          ))}
+        </Col>
+        </Row>
 
     </Container>
   );

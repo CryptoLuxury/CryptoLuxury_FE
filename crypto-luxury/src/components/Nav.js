@@ -21,16 +21,6 @@ const Navigation = () => {
             <Nav.Link style={{color: "#EAB709"}} href="/">Home</Nav.Link>
             <Nav.Link style={{color: "#EAB709"}} href="#pricing">Team</Nav.Link>
             <Nav.Link style={{color: "#EAB709"}} href="#pricing">Services</Nav.Link>
-            <div style={{
-                marginLeft: "15%"
-            }}>
-            <NavDropdown className="bgnav" variant="warning" title="Products" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.2">Luxury Watches</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Cards</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">All Products</NavDropdown.Item>
-            </NavDropdown>
-            </div>
             </Nav>
             <div>
             <Button onClick={() => history.push('/admin/login')} variant="outline-warning">Account</Button>
