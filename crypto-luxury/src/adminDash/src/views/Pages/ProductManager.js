@@ -92,6 +92,36 @@ export default function ProductManager() {
       );
     };
 
+    const editAlertSuccessWatch = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "100px" }}
+          title="Confirmed!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          You've edited this watch!
+        </SweetAlert>
+      );
+    };
+
+    const editAlertSuccessCard = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "100px" }}
+          title="Confirmed!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          You've edited this card!
+        </SweetAlert>
+      );
+    };
+
     const errorAlert = () => {
       setAlert(
         <SweetAlert
@@ -171,6 +201,29 @@ export default function ProductManager() {
         </SweetAlert>
       );
     };
+
+    const handleEditWatch = (e, id) => {
+      e.preventDefault();
+      axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches:${id}` , watchProduct)
+      .then(res => {
+        editAlertSuccessWatch();
+      })
+      .catch(err => {
+        errorAlert();
+      })
+    } 
+
+    const handleEditCard = (e, id) => {
+      e.preventDefault();
+      axios.put(`https://crypto-luxury.herokuapp.com/api/store/card:${id}` , cardProduct)
+      .then(res => {
+        editAlertSuccessWatch();
+      })
+      .catch(err => {
+        errorAlert();
+      })
+    } 
+
     const handleSureWatch = () => {
       axios.delete(`https://crypto-luxury.herokuapp.com/api/store/watches`)
       .then(res => {

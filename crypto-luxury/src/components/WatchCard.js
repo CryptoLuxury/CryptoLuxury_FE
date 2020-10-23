@@ -113,7 +113,7 @@ const ProductCard = ({watchInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button onClick={handleStripeClick} color="warning" simple justIcon>
+              <Button target="_blank" onClick={handleStripeClick} color="warning" simple justIcon>
                 <AddIcon className={classes.underChartIcons} />
               </Button>
             </Tooltip>

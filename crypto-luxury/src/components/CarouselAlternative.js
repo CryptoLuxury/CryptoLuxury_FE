@@ -4,6 +4,10 @@ import styled from "styled-components";
 import {Container} from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import HealthCard from 'react-health-card';
+
+import { Card } from 'antd';
+import 'antd/dist/antd.css';
 
 //react-reveal
 import Slide from "react-reveal/Slide";
@@ -11,6 +15,8 @@ import Fade from "react-reveal/Fade";
 
 //typing
 import Typing from "react-typing-animation";
+
+const { Meta } = Card;
 
 export default() => {
 
@@ -41,8 +47,7 @@ export default() => {
             </div>
 
             <Fade bottom duration={1000}>
-            <div style={{
-                height: "35vh",
+            <Row style={{
                 background: "white",
                 width: "100%",
                 display: "flex",
@@ -52,32 +57,33 @@ export default() => {
                 alignSelf: "center"
             }}>
                 
-                <div style={{
-                    background: "#101010",
-                    width: "100%",
-                    margin: ".1%",
-                    borderRadius: "1%"
-                }}>
-                    one
-                </div>
-                <div style={{
+                <Col>
+                <Card
+                hoverable
+                style={{ width: 240 }}
+                cover={<img alt="watchbox" src="https://images.pexels.com/photos/380782/pexels-photo-380782.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />}
+              >
+                <Meta title="10% OFF Select Watches" description="" />
+              </Card>
+                </Col>
+                <Col style={{
                     background: "#141414",
                     width: "100%",
                     margin: ".1%",
                     borderRadius: "1%"
                 }}>
                     two
-                </div>
-                <div style={{
+                </Col>
+                <Col style={{
                     background: "#181818",
                     width: "100%",
                     margin: ".1%",
                     borderRadius: "1%"
                 }}>
                     three
-                </div>
+                </Col>
 
-            </div>
+            </Row>
             </Fade>
             <Fade up>
             <div style={{
