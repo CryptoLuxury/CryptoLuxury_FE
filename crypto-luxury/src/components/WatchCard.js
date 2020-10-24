@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 
+import axios from "axios";
+
 import { loadStripe } from '@stripe/stripe-js';
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,7 +20,7 @@ import ViewIcon from '@material-ui/icons/Visibility';
 import AddIcon from '@material-ui/icons/AddShoppingCart';
 import AccountIcon from '@material-ui/icons/AccountBalanceWallet';
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = loadStripe('pk_test_51HKzDHEcVyNtCHEW4SzW2thg3LOVBUJOdrdHniqfEJPL4RyaUgI94YpSSeBXjazqy49kjIS5scvqZu1Ai1GVnGMK003ADuPohG');
 
 const useStyles = makeStyles(styles);
 
@@ -28,8 +30,8 @@ const ProductCard = ({watchInfo}) => {
 
   const [order, setOrder] = useState({
     name: `${name}`,
-    price: {price},
-    quantity: {quantity}
+    price: watchInfo.price,
+    quantity: watchInfo.quantity
   })
 
   const [alert, setAlert] = React.useState(null);
@@ -67,33 +69,36 @@ const ProductCard = ({watchInfo}) => {
     );
   };
 
-  // const handleStripeClick = async (event) => {
-  //   // Get Stripe.js instance
-  //   const stripe = await stripePromise;
+  const handleStripeClick = async () => {
 
-  //   // Call your backend to create the Checkout Session
-  //   const response = await fetch(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, order, { 
-  //     method: 'POST'
-  //   }, { headers: {
-  //     Content: 'application/json'
-  //   } } );
-  //   const { error } = await stripe.redirectToCheckout({
-  //     mode: 'payment',
-  //     successUrl: 'https://localhost:3000/success',
-  //     cancelUrl: 'https://localhost:3000/cancel',
-  //   });
+    try {
 
-  //   const session = await response.json();
+    // Get Stripe.js instance
+    const stripe = await stripePromise;
+    // Call your backend to create the Checkout Session
+    const response = await axios.post(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, order, { headers: {
+      Content: 'application/json'
+    } } );
+    const { error } = await stripe.redirectToCheckout({
+      mode: 'payment',
+      successUrl: 'https://localhost:3000/success',
+      cancelUrl: 'https://localhost:3000/cancel',
+    });
 
-  //   // When the customer clicks on the button, redirect them to Checkout.
-  //   const result = await stripe.redirectToCheckout({
-  //     sessionId: session.id,
-  //   });
+    const session = await response.json();
 
-  //   if (result.error) {
-  //     errorAlert();
-  //   }
-  // };
+    // When the customer clicks on the button, redirect them to Checkout.
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.data.id,
+    });
+
+    if (result.error) {
+      errorAlert();
+    }
+  } catch(error) {
+    console.log(error)
+  }
+  };
 
     const classes = useStyles();
 
@@ -128,13 +133,7 @@ const ProductCard = ({watchInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-            <Button color="warning" class="snipcart-add-item"
-            data-item-id={`${id}`}
-            data-item-price={`${price}`}
-            data-item-url="/admin"
-            data-item-description={`${description}`}
-            data-item-image="/team.png"
-            data-item-name={`${name}`}>
+            <Button color="warning" onClick={handleStripeClick}>
             Add to cart
           </Button>
             </Tooltip>
@@ -180,6 +179,7 @@ const ProductCard = ({watchInfo}) => {
           </div>
         </CardFooter>
       </Card>
+      <div hidden id="snipcart" data-api-key="NThiZmE2M2EtNDQ4Yy00MGMzLWEwYTYtOTNmNDJjYjZlMTlhNjM3MzkxMjM3MjA2MDc3NDcw" data-config-add-product-behavior="none"></div>
       </div>
     )
 }

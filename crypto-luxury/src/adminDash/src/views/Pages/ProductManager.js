@@ -44,17 +44,17 @@ export default function ProductManager() {
 
     // useState
     const [cardProduct, setCardProduct] = useState({
-        title: "",
+        name: "",
         description: "",
-        price: null,
-        quantity: null,
+        price: 0,
+        quantity: 0,
         bitpay: ""
     })
     const [watchProduct, setWatchProduct] = useState({
-        title: "",
+        name: "",
         description: "",
-        price: null,
-        quantity: null,
+        price: 0,
+        quantity: 0,
         bitpay: ""
     })
 
@@ -367,11 +367,11 @@ export default function ProductManager() {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Price</Form.Label>
-                <Form.Control type="number" placeholder="'100', '100,000'" onChange={handleWatchChange} name="price" />
+                <Form.Control type="number" placeholder="'100', '100000'" onChange={handleWatchChange} name="price" />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Quantity</Form.Label>
-                <Form.Control type="number" placeholder="'100', '100,000'" onChange={handleWatchChange} name="quantity" />
+                <Form.Control type="number" placeholder="'3', '10'" onChange={handleWatchChange} name="quantity" />
                 </Form.Group>
                   <Form.Group controlId="exampleForm.ControlTextarea1">
                   <Form.Label>Description</Form.Label>
