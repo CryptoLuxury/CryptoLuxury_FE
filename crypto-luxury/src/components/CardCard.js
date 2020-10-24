@@ -2,6 +2,9 @@ import React, {useState} from "react";
 
 import axios from "axios";
 
+
+import Container from "react-bootstrap/Container";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 import { loadStripe } from '@stripe/stripe-js';
@@ -29,7 +32,7 @@ import blastoise from "./blastoise.png";
 
 const useStyles = makeStyles(styles);
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = loadStripe('pk_test_51HKzDHEcVyNtCHEW4SzW2thg3LOVBUJOdrdHniqfEJPL4RyaUgI94YpSSeBXjazqy49kjIS5scvqZu1Ai1GVnGMK003ADuPohG');
 
 const ProductCard = ({cardInfo}) => {
 
@@ -39,8 +42,8 @@ const ProductCard = ({cardInfo}) => {
 
     const [order, setOrder] = useState({
       name: `${name}`,
-      price: {price},
-      quantity: {quantity},
+      price: cardInfo.price,
+      quantity: cardInfo.quantity,
       
     })
 
@@ -64,38 +67,41 @@ const ProductCard = ({cardInfo}) => {
       );
     };
   
-    // const handleStripeClick = async (event) => {
-    //   // Get Stripe.js instance
-    //   const stripe = await stripePromise;
+    const handleStripeClick = async () => {
+
+      try {
+
+      // Get Stripe.js instance
+      const stripe = await stripePromise;
+      // Call your backend to create the Checkout Session
+      const response = await axios.post(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, order, { headers: {
+        Content: 'application/json'
+      } } );
+      const { error } = await stripe.redirectToCheckout({
+        mode: 'payment',
+        successUrl: 'https://localhost:3000/',
+        cancelUrl: 'https://localhost:3000/admin',
+      });
   
-    //   // Call your backend to create the Checkout Session
-    //   const response = await fetch(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, order, { 
-    //     method: 'POST'
-    //   }, { headers: {
-    //     Content: 'application/json'
-    //   } } );
-    //   const { error } = await stripe.redirectToCheckout({
-    //     mode: 'payment',
-    //     successUrl: 'https://localhost:3000/success',
-    //     cancelUrl: 'https://localhost:3000/cancel',
-    //   });
+      const session = await response.json();
   
-    //   const session = await response.json();
+      // When the customer clicks on the button, redirect them to Checkout.
+      const result = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
   
-    //   // When the customer clicks on the button, redirect them to Checkout.
-    //   const result = await stripe.redirectToCheckout({
-    //     sessionId: session.id,
-    //   });
-  
-    //   if (result.error) {
-    //     errorAlert();
-    //   }
-    // };
+      if (result.error) {
+        errorAlert();
+      }
+    } catch(error) {
+      console.log(error)
+    }
+    };
 
     return (
-      <div style={{
+      <Container style={{
         height: "60vh",
-        width: "33%",
+        width: "100%",
         marginTop: "5%"
       }}>
       {alert}
@@ -123,13 +129,7 @@ const ProductCard = ({cardInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-            <Button color="warning" class="snipcart-add-item"
-            data-item-id={`${id}`}
-            data-item-price={`${price}`}
-            data-item-url="/admin"
-            data-item-description={`${description}`}
-            data-item-image="/team.png"
-            data-item-name={`${name}`}>
+            <Button color="warning" onClick={handleStripeClick}>
             Add to cart
           </Button>
             </Tooltip>
@@ -175,7 +175,7 @@ const ProductCard = ({cardInfo}) => {
           </div>
         </CardFooter>
       </Card>
-      </div>
+      </Container>
     )
 }
 export default ProductCard;
