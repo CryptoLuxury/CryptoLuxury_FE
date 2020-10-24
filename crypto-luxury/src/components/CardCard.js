@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 
+import axios from "axios";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 import { loadStripe } from '@stripe/stripe-js';
@@ -36,9 +38,9 @@ const ProductCard = ({cardInfo}) => {
     const classes = useStyles();
 
     const [test, setTest] = useState({
-      name: "Carl Sachs",
-      amount: "15000",
-      quantity: "2",
+      title: "Carl Sachs",
+      amount: 15000,
+      quantity: 2,
     })
 
       const [alert, setAlert] = React.useState(null);
@@ -80,6 +82,20 @@ const ProductCard = ({cardInfo}) => {
       }
     };
 
+    // const handleStripeClick = (e) => {
+    //   e.preventDefault();
+    //   const stripe = stripePromise;
+    //   axios.post(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, test)
+    //   .then(result => {
+    //     stripe.redirectToCheckout({
+    //       sessionId: result.id
+    //     })
+    //     .catch(err => {
+    //       console.log(err)
+    //     })
+    //   })
+    // }
+
     return (
       <div style={{
         height: "60vh",
@@ -111,9 +127,7 @@ const ProductCard = ({cardInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button onClick={() => {
-                window.open(handleStripeClick())
-              }} color="warning" simple justIcon>
+              <Button id="checkout-button" onClick={handleStripeClick} color="warning" simple justIcon>
                 <AddIcon className={classes.underChartIcons} />
               </Button>
             </Tooltip>
