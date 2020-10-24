@@ -70,24 +70,15 @@ const ProductCard = ({cardInfo}) => {
     const handleStripeClick = async () => {
 
       try {
-
+  
       // Get Stripe.js instance
       const stripe = await stripePromise;
       // Call your backend to create the Checkout Session
-      const response = await axios.post(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, order, { headers: {
-        Content: 'application/json'
-      } } );
-      const { error } = await stripe.redirectToCheckout({
-        mode: 'payment',
-        successUrl: 'https://localhost:3000/',
-        cancelUrl: 'https://localhost:3000/admin',
-      });
-  
-      const session = await response.json();
+      const response = await axios.post(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, order)
   
       // When the customer clicks on the button, redirect them to Checkout.
       const result = await stripe.redirectToCheckout({
-        sessionId: session.id,
+        sessionId: response.data.id,
       });
   
       if (result.error) {
