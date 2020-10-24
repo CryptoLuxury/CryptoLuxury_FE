@@ -129,12 +129,12 @@ const ProductCard = ({watchInfo}) => {
               classes={{ tooltip: classes.tooltip }}
             >
             <Button color="warning" class="snipcart-add-item"
-            data-item-id={id}
-            data-item-price={price}
+            data-item-id={`${id}`}
+            data-item-price={`${price}`}
             data-item-url="/admin"
-            data-item-description={description}
+            data-item-description={`${description}`}
             data-item-image="/team.png"
-            data-item-name={name}>
+            data-item-name={`${name}`}>
             Add to cart
           </Button>
             </Tooltip>

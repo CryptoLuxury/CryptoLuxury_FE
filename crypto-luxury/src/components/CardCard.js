@@ -33,7 +33,7 @@ const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const ProductCard = ({cardInfo}) => {
 
-    const { name, price, description, quantity, bitpay } = cardInfo;
+    const { id, name, price, description, quantity, bitpay } = cardInfo;
 
     const classes = useStyles();
 
@@ -124,12 +124,12 @@ const ProductCard = ({cardInfo}) => {
               classes={{ tooltip: classes.tooltip }}
             >
             <Button color="warning" class="snipcart-add-item"
-            data-item-id="rolex-watch"
-            data-item-price={price}
+            data-item-id={`${id}`}
+            data-item-price={`${price}`}
             data-item-url="/admin"
-            data-item-description={description}
-            data-item-image="/avatar.png"
-            data-item-name={name}>
+            data-item-description={`${description}`}
+            data-item-image="/team.png"
+            data-item-name={`${name}`}>
             Add to cart
           </Button>
             </Tooltip>
