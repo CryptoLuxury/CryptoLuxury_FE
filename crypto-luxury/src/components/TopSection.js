@@ -37,7 +37,6 @@ export default() => {
             display: "flex",
             flexFlow: "column nowrap",
         }}>
-            <Fade bottom>
             <div className="typingone" style={{
                 height: "4vh",
                 width: "100%",
@@ -56,7 +55,6 @@ export default() => {
                 }}>White-Glove complimentary on all orders over $100,000</h6>
                 </Typing>
             </div>
-            </Fade>
 
             <Fade bottom duration={1000}>
             <Row style={{
@@ -76,25 +74,33 @@ export default() => {
                 width: "100%",
                 margin: ".1%",
                 alignSelf: "center",
+                marginBottom: "0"
             }}>
                 <Col style={{
                     alignSelf: "center",
                     margin: ".1%",
-                    borderRadius: "1%"
+                    borderRadius: "1%",
+                    maringBottom: "0"
                 }}>
                     <div>
                     <Carousel vertical={true} autoplay dots={false}>
                     <div>
-                      <h3 style={contentStyle}>1</h3>
+                      <h3 style={{
+                        height: '160px',
+                        color: '#fff',
+                        lineHeight: '160px',
+                        textAlign: 'center',
+                        background: '#a16f0b',
+                      }}>10% OFF Select Watches</h3>
                     </div>
                     <div>
-                      <h3 style={contentStyle}>2</h3>
-                    </div>
-                    <div>
-                      <h3 style={contentStyle}>3</h3>
-                    </div>
-                    <div>
-                      <h3 style={contentStyle}>4</h3>
+                      <h3 style={{
+                        height: '160px',
+                        color: '#fff',
+                        lineHeight: '160px',
+                        textAlign: 'center',
+                        background: '#ffaf0f',
+                      }}>25% OFF Select Pokemon Cards</h3>
                     </div>
                   </Carousel>
                     </div>
@@ -102,21 +108,28 @@ export default() => {
                 <Col style={{
                     alignSelf: "center",
                     margin: ".1%",
-                    borderRadius: "1%"
+                    borderRadius: "1%",
+                    marginBottom: "0"
                 }}>
                 <div>
-                <Carousel autoplay dots={false} vertical={true}>
+                <Carousel vertical autoplay dots={false}>
                 <div>
-                  <h3 style={contentStyle2}>1</h3>
+                  <h3 style={{
+                    height: '160px',
+                    color: '#fff',
+                    lineHeight: '160px',
+                    textAlign: 'center',
+                    background: '#ffaf0f',
+                  }}>Vaulting Available Free on ALL ORDERS!</h3>
                 </div>
                 <div>
-                  <h3 style={contentStyle2}>2</h3>
-                </div>
-                <div>
-                  <h3 style={contentStyle2}>3</h3>
-                </div>
-                <div>
-                  <h3 style={contentStyle2}>4</h3>
+                  <h3 style={{
+                    height: '160px',
+                    color: '#fff',
+                    lineHeight: '160px',
+                    textAlign: 'center',
+                    background: '#a16f0b',
+                  }}>White-Glove Complimentary on orders over $100,000!</h3>
                 </div>
               </Carousel>
                 </div>

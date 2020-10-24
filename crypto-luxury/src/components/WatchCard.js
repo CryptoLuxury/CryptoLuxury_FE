@@ -78,7 +78,7 @@ const ProductCard = ({watchInfo}) => {
     }
   };
 
-    const { title, price, description, bitpay } = watchInfo;
+    const { title, price, description, qty, bitpay } = watchInfo;
 
     const classes = useStyles();
 

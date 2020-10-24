@@ -5,6 +5,9 @@ import Fade from "react-reveal/Fade";
 import Slide from "react-reveal/Slide";
 import Footer from "./dashComps/Footer";
 
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import "./Navbar.css"
 
 import { useHistory } from "react-router-dom";
@@ -263,47 +266,58 @@ const LandingPage = () => {
 
         <Navbar bg="dark" variant="light" className="marblebar" sticky="top">
         <Container>
-        <div>
+        <Row style={{
+          display: "flex",
+          margin: "0 auto",
+          flexFlow: "row wrap",
+          justifyContent: "space-between"
+        }}>
+        <Row style={{
+          margin: "0 auto"
+        }}>
         <Navbar.Brand href="/" style={{color: "#e39c0e"}}>
         Crypto Luxury
         </Navbar.Brand>
-        </div>
-        <div>
-        <GridContainer>
-        <GridItem>
+        </Row>
+        <Row style={{
+          margin: "0 auto"
+        }}>
+        <Col>
         <Button onClick={() => {
             history.push("/team")
         }} color="warning" style={{
             width: "100px"
         }}>Team</Button>
-        </GridItem>
-        <GridItem>
+        </Col>
+        <Col>
         <Button onClick={() => {
             history.push("/products")
         }} color="warning" style={{
             width: "100px"
         }}>Products</Button>
-        </GridItem>
-        <GridItem>
+        </Col>
+        <Col>
         <Button onClick={handleShow} color="warning" style={{
           width: "100px"
       }}>Contact</Button>
-        </GridItem>
-        </GridContainer>
-        </div>
+        </Col>
+      </Row>
+      </Row>
         </Container>
         
     </Navbar>
             <div><TopSection /></div>
-            <GridContainer>
-            <GridItem xs={12}>
+            <Container>
+            <Row xs={12}>
+              <Col>
               <Card plain>
                 <CardBody plain>
                   <Timeline stories={stories} />
                 </CardBody>
               </Card>
-            </GridItem>
-          </GridContainer>
+              </Col>
+            </Row>
+          </Container>
           <div>
               <Testimonies />
           </div>

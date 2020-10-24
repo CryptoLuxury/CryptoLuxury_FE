@@ -31,6 +31,12 @@ export default function TeamPage() {
     role: ""
   });
   const [ team, setTeam ] = useState([]);
+  const [devTicket, setDevTicket] = useState({
+    name: "",
+    email: "",
+    message: ""
+  })
+  const [devTicketModal, setDevTicketModal] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -74,6 +80,20 @@ export default function TeamPage() {
       </SweetAlert>
     );
   };
+  const successAlertDev = () => {
+    setAlert(
+      <SweetAlert
+        success
+        style={{ display: "block", marginTop: "100px" }}
+        title="Success!"
+        onConfirm={() => hideAlert()}
+        onCancel={() => hideAlert()}
+        confirmBtnCssClass={classes.button + " " + classes.success}
+      >
+        Your Dev Ticket has been submitted!
+      </SweetAlert>
+    );
+  };
   const errorAlert = () => {
     setAlert(
       <SweetAlert
@@ -108,6 +128,28 @@ export default function TeamPage() {
     })
   }
 
+  const handleDevChange = (e) => {
+    e.preventDefault();
+    setDevTicket({
+      ...devTicket,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleDevSubmit = (e) => {
+    e.preventDefault();
+    axios.post(`https://crypto-luxury.herokuapp.com/api/form/devTicket`, devTicket)
+    .then(res => {
+      successAlertDev();
+      setTimeout(() => {
+        setDevTicketModal(false)
+      }, 1000)
+    })
+    .catch(err => {
+      errorAlert()
+    })
+  }
+
 
   return (
     <Container>
@@ -137,9 +179,39 @@ export default function TeamPage() {
                     </Button>
                   </Modal.Footer>
                 </Modal>
+                <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>New Dev Ticket</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                <Form>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Name</Form.Label>
+                <Form.Control type="text" placeholder="Name..." name="name" onChange={handleDevChange} />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" placeholder="example@example.com" name="email" onChange={handleDevChange} />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Message</Form.Label>
+                <Form.Control type="text-area" placeholder="What's the issue you're dealing with?" name="message" onChange={handleDevChange} />
+                </Form.Group>
+                </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="transparent" onClick={handleClose}>
+                    Close
+                  </Button>
+                  <Button color="warning" onClick={handleDevSubmit}>
+                    LETS GOOO!
+                  </Button>
+                </Modal.Footer>
+              </Modal>
         <Row>
         <h3>Manage the Team</h3>
         </Row>
+        <Row>
         <Row>
           <Col style={{
             marginTop: "2%",
@@ -147,21 +219,23 @@ export default function TeamPage() {
           }}>
             <Button rounded color="warning" onClick={handleShow}>Add New Member</Button>
           </Col>
+          <Col style={{
+            marginTop: "2%",
+            marginBottom: "2%"
+          }}>
+            <Button rounded color="warning" onClick={handleShow}>Submit Dev Ticket</Button>
+          </Col>
         </Row>
-        <Row style={{
-          marginTop: "3%",
-          marginBottom: "3%"
-        }}>
+        </Row>
         <Col style={{
-          margin: "2%",
-          display: "flex",
-          flexFlow: "row nowrap",
+          marginTop: "5%"
         }}>
-          { team.map(member => ( 
-          <TeamCard membersInfo={member} key={member.id}/> 
-          ))}
+            <div>
+            { team.map(member => ( 
+              <TeamCard membersInfo={member} key={member.id}/> 
+              ))}
+            </div>
         </Col>
-        </Row>
     </Container>
   );
 }
