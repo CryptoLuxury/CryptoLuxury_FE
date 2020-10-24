@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import { loadStripe } from '@stripe/stripe-js';
 
@@ -23,6 +23,14 @@ const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 const useStyles = makeStyles(styles);
 
 const ProductCard = ({watchInfo}) => {
+
+  const { id, name, price, description, quantity, bitpay } = watchInfo;
+
+  const [order, setOrder] = useState({
+    name: `${name}`,
+    price: {price},
+    quantity: {quantity}
+  })
 
   const [alert, setAlert] = React.useState(null);
   const hideAlert = () => {
@@ -59,26 +67,33 @@ const ProductCard = ({watchInfo}) => {
     );
   };
 
-  const handleStripeClick = async (event) => {
-    // Get Stripe.js instance
-    const stripe = await stripePromise;
+  // const handleStripeClick = async (event) => {
+  //   // Get Stripe.js instance
+  //   const stripe = await stripePromise;
 
-    // Call your backend to create the Checkout Session
-    const response = await fetch(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, { method: 'POST' });
+  //   // Call your backend to create the Checkout Session
+  //   const response = await fetch(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, order, { 
+  //     method: 'POST'
+  //   }, { headers: {
+  //     Content: 'application/json'
+  //   } } );
+  //   const { error } = await stripe.redirectToCheckout({
+  //     mode: 'payment',
+  //     successUrl: 'https://localhost:3000/success',
+  //     cancelUrl: 'https://localhost:3000/cancel',
+  //   });
 
-    const session = await response.json();
+  //   const session = await response.json();
 
-    // When the customer clicks on the button, redirect them to Checkout.
-    const result = await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
+  //   // When the customer clicks on the button, redirect them to Checkout.
+  //   const result = await stripe.redirectToCheckout({
+  //     sessionId: session.id,
+  //   });
 
-    if (result.error) {
-      errorAlert();
-    }
-  };
-
-    const { title, price, description, qty, bitpay } = watchInfo;
+  //   if (result.error) {
+  //     errorAlert();
+  //   }
+  // };
 
     const classes = useStyles();
 
@@ -113,9 +128,15 @@ const ProductCard = ({watchInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button target="_blank" onClick={handleStripeClick()} color="warning" simple justIcon>
-                <AddIcon className={classes.underChartIcons} />
-              </Button>
+            <Button color="warning" class="snipcart-add-item"
+            data-item-id={`${id}`}
+            data-item-price={`${price}`}
+            data-item-url="/admin"
+            data-item-description={`${description}`}
+            data-item-image="/team.png"
+            data-item-name={`${name}`}>
+            Add to cart
+          </Button>
             </Tooltip>
             <Tooltip
             id="tooltip-top"
@@ -137,7 +158,7 @@ const ProductCard = ({watchInfo}) => {
               justifyContent: "center",
               textAlign: "center"
             }} href="#pablo" onClick={e => e.preventDefault()}>
-              {title}
+              {name}
             </a>
           </h4>
           <p style={{
