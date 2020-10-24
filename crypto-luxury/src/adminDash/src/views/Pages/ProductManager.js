@@ -46,13 +46,15 @@ export default function ProductManager() {
     const [cardProduct, setCardProduct] = useState({
         title: "",
         description: "",
-        price: "",
+        price: null,
+        quantity: null,
         bitpay: ""
     })
     const [watchProduct, setWatchProduct] = useState({
         title: "",
         description: "",
-        price: "",
+        price: null,
+        quantity: null,
         bitpay: ""
     })
 
@@ -361,11 +363,15 @@ export default function ProductManager() {
                 <Form>
                 <Form.Group controlId="exampleForm.ControlInput1">
                   <Form.Label>Title</Form.Label>
-                  <Form.Control type="text" placeholder="Title..." onChange={handleWatchChange} name="title" />
+                  <Form.Control type="text" placeholder="Title..." onChange={handleWatchChange} name="name" />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Price</Form.Label>
-                <Form.Control type="Price" placeholder="'100', '100,000'" onChange={handleWatchChange} name="price" />
+                <Form.Control type="number" placeholder="'100', '100,000'" onChange={handleWatchChange} name="price" />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Quantity</Form.Label>
+                <Form.Control type="number" placeholder="'100', '100,000'" onChange={handleWatchChange} name="quantity" />
                 </Form.Group>
                   <Form.Group controlId="exampleForm.ControlTextarea1">
                   <Form.Label>Description</Form.Label>
@@ -434,11 +440,15 @@ export default function ProductManager() {
                 <Form>
                 <Form.Group controlId="exampleForm.ControlInput1">
                   <Form.Label>Listing Title</Form.Label>
-                  <Form.Control type="text" placeholder="Title..." onChange={handleCardChange} name="title" />
+                  <Form.Control type="text" placeholder="Title..." onChange={handleCardChange} name="name" />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Price (USD)</Form.Label>
-                <Form.Control type="Price" placeholder="'100', '100,000'" onChange={handleCardChange} name="price" />
+                <Form.Control type="number" placeholder="'100', '100,000'" onChange={handleCardChange} name="price" />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Quantity</Form.Label>
+                <Form.Control type="number" placeholder="'100', '100,000'" onChange={handleCardChange} name="quantity" />
                 </Form.Group>
                   <Form.Group controlId="exampleForm.ControlTextarea1">
                   <Form.Label>Listing Description</Form.Label>

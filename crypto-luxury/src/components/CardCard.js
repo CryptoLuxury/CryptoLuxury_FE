@@ -33,14 +33,15 @@ const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const ProductCard = ({cardInfo}) => {
 
-    const { title, price, description, qty, bitpay } = cardInfo;
+    const { name, price, description, quantity, bitpay } = cardInfo;
 
     const classes = useStyles();
 
-    const [test, setTest] = useState({
-      title: "Carl Sachs",
-      amount: 15000,
-      quantity: 2,
+    const [order, setOrder] = useState({
+      name: `${name}`,
+      price: {price},
+      quantity: {quantity},
+      
     })
 
       const [alert, setAlert] = React.useState(null);
@@ -63,38 +64,33 @@ const ProductCard = ({cardInfo}) => {
       );
     };
   
-    const handleStripeClick = async (event) => {
-      // Get Stripe.js instance
-      const stripe = await stripePromise;
+    // const handleStripeClick = async (event) => {
+    //   // Get Stripe.js instance
+    //   const stripe = await stripePromise;
   
-      // Call your backend to create the Checkout Session
-      const response = await fetch(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, { method: 'POST' });
+    //   // Call your backend to create the Checkout Session
+    //   const response = await fetch(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, order, { 
+    //     method: 'POST'
+    //   }, { headers: {
+    //     Content: 'application/json'
+    //   } } );
+    //   const { error } = await stripe.redirectToCheckout({
+    //     mode: 'payment',
+    //     successUrl: 'https://localhost:3000/success',
+    //     cancelUrl: 'https://localhost:3000/cancel',
+    //   });
   
-      const session = await response.json();
+    //   const session = await response.json();
   
-      // When the customer clicks on the button, redirect them to Checkout.
-      const result = await stripe.redirectToCheckout({
-        sessionId: session.id,
-      });
+    //   // When the customer clicks on the button, redirect them to Checkout.
+    //   const result = await stripe.redirectToCheckout({
+    //     sessionId: session.id,
+    //   });
   
-      if (result.error) {
-        errorAlert();
-      }
-    };
-
-    // const handleStripeClick = (e) => {
-    //   e.preventDefault();
-    //   const stripe = stripePromise;
-    //   axios.post(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, test)
-    //   .then(result => {
-    //     stripe.redirectToCheckout({
-    //       sessionId: result.id
-    //     })
-    //     .catch(err => {
-    //       console.log(err)
-    //     })
-    //   })
-    // }
+    //   if (result.error) {
+    //     errorAlert();
+    //   }
+    // };
 
     return (
       <div style={{
@@ -127,9 +123,15 @@ const ProductCard = ({cardInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button id="checkout-button" onClick={handleStripeClick} color="warning" simple justIcon>
-                <AddIcon className={classes.underChartIcons} />
-              </Button>
+            <Button color="warning" class="snipcart-add-item"
+            data-item-id="rolex-watch"
+            data-item-price={price}
+            data-item-url="/admin"
+            data-item-description={description}
+            data-item-image="/avatar.png"
+            data-item-name={name}>
+            Add to cart
+          </Button>
             </Tooltip>
             <Tooltip
             id="tooltip-top"
@@ -151,7 +153,7 @@ const ProductCard = ({cardInfo}) => {
               justifyContent: "center",
               textAlign: "center"
             }} href="#pablo" onClick={e => e.preventDefault()}>
-              {title}
+              {name}
             </a>
           </h4>
           <p style={{
