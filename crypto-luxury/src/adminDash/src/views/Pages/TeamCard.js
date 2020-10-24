@@ -30,13 +30,14 @@ const TeamCard = ({membersInfo}) => {
     return (
       <div>
         <Card
+        style={{marginBottom: "10%"}}
         profile
         className={classes.customCardClass + " " + classes[cardAnimaton]}
         >
         <CardAvatar profile className={classes.cardAvatar}>
-          <a href="#pablo" onClick={e => e.preventDefault()}>
+          <div>
             <img src={avatar} alt="generic avatar with a mask for the rona" />
-          </a>
+          </div>
         </CardAvatar>
         <CardBody profile>
           <h4 className={classes.cardTitle} style={{

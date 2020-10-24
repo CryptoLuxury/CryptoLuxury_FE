@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -31,9 +31,15 @@ const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const ProductCard = ({cardInfo}) => {
 
-    const { title, price, description, bitpay } = cardInfo;
+    const { title, price, description, qty, bitpay } = cardInfo;
 
     const classes = useStyles();
+
+    const [test, setTest] = useState({
+      name: "Carl Sachs",
+      amount: "15000",
+      quantity: "2",
+    })
 
       const [alert, setAlert] = React.useState(null);
   const hideAlert = () => {
@@ -105,7 +111,9 @@ const ProductCard = ({cardInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button onClick={handleStripeClick} color="warning" simple justIcon>
+              <Button onClick={() => {
+                window.open(handleStripeClick())
+              }} color="warning" simple justIcon>
                 <AddIcon className={classes.underChartIcons} />
               </Button>
             </Tooltip>

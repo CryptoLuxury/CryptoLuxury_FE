@@ -230,13 +230,11 @@ export default function TeamPage() {
         <Col style={{
           marginTop: "5%"
         }}>
-            <Row style={{
-              marginBottom: "7.5%"
-            }}>
+            <div>
             { team.map(member => ( 
               <TeamCard membersInfo={member} key={member.id}/> 
               ))}
-            </Row>
+            </div>
         </Col>
     </Container>
   );
