@@ -135,40 +135,6 @@ const TeamPage = () => {
 
     return (
         <div>
-        <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Submit a Ticket</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div>
-          <Form>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Your Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter Name" name="name" />
-          </Form.Group>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter Email" name="email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Message</Form.Label>
-          <Form.Control as="textarea" rows="3" />
-        </Form.Group>
-          </Form>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="dark" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button color="warning" onClick={handleContactSubmit}>
-            Send Ticket
-          </Button>
-        </Modal.Footer>
-        </Modal>
         <Nav />
     <Container>
     <Row>

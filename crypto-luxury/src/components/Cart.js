@@ -195,25 +195,6 @@ const Cart = () => {
             </GridItem>
             </GridContainer>
         </Navbar>
-
-            <div style={{
-                height: "4vh",
-                background: "grey",
-                width: "100%",
-                marginTop: "0",
-                alignSelf: "center",
-                borderRadius: "1%",
-                alignSelf: "center"
-            }}>
-                <Typing speed={5}>
-                <h6 style={{
-                    fontSize: ".8rem",
-                    textAlign: "center",
-                    paddingTop: ".5%",
-                    paddingBottom: ".2%",
-                }}>White-Glove complimentary on all orders over $100,000</h6>
-                </Typing>
-            </div>
             <Row>
             {watchOrders.map(item => ( 
               <CartItem itemInfo={item} key={item.id}/> 

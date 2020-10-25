@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 
+import Nav from "./Nav.js";
+
 import { useHistory } from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
@@ -84,82 +86,7 @@ const Products = () => {
 
     return (
         <div>
-        <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Submit a Ticket</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div>
-          <Form>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Your Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter Name" name="name" />
-          </Form.Group>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter Email" name="email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Message</Form.Label>
-          <Form.Control as="textarea" rows="3" />
-        </Form.Group>
-          </Form>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="dark" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button color="warning" onClick={handleContactSubmit}>
-            Send Ticket
-          </Button>
-        </Modal.Footer>
-        </Modal>
-        <Navbar bg="dark" variant="light" className="marblebar" sticky="top">
-        <Container>
-        <Row style={{
-          display: "flex",
-          margin: "0 auto",
-          flexFlow: "row wrap",
-          justifyContent: "space-between"
-        }}>
-        <Row style={{
-          margin: "0 auto"
-        }}>
-        <Navbar.Brand href="/" style={{color: "#e39c0e"}}>
-        Crypto Luxury
-        </Navbar.Brand>
-        </Row>
-        <Row style={{
-          margin: "0 auto"
-        }}>
-        <Col>
-        <Button onClick={() => {
-            history.push("/")
-        }} color="warning" style={{
-            width: "100px"
-        }}>Home</Button>
-        </Col>
-        <Col>
-        <Button onClick={() => {
-            history.push("/team")
-        }} color="warning" style={{
-            width: "100px"
-        }}>Team</Button>
-        </Col>
-        <Col>
-        <Button onClick={handleShow} color="warning" style={{
-          width: "100px"
-      }}>Contact</Button>
-        </Col>
-      </Row>
-      </Row>
-        </Container>
-        
-    </Navbar>
+        <Nav />
     <Container>
             <Row style={{
               marginBottom: "5%",
