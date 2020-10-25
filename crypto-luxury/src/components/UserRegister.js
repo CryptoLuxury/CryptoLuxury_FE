@@ -59,7 +59,7 @@ export default function Pages(props) {
     axios.post(`https://crypto-luxury.herokuapp.com/api/users/register`, userRegister)
     .then(res => {
       alert("SUCCESS")
-      console.log(res)
+      history.push('/login')
     })
     .catch(err => {
       console.log(err)

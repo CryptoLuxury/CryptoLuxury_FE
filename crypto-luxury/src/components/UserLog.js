@@ -235,6 +235,11 @@ export default function Pages(props) {
                 <Button onClick={handleLogin} color="warning" simple size="lg" block>
                   Let{"'"}s Go
                 </Button>
+                <Button onClick={() => {
+                  history.push('register')
+                }} color="warning" simple size="lg" block>
+                or Register
+              </Button>
               </CardFooter>
             </Card>
           </form>
