@@ -24,8 +24,6 @@ const useStyles = makeStyles(styles);
 
 const ProductCard = ({watchInfo}) => {
 
-
-  const productId = watchInfo.id
   const { id, name, price, description, quantity, bitpay } = watchInfo;
 
   const [order, setOrder] = useState({

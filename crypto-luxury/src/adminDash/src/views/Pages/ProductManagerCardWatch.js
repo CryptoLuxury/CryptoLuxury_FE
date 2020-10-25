@@ -99,15 +99,16 @@ const ProductManagerCardWatch = ({watchInfo}) => {
             }} className={classes.cardProductDesciprion}>
               {description}
             </p>
+            <p style={{
+              color: "#997023",
+              display: "flex",
+              justifyContent: "center",
+              textAlign: "center",
+              height: "5vh"
+            }} className={classes.cardProductDesciprion}>
+              {price}
+            </p>
           </CardBody>
-          <CardFooter product>
-            <div className={classes.price}>
-              <h4 style={{textAlign: "center", color: "#389c66"}}><span style={{color: "#187d20"}}>$</span>{price} <span style={{color: "#0a381f"}}>/kit</span></h4>
-            </div>
-            <div className={`${classes.stats} ${classes.productStats}`}>
-              <FlightIcon color="warning" /> <span style={{color: "#0a381f"}}>International</span>
-            </div>
-          </CardFooter>
         </Card>
       </div>
     )
