@@ -9,6 +9,8 @@ import RtlLayout from "../src/adminDash/src/layouts/RTL";
 import Cart from "./components/Cart";
 import Products from "./components/Products";
 import Team from "./components/TeamPage";
+import UserLogin from "./components/UserLog";
+import UserRegister from "./components/UserRegister";
 
 import { createBrowserHistory } from "history";
 
@@ -30,6 +32,8 @@ function App() {
         <Route path="/cart" component={Cart} />
         <Route path="/products" component={Products} />
         <Route path="/team" component={Team} />
+        <Route path="/login" component={UserLogin} />
+        <Route path="/register" component={UserRegister} />
 
       </Switch>
     </Router>
