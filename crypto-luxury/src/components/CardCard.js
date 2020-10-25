@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 
 import axios from "axios";
+import { axiosWithAuthUser } from "../utils/AxiosWithAuthUser";
 
 
 import Container from "react-bootstrap/Container";
@@ -32,11 +33,28 @@ import blastoise from "./blastoise.png";
 
 const useStyles = makeStyles(styles);
 
-const stripePromise = loadStripe('pk_test_51HKzDHEcVyNtCHEW4SzW2thg3LOVBUJOdrdHniqfEJPL4RyaUgI94YpSSeBXjazqy49kjIS5scvqZu1Ai1GVnGMK003ADuPohG');
+// const stripePromise = loadStripe('pk_test_51HKzDHEcVyNtCHEW4SzW2thg3LOVBUJOdrdHniqfEJPL4RyaUgI94YpSSeBXjazqy49kjIS5scvqZu1Ai1GVnGMK003ADuPohG');
 
 const ProductCard = ({cardInfo}) => {
 
+    const productId = cardInfo.id
+
     const { id, name, price, description, quantity, bitpay } = cardInfo;
+
+    const [cartInfo, setCartInfo] = useState({
+        user_id: window.localStorage.getItem('id'),
+        card_id: cardInfo.id
+    })
+
+    const addToCart = () => {
+      axiosWithAuthUser().post(`https://crypto-luxury.herokuapp.com/api/form/cardOrders`, cartInfo)
+      .then(res => {
+        alert('success')
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
 
     const classes = useStyles();
 
@@ -65,28 +83,6 @@ const ProductCard = ({cardInfo}) => {
           That's not supposed to happen :(
         </SweetAlert>
       );
-    };
-  
-    const handleStripeClick = async () => {
-
-      try {
-  
-      // Get Stripe.js instance
-      const stripe = await stripePromise;
-      // Call your backend to create the Checkout Session
-      const response = await axios.post(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, order)
-  
-      // When the customer clicks on the button, redirect them to Checkout.
-      const result = await stripe.redirectToCheckout({
-        sessionId: response.data.id,
-      });
-  
-      if (result.error) {
-        errorAlert();
-      }
-    } catch(error) {
-      console.log(error)
-    }
     };
 
     return (
@@ -120,7 +116,7 @@ const ProductCard = ({cardInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-            <Button color="warning" onClick={handleStripeClick}>
+            <Button color="warning" onClick={addToCart}>
             Add to cart
           </Button>
             </Tooltip>

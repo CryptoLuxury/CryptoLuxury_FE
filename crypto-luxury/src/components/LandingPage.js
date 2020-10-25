@@ -266,7 +266,6 @@ const LandingPage = () => {
 
         <Navbar bg="dark" variant="light" className="marblebar" sticky="top">
         <Container>
-        <Row><Button class="snipcart-checkout">Click here to checkout</Button></Row>
         <Row style={{
           display: "flex",
           margin: "0 auto",

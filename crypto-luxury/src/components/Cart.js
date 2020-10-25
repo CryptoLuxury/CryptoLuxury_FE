@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 import axios from "axios";
 
 import { useHistory } from "react-router-dom";
+
+import CartItem from "./CartItem";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -12,6 +14,7 @@ import GridItem from "./dashComps/GridItem";
 
 import Button from "./dashComps/Button";
 import Dropdown from "react-bootstrap/Dropdown";
+import { loadStripe } from '@stripe/stripe-js';
 
 //modal
 import Modal from "react-bootstrap/Modal";
@@ -24,10 +27,18 @@ import Typing from "react-typing-animation";
 //import other components
 import CartTable from "./dashComps/CartTable";
 
+// const stripePromise = loadStripe('pk_test_51HKzDHEcVyNtCHEW4SzW2thg3LOVBUJOdrdHniqfEJPL4RyaUgI94YpSSeBXjazqy49kjIS5scvqZu1Ai1GVnGMK003ADuPohG');
+
+
 const Cart = () => {
+
+    const user = window.localStorage.getItem('id');
 
     let history = useHistory();
     const [show, setShow] = useState(false);
+    const [ cart, setCart ] = useState([]);
+    const [ cardOrders, setCardOrders] = useState([])
+    const [ watchOrders, setWatchOrders] = useState([])
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -37,6 +48,28 @@ const Cart = () => {
         email: "",
         message: ""
       })
+
+      useEffect(() => {
+        axios.get(`https://crypto-luxury.herokuapp.com/api/form/cardOrders/${user}`)
+        .then(res => {
+          setCardOrders([...res.data])
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      }, []);
+
+      useEffect(() => {
+        axios.get(`https://crypto-luxury.herokuapp.com/api/form/watchOrders/${user}`)
+        .then(res => {
+          setWatchOrders([
+            ...res.data
+          ])
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      }, []);
   
       const handleContactChange = (e) => {
         e.preventDefault();
@@ -45,6 +78,28 @@ const Cart = () => {
           [e.target.name]: e.target.value
         })
       }
+
+    //       const handleStripeClick = async () => {
+
+    //   try {
+  
+    //   // Get Stripe.js instance
+    //   const stripe = await stripePromise;
+    //   // Call your backend to create the Checkout Session
+    //   const response = await axios.post(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, order)
+  
+    //   // When the customer clicks on the button, redirect them to Checkout.
+    //   const result = await stripe.redirectToCheckout({
+    //     sessionId: response.data.id,
+    //   });
+  
+    //   if (result.error) {
+    //     console.log("error");
+    //   }
+    // } catch(error) {
+    //   console.log(error)
+    // }
+    // };
   
       const handleContactSubmit = (e) => {
         e.preventDefault();
@@ -160,7 +215,12 @@ const Cart = () => {
                 </Typing>
             </div>
             <Row>
-            <CartTable />
+            {watchOrders.map(item => ( 
+              <CartItem itemInfo={item} key={item.id}/> 
+              ))}
+              {cardOrders.map(item => ( 
+                <CartItem itemInfo={item} key={item.id}/> 
+                ))}
             </Row>
         </Container>
     )

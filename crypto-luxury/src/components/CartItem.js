@@ -5,9 +5,22 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 
-const CartItem = () => {
+const CartItem = ({itemInfo}) => {
+
+    const { name, price, quantity } = itemInfo;
 
     return (
-        <div>This is a cart item displaying</div>
+        <div>
+
+            <div style={{ width: 300 }}>
+            <p>{name}</p>
+            <p>{price}</p>
+            <p>{quantity}</p>
+            </div>
+
+
+        </div>
     )
 }
+
+export default CartItem;

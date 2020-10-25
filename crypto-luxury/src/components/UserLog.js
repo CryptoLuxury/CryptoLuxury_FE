@@ -97,6 +97,9 @@ export default function Pages(props) {
       alert("SUCCESS")
       window.localStorage.setItem('token', res.data.token)
       window.localStorage.setItem('id', res.data.id)
+      setTimeout(() => {
+        history.push('/cart')
+      })
       console.log(res)
     })
     .catch(err => {
