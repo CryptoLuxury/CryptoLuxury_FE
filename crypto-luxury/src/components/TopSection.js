@@ -67,59 +67,12 @@ export default() => {
                     color: "white"
                 }}>White-Glove complimentary on all orders over $100,000</h6>
                 </Typing>
-            </div> */}
-
-            <Fade bottom duration={1000}>
+              </div> */}
             <Row style={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "center",
-                margin: ".2%",
-                alignSelf: "center"
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "12%"
             }}>
-
-            </Row>
-            </Fade>
-            <Row style={{
-                background: "white",
-                display: "flex",
-                justifyContent: "row nowrap",
-                width: "100%",
-                alignSelf: "center",
-                marginBottom: "0"
-            }}>
-                <Col style={{
-                    alignSelf: "center",
-                    borderRadius: "1%",
-                    maringBottom: "0",
-                    paddingBottom: "0"
-                }}>
-                    <div>
-                    <Carousel autoplay dots={false}>
-                    <div>
-                      <h3 style={{
-                        height: '160px',
-                        color: '#fff',
-                        lineHeight: '160px',
-                        textAlign: 'center',
-                        background: '#a16f0b',
-                      }}>10% OFF Select Watches</h3>
-                    </div>
-                    <div>
-                      <h3 style={{
-                        height: '160px',
-                        color: '#fff',
-                        lineHeight: '160px',
-                        textAlign: 'center',
-                        background: '#ffaf0f',
-                      }}>25% OFF Select Pokemon Cards</h3>
-                    </div>
-                  </Carousel>
-                    </div>
-                </Col>
-
-            </Row>
-            <Row>
             { homeCards.map(item => ( 
               <HomeCard itemInfo={item} key={item.id}/> 
               ))}
