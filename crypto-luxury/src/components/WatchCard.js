@@ -118,7 +118,9 @@ const ProductCard = ({watchInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-            <Button color="warning" onClick={addToCart}>
+            <Button color="warning" onClick={() => {
+              addToCart(id)
+            }}>
             Add to cart
           </Button>
             </Tooltip>
