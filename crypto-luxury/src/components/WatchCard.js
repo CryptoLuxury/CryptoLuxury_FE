@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 import axios from "axios";
 
-import { loadStripe } from '@stripe/stripe-js';
+import { axiosWithAuthUser } from "../utils/AxiosWithAuthUser";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -20,12 +20,12 @@ import ViewIcon from '@material-ui/icons/Visibility';
 import AddIcon from '@material-ui/icons/AddShoppingCart';
 import AccountIcon from '@material-ui/icons/AccountBalanceWallet';
 
-const stripePromise = loadStripe('pk_test_51HKzDHEcVyNtCHEW4SzW2thg3LOVBUJOdrdHniqfEJPL4RyaUgI94YpSSeBXjazqy49kjIS5scvqZu1Ai1GVnGMK003ADuPohG');
-
 const useStyles = makeStyles(styles);
 
 const ProductCard = ({watchInfo}) => {
 
+
+  const productId = watchInfo.id
   const { id, name, price, description, quantity, bitpay } = watchInfo;
 
   const [order, setOrder] = useState({
@@ -33,6 +33,22 @@ const ProductCard = ({watchInfo}) => {
     price: watchInfo.price,
     quantity: watchInfo.quantity
   })
+
+  const [cartInfo, setCartInfo] = useState({
+    user_id: window.localStorage.getItem('id'),
+    watch_id: watchInfo.id
+})
+
+  const addToCart = (e) => {
+    e.preventDefault();
+    axiosWithAuthUser().post(`https://crypto-luxury.herokuapp.com/api/form/watchOrders`, cartInfo)
+    .then(res => {
+      alert('success')
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
 
   const [alert, setAlert] = React.useState(null);
   const hideAlert = () => {
@@ -69,28 +85,6 @@ const ProductCard = ({watchInfo}) => {
     );
   };
 
-  const handleStripeClick = async () => {
-
-    try {
-
-    // Get Stripe.js instance
-    const stripe = await stripePromise;
-    // Call your backend to create the Checkout Session
-    const response = await axios.post(`https://crypto-luxury.herokuapp.com/api/stripe/create-checkout-session`, order)
-
-    // When the customer clicks on the button, redirect them to Checkout.
-    const result = await stripe.redirectToCheckout({
-      sessionId: response.data.id,
-    });
-
-    if (result.error) {
-      errorAlert();
-    }
-  } catch(error) {
-    console.log(error)
-  }
-  };
-
     const classes = useStyles();
 
     return (
@@ -124,7 +118,7 @@ const ProductCard = ({watchInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-            <Button color="warning" onClick={handleStripeClick}>
+            <Button color="warning" onClick={addToCart}>
             Add to cart
           </Button>
             </Tooltip>
