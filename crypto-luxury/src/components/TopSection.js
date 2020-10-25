@@ -112,7 +112,7 @@ export default() => {
                     marginBottom: "0"
                 }}>
                 <div>
-                <Carousel vertical autoplay dots={false}>
+                <Carousel autoplay dots={false} vertical>
                 <div>
                   <h3 style={{
                     height: '160px',

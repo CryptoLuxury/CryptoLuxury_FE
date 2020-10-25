@@ -275,9 +275,11 @@ const LandingPage = () => {
         <Row style={{
           margin: "0 auto"
         }}>
-        <Navbar.Brand href="/" style={{color: "#e39c0e"}}>
+        <h1 onClick={() =>
+          history.push('/')
+        } style={{color: "#e39c0e"}}>
         Crypto Luxury
-        </Navbar.Brand>
+        </h1>
         </Row>
         <Row style={{
           margin: "0 auto"
