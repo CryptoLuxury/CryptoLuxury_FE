@@ -275,9 +275,11 @@ const LandingPage = () => {
         <Row style={{
           margin: "0 auto"
         }}>
-        <Navbar.Brand href="/" style={{color: "#e39c0e"}}>
+        <h1 onClick={() =>
+          history.push('/')
+        } style={{color: "#e39c0e"}}>
         Crypto Luxury
-        </Navbar.Brand>
+        </h1>
         </Row>
         <Row style={{
           margin: "0 auto"
@@ -306,24 +308,12 @@ const LandingPage = () => {
         </Container>
         
     </Navbar>
+    <Container>
             <div><TopSection /></div>
-            <Container>
-            <Row xs={12}>
-              <Col>
-              <Card plain>
-                <CardBody plain>
-                  <Timeline stories={stories} />
-                </CardBody>
-              </Card>
-              </Col>
-            </Row>
-          </Container>
-          <div>
-              <Testimonies />
-          </div>
-          <div>
-              <Footer />
-          </div>
+        </Container>
+        <div>
+        <Footer />
+    </div>
         </div>
     );
 };

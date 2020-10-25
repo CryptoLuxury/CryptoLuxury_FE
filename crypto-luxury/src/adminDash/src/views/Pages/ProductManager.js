@@ -500,9 +500,13 @@ export default function ProductManager() {
           display: "flex",
           flexFlow: "row nowrap",
         }}>
-          { watches.map(watch => ( 
-          <ProductManagerCardWatch watchInfo={watch} key={watch.id}/> 
-          ))}
+          { watches.map(watch => {
+            console.log(watch)
+            return (
+              <ProductManagerCardWatch watchInfo={watch} key={watch.id} id={watch.id}/>
+            )
+          } 
+          )}
         </Col>
         </Row>
         <Row style={{

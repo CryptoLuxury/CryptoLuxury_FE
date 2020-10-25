@@ -72,18 +72,17 @@ export default() => {
                 display: "flex",
                 justifyContent: "row nowrap",
                 width: "100%",
-                margin: ".1%",
                 alignSelf: "center",
                 marginBottom: "0"
             }}>
                 <Col style={{
                     alignSelf: "center",
-                    margin: ".1%",
                     borderRadius: "1%",
-                    maringBottom: "0"
+                    maringBottom: "0",
+                    paddingBottom: "0"
                 }}>
                     <div>
-                    <Carousel vertical={true} autoplay dots={false}>
+                    <Carousel autoplay dots={false}>
                     <div>
                       <h3 style={{
                         height: '160px',
@@ -105,37 +104,87 @@ export default() => {
                   </Carousel>
                     </div>
                 </Col>
-                <Col style={{
-                    alignSelf: "center",
-                    margin: ".1%",
-                    borderRadius: "1%",
-                    marginBottom: "0"
-                }}>
-                <div>
-                <Carousel vertical autoplay dots={false}>
-                <div>
-                  <h3 style={{
-                    height: '160px',
-                    color: '#fff',
-                    lineHeight: '160px',
-                    textAlign: 'center',
-                    background: '#ffaf0f',
-                  }}>Vaulting Available Free on ALL ORDERS!</h3>
-                </div>
-                <div>
-                  <h3 style={{
-                    height: '160px',
-                    color: '#fff',
-                    lineHeight: '160px',
-                    textAlign: 'center',
-                    background: '#a16f0b',
-                  }}>White-Glove Complimentary on orders over $100,000!</h3>
-                </div>
-              </Carousel>
-                </div>
-                </Col>
 
             </Row>
+            <Row style={{
+              height: "300px"
+            }}>
+                      <Col style={{
+                        backgroundColor: "red",
+                        width: "300px"
+                      }}>
+                        one
+                      </Col>
+                      <Col style={{
+                        backgroundColor: "black",
+                        width: "300px"
+                      }}>
+                      one
+                    </Col>
+                    <Col style={{
+                      backgroundColor: "red",
+                      width: "300px"
+                    }}>
+                    one
+                  </Col>
+            </Row>
+            <Row style={{
+              height: "150px",
+              backgroundColor: "green",
+            }}>
+                    one
+            </Row>
+            <Row style={{
+              height: "300px"
+            }}>
+                      <Col style={{
+                        backgroundColor: "black",
+                        width: "300px"
+                      }}>
+                        one
+                      </Col>
+                      <Col style={{
+                        backgroundColor: "red",
+                        width: "300px"
+                      }}>
+                      one
+                    </Col>
+                    <Col style={{
+                      backgroundColor: "black",
+                      width: "300px"
+                    }}>
+                    one
+                  </Col>
+            </Row>
+            <Row style={{
+              height: "300px"
+            }}>
+                      <Col style={{
+                        backgroundColor: "red",
+                        width: "300px"
+                      }}>
+                        one
+                      </Col>
+                      <Col style={{
+                        backgroundColor: "black",
+                        width: "300px"
+                      }}>
+                      one
+                    </Col>
+                    <Col style={{
+                      backgroundColor: "red",
+                        width: "300px"
+                    }}>
+                    one
+                  </Col>
+            </Row>
+            <Row style={{
+              height: "150px",
+              backgroundColor: "green",
+            }}>
+                    one
+            </Row>
+
         </Container>
     )
 }

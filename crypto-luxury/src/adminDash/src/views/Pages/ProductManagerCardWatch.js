@@ -31,8 +31,10 @@ const ProductManagerCardWatch = ({watchInfo}) => {
     const { id, title, price, description, bitpay } = watchInfo;
 
     const handleDeleteListing = (id) => {
+      console.log(id, "$$$$$$%$$$$$$$")
       axios.delete(`https://crypto-luxury.herokuapp.com/api/store/watches/:${id}`)
       .then(res => {
+        alert('success')
         console.log(res)
       })
       .catch(err => {
@@ -70,7 +72,9 @@ const ProductManagerCardWatch = ({watchInfo}) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button color="danger" onClick={handleDeleteListing({id})} simple justIcon>
+              <Button color="danger" onClick={() => {
+                handleDeleteListing(id)
+              }} simple justIcon>
                 <SweepIcon className={classes.underChartIcons} />
               </Button>
             </Tooltip>

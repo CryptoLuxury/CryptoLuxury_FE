@@ -1,5 +1,7 @@
 import React from "react";
 
+import axios from "axios";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Icon from "@material-ui/core/Icon";
@@ -13,7 +15,6 @@ import CardFooter from "../../components/Card/CardFooter.js";
 //icons
 import FlightIcon from '@material-ui/icons/FlightTakeoff';
 import Edit from "@material-ui/icons/Edit";
-import ViewIcon from '@material-ui/icons/Visibility';
 import AddIcon from '@material-ui/icons/AddShoppingCart';
 import SweepIcon from '@material-ui/icons/DeleteSweep';
 
@@ -23,10 +24,19 @@ const useStyles = makeStyles(styles);
 
 const ProductManagerCardCard = ({cardInfo}) => {
 
+  const { id, title, price, description } = cardInfo;
+
+    const handleDelete = () => {
+      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/cards/${id}`)
+      .then(res => {
+        alert('success')
+      })
+      .catch('error')
+    }
+
   
 
     const classes = useStyles();
-    const { id, title, price, description } = cardInfo;
 
     return (
       <div style={{
@@ -58,7 +68,9 @@ const ProductManagerCardCard = ({cardInfo}) => {
             placement="bottom"
             classes={{ tooltip: classes.tooltip }}
           >
-            <Button color="danger" simple justIcon>
+            <Button color="danger" onClick={() => {
+              handleDelete()
+            }} simple justIcon>
               <SweepIcon className={classes.underChartIcons} />
             </Button>
           </Tooltip>
@@ -69,7 +81,7 @@ const ProductManagerCardCard = ({cardInfo}) => {
               display: "flex",
               justifyContent: "center",
               textAlign: "center"
-            }} href="#pablo" onClick={e => e.preventDefault()}>
+            }} href="#pablo" onClick={(e => e.preventDefault())}>
               {title}
             </a>
           </h4>
