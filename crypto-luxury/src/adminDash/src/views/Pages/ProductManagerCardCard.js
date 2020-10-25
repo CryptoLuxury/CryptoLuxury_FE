@@ -31,10 +31,9 @@ const ProductManagerCardCard = ({cardInfo}) => {
       .then(res => {
         alert('success')
       })
-      .catch('error')
+      .catch(err => alert("Failed to Delete"))
     }
 
-  
 
     const classes = useStyles();
 

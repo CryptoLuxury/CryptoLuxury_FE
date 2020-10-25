@@ -38,6 +38,7 @@ const ProductManagerCardWatch = ({watchInfo}) => {
         console.log(res)
       })
       .catch(err => {
+        alert("Failed to Delete")
         console.log(err)
       })
     } 
