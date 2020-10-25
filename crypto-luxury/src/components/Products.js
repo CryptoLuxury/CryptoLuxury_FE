@@ -161,25 +161,6 @@ const Products = () => {
         
     </Navbar>
     <Container>
-
-            <div style={{
-                height: "4vh",
-                background: "grey",
-                width: "100%",
-                marginTop: "0",
-                alignSelf: "center",
-                borderRadius: "1%",
-                alignSelf: "center"
-            }}>
-                <Typing speed={5}>
-                <h6 style={{
-                    fontSize: ".8rem",
-                    textAlign: "center",
-                    paddingTop: ".5%",
-                    paddingBottom: ".2%",
-                }}>All of our cards are PSA approved!  Send us a message to learn more.</h6>
-                </Typing>
-            </div>
             <Row style={{
               marginBottom: "5%",
               display: "flex",
