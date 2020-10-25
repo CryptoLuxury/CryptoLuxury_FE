@@ -1,3 +1,4 @@
-.bgnav.title {
-    color: "gold";
+.wrap {
+    background-image: url('./Marble.png');
+    height: "200px";
 }

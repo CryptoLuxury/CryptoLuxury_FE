@@ -308,24 +308,12 @@ const LandingPage = () => {
         </Container>
         
     </Navbar>
+    <Container>
             <div><TopSection /></div>
-            <Container>
-            <Row xs={12}>
-              <Col>
-              <Card plain>
-                <CardBody plain>
-                  <Timeline stories={stories} />
-                </CardBody>
-              </Card>
-              </Col>
-            </Row>
-          </Container>
-          <div>
-              <Testimonies />
-          </div>
-          <div>
-              <Footer />
-          </div>
+        </Container>
+        <div>
+        <Footer />
+    </div>
         </div>
     );
 };

@@ -5,36 +5,29 @@ import styled from "styled-components";
 
 import "./Nav.css";
 
+import { Row, Col } from "react-bootstrap";
+
 const Navigation = () => {
 
     let history = useHistory();
 
     return (
-        <div>
-            <Navbar bg="dark" variant="dark" sticky="top">
-            <div style={{
-                marginRight: "3%"
-            }}>
-            <Navbar.Brand href="#home">Crypto Luxury</Navbar.Brand>
-            </div>
-            <Nav className="mr-auto">
-            <Nav.Link style={{color: "#EAB709"}} href="/">Home</Nav.Link>
-            <Nav.Link style={{color: "#EAB709"}} href="#pricing">Team</Nav.Link>
-            <Nav.Link style={{color: "#EAB709"}} href="#pricing">Services</Nav.Link>
-            </Nav>
-            <div>
-            <Button onClick={() => history.push('/admin/login')} variant="outline-warning">Account</Button>
-            </div>
-            <div style={{
-                marginLeft: "1%"
-            }}>
-            <Form inline>
-            <FormControl type="text" placeholder="Search Products" className="mr-sm-2" />
-            <Button variant="dark">Search</Button>
-            </Form>
-            </div>
-        </Navbar>
-      </div>
+        <div className="wrap">
+            <Row>
+                <Col>
+                    Watches
+                </Col>
+                <Col>
+                Cards
+                </Col>
+                <div>
+                Team
+                </div>
+                <div>
+                Vaulting
+                </div>
+            </Row>
+        </div>
     )
 }
 

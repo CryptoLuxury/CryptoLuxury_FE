@@ -7,6 +7,8 @@ import SweetAlert from "react-bootstrap-sweetalert";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+import Nav from "./Nav";
+
 //modal
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -167,48 +169,7 @@ const TeamPage = () => {
           </Button>
         </Modal.Footer>
         </Modal>
-        <Navbar bg="dark" variant="light" className="marblebar" sticky="top">
-        <Container>
-        <Row style={{
-          display: "flex",
-          margin: "0 auto",
-          flexFlow: "row wrap",
-          justifyContent: "space-between"
-        }}>
-        <Row style={{
-          margin: "0 auto"
-        }}>
-        <Navbar.Brand href="/" style={{color: "#e39c0e"}}>
-        Crypto Luxury
-        </Navbar.Brand>
-        </Row>
-        <Row style={{
-          margin: "0 auto"
-        }}>
-        <Col>
-        <Button onClick={() => {
-            history.push("/")
-        }} color="warning" style={{
-            width: "100px"
-        }}>Home</Button>
-        </Col>
-        <Col>
-        <Button onClick={() => {
-            history.push("/products")
-        }} color="warning" style={{
-            width: "100px"
-        }}>Products</Button>
-        </Col>
-        <Col>
-        <Button onClick={handleShow} color="warning" style={{
-          width: "100px"
-      }}>Contact</Button>
-        </Col>
-      </Row>
-      </Row>
-        </Container>
-        
-    </Navbar>
+        <Nav />
     <Container>
     <Row>
         <div style={{
