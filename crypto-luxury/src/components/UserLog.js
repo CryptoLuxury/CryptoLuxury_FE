@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
+import { axiosWithAuthUser } from "../utils/AxiosWithAuthUser";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -45,6 +47,7 @@ export default function Pages(props) {
   const handleShow = () => setShow(true);
 
   const [userLogin, setUserLogin] = useState({
+    name: "",
     email: "",
     password: ""
   })
@@ -65,7 +68,7 @@ export default function Pages(props) {
 
   const handleContactSubmit = (e) => {
     e.preventDefault();
-    axios.post(`https://crypto-luxury.herokuapp.com/api/form/contact`, contact)
+    axiosWithAuthUser().post(`https://crypto-luxury.herokuapp.com/api/form/contact`, contact)
     .then(res => {
       alert("POST SUCCESS")
       console.log(res)
@@ -92,6 +95,8 @@ export default function Pages(props) {
     axios.post(`https://crypto-luxury.herokuapp.com/api/users/login`, userLogin)
     .then(res => {
       alert("SUCCESS")
+      window.localStorage.setItem('token', res.data.token)
+      window.localStorage.setItem('id', res.data.id)
       console.log(res)
     })
     .catch(err => {
@@ -205,40 +210,23 @@ export default function Pages(props) {
                 <h4 className={classes.cardTitle}>Log in</h4>
               </CardHeader>
               <CardBody>
-                <CustomInput
-                  labelText="Email"
-                  name="email"
-                  onChange={handleChange}
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <Face className={classes.inputAdornmentIcon} />
-                      </InputAdornment>
-                    )
-                  }}
-                />
-                <CustomInput
-                  labelText="Password"
-                  name="password"
-                  onChange={handleChange}
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <LockIcon className={classes.inputAdornmentIcon}>
-                          lock_outline
-                        </LockIcon>
-                      </InputAdornment>
-                    ),
-                    type: "password",
-                    autoComplete: "off"
-                  }}
-                />
+              <Form>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Your Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter Name" name="name" onChange={handleChange} />
+              </Form.Group>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" placeholder="Enter Email" name="email" onChange={handleChange} />
+                <Form.Text className="text-muted">
+                  We'll never share your email with anyone else.
+                </Form.Text>
+              </Form.Group>
+              <Form.Group controlId="formBasicEmail">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Password" name="password" onChange={handleChange} />
+            </Form.Group>
+              </Form>
               </CardBody>
               <CardFooter className={classes.justifyContentCenter}>
                 <Button onClick={handleLogin} color="warning" simple size="lg" block>

@@ -11,6 +11,7 @@ import Products from "./components/Products";
 import Team from "./components/TeamPage";
 import UserLogin from "./components/UserLog";
 import UserRegister from "./components/UserRegister";
+import PrivateRoute from "./utils/PrivateRoute";
 
 import { createBrowserHistory } from "history";
 
@@ -29,7 +30,7 @@ function App() {
         <Route path="/admin" component={AdminLayout} />
         <Route path="/admin/rtl" component={RtlLayout} />
         <Route path="/admin/login" component={AuthLayout} />
-        <Route path="/cart" component={Cart} />
+        <PrivateRoute path="/cart" component={Cart} />
         <Route path="/products" component={Products} />
         <Route path="/team" component={Team} />
         <Route path="/login" component={UserLogin} />

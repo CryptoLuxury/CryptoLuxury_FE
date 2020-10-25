@@ -201,52 +201,23 @@ export default function Pages(props) {
                 <h4 className={classes.cardTitle}>Register</h4>
               </CardHeader>
               <CardBody>
-              <CustomInput
-                labelText="Name"
-                name="name"
-                formControlProps={{
-                  fullWidth: true
-                }}
-                inputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <Face className={classes.inputAdornmentIcon} />
-                    </InputAdornment>
-                  )
-                }}
-                />
-                <CustomInput
-                  labelText="Email"
-                  name="email"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <Face className={classes.inputAdornmentIcon} />
-                      </InputAdornment>
-                    )
-                  }}
-                />
-                <CustomInput
-                  labelText="Password"
-                  name="password"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <LockIcon className={classes.inputAdornmentIcon}>
-                          lock_outline
-                        </LockIcon>
-                      </InputAdornment>
-                    ),
-                    type: "password",
-                    autoComplete: "off"
-                  }}
-                />
+              <Form>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Your Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter Name" name="name" onChange={handleChange} />
+              </Form.Group>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" placeholder="Enter Email" name="email" onChange={handleChange} />
+                <Form.Text className="text-muted">
+                  We'll never share your email with anyone else.
+                </Form.Text>
+              </Form.Group>
+              <Form.Group controlId="formBasicEmail">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Password" name="password" onChange={handleChange} />
+            </Form.Group>
+              </Form>
               </CardBody>
               <CardFooter className={classes.justifyContentCenter}>
                 <Button onClick={handleRegister} color="warning" simple size="lg" block>
