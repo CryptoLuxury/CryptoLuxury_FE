@@ -5,7 +5,7 @@
 	text-align: center;
 }
 /*Container*/
-.container {
+.container-search {
 	margin: 36px auto;
     width: 100%;
 	max-width: 800px;
@@ -13,7 +13,7 @@
 .search-label {
 	position: relative;
 }
-.container input {
+.container-search input {
 	width: 100%;
 	padding: 16px;
 	font-size: 36px;

@@ -134,12 +134,28 @@ const Navigation = () => {
         </Modal.Footer>
         </Modal>
         <Navbar bg="light" expand="lg" fixed="top">
-        <Navbar.Brand href="/">CryptoLuxury</Navbar.Brand>
+        <div style={{
+          display: "flex",
+          flexFlow: "column wrap",
+          width: "100%"
+        }}>
+        <Row style={{
+          display: "flex",
+          flexFlow: "row nowrap",
+          justifyContent: "center",
+          marginBottom: "1%"
+        }}>
+        <div className="navtop" style={{
+          textAlign: "center"
+        }}>
+        <Navbar.Brand href="/">CryptoLuxury</Navbar.Brand></div>
         <div>
           <Search />
         </div>
+        </Row>
+        <Row>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse className="collapse" id="basic-navbar-nav">
           <Nav className="mr-auto" style={{
               display: "flex",
               width: "100%",
@@ -156,6 +172,8 @@ const Navigation = () => {
             }}><ShoppingCartIcon /></Button>
           </div>
         </Navbar.Collapse>
+        </Row>
+        </div>
       </Navbar>
         </div>
     )

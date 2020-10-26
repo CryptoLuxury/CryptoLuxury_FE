@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 import axios from "axios";
 
-import NewCardCard from "./NewCardCard";
+import NewCardCard from "./CardNavCard";
 
 import WatchCard from "./WatchNavCard";
 
@@ -59,7 +59,7 @@ const Search = () => {
 
 
 	return(
-            <div className="container">
+            <div className="container-search-nav">
 				<label className="search-label" htmlFor="search-input">
 					<input
 						type="text"
@@ -68,7 +68,7 @@ const Search = () => {
                         value={searchTerm}
                         onChange={handleChange}
 					/>
-                    <i className="fa fa-search search-icon"/>
+                    <i className="fa fa-search search-icon-nav"/>
 
 
                 <div>

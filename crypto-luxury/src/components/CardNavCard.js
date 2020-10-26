@@ -28,13 +28,13 @@ const NewCardWatch = ({cardInfo}) => {
 
     const [order, setOrder] = useState({
         name: `${name}`,
-        price: watchInfo.price,
-        quantity: watchInfo.quantity
+        price: cardInfo.price,
+        quantity: cardInfo.quantity
       })
 
     const [cartInfo, setCartInfo] = useState({
         user_id: window.localStorage.getItem('id'),
-        watch_id: watchInfo.id
+        watch_id: cardInfo.id
     })
 
     const addToCart = () => {

@@ -81,7 +81,7 @@ const Products = () => {
         }}>
         <Nav />
         </div>
-    <Row style={{width: "100%" , textAlign: "center", marginTop: "9%"}}>
+    <Row style={{width: "100%" , textAlign: "center", marginTop: "12%"}}>
         <Search />
     </Row>
               <Row style={{

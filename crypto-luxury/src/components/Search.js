@@ -59,7 +59,7 @@ const Search = () => {
 
 
 	return(
-            <div className="container">
+            <div className="container-search">
 				<label className="search-label" htmlFor="search-input">
 					<input
 						type="text"
