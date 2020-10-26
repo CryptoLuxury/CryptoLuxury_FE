@@ -2,6 +2,13 @@ import React, {useState, useEffect} from 'react';
 
 import axios from "axios";
 
+import NewCardCard from "./NewCardCard";
+
+import WatchCard from "./NewCard";
+
+import { Card } from "antd";
+import Modal from "react-bootstrap/Modal";
+
 import "./Search.css";
 
 
@@ -12,6 +19,7 @@ const Search = () => {
 
     const [searchTerm, setSearchTerm] = React.useState("");
     const [searchResults, setSearchResults] = React.useState([]);
+    const [cardResults, setCardResults] = React.useState([]);
 
     useEffect(() => {
         axios.get(`https://crypto-luxury.herokuapp.com/api/store/watches`)
@@ -41,6 +49,13 @@ const Search = () => {
         setSearchResults(results);
       }, [searchTerm]);
 
+      useEffect(() => {
+        const results = allCards.filter(card =>
+          card.name.toLowerCase().includes(searchTerm)
+        );
+        setCardResults(results);
+      }, [searchTerm]);
+
 
 
 	return(
@@ -56,7 +71,10 @@ const Search = () => {
                     <i className="fa fa-search search-icon"/>
                 <div>
                 {searchResults.map(item => (
-                    <li key={item.id}>{item.name}</li>
+                    <WatchCard key={item.id} watchInfo={item} />
+                  ))}
+                  {cardResults.map(item => (
+                    <NewCardCard key={item.id} cardInfo={item} />
                   ))}
                 </div>
                 </label>
