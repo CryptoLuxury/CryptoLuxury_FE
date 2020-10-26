@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import Nav from "./Nav.js";
+import Search from "./Search.js";
 
 import { useHistory } from "react-router-dom";
 
@@ -80,18 +81,8 @@ const Products = () => {
         }}>
         <Nav />
         </div>
-    <Row style={{width: "100%" , textAlign: "center", marginTop: "10%"}}>
-        <h1 style={{
-          margin: "0 auto"
-        }}>Products</h1>
-    </Row>
-    <Row style={{width: "100%", marginTop: "3%", marginBottom: "3%", display: "flex", justifyContent: "space-evenly"}}>
-        <Button color="warning" onClick={() => {
-          history.push('/')
-        }}>All Watches</Button>
-        <Button color="warning" onClick={() => {
-          history.push('/')
-        }}>All Cards</Button>
+    <Row style={{width: "100%" , textAlign: "center", marginTop: "9%"}}>
+        <Search />
     </Row>
               <Row style={{
               marginBottom: "5%",

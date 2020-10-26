@@ -1,7 +1,12 @@
 import React, {useState} from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { Button, Navbar, Nav, Form, FormControl, NavDropdown, DropdownButton, Modal } from "react-bootstrap";
+import { Navbar, Nav, Form, FormControl, NavDropdown, DropdownButton, Modal } from "react-bootstrap";
+import Button from "./dashComps/Button";
+
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+
+import Marble from "./Marble.png"
 
 import SweetAlert from "react-bootstrap-sweetalert";
 
@@ -118,7 +123,7 @@ const Navigation = () => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="dark" onClick={handleClose}>
+          <Button color="warning" onClick={handleClose}>
             Cancel
           </Button>
           <Button color="warning" onClick={handleContactSubmit}>
@@ -128,27 +133,29 @@ const Navigation = () => {
         </Modal>
         <Navbar bg="light" expand="lg" fixed="top">
         <Navbar.Brand href="/">CryptoLuxury</Navbar.Brand>
+        <div style={{marginLeft: "3%"}}>
+            <Form inline>
+            <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Control type="text" placeholder="Search Products" />
+          </Form.Group>
+            </Form>
+        </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/team">Team</Nav.Link>
-            <NavDropdown title="Products" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/watches">Watches</NavDropdown.Item>
-              <NavDropdown.Item href="/card">Cards</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/products">All Products</NavDropdown.Item>
-            </NavDropdown>
-            <button onClick={handleShow}>ContactUs</button>
+          <Nav className="mr-auto" style={{
+              display: "flex",
+              width: "100%",
+              justifyContent: "space-evenly"
+          }}>
+            <Button color="warning" small href="/" style={{width: "100px", margin: "0 auto", marginBottom: ".2%"}}>Home</Button>
+            <Button color="warning" small href="/products" style={{width: "100px", margin: "0 auto", marginBottom: ".2%"}}>Products</Button>
+            <Button color="warning" small href="/team" style={{width: "100px", margin: "0 auto", marginBottom: ".2%"}}>Team</Button>
+            <Button color="warning" small onClick={handleShow} style={{width: "100px", margin: "0 auto", marginBottom: ".2%"}}>Contact Us</Button>
           </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search Products" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
-          </Form>
-          <div style={{marginLeft: "5%", marginRight: "5%"}}>
-            <button onClick={() => {
+          <div style={{marginLeft: "5%", marginRight: "5%", width: "20%"}}>
+            <Button color="warning" style={{width: "100px"}} onClick={() => {
                 window.open('/cart')
-            }}>Cart</button>
+            }}><ShoppingCartIcon /></Button>
           </div>
         </Navbar.Collapse>
       </Navbar>

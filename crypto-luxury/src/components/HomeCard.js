@@ -8,11 +8,11 @@ const HomeCard = ({itemInfo}) => {
 
     return (
         <div style={{
-            height: "215px",
-            width: "215px",
+            height: "230px",
+            width: "230px",
             margin: ".1%"
         }}>
-        <img style={{ height: "215px", width: "215px", opacity: ".75", position: "absolute", zIndex: "-1"}} src={image} alt="homecard" />
+        <img style={{ height: "230px", width: "230px", opacity: ".75", position: "absolute", zIndex: "-1"}} src={image} alt="homecard" />
         <div style={{marginTop: "40%", paddingLeft: "5%"}}>
             <h2 className="title" style={{
                 opacity: "100%",
