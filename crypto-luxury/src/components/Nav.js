@@ -41,7 +41,10 @@ const Navigation = () => {
     message: "",
   });
 
+  //Context APO
   const cartItems = useCart();
+
+  const history = useHistory();
 
   const handleContactChange = (e) => {
     e.preventDefault();
@@ -183,7 +186,7 @@ const Navigation = () => {
               >
                 <Button
                   color="warning"
-                  href="/"
+                  href={history.push("/")}
                   style={{
                     width: "100px",
                     margin: "0 auto",
@@ -233,15 +236,9 @@ const Navigation = () => {
               <div
                 style={{ marginLeft: "5%", marginRight: "5%", width: "20%" }}
               >
-                <Button
-                  color="warning"
-                  style={{ width: "100px" }}
-                  onClick={() => {
-                    window.open("/cart");
-                  }}
-                >
-                  <ShoppingCartIcon />
-                </Button>
+                <button class="snipcart-checkout">
+                  Click here to checkout
+                </button>
               </div>
             </Navbar.Collapse>
           </Row>

@@ -34,8 +34,8 @@ function App() {
           <Route path="/admin/rtl" component={RtlLayout} />
           <Route path="/admin/login" component={AuthLayout} />
           <PrivateRoute path="/cart" component={Cart} />
-
-          {/* <Route path="/cart" component={Cart} /> */}
+          {/* 
+          <Route path="/cart" component={Cart} /> */}
 
           <Route path="/products" component={Products} />
           <Route path="/team" component={Team} />

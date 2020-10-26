@@ -41,23 +41,22 @@ const ProductCard = ({ watchInfo }) => {
   });
 
   //add item to cart state with Context API
-  // const addItemToCart = useAddItem();
+  const addItemToCart = useAddItem();
 
-  const addToCart = (cartInfo) => {
-    console.log("<<<<<<<<<<<<<<<<<", cartInfo);
-    axiosWithAuthUser()
-      .post(
-        `https://crypto-luxury.herokuapp.com/api/form/watchOrders`,
-        cartInfo
-      )
-      .then((res) => {
-        console.log("YOU HAVE ADDED TO CART");
-        // alert("success");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const addToCart = (cartInfo) => {
+  //   axiosWithAuthUser()
+  //     .post(
+  //       `https://crypto-luxury.herokuapp.com/api/form/watchOrders`,
+  //       cartInfo
+  //     )
+  //     .then((res) => {
+  //       console.log("YOU HAVE ADDED TO CART");
+  //       // alert("success");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   const [alert, setAlert] = React.useState(null);
   const hideAlert = () => {
@@ -132,15 +131,26 @@ const ProductCard = ({ watchInfo }) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Button
+              {/* <Button
                 color="warning"
                 onClick={() => {
-                  addToCart(cartInfo);
-                  // addItemToCart(order);
+                  // addToCart(cartInfo);
+                  addItemToCart(order);
                 }}
               >
                 Add to cart
-              </Button>
+              </Button> */}
+              <button
+                class="snipcart-add-item"
+                data-item-id="starry-night"
+                data-item-price="79.99"
+                data-item-url="/paintings/starry-night"
+                data-item-description="High-quality replica of The Starry Night by the Dutch post-impressionist painter Vincent van Gogh."
+                data-item-image="/assets/images/starry-night.jpg"
+                data-item-name="The Starry Night"
+              >
+                Add to cart
+              </button>
             </Tooltip>
             <Tooltip
               id="tooltip-top"
