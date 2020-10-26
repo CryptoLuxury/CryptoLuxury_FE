@@ -46,7 +46,9 @@ const NewCardWatch = ({watchInfo}) => {
   }
 
     return (
-        <div>
+        <div style={{
+          marginBottom: "1%"
+        }}>
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{name}</Modal.Title>

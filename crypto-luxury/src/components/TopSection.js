@@ -50,28 +50,10 @@ export default() => {
             display: "flex",
             flexFlow: "column nowrap",
         }}>
-            {/* <div className="typingone" style={{
-                height: "4vh",
-                width: "100%",
-                margin: ".2%",
-                marginTop: "0",
-                alignSelf: "center",
-                borderRadius: "1%"
-            }}>
-                <Typing speed={5}>
-                <h6 style={{
-                    fontSize: ".8rem",
-                    textAlign: "center",
-                    paddingTop: ".5%",
-                    paddingBottom: ".2%",
-                    color: "white"
-                }}>White-Glove complimentary on all orders over $100,000</h6>
-                </Typing>
-              </div> */}
             <Row style={{
               display: "flex",
               justifyContent: "center",
-              marginTop: "12%"
+              marginTop: "14%"
             }}>
             { homeCards.map(item => ( 
               <HomeCard itemInfo={item} key={item.id}/> 

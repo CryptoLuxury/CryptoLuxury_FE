@@ -4,23 +4,25 @@ import "./HomeCard.css";
 
 const HomeCard = ({itemInfo}) => {
 
-    const { image, title, subtitle } = itemInfo;
+    const { image, title, subtitle, link } = itemInfo;
 
     return (
-        <div style={{
+        <div onClick={() => {
+            window.open(`${link}`)
+        }} style={{
             height: "230px",
             width: "230px",
             margin: ".1%"
         }}>
-        <img style={{ height: "230px", width: "230px", opacity: ".75", position: "absolute", zIndex: "-1"}} src={image} alt="homecard" />
+        <img style={{ height: "230px", width: "230px", opacity: ".7", position: "absolute", zIndex: "-1"}} src={image} alt="homecard" />
         <div style={{marginTop: "40%", paddingLeft: "5%"}}>
             <h2 className="title" style={{
                 opacity: "100%",
-                color: "white"  
+                color: "black"  
             }}>{title}</h2>
             <h4 className="subtitle" style={{
                 opacity: "100%",
-                color: "lightgrey"
+                color: "black"
             }}>{subtitle}</h4>
             </div>
         </div>

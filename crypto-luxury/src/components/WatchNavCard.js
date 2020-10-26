@@ -87,7 +87,8 @@ const NewCardWatch = ({watchInfo}) => {
           }} /> 
           </Col>
             <Col style={{
-              marginTop: "2%"
+              marginTop: "2%",
+              width: "100px"
             }}>
               <h4 style={{
                 color: "#24221e",
@@ -95,7 +96,8 @@ const NewCardWatch = ({watchInfo}) => {
               }}>{name}</h4>
             </Col>
               <Col style={{
-                marginTop: "3%"
+                marginTop: "3%",
+                width: "100px"
               }}>
               <h4 style={{
                 color: "#24221e",

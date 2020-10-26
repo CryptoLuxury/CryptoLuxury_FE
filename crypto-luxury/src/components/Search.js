@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 
 import axios from "axios";
 
-import NewCardCard from "./NewCardCard";
+import NewCardCard from "./CardNavCard";
 
-import WatchCard from "./NewCard";
+import WatchCard from "./WatchNavCard";
 
 import { Card } from "antd";
 import Modal from "react-bootstrap/Modal";

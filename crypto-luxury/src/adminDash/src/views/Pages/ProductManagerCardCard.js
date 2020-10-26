@@ -41,7 +41,8 @@ const ProductManagerCardCard = ({cardInfo}) => {
       <div style={{
         height: "60vh",
         width: "33%",
-        marginTop: "5%"
+        margin: ".5%",
+        marginTop: "5%",
       }}>
         <Card product className={classes.cardHover}>
         <CardHeader image className={classes.cardHeaderHover}>

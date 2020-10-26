@@ -47,6 +47,7 @@ const ProductManagerCardWatch = ({watchInfo}) => {
       <div style={{
         height: "60vh",
         width: "33%",
+        margin: ".5%",
         marginTop: "5%"
       }}>
         <Card product className={classes.cardHover}>

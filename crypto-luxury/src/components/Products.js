@@ -81,9 +81,10 @@ const Products = () => {
         }}>
         <Nav />
         </div>
-    <Row style={{width: "100%" , textAlign: "center", marginTop: "12%"}}>
+    <Row style={{width: "100%" , textAlign: "center", marginTop: "9%"}}>
         <Search />
     </Row>
+    <Container>
               <Row style={{
               marginBottom: "5%",
               display: "flex",
@@ -104,6 +105,7 @@ const Products = () => {
               ))}
             </Col>
             </Row>
+            </Container>
             <Row>
                 <Footer />
             </Row>

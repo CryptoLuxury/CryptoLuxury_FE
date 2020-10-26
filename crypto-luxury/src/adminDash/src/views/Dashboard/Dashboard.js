@@ -83,7 +83,8 @@ export default function Dashboard() {
   const [devTicket, setDevTicket] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
+    link: ""
   })
   const [homeCard, setHomeCard] = useState({
     image: "",
@@ -215,23 +216,27 @@ export default function Dashboard() {
         <Form>
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>Image</Form.Label>
-          <Form.Control type="text" placeholder="Enter Firebase image link" onChange={handleCardChange} name="image" />
+          <Form.Control type="text" placeholder="Enter Firebase Image url" onChange={handleCardChange} name="image" />
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlInput1">
         <Form.Label>Title</Form.Label>
-        <Form.Control type="email" placeholder="name@example.com" onChange={handleCardChange} name="title" />
+        <Form.Control type="email" placeholder="25% OFF" onChange={handleCardChange} name="title" />
       </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
         <Form.Label>Subtitle</Form.Label>
-        <Form.Control as="textarea" rows="8" onChange={handleCardChange} name="subtitle" />
+        <Form.Control type="text" rows="8" placeholder="PSA 10s" onChange={handleCardChange} name="subtitle" />
       </Form.Group>
+      <Form.Group controlId="exampleForm.ControlTextarea1">
+      <Form.Label>Redirect Link</Form.Label>
+      <Form.Control type="text" rows="8" placeholder="https/www.cryptoluxury.io" onChange={handleCardChange} name="link" />
+    </Form.Group>
         </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
+          <Button color="danger" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="warning" onClick={handleHomeCardSubmit}>
+          <Button color="warning" onClick={handleHomeCardSubmit}>
             Submit
           </Button>
         </Modal.Footer>
