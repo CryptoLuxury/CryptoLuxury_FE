@@ -111,8 +111,6 @@ const Navigation = () => {
     setAlert(null);
   };
 
-  let history = useHistory();
-
   return (
     <div className="wrap">
       {alert}

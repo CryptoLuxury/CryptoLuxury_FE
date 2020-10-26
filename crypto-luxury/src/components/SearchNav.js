@@ -60,7 +60,7 @@ const Search = () => {
 
 	return(
             <div className="container-search-nav">
-				<label className="search-label" htmlFor="search-input">
+				<label className="search-label-nav" htmlFor="search-input">
 					<input
 						type="text"
 						id="search-input"
@@ -71,7 +71,7 @@ const Search = () => {
                     <i className="fa fa-search search-icon-nav"/>
 
 
-                <div>
+                <div clasName="results">
                 {searchResults.map(item => {
                   if(searchTerm !== '') {
                     return(<WatchCard key={item.id} watchInfo={item} />)
