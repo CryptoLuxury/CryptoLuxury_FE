@@ -186,7 +186,7 @@ const Navigation = () => {
               >
                 <Button
                   color="warning"
-                  href={history.push("/")}
+                  href="/"
                   style={{
                     width: "100px",
                     margin: "0 auto",
