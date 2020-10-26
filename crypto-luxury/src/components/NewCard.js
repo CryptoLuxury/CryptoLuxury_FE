@@ -98,15 +98,15 @@ const NewCardWatch = ({ watchInfo }) => {
         }
         actions={[
           <ViewIcon onClick={handleShow} key="setting" />,
-          <button
+          <button justIcon
             class="snipcart-add-item"
             data-item-id={`${name}`}
-            data-item-price={price}
-            data-item-url=""
+            data-item-price={price.toFixed(2)}
+            data-item-url="http://localhost:3000"
             data-item-description={`${description}`}
             data-item-name={`${name}`}
           >
-            Add to cart
+            <AddIcon />
           </button>,
           <AccountIcon
             onClick={() => {

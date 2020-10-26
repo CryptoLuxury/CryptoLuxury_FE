@@ -35,6 +35,8 @@ const Products = () => {
       })
     }, []);
 
+    console.log(watches)
+
     useEffect(() => {
       axios.get(`https://crypto-luxury.herokuapp.com/api/store/cards`)
       .then(res => {

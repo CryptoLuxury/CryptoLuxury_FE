@@ -46,14 +46,14 @@ export default function ProductManager() {
     const [cardProduct, setCardProduct] = useState({
         name: "",
         description: "",
-        price: 0,
+        price: 0.00,
         quantity: 0,
         bitpay: ""
     })
     const [watchProduct, setWatchProduct] = useState({
         name: "",
         description: "",
-        price: 0,
+        price: 0.00,
         quantity: 0,
         bitpay: ""
     })
@@ -367,11 +367,11 @@ export default function ProductManager() {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Price</Form.Label>
-                <Form.Control type="number" placeholder="'100', '100000'" onChange={handleWatchChange} name="price" />
+                <Form.Control type="number" placeholder="100.00, 100000.56" onChange={handleWatchChange} name="price" />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Quantity</Form.Label>
-                <Form.Control type="number" placeholder="'3', '10'" onChange={handleWatchChange} name="quantity" />
+                <Form.Control type="number" placeholder="'100', '100,000'" onChange={handleCardChange} name="quantity" />
                 </Form.Group>
                   <Form.Group controlId="exampleForm.ControlTextarea1">
                   <Form.Label>Description</Form.Label>
@@ -379,7 +379,7 @@ export default function ProductManager() {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>BitPay Product Link</Form.Label>
-                <Form.Control type="text" placeholder="Title..." onChange={handleWatchChange} name="bitpay" />
+                <Form.Control type="text" placeholder="Bitpay Product Link" onChange={handleWatchChange} name="bitpay" />
               </Form.Group>
                 </Form>
                 </Container>
@@ -444,7 +444,7 @@ export default function ProductManager() {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Price (USD)</Form.Label>
-                <Form.Control type="number" placeholder="'100', '100,000'" onChange={handleCardChange} name="price" />
+                <Form.Control type="number" placeholder="100.00, 100,000.56" onChange={handleCardChange} name="price" />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Quantity</Form.Label>

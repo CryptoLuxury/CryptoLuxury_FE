@@ -82,9 +82,16 @@ const NewCardWatch = ({cardInfo}) => {
         }
         actions={[
           <ViewIcon onClick={handleShow} key="setting" />,
-          <AddIcon onClick={() => {
-            addToCart(id)
-          }} key="edit" />,
+          <button justIcon
+          class="snipcart-add-item"
+          data-item-id={`${name}`}
+          data-item-price={price.toFixed(2)}
+          data-item-url="http://localhost:3000"
+          data-item-description={`${description}`}
+          data-item-name={`${name}`}
+        >
+          <AddIcon />
+        </button>,
           <AccountIcon onClick={() => {
               window.open(`${bitpay}`)
           }} key="ellipsis" />,
