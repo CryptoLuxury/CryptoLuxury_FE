@@ -120,7 +120,9 @@ export default function Pages(props) {
   return (
     <div>
       <Nav />
-      <Container>
+      <Container style={{
+        marginTop: "10%"
+      }}>
         <GridContainer justify="center">
         <GridItem xs={12} sm={6} md={4}>
           <form>
@@ -129,7 +131,7 @@ export default function Pages(props) {
                 className={`${classes.cardHeader} ${classes.textCenter}`}
                 color="warning"
               >
-                <h4 className={classes.cardTitle}>Log in</h4>
+                <h4 className={classes.cardTitle} style={{color: "white"}}>Log in</h4>
               </CardHeader>
               <CardBody>
               <Form>

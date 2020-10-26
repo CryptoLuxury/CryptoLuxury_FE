@@ -232,12 +232,9 @@ const LandingPage = () => {
         <div>
         {alert}
         <Nav />
-    <Container>
+        <Container>
             <div><TopSection /></div>
         </Container>
-        <div>
-        <Footer />
-    </div>
         </div>
     );
 };

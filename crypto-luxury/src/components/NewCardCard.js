@@ -15,9 +15,9 @@ import Button from "./dashComps/Button";
 
 const { Meta } = Card;
 
-const NewCardWatch = ({watchInfo}) => {
+const NewCardWatch = ({cardInfo}) => {
 
-    const { id, name, price, description, bitpay } = watchInfo;
+    const { id, name, price, description, bitpay } = cardInfo;
 
     const [show, setShow] = useState(false);
 
@@ -26,17 +26,17 @@ const NewCardWatch = ({watchInfo}) => {
 
     const [order, setOrder] = useState({
         name: `${name}`,
-        price: watchInfo.price,
-        quantity: watchInfo.quantity
+        price: cardInfo.price,
+        quantity: cardInfo.quantity
       })
 
     const [cartInfo, setCartInfo] = useState({
         user_id: window.localStorage.getItem('id'),
-        watch_id: watchInfo.id
+        card_id: cardInfo.id
     })
 
     const addToCart = () => {
-    axiosWithAuthUser().post(`https://crypto-luxury.herokuapp.com/api/form/watchOrders`, cartInfo)
+    axiosWithAuthUser().post(`https://crypto-luxury.herokuapp.com/api/form/cardOrders`, cartInfo)
     .then(res => {
       alert('success')
     })
@@ -54,20 +54,20 @@ const NewCardWatch = ({watchInfo}) => {
           <Modal.Title>{name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <div style={{width: "100%"}}>
-            <img src="https://i.ebayimg.com/images/g/4Z4AAOSwePRd-U1P/s-l500.jpg" style={{height: "200px", width: "200px"}} alt="product info" />
+            <div>
+            <img style={{height: "100px", width: "100px"}} src="https://i.imgur.com/V0gtztn.png" alt="product info" />
             </div>
             <div>
                 <p>{description}</p>
             </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="warning" onClick={() => {
+          <Button variant="warning" onClick={() => {
               addToCart()
           }}>
             Add to Fiat Cart
           </Button>
-          <Button color="warning" onClick={handleClose}>
+          <Button variant="warning" onClick={handleClose}>
             Add to Crypto Cart
           </Button>
         </Modal.Footer>
@@ -77,7 +77,7 @@ const NewCardWatch = ({watchInfo}) => {
         cover={
           <img
             alt="product"
-            src="https://i.ebayimg.com/images/g/4Z4AAOSwePRd-U1P/s-l500.jpg"
+            src="https://i.imgur.com/V0gtztn.png"
           />
         }
         actions={[

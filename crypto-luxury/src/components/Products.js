@@ -3,28 +3,18 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import Nav from "./Nav.js";
+import Search from "./Search.js";
 
 import { useHistory } from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import WatchCard from "./WatchCard";
-import Dropdown from "react-bootstrap/Dropdown";
-import GridContainer from "./dashComps/GridContainer";
-import GridItem from "./dashComps/GridItem";
-import CardCard from "./CardCard";
+import WatchCard from "./NewCard";
+import CardCard from "./NewCardCard";
 import Footer from "./dashComps/Footer";
 
 import Button from "./dashComps/Button";
-
-//modal
-import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
-
-import Navbar from "react-bootstrap/Navbar";
-
-import Typing from "react-typing-animation";
 
 const Products = () => {
 
@@ -85,10 +75,17 @@ const Products = () => {
       }
 
     return (
-        <div>
+      <div>
+        <div style={{
+          width: "100%"
+        }}>
         <Nav />
+        </div>
+    <Row style={{width: "100%" , textAlign: "center", marginTop: "9%"}}>
+        <Search />
+    </Row>
     <Container>
-            <Row style={{
+              <Row style={{
               marginBottom: "5%",
               display: "flex",
               justifyContent: "space-evenly",
@@ -97,24 +94,12 @@ const Products = () => {
             <Col style={{
               margin: "2%",
               display: "flex",
-              flexFlow: "row nowrap",
+              flexFlow: "row wrap",
+              justifyContent: "space-evenly"
             }}>
               { watches.map(watch => ( 
               <WatchCard watchInfo={watch} key={watch.id}/> 
               ))}
-            </Col>
-            </Row>
-            <Row style={{
-              marginBottom: "5%",
-              display: "flex",
-              justifyContent: "space-evenly",
-              paddingBottom: "3%"
-            }}>
-            <Col style={{
-              margin: "2%",
-              display: "flex",
-              flexFlow: "row nowrap",
-            }}>
               { cards.map(card => ( 
               <CardCard cardInfo={card} key={card.id}/> 
               ))}

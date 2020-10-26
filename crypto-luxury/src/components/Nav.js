@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import {
-  Button,
   Navbar,
   Nav,
   Form,
@@ -11,6 +10,13 @@ import {
   DropdownButton,
   Modal,
 } from "react-bootstrap";
+import Button from "./dashComps/Button";
+
+import Search from "./SearchNav";
+
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+
+import Marble from "./Marble.png";
 
 import SweetAlert from "react-bootstrap-sweetalert";
 
@@ -148,7 +154,7 @@ const Navigation = () => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="dark" onClick={handleClose}>
+          <Button color="warning" onClick={handleClose}>
             Cancel
           </Button>
           <Button color="warning" onClick={handleContactSubmit}>
@@ -156,39 +162,109 @@ const Navigation = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Navbar bg="light" expand="lg" fixed="top">
-        <Navbar.Brand href="/">CryptoLuxury</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/team">Team</Nav.Link>
-            <NavDropdown title="Products" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/watches">Watches</NavDropdown.Item>
-              <NavDropdown.Item href="/card">Cards</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/products">All Products</NavDropdown.Item>
-            </NavDropdown>
-            <button onClick={handleShow}>ContactUs</button>
-          </Nav>
-          <Form inline>
-            <FormControl
-              type="text"
-              placeholder="Search Products"
-              className="mr-sm-2"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
-          <div style={{ marginLeft: "5%", marginRight: "5%" }}>
-            <button
-              onClick={() => {
-                window.open("/cart");
+      <Navbar bg="light" expand="lg" fixed="top" className="navbar">
+        <div
+          style={{
+            display: "flex",
+            flexFlow: "column wrap",
+            width: "100%",
+          }}
+        >
+          <Row>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse className="collapse" id="basic-navbar-nav">
+              <Nav
+                className="mr-auto"
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  justifyContent: "space-evenly",
+                }}
+              >
+                <Button
+                  color="warning"
+                  href="/"
+                  style={{
+                    width: "100px",
+                    margin: "0 auto",
+                    marginBottom: ".2%",
+                    opacity: "100%",
+                  }}
+                >
+                  Home
+                </Button>
+                <Button
+                  color="warning"
+                  href="/products"
+                  style={{
+                    width: "100px",
+                    margin: "0 auto",
+                    marginBottom: ".2%",
+                    opacity: "100%",
+                  }}
+                >
+                  Products
+                </Button>
+                <Button
+                  color="warning"
+                  href="/team"
+                  style={{
+                    width: "100px",
+                    margin: "0 auto",
+                    marginBottom: ".2%",
+                    opacity: "100%",
+                  }}
+                >
+                  Team
+                </Button>
+                <Button
+                  color="warning"
+                  onClick={handleShow}
+                  style={{
+                    width: "100px",
+                    margin: "0 auto",
+                    marginBottom: ".2%",
+                    opacity: "100%",
+                  }}
+                >
+                  Contact Us
+                </Button>
+              </Nav>
+              <div
+                style={{ marginLeft: "5%", marginRight: "5%", width: "20%" }}
+              >
+                <Button
+                  color="warning"
+                  style={{ width: "100px" }}
+                  onClick={() => {
+                    window.open("/cart");
+                  }}
+                >
+                  <ShoppingCartIcon />
+                </Button>
+              </div>
+            </Navbar.Collapse>
+          </Row>
+          <Row
+            style={{
+              display: "flex",
+              flexFlow: "row nowrap",
+              justifyContent: "flex-start",
+            }}
+          >
+            <div
+              className="navtop"
+              style={{
+                textAlign: "center",
               }}
             >
-              Cart{`(${cartItems.length})`}
-            </button>
-          </div>
-        </Navbar.Collapse>
+              <Navbar.Brand href="/">CryptoLuxury</Navbar.Brand>
+            </div>
+            <div>
+              <Search />
+            </div>
+          </Row>
+        </div>
       </Navbar>
     </div>
   );

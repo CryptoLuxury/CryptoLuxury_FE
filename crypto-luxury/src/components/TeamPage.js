@@ -137,7 +137,9 @@ const TeamPage = () => {
         <div>
         <Nav />
     <Container>
-    <Row>
+    <Row style={{
+      marginTop: "14%"
+    }}>
         <div style={{
             width: "70%",
             display: "flex",
@@ -148,12 +150,12 @@ const TeamPage = () => {
         <h2 style={{
             textAlign: "center",
             marginTop: "2%",
-            color: "#c9af4f"
+            color: "black"
         }}>Meet our Team</h2>
         <h5 style={{
             textAlign: "center",
             marginTop: "2%",
-            color: "#c9af4f"
+            color: "black"
         }}>We at Crypto Luxury are committed to bringing you the highest-quality service to match our high-quality products and prices.  Meet the people responsible.</h5>
         </div>
     </Row>
@@ -169,9 +171,7 @@ const TeamPage = () => {
         </Row>
     </Col>
     </Container>
-    <Row>
-        <Footer />
-    </Row>
+
 </div>
     )
 }

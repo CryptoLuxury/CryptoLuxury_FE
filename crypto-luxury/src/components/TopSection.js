@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -10,11 +10,24 @@ import {Container} from "react-bootstrap";
 import 'antd/dist/antd.css';
 import Fade from "react-reveal/Fade";
 
+import HomeCard from "./HomeCard";
+
 //typing
 import Typing from "react-typing-animation";
 import { Carousel } from 'antd';
 
 export default() => {
+
+  const [homeCards, setHomeCards] = useState([]);
+
+      useEffect(() => {
+      axios.get(`https://crypto-luxury.herokuapp.com/api/store/features`)
+      .then(res => {
+        setHomeCards([
+          ...res.data
+        ])
+      })
+    }, []);
 
     const contentStyle = {
         height: '160px',
@@ -37,152 +50,14 @@ export default() => {
             display: "flex",
             flexFlow: "column nowrap",
         }}>
-            {/* <div className="typingone" style={{
-                height: "4vh",
-                width: "100%",
-                margin: ".2%",
-                marginTop: "0",
-                alignSelf: "center",
-                borderRadius: "1%"
-            }}>
-                <Typing speed={5}>
-                <h6 style={{
-                    fontSize: ".8rem",
-                    textAlign: "center",
-                    paddingTop: ".5%",
-                    paddingBottom: ".2%",
-                    color: "white"
-                }}>White-Glove complimentary on all orders over $100,000</h6>
-                </Typing>
-            </div> */}
-
-            <Fade bottom duration={1000}>
             <Row style={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "center",
-                margin: ".2%",
-                alignSelf: "center"
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "14%"
             }}>
-
-            </Row>
-            </Fade>
-            <Row style={{
-                background: "white",
-                display: "flex",
-                justifyContent: "row nowrap",
-                width: "100%",
-                alignSelf: "center",
-                marginBottom: "0"
-            }}>
-                <Col style={{
-                    alignSelf: "center",
-                    borderRadius: "1%",
-                    maringBottom: "0",
-                    paddingBottom: "0"
-                }}>
-                    <div>
-                    <Carousel autoplay dots={false}>
-                    <div>
-                      <h3 style={{
-                        height: '160px',
-                        color: '#fff',
-                        lineHeight: '160px',
-                        textAlign: 'center',
-                        background: '#a16f0b',
-                      }}>10% OFF Select Watches</h3>
-                    </div>
-                    <div>
-                      <h3 style={{
-                        height: '160px',
-                        color: '#fff',
-                        lineHeight: '160px',
-                        textAlign: 'center',
-                        background: '#ffaf0f',
-                      }}>25% OFF Select Pokemon Cards</h3>
-                    </div>
-                  </Carousel>
-                    </div>
-                </Col>
-
-            </Row>
-            <Row style={{
-              height: "300px"
-            }}>
-                      <Col style={{
-                        backgroundColor: "red",
-                        width: "300px"
-                      }}>
-                        one
-                      </Col>
-                      <Col style={{
-                        backgroundColor: "black",
-                        width: "300px"
-                      }}>
-                      one
-                    </Col>
-                    <Col style={{
-                      backgroundColor: "red",
-                      width: "300px"
-                    }}>
-                    one
-                  </Col>
-            </Row>
-            <Row style={{
-              height: "150px",
-              backgroundColor: "green",
-            }}>
-                    one
-            </Row>
-            <Row style={{
-              height: "300px"
-            }}>
-                      <Col style={{
-                        backgroundColor: "black",
-                        width: "300px"
-                      }}>
-                        one
-                      </Col>
-                      <Col style={{
-                        backgroundColor: "red",
-                        width: "300px"
-                      }}>
-                      one
-                    </Col>
-                    <Col style={{
-                      backgroundColor: "black",
-                      width: "300px"
-                    }}>
-                    one
-                  </Col>
-            </Row>
-            <Row style={{
-              height: "300px"
-            }}>
-                      <Col style={{
-                        backgroundColor: "red",
-                        width: "300px"
-                      }}>
-                        one
-                      </Col>
-                      <Col style={{
-                        backgroundColor: "black",
-                        width: "300px"
-                      }}>
-                      one
-                    </Col>
-                    <Col style={{
-                      backgroundColor: "red",
-                        width: "300px"
-                    }}>
-                    one
-                  </Col>
-            </Row>
-            <Row style={{
-              height: "150px",
-              backgroundColor: "green",
-            }}>
-                    one
+            { homeCards.map(item => ( 
+              <HomeCard itemInfo={item} key={item.id}/> 
+              ))}
             </Row>
 
         </Container>

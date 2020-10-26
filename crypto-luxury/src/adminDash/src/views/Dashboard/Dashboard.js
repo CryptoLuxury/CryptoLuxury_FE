@@ -8,6 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Icon from "@material-ui/core/Icon";
 
+import Modal from "react-bootstrap/Modal";
+
 import Form from "react-bootstrap/Form";
 import Store from "@material-ui/icons/Store";
 import AccessTime from "@material-ui/icons/AccessTime";
@@ -59,6 +61,7 @@ import Success from "../../components/Typography/Success.js";
 
 const useStyles = makeStyles(styles);
 
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
@@ -67,6 +70,12 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export default function Dashboard() {
 
+  const [show, setShow] = useState(false);
+  const [homeCardShow, setHomeCardShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   let history = useHistory();
   
   const classes = useStyles();
@@ -74,7 +83,13 @@ export default function Dashboard() {
   const [devTicket, setDevTicket] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
+    link: ""
+  })
+  const [homeCard, setHomeCard] = useState({
+    image: "",
+    title: "",
+    subtitle: ""
   })
   const [watches, setWatches] = useState([]);
   const [cards, setCards] = useState([]);
@@ -150,6 +165,28 @@ export default function Dashboard() {
     })
   }
 
+    const handleCardChange = (e) => {
+    e.preventDefault();
+    setHomeCard({
+      ...homeCard,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleHomeCardSubmit = (e) => {
+    e.preventDefault();
+    axios.post(`https://crypto-luxury.herokuapp.com/api/store/features`, homeCard)
+    .then(res => {
+      successAlert();
+      setTimeout(() => {
+        setHomeCardShow(false)
+      }, 1000)
+    })
+    .catch(err => {
+      errorAlert()
+    })
+  }
+
   useEffect(() => {
     axios.get(`https://crypto-luxury.herokuapp.com/api/store/watches`)
     .then(res => {
@@ -171,6 +208,39 @@ export default function Dashboard() {
     <div>
     {alert}
       <div>
+        <Modal show={homeCardShow} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add a HomeCard</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <Form>
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Image</Form.Label>
+          <Form.Control type="text" placeholder="Enter Firebase Image url" onChange={handleCardChange} name="image" />
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Title</Form.Label>
+        <Form.Control type="email" placeholder="25% OFF" onChange={handleCardChange} name="title" />
+      </Form.Group>
+        <Form.Group controlId="exampleForm.ControlTextarea1">
+        <Form.Label>Subtitle</Form.Label>
+        <Form.Control type="text" rows="8" placeholder="PSA 10s" onChange={handleCardChange} name="subtitle" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlTextarea1">
+      <Form.Label>Redirect Link</Form.Label>
+      <Form.Control type="text" rows="8" placeholder="https/www.cryptoluxury.io" onChange={handleCardChange} name="link" />
+    </Form.Group>
+        </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="danger" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button color="warning" onClick={handleHomeCardSubmit}>
+            Submit
+          </Button>
+        </Modal.Footer>
+      </Modal>
         <Dialog
           classes={{
             root: classes.center,
@@ -462,28 +532,18 @@ export default function Dashboard() {
           margin: "2%",
           display: "flex",
           flexFlow: "row nowrap",
+          justifyContent: "space-evenly"
         }}>
         { watches.map(watch => ( 
           <WatchCard watchInfo={watch} key={watch.id}/> 
           ))}
-          </Col>
-        </Row>
-
-        <Row style={{
-          marginBottom: "5%",
-          display: "flex",
-          justifyContent: "space-evenly",
-          paddingBottom: "3%"
-        }}>
-        <Col style={{
-          margin: "2%",
-          display: "flex",
-          flexFlow: "row nowrap",
-        }}>
         { cards.map(card => ( 
           <CardCard cardInfo={card} key={card.id}/> 
           ))}
           </Col>
+        </Row>
+        <Row>
+          <Button onClick={() => setHomeCardShow(true)}>Click</Button>
         </Row>
         
       </Container>

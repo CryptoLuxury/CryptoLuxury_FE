@@ -26,7 +26,6 @@ import { useAddItem } from "../CartContext";
 const useStyles = makeStyles(styles);
 
 const ProductCard = ({ watchInfo }) => {
-  const productId = watchInfo.id;
   const { id, name, price, description, quantity, bitpay } = watchInfo;
 
   const [order, setOrder] = useState({
@@ -90,7 +89,7 @@ const ProductCard = ({ watchInfo }) => {
         onCancel={() => hideAlert()}
         confirmBtnCssClass={classes.button + " " + classes.success}
       >
-        That's not supposed to happen :(
+        That's not supposed to happen
       </SweetAlert>
     );
   };

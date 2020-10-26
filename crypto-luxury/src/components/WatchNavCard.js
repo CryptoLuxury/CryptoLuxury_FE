@@ -2,6 +2,8 @@ import React, {useState} from "react";
 
 import { axiosWithAuthUser } from "../utils/AxiosWithAuthUser";
 
+import Col from "react-bootstrap/Col";
+
 import { Card, Avatar } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import ViewIcon from '@material-ui/icons/Visibility';
@@ -47,11 +49,11 @@ const NewCardWatch = ({watchInfo}) => {
 
     return (
         <div style={{
-          marginBottom: "1%"
+          backgroundColor: "#f2f2f2"
         }}>
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{name}</Modal.Title>
+          <Modal.Title wariant="warning">{name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <div style={{width: "100%"}}>
@@ -67,35 +69,65 @@ const NewCardWatch = ({watchInfo}) => {
           }}>
             Add to Fiat Cart
           </Button>
-          <Button color="warning" onClick={handleClose}>
+          <Button color="warning" onClick={() => {
+            window.open(`${bitpay}`)
+          }}>
             Add to Crypto Cart
           </Button>
         </Modal.Footer>
       </Modal>
-        <Card
-        style={{ width: 200 }}
-        cover={
-          <img
-            alt="product"
-            src="https://i.ebayimg.com/images/g/4Z4AAOSwePRd-U1P/s-l500.jpg"
-          />
-        }
-        actions={[
-          <ViewIcon onClick={handleShow} key="setting" />,
-          <AddIcon onClick={() => {
-            addToCart(id)
-          }} key="edit" />,
-          <AccountIcon onClick={() => {
+          <div style={{
+            display: "flex",
+            justifyContent: "space-evenly"
+          }}>
+          <Col>
+          <img src="https://i.ebayimg.com/images/g/4Z4AAOSwePRd-U1P/s-l500.jpg" alt="adamaaa" style={{
+            height: "50px",
+            width: "50px"
+          }} /> 
+          </Col>
+            <Col style={{
+              marginTop: "2%",
+              width: "100px"
+            }}>
+              <h4 style={{
+                color: "#24221e",
+                fontSize: ".75rem",
+              }}>{name}</h4>
+            </Col>
+              <Col style={{
+                marginTop: "3%",
+                width: "100px"
+              }}>
+              <h4 style={{
+                color: "#24221e",
+                fontSize: ".75rem"
+              }}>${price}</h4>
+            </Col>
+            <Col style={{
+              paddingTop: "2%",
+              paddingLeft: "3%"
+            }}>
+              <ViewIcon color="warning" onClick={() => {
+                setShow(true)
+              }} />
+            </Col>
+            <Col>
+            <Button color="warning" simple onClick={() => {
+              addToCart()
+          }}>
+            Add to Fiat Cart
+          </Button>
+          </Col>
+            <Col>
+            <Button color="warning" simple onClick={() => {
               window.open(`${bitpay}`)
-          }} key="ellipsis" />,
-        ]}
-      >
-        <Meta
-          title={name}
-          description={price}
-        />
-      </Card>
-        </div>
+            }}>
+            Add to Crypto Cart
+            </Button>
+          </Col>
+          </div>
+      </div>
     )
 }
 
