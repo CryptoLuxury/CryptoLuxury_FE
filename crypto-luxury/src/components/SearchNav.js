@@ -4,12 +4,12 @@ import axios from "axios";
 
 import NewCardCard from "./NewCardCard";
 
-import WatchCard from "./NewCard";
+import WatchCard from "./WatchNavCard";
 
 import { Card } from "antd";
 import Modal from "react-bootstrap/Modal";
 
-import "./Search.css";
+import "./SearchNav.css";
 
 
 const Search = () => {
@@ -69,17 +69,21 @@ const Search = () => {
                         onChange={handleChange}
 					/>
                     <i className="fa fa-search search-icon"/>
-                    <div>
-                    {searchResults.map(item => {
-                      if(searchTerm !== '') {
-                        return(<WatchCard key={item.id} watchInfo={item} />)
-                      }
-                    })}
-                      {cardResults.map(item => {
-                        if(searchTerm !== '') {
-                        return(<NewCardCard key={item.id} cardInfo={item} />)
-                      }})}
-                    </div>
+
+
+                <div>
+                {searchResults.map(item => {
+                  if(searchTerm !== '') {
+                    return(<WatchCard key={item.id} watchInfo={item} />)
+                  }
+                })}
+                  {cardResults.map(item => {
+                    if(searchTerm !== '') {
+                    return(<NewCardCard key={item.id} cardInfo={item} />)
+                  }})}
+                </div>
+
+
                 </label>
 				
 			</div>

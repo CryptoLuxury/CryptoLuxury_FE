@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 import { Navbar, Nav, Form, FormControl, NavDropdown, DropdownButton, Modal } from "react-bootstrap";
 import Button from "./dashComps/Button";
 
+import Search from "./SearchNav";
+
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import Marble from "./Marble.png"
@@ -133,12 +135,8 @@ const Navigation = () => {
         </Modal>
         <Navbar bg="light" expand="lg" fixed="top">
         <Navbar.Brand href="/">CryptoLuxury</Navbar.Brand>
-        <div style={{marginLeft: "3%"}}>
-            <Form inline>
-            <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Control type="text" placeholder="Search Products" />
-          </Form.Group>
-            </Form>
+        <div>
+          <Search />
         </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
