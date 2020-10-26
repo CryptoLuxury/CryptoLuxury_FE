@@ -25,22 +25,23 @@ function App() {
   return (
     <Router history={hist}>
       <Switch>
-        <Route exact path="/">
-          <LandingPage />
-        </Route>
-
-        <Route path="/admin" component={AdminLayout} />
-        <Route path="/admin/rtl" component={RtlLayout} />
-        <Route path="/admin/login" component={AuthLayout} />
-        {/* <PrivateRoute path="/cart" component={Cart} /> */}
         <CartProvider>
-          <Route path="/cart" component={Cart} />
-        </CartProvider>
+          <Route exact path="/">
+            <LandingPage />
+          </Route>
 
-        <Route path="/products" component={Products} />
-        <Route path="/team" component={Team} />
-        <Route path="/login" component={UserLogin} />
-        <Route path="/register" component={UserRegister} />
+          <Route path="/admin" component={AdminLayout} />
+          <Route path="/admin/rtl" component={RtlLayout} />
+          <Route path="/admin/login" component={AuthLayout} />
+          <PrivateRoute path="/cart" component={Cart} />
+
+          {/* <Route path="/cart" component={Cart} /> */}
+
+          <Route path="/products" component={Products} />
+          <Route path="/team" component={Team} />
+          <Route path="/login" component={UserLogin} />
+          <Route path="/register" component={UserRegister} />
+        </CartProvider>
       </Switch>
     </Router>
   );

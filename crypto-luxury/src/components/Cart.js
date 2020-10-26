@@ -35,13 +35,12 @@ const Cart = () => {
   const user = window.localStorage.getItem("id");
 
   const cartItems = useCart();
-  const cartRemoveItem = useRemoveItem();
   const cartTotal = useTotal();
 
   let history = useHistory();
   const [show, setShow] = useState(false);
   const [cart, setCart] = useState([]);
-  const [cardOrders, setCardOrders] = useState(cartItems);
+  const [cardOrders, setCardOrders] = useState([]);
   const [watchOrders, setWatchOrders] = useState([]);
 
   const handleClose = () => setShow(false);
@@ -233,12 +232,7 @@ const Cart = () => {
           <CartItem itemInfo={item} key={item.id} />
         ))}
         {cartItems.map((item) => (
-          <CartItem
-            itemInfo={item}
-            key={item.id}
-            id={item.id}
-            removeFromCart={cartRemoveItem}
-          />
+          <CartItem itemInfo={item} key={item.id} id={item.id} />
         ))}
       </Row>
       <h2>Total: ${cartTotal}</h2>

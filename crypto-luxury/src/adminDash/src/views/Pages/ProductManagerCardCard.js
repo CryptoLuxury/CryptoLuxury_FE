@@ -13,37 +13,38 @@ import CardBody from "../../components/Card/CardBody.js";
 import CardFooter from "../../components/Card/CardFooter.js";
 
 //icons
-import FlightIcon from '@material-ui/icons/FlightTakeoff';
+import FlightIcon from "@material-ui/icons/FlightTakeoff";
 import Edit from "@material-ui/icons/Edit";
-import AddIcon from '@material-ui/icons/AddShoppingCart';
-import SweepIcon from '@material-ui/icons/DeleteSweep';
+import AddIcon from "@material-ui/icons/AddShoppingCart";
+import SweepIcon from "@material-ui/icons/DeleteSweep";
 
 import blastoise from "../Dashboard/blastoise.png";
 
 const useStyles = makeStyles(styles);
 
-const ProductManagerCardCard = ({cardInfo}) => {
-
+const ProductManagerCardCard = ({ cardInfo }) => {
   const { id, title, price, description } = cardInfo;
 
-    const handleDelete = () => {
-      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/cards/${id}`)
-      .then(res => {
-        alert('success')
+  const handleDelete = () => {
+    axios
+      .delete(`https://crypto-luxury.herokuapp.com/api/store/cards/${id}`)
+      .then((res) => {
+        alert("success");
       })
-      .catch(err => alert("Failed to Delete"))
-    }
+      .catch((err) => alert("Failed"));
+  };
 
+  const classes = useStyles();
 
-    const classes = useStyles();
-
-    return (
-      <div style={{
+  return (
+    <div
+      style={{
         height: "60vh",
         width: "33%",
-        marginTop: "5%"
-      }}>
-        <Card product className={classes.cardHover}>
+        marginTop: "5%",
+      }}
+    >
+      <Card product className={classes.cardHover}>
         <CardHeader image className={classes.cardHeaderHover}>
           <div>
             <img src={blastoise} alt="blastoise" />
@@ -62,48 +63,64 @@ const ProductManagerCardCard = ({cardInfo}) => {
               </Edit>
             </Tooltip>
             <Tooltip
-            id="tooltip-top"
-            title="Delete Listing"
-            placement="bottom"
-            classes={{ tooltip: classes.tooltip }}
-          >
-            <Button color="danger" onClick={() => {
-              handleDelete()
-            }} simple justIcon>
-              <SweepIcon className={classes.underChartIcons} />
-            </Button>
-          </Tooltip>
+              id="tooltip-top"
+              title="Delete Listing"
+              placement="bottom"
+              classes={{ tooltip: classes.tooltip }}
+            >
+              <Button
+                color="danger"
+                onClick={() => {
+                  handleDelete();
+                }}
+                simple
+                justIcon
+              >
+                <SweepIcon className={classes.underChartIcons} />
+              </Button>
+            </Tooltip>
           </div>
           <h4 className={classes.cardProductTitle}>
-            <a style={{
-              color: "#eba92d",
-              display: "flex",
-              justifyContent: "center",
-              textAlign: "center"
-            }} href="#pablo" onClick={(e => e.preventDefault())}>
+            <a
+              style={{
+                color: "#eba92d",
+                display: "flex",
+                justifyContent: "center",
+                textAlign: "center",
+              }}
+              href="#pablo"
+              onClick={(e) => e.preventDefault()}
+            >
               {title}
             </a>
           </h4>
-          <p style={{
-            color: "#997023",
-            display: "flex",
-            justifyContent: "center",
-            textAlign: "center",
-            height: "5vh"
-          }}className={classes.cardProductDesciprion}>
+          <p
+            style={{
+              color: "#997023",
+              display: "flex",
+              justifyContent: "center",
+              textAlign: "center",
+              height: "5vh",
+            }}
+            className={classes.cardProductDesciprion}
+          >
             {description}
           </p>
         </CardBody>
         <CardFooter product>
           <div className={classes.price}>
-            <h4 style={{textAlign: "center", color: "#389c66"}}><span style={{color: "#187d20"}}>$</span>{price} <span style={{color: "#0a381f"}}>/kit</span></h4>
+            <h4 style={{ textAlign: "center", color: "#389c66" }}>
+              <span style={{ color: "#187d20" }}>$</span>
+              {price} <span style={{ color: "#0a381f" }}>/kit</span>
+            </h4>
           </div>
           <div className={`${classes.stats} ${classes.productStats}`}>
-            <FlightIcon color="warning" /> <span style={{color: "#0a381f"}}>International</span>
+            <FlightIcon color="warning" />{" "}
+            <span style={{ color: "#0a381f" }}>International</span>
           </div>
         </CardFooter>
       </Card>
-      </div>
-    )
-}
+    </div>
+  );
+};
 export default ProductManagerCardCard;

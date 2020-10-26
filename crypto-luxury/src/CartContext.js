@@ -1,7 +1,7 @@
-import { useTheme } from "@material-ui/core";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 const CartContext = React.createContext();
+const CartAddContext = React.createContext();
 const CartRemoveContext = React.createContext();
 const CartTotalContext = React.createContext();
 
@@ -9,12 +9,16 @@ export const useCart = () => {
   return useContext(CartContext);
 };
 
-export const useTotal = () => {
-  return useContext(CartTotalContext);
+export const useAddItem = () => {
+  return useContext(CartAddContext);
 };
 
 export const useRemoveItem = () => {
   return useContext(CartRemoveContext);
+};
+
+export const useTotal = () => {
+  return useContext(CartTotalContext);
 };
 
 export const CartProvider = ({ children }) => {
@@ -45,12 +49,19 @@ export const CartProvider = ({ children }) => {
     }, 0);
   });
 
+  useEffect(() => {
+    setTotal(() => {
+      return cart.reduce((acc, item) => {
+        return acc + item.price;
+      }, 0);
+    });
+  }, [cart]);
+
   const addToCart = (newItem) => {
-    setCart({ ...cart, newItem });
+    setCart([...cart, newItem]);
   };
 
   const deleteFromCart = (id) => {
-    console.log("@@@@@@@@@@@@@@@", id);
     const newCart = cart.filter((item) => id !== item.id);
     setCart(newCart);
   };
@@ -58,9 +69,11 @@ export const CartProvider = ({ children }) => {
   return (
     <CartContext.Provider value={cart}>
       <CartTotalContext.Provider value={total}>
-        <CartRemoveContext.Provider value={deleteFromCart}>
-          {children}
-        </CartRemoveContext.Provider>
+        <CartAddContext.Provider value={addToCart}>
+          <CartRemoveContext.Provider value={deleteFromCart}>
+            {children}
+          </CartRemoveContext.Provider>
+        </CartAddContext.Provider>
       </CartTotalContext.Provider>
     </CartContext.Provider>
   );
