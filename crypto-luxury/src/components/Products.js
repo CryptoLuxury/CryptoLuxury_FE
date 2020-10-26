@@ -2,27 +2,19 @@ import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 
+import Nav from "./Nav.js";
+import Search from "./Search.js";
+
 import { useHistory } from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import WatchCard from "./WatchCard";
-import Dropdown from "react-bootstrap/Dropdown";
-import GridContainer from "./dashComps/GridContainer";
-import GridItem from "./dashComps/GridItem";
-import CardCard from "./CardCard";
+import WatchCard from "./NewCard";
+import CardCard from "./NewCardCard";
 import Footer from "./dashComps/Footer";
 
 import Button from "./dashComps/Button";
-
-//modal
-import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
-
-import Navbar from "react-bootstrap/Navbar";
-
-import Typing from "react-typing-animation";
 
 const Products = () => {
 
@@ -83,104 +75,17 @@ const Products = () => {
       }
 
     return (
-        <div>
-        <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Submit a Ticket</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div>
-          <Form>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Your Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter Name" name="name" />
-          </Form.Group>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter Email" name="email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Message</Form.Label>
-          <Form.Control as="textarea" rows="3" />
-        </Form.Group>
-          </Form>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="dark" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button color="warning" onClick={handleContactSubmit}>
-            Send Ticket
-          </Button>
-        </Modal.Footer>
-        </Modal>
-        <Navbar bg="dark" variant="light" className="marblebar" sticky="top">
-        <Container>
-        <Row style={{
-          display: "flex",
-          margin: "0 auto",
-          flexFlow: "row wrap",
-          justifyContent: "space-between"
+      <div>
+        <div style={{
+          width: "100%"
         }}>
-        <Row style={{
-          margin: "0 auto"
-        }}>
-        <Navbar.Brand href="/" style={{color: "#e39c0e"}}>
-        Crypto Luxury
-        </Navbar.Brand>
-        </Row>
-        <Row style={{
-          margin: "0 auto"
-        }}>
-        <Col>
-        <Button onClick={() => {
-            history.push("/")
-        }} color="warning" style={{
-            width: "100px"
-        }}>Home</Button>
-        </Col>
-        <Col>
-        <Button onClick={() => {
-            history.push("/team")
-        }} color="warning" style={{
-            width: "100px"
-        }}>Team</Button>
-        </Col>
-        <Col>
-        <Button onClick={handleShow} color="warning" style={{
-          width: "100px"
-      }}>Contact</Button>
-        </Col>
-      </Row>
-      </Row>
-        </Container>
-        
-    </Navbar>
+        <Nav />
+        </div>
+    <Row style={{width: "100%" , textAlign: "center", marginTop: "9%"}}>
+        <Search />
+    </Row>
     <Container>
-
-            <div style={{
-                height: "4vh",
-                background: "grey",
-                width: "100%",
-                marginTop: "0",
-                alignSelf: "center",
-                borderRadius: "1%",
-                alignSelf: "center"
-            }}>
-                <Typing speed={5}>
-                <h6 style={{
-                    fontSize: ".8rem",
-                    textAlign: "center",
-                    paddingTop: ".5%",
-                    paddingBottom: ".2%",
-                }}>All of our cards are PSA approved!  Send us a message to learn more.</h6>
-                </Typing>
-            </div>
-            <Row style={{
+              <Row style={{
               marginBottom: "5%",
               display: "flex",
               justifyContent: "space-evenly",
@@ -189,24 +94,12 @@ const Products = () => {
             <Col style={{
               margin: "2%",
               display: "flex",
-              flexFlow: "row nowrap",
+              flexFlow: "row wrap",
+              justifyContent: "space-evenly"
             }}>
               { watches.map(watch => ( 
               <WatchCard watchInfo={watch} key={watch.id}/> 
               ))}
-            </Col>
-            </Row>
-            <Row style={{
-              marginBottom: "5%",
-              display: "flex",
-              justifyContent: "space-evenly",
-              paddingBottom: "3%"
-            }}>
-            <Col style={{
-              margin: "2%",
-              display: "flex",
-              flexFlow: "row nowrap",
-            }}>
               { cards.map(card => ( 
               <CardCard cardInfo={card} key={card.id}/> 
               ))}

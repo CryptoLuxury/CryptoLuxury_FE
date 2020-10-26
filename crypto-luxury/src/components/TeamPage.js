@@ -135,43 +135,11 @@ const TeamPage = () => {
 
     return (
         <div>
-        <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Submit a Ticket</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div>
-          <Form>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Your Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter Name" name="name" />
-          </Form.Group>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter Email" name="email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Message</Form.Label>
-          <Form.Control as="textarea" rows="3" />
-        </Form.Group>
-          </Form>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button color="dark" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button color="warning" onClick={handleContactSubmit}>
-            Send Ticket
-          </Button>
-        </Modal.Footer>
-        </Modal>
         <Nav />
     <Container>
-    <Row>
+    <Row style={{
+      marginTop: "14%"
+    }}>
         <div style={{
             width: "70%",
             display: "flex",
@@ -182,12 +150,12 @@ const TeamPage = () => {
         <h2 style={{
             textAlign: "center",
             marginTop: "2%",
-            color: "#c9af4f"
+            color: "black"
         }}>Meet our Team</h2>
         <h5 style={{
             textAlign: "center",
             marginTop: "2%",
-            color: "#c9af4f"
+            color: "black"
         }}>We at Crypto Luxury are committed to bringing you the highest-quality service to match our high-quality products and prices.  Meet the people responsible.</h5>
         </div>
     </Row>
@@ -203,9 +171,7 @@ const TeamPage = () => {
         </Row>
     </Col>
     </Container>
-    <Row>
-        <Footer />
-    </Row>
+
 </div>
     )
 }

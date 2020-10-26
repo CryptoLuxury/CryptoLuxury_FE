@@ -4,6 +4,11 @@ import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import Button from "./Button";
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+
+import { Col, Row } from "react-bootstrap";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -35,29 +40,39 @@ export default function Footer(props) {
     [classes.whiteColor]: white
   });
   return (
-    <footer style={{marginTop: "10%", marginBottom: "4%"}} className={classes.footer}>
-      <div className={container}>
-        <div className={classes.left}>
-          <List className={classes.list}>
-            <ListItem className={classes.inlineBlock}>
-                <Button onClick={() => {
-                  history.push('/')
-                }} color="warning" round>Home</Button>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-            <Button onClick={() => {
-              history.push('/')
-            }} color="warning" round>Products</Button>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-            <Button onClick={() => {
-              history.push('/')
-            }} color="warning" round>Team</Button>
-            </ListItem>
-          </List>
-        </div>
+    <div>
+      <Row style={{
+        height: "100px",
+        backgroundColor: "#121212",
+        display: "flex",
+        flexFlow: "row nowrap",
+        width: "100%"
+      }}>
+        <Col style={{backgroundColor: "lightgrey", width: "100%", display: "flex", flexDirection: "column"}}>
+          <Row><h3>Reach out to us!</h3></Row>
+          <Row>
+          <Button justIcon onClick={() => {
+            window.open('www.twitter.com')
+          }} color="twitter">
+          <TwitterIcon />
+        </Button>
+        <Button justIcon onClick={() => {
+          window.open('www.facebook.com')
+        }} color="facebook">
+        <FacebookIcon />
+        </Button>
+        <Button justIcon onClick={() => {
+          window.open('www.linkedin.com')
+        }} color="facebook">
+        <LinkedInIcon />
+        </Button>
+        </Row>
+        </Col>
+        <Col style={{backgroundColor: "grey", width: "100%"}}>
+          one
+        </Col>
+      </Row>
       </div>
-    </footer>
   );
 }
 
