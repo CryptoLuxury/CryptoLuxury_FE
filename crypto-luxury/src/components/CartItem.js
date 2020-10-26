@@ -6,20 +6,20 @@ import Col from "react-bootstrap/Col";
 import { useRemoveItem } from "../CartContext";
 
 const CartItem = ({ itemInfo }) => {
-  const { name, price, quantity, id } = itemInfo;
+  const { watchName, watchPrice, watchQty, watch_id } = itemInfo;
 
   const removeFromCart = useRemoveItem();
 
   return (
     <div>
       <div style={{ width: 300 }}>
-        <p>{name}</p>
-        <p>{price}</p>
-        <p>{quantity}</p>
+        <p>{watchName}</p>
+        <p>{watchPrice}</p>
+        <p>{watchQty}</p>
       </div>
       <button
         onClick={() => {
-          removeFromCart(id);
+          removeFromCart(watch_id);
         }}
       >
         Remove

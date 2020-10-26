@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { axiosWithAuth } from "./utils/AxiosWithAuth";
 
 const CartContext = React.createContext();
 const CartAddContext = React.createContext();
@@ -22,26 +23,7 @@ export const useTotal = () => {
 };
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      name: "lalalal",
-      price: 10,
-      quantity: 1,
-    },
-    {
-      id: 2,
-      name: "lalalal",
-      price: 20,
-      quantity: 1,
-    },
-    {
-      id: 3,
-      name: "lalalal",
-      price: 30,
-      quantity: 1,
-    },
-  ]);
+  const [cart, setCart] = useState([]);
 
   const [total, setTotal] = useState(() => {
     return cart.reduce((acc, item) => {
@@ -49,10 +31,32 @@ export const CartProvider = ({ children }) => {
     }, 0);
   });
 
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    if (window.localStorage.getItem("id") !== null) {
+      setTimeout(() => {
+        axiosWithAuth()
+          .get(
+            `https://crypto-luxury.herokuapp.com/api/form/watchOrders/${window.localStorage.getItem(
+              "id"
+            )}`
+          )
+          .then((res) => {
+            console.log("LLLLLLLLLLLLLLLLL", res.data);
+            setCart(res.data);
+          })
+          .catch((err) => console.log(err));
+      }, 500);
+    } else {
+      console.log("it is null");
+    }
+  }, []);
+
   useEffect(() => {
     setTotal(() => {
       return cart.reduce((acc, item) => {
-        return acc + item.price;
+        return acc + item.watchPrice;
       }, 0);
     });
   }, [cart]);

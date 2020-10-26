@@ -228,11 +228,11 @@ const Cart = () => {
         </GridContainer>
       </Navbar>
       <Row>
-        {watchOrders.map((item) => (
+        {/* {watchOrders.map((item) => (
           <CartItem itemInfo={item} key={item.id} />
-        ))}
+        ))} */}
         {cartItems.map((item) => (
-          <CartItem itemInfo={item} key={item.id} id={item.id} />
+          <CartItem itemInfo={item} key={item.watch_id} />
         ))}
       </Row>
       <h2>Total: ${cartTotal}</h2>
