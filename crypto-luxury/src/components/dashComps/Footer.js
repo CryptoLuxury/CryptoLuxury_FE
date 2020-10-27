@@ -186,7 +186,7 @@ export default function Footer() {
       <Row style={{
         width: "100%",
         display: "flex",
-        justifyContent: "space-evenly",
+        justifyContent: "center",
         paddingTop: "3%"
       }}>
         <Button color="rose" style={{

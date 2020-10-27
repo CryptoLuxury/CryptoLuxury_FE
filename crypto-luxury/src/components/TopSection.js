@@ -33,7 +33,6 @@ export default() => {
             <Row className="toprow" style={{
               display: "flex",
               justifyContent: "center",
-              marginTop: "25%"
             }}>
             { homeCards.map(item => ( 
               <HomeCard itemInfo={item} key={item.id}/> 

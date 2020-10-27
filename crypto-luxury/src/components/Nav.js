@@ -152,7 +152,7 @@ const Navigation = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Navbar bg="light" expand="lg" fixed="top" className="navbar">
+      <Navbar bg="light" expand="lg" className="navbar">
       <div style={{
         margin: "0 auto"
       }}>

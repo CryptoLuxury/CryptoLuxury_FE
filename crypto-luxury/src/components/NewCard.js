@@ -100,7 +100,7 @@ const NewCardWatch = ({ watchInfo }) => {
           <Button justIcon onClick={handleShow}>
             <ViewIcon />
           </Button>,
-          <Button justIcon
+          <Button color="warning" justIcon
           className="snipcart-add-item"
           data-item-id={`${name}`}
           data-item-price={price.toFixed(2)}
@@ -110,14 +110,14 @@ const NewCardWatch = ({ watchInfo }) => {
         >
           <AddIcon />
         </Button>,
-        <Button justIcon onClick={() => {
+        <Button color="warning" justIcon onClick={() => {
           window.open(`${bitpay}`)
         }}>
         <AccountIcon />
         </Button>,
         ]}
       >
-        <Meta title={name} description={price} />
+        <Meta title={name} description={'$' + `${price}`} />
       </Card>
     </div>
   );
