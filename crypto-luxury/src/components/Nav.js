@@ -168,6 +168,9 @@ const Navigation = () => {
             display: "flex",
             flexFlow: "column wrap",
             width: "100%",
+            margin: "0 auto",
+            alignSelf: "center",
+            alignItems: "center"
           }}
         >
         <div
@@ -198,6 +201,7 @@ const Navigation = () => {
                     margin: "0 auto",
                     marginBottom: ".2%",
                     opacity: "100%",
+                    marginLeft: "2%"
                   }}
                 >
                   Home
@@ -212,6 +216,7 @@ const Navigation = () => {
                     margin: "0 auto",
                     marginBottom: ".2%",
                     opacity: "100%",
+                    marginLeft: "2%"
                   }}
                 >
                   Store
@@ -226,6 +231,7 @@ const Navigation = () => {
                     margin: "0 auto",
                     marginBottom: ".2%",
                     opacity: "100%",
+                    marginLeft: "2%"
                   }}
                 >
                   Team
@@ -238,6 +244,7 @@ const Navigation = () => {
                     margin: "0 auto",
                     marginBottom: ".2%",
                     opacity: "100%",
+                    marginLeft: "2%"
                   }}
                 >
                   Contact Us

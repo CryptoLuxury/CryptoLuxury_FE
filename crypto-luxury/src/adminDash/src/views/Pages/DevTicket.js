@@ -13,7 +13,7 @@ const ContactTicket = ({ticketInfo}) => {
 
     const classes = useStyles();
 
-    const { name,  message } = ticketInfo;
+    const { id, name, email,  message } = ticketInfo;
     const [alert, setAlert] = React.useState(null);
     const hideAlert = () => {
       setAlert(null);
@@ -49,10 +49,10 @@ const ContactTicket = ({ticketInfo}) => {
         );
       };
 
-    const handleDelete = () => {
-        axios.delete(`https://crypto-luxury.herokuapp.com/api/form/devTicket/:{2}`, ticketInfo)
+    const handleDelete = (id) => {
+        axios.delete(`https://crypto-luxury.herokuapp.com/api/form/devTicket/${id}`)
         .then(res => {
-          alert();
+          successAlert();
         })
         .catch(err => {
           errorAlert();
@@ -61,12 +61,18 @@ const ContactTicket = ({ticketInfo}) => {
 
     return (
         <Card style={{ width: '18rem' }}>
+        {alert}
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
+                                <Card.Subtitle>
+                    {email}
+                </Card.Subtitle>
                 <Card.Text>
                     {message}
                 </Card.Text>
-                <Button color="danger" onClick={handleDelete}>Delete</Button>
+                <Button color="danger" onClick={() => {
+                  handleDelete(id)
+                }}>Delete</Button>
             </Card.Body>
             </Card>
     )

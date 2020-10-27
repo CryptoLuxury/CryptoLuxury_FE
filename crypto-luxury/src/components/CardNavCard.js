@@ -49,7 +49,7 @@ const NewCardWatch = ({cardInfo}) => {
 
     return (
         <div style={{
-          backgroundColor: "#f2f2f2"
+          backgroundColor: "#f2f2f2",
         }}>
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

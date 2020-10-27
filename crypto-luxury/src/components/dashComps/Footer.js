@@ -183,11 +183,14 @@ export default function Footer() {
           </Button>
         </Modal.Footer>
       </Modal>
+      <Col style={{width: "100%"}}>
       <Row style={{
         width: "100%",
         display: "flex",
         justifyContent: "center",
-        paddingTop: "3%"
+        paddingTop: "3%",
+        marginRight: "0",
+        marginLeft: "0"
       }}>
         <Button color="rose" style={{
           width: "100px"
@@ -206,6 +209,7 @@ export default function Footer() {
           width: "100px"
         }} onClick={handleWhiteShow}>White Glove</Button>
       </Row>
+      </Col>
       <Row style={{
         display: "flex",
         justifyContent: "space-evenly",

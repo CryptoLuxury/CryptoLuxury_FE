@@ -1,14 +1,18 @@
 import React from "react";
 
+import {useHistory} from "react-router-dom";
+
 import axios from "axios";
 
 const HomeCard = ({itemInfo}) => {
 
     const { id, image, title, subtitle, link } = itemInfo;
 
+    let history = useHistory();
+
     const handleDeleteCard = (id) => {
         axios
-          .delete(`https://crypto-luxury.herokuapp.com/api/store/features/:${id}`)
+          .delete(`https://crypto-luxury.herokuapp.com/api/store/features/${id}`)
           .then((res) => {
             alert("success");
             console.log(res);
@@ -19,9 +23,11 @@ const HomeCard = ({itemInfo}) => {
           });
       };
 
+      console.log(id)
+
     return (
-        <div onClick={(e) => {
-            handleDeleteCard(e, {id});
+        <div onClick={() => {
+            handleDeleteCard(id);
           }} style={{
             height: "200px",
             width: "200px",
