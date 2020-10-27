@@ -4,6 +4,8 @@ import axios from "axios";
 
 import { Modal, Form } from "react-bootstrap";
 
+import SweetAlert from "react-bootstrap-sweetalert"
+
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import Search from "./Search.js";
 
@@ -19,8 +21,19 @@ import CardCard from "./NewCardCard";
 import Footer from "./dashComps/Footer";
 
 import Button from "./dashComps/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import styles from "./dashComps/dashboardStyle";
+
+const useStyles = makeStyles(styles);
 
 const Products = () => {
+
+  const classes = useStyles();
+
+  const [alert, setAlert] = React.useState(null);
+  const hideAlert = () => {
+    setAlert(null);
+  };
 
     let history = useHistory();
     const [show, setShow] = useState(false);
@@ -66,17 +79,47 @@ const Products = () => {
         e.preventDefault();
         axios.post(`https://crypto-luxury.herokuapp.com/api/form/contact`, contact)
         .then(res => {
-          alert("POST SUCCESS")
+          successAlert();
           console.log(res)
           setTimeout(() => {
             setShow(false)
           }, 1500);
         })
         .catch(err => {
-          alert("There was an error, if the issue persists, email us: Z@cryptoluxury.com")
+          errorAlert();
           console.log(err)
         })
       }
+
+      const successAlert = () => {
+        setAlert(
+          <SweetAlert
+            success
+            style={{ display: "block", marginTop: "100px" }}
+            title="Submitted!"
+            onConfirm={() => hideAlert()}
+            onCancel={() => hideAlert()}
+            confirmBtnCssClass={classes.button + " " + classes.success}
+          >
+            We've received your ticket, and will get back to you shortly!
+          </SweetAlert>
+        );
+      };
+    
+      const errorAlert = () => {
+        setAlert(
+          <SweetAlert
+            danger
+            style={{ display: "block", marginTop: "80px" }}
+            title="Error!"
+            onConfirm={() => hideAlert()}
+            onCancel={() => hideAlert()}
+            confirmBtnCssClass={classes.button + " " + classes.success}
+          >
+            That's not supposed to happen :( Try again!
+          </SweetAlert>
+        );
+      };
 
     return (
       <div>
@@ -137,28 +180,81 @@ const Products = () => {
       }}>
         <img src={image} alt="advanced logo" />
       </Row>
+      <Row style={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        marginTop: "3%"
+      }}>
+      <div>
+      <Button color="warning" className="snipcart-checkout" style={{
+        display: "flex",
+        marginBottom: "3%",
+        justifyContent: "space-evenly"
+      }}>
+        <ShoppingCartIcon />
+        <span class="snipcart-items-count"></span>
+        <span style={{
+          marginLeft: "0.5%",
+          marginRight: "0.5%"
+        }}> / </span>
+        <span class="snipcart-total-price"></span>
+      </Button>
+    </div>
+      </Row>
+      <Row style={{
+        display: "flex",
+        justifyContent: "space-evenly",
+        width: "100%",
+        margin: "0 auto",
+        marginTop: "4%"
+      }}>
+      <Button
+      color="warning"
+      simple
+      onClick={() => {
+        history.push('/')
+      }}
+      style={{
+        width: "100px",
+        margin: "0 auto",
+        marginBottom: ".2%",
+        opacity: "100%",
+      }}
+    >
+      Home
+    </Button>
+    <Button
+      color="warning"
+      simple
+      onClick={() => {
+        history.push('/team')
+      }}
+      style={{
+        width: "100px",
+        margin: "0 auto",
+        marginBottom: ".2%",
+        opacity: "100%",
+      }}
+    >
+      Team
+    </Button>
+    <Button
+      color="warning"
+      simple
+      onClick={handleShow}
+      style={{
+        width: "100px",
+        margin: "0 auto",
+        marginBottom: ".2%",
+        opacity: "100%",
+      }}
+    >
+      Contact Us
+    </Button>
+      </Row>
     <Row style={{width: "100%" , textAlign: "center", margin: "0 auto", marginTop: "3%"}}>
         <Search />
-    </Row>
-    <Row style={{
-      width: "100%",
-      display: "flex",
-      justifyContent: "center"
-    }}>
-    <div>
-    <Button color="warning" className="snipcart-checkout" style={{
-      display: "flex",
-      justifyContent: "space-evenly"
-    }}>
-      <ShoppingCartIcon />
-      <span class="snipcart-items-count"></span>
-      <span style={{
-        marginLeft: "0.5%",
-        marginRight: "0.5%"
-      }}> / </span>
-      <span class="snipcart-total-price"></span>
-    </Button>
-  </div>
     </Row>
     <Container>
               <Row style={{
@@ -182,9 +278,7 @@ const Products = () => {
             </Col>
             </Row>
             </Container>
-            <Row>
                 <Footer />
-            </Row>
         </div>
     )
 }
