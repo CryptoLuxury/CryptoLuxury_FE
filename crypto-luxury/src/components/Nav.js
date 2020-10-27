@@ -93,8 +93,6 @@ const Navigation = () => {
 
   const [show, setShow] = useState(false);
 
-  const [isShowing, setIsShowing] = useState(true)
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [alert, setAlert] = React.useState(null);
