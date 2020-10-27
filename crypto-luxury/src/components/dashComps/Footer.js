@@ -90,7 +90,14 @@ export default function Footer() {
 
   const [show, setShow] = useState(false);
 
-  const [isShowing, setIsShowing] = useState(true)
+  const [vaultingModal, setVaultingModal] = useState(false);
+
+  const handleVaultingClose = () => setVaultingModal(false);
+  const handleVaultingShow = () => setVaultingModal(true);
+  const [whiteModal, setWhiteModal] = useState(false);
+
+  const handleWhiteClose = () => setWhiteModal(false);
+  const handleWhiteShow = () => setWhiteModal(true);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -105,6 +112,28 @@ export default function Footer() {
       backgroundColor: "#fffcf7"
     }}>
           {alert}
+        <Modal show={vaultingModal} onHide={handleVaultingClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Vaulting</Modal.Title>
+          </Modal.Header>
+          <Modal.Body><p style={{width: "100%", margin: "0 auto", textAlign: "center"}}>We offer full vaulting services for all luxury collectible goods. This vaulting service is partnered with Chase Bank, and all goods are insured for your safe keeping. All vaults are equiped with humidity control, fire protection, and sealed against theft around the clock.</p></Modal.Body>
+          <Modal.Footer>
+            <Button color="danger" onClick={handleVaultingClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        <Modal show={whiteModal} onHide={handleWhiteClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>White Glove Service</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><p style={{width: "100%", margin: "0 auto", textAlign: "center"}}>We offer a unique white glove service for our top clientelle. This white glove service includes hand delivery of the product and transfer of your collectible to be made in-person. We offer private consultation with the service for our valued clients as well as professional recording of the event to share with your social media presence or simply keep for your own commemoration.</p></Modal.Body>
+        <Modal.Footer>
+          <Button color="danger" onClick={handleWhiteClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Submit a Ticket</Modal.Title>
@@ -172,14 +201,10 @@ export default function Footer() {
         }}><TwitterIcon /></Button>
         <Button color="twitter" style={{
           width: "100px"
-        }} onClick={() => {
-          window.open('https://twitter.com/CryptoLuxury_io')
-        }}>Vaulting</Button>
+        }} onClick={handleVaultingShow}>Vaulting</Button>
         <Button color="twitter" style={{
           width: "100px"
-        }} onClick={() => {
-          window.open('https://twitter.com/CryptoLuxury_io')
-        }}>White Glove</Button>
+        }} onClick={handleWhiteShow}>White Glove</Button>
       </Row>
       <Row style={{
         display: "flex",

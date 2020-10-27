@@ -159,7 +159,8 @@ const Navigation = () => {
       }}>
         <Navbar.Brand>
           <img src={Logo} alt="our logo" className="logoimage" style={{
-            paddingLeft: "3%"
+            paddingLeft: "3%",
+            height: "75px"
           }} />
         </Navbar.Brand>
       </div>
