@@ -6,7 +6,7 @@ import axios from "axios";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
-import Icon from "@material-ui/core/Icon";
+import HomeCard from "./HomeCard.js";
 
 import Modal from "react-bootstrap/Modal";
 
@@ -35,8 +35,6 @@ import CardFooter from "../../components/Card/CardFooter.js";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import WatchCard from "../Pages/ProductManagerCardWatch";
-import CardCard from "../Pages/ProductManagerCardCard";
 
 import SweetAlert from "react-bootstrap-sweetalert";
 
@@ -44,7 +42,6 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import Mailbox from "./mailbox.svg";
 import Sales from "./Sales.svg";
 import Cube from "./cube.svg";
-import Blastoise from "./blastoise.png";
 
 import Slide from "@material-ui/core/Slide";
 import Dialog from "@material-ui/core/Dialog";
@@ -57,7 +54,6 @@ import AccountIcon from '@material-ui/icons/AccountBalanceWallet';
 import Close from "@material-ui/icons/Close";
 
 import styles from "../../assets/jss/material-dashboard-pro-react/views/dashboardStyle.js";
-import Success from "../../components/Typography/Success.js";
 
 const useStyles = makeStyles(styles);
 
@@ -91,6 +87,8 @@ export default function Dashboard() {
     title: "",
     subtitle: ""
   })
+
+  const [homeCards, setHomeCards] = useState([]);
   const [watches, setWatches] = useState([]);
   const [cards, setCards] = useState([]);
   const [alert, setAlert] = React.useState(null);
@@ -195,6 +193,16 @@ export default function Dashboard() {
       ])
     })
   }, []);
+
+  useEffect(() => {
+    axios.get(`https://crypto-luxury.herokuapp.com/api/store/features`)
+    .then(res => {
+      setHomeCards([
+        ...res.data
+      ])
+    })
+  }, []);
+
   useEffect(() => {
     axios.get(`https://crypto-luxury.herokuapp.com/api/store/cards`)
     .then(res => {
@@ -519,31 +527,28 @@ export default function Dashboard() {
           </Card>
         </GridItem>
       </GridContainer>
-      <h3>Manage Products</h3>
+      <h3>Manage Home Cards</h3>
+      <br />
+      <Row style={{
+        marginLeft: "2%"
+      }}>
+      <Button color="warning" onClick={() => setHomeCardShow(true)}>Add Card</Button>
+      </Row>
       <br />
       <Container>
-        <Row style={{
-          marginBottom: "5%",
+      <Row style={{
+        marginTop: "2%"
+      }}>
+        <div style={{
+          margin: "1%",
           display: "flex",
-          justifyContent: "space-evenly",
-          paddingBottom: "3%"
+          justifyContent: "center",
+          flexFlow: "row wrap"
         }}>
-        <Col style={{
-          margin: "2%",
-          display: "flex",
-          flexFlow: "row nowrap",
-          justifyContent: "space-evenly"
-        }}>
-        { watches.map(watch => ( 
-          <WatchCard watchInfo={watch} key={watch.id}/> 
+        { homeCards.map(item => ( 
+          <HomeCard itemInfo={item} key={item.id}/> 
           ))}
-        { cards.map(card => ( 
-          <CardCard cardInfo={card} key={card.id}/> 
-          ))}
-          </Col>
-        </Row>
-        <Row>
-          <Button onClick={() => setHomeCardShow(true)}>Click</Button>
+        </div>
         </Row>
         
       </Container>

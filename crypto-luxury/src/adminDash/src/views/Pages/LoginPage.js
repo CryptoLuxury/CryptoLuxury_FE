@@ -1,4 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
+
+import axios from "axios";
+
+import {useHistory} from "react-router-dom";
 
 //reactstrap
 import Container from "react-bootstrap/Container";
@@ -11,8 +15,6 @@ import LockIcon from '@material-ui/icons/Lock';
 
 // @material-ui/icons
 import Face from "@material-ui/icons/Face";
-import Email from "@material-ui/icons/Email";
-// import LockOutline from "@material-ui/icons/LockOutline";
 
 // core components
 import GridContainer from "../../components/Grid/GridContainer.js";
@@ -39,6 +41,38 @@ export default function LoginPage() {
       window.clearTimeout(id);
     };
   });
+
+  let history = useHistory();
+
+  const [adminLogin, setAdminLogin] = useState({
+    name: "",
+    password: ""
+  })
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setAdminLogin({
+      ...adminLogin,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    axios.post(`https://crypto-luxury.herokuapp.com/api/auth/loginadmin`, adminLogin)
+    .then(res => {
+      window.localStorage.setItem('token', res.data.token)
+      window.localStorage.setItem('id', res.data.id)
+      setTimeout(() => {
+        history.push('/admin/dashboard')
+      })
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
   const classes = useStyles();
   return (
     <Container>
@@ -54,8 +88,10 @@ export default function LoginPage() {
               </CardHeader>
               <CardBody>
                 <CustomInput
-                  labelText="First Name.."
-                  id="firstname"
+                  labelText="Name"
+                  name="name"
+                  placeholder="Carl"
+                  onChange={handleChange}
                   formControlProps={{
                     fullWidth: true
                   }}
@@ -69,7 +105,8 @@ export default function LoginPage() {
                 />
                 <CustomInput
                   labelText="Password"
-                  id="password"
+                  name="password"
+                  onChange={handleChange}
                   formControlProps={{
                     fullWidth: true
                   }}
@@ -87,7 +124,7 @@ export default function LoginPage() {
                 />
               </CardBody>
               <CardFooter className={classes.justifyContentCenter}>
-                <Button color="warning" simple size="lg" block>
+                <Button color="warning" simple size="lg" onClick={handleLogin} block>
                   Let{"'"}s Go
                 </Button>
               </CardFooter>

@@ -4,9 +4,15 @@
 	color: #444;
 	text-align: center;
 }
+
+@media all and (max-width: "800px") {
+	.container-search {
+		width: 400px;
+	}
+}
 /*Container*/
 .container-search {
-	margin: 36px auto;
+	margin: 0 auto;
     width: 100%;
 	max-width: 800px;
 }
@@ -41,7 +47,7 @@
 	border: 1px solid #898989;
 	margin: 16px;
 	text-align: center;
-	min-width: 200px;
+	min-width: 100px;
 	text-decoration: none;
 	box-shadow: 2px 2px 2px #898989;
 }

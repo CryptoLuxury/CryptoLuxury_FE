@@ -15,7 +15,7 @@ const ContactTicket = ({ticketInfo}) => {
                 <Card.Text>
                     {ticketInfo.message}
                 </Card.Text>
-                <Button round color="danger">Delete</Button>
+                <Button color="danger">Delete</Button>
             </Card.Body>
             </Card>
     )

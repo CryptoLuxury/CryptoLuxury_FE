@@ -104,26 +104,28 @@ const NewCardWatch = ({watchInfo}) => {
                 fontSize: ".75rem"
               }}>${price}</h4>
             </Col>
-            <Col style={{
-              paddingTop: "2%",
-              paddingLeft: "3%"
-            }}>
-              <ViewIcon color="warning" onClick={() => {
-                setShow(true)
-              }} />
+            <Col>
+            <Button justIcon onClick={handleShow}>
+            <ViewIcon />
+            </Button>
             </Col>
             <Col>
-            <Button color="warning" simple onClick={() => {
-              addToCart()
-          }}>
-            Add to Fiat Cart
-          </Button>
+            <Button color="warning" justIcon
+            className="snipcart-add-item"
+            data-item-id={`${name}`}
+            data-item-price={price.toFixed(2)}
+            data-item-url="http://localhost:3000"
+            data-item-description={`${description}`}
+            data-item-name={`${name}`}
+            >
+            <AddIcon />
+            </Button>
           </Col>
             <Col>
-            <Button color="warning" simple onClick={() => {
+            <Button color="warning" justIcon onClick={() => {
               window.open(`${bitpay}`)
-            }}>
-            Add to Crypto Cart
+              }}>
+              <AccountIcon />
             </Button>
           </Col>
           </div>

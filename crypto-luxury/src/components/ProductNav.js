@@ -5,12 +5,14 @@ import {
   Navbar,
   Nav,
   Form,
+  FormControl,
+  NavDropdown,
+  DropdownButton,
   Modal,
-  Container
 } from "react-bootstrap";
 import Button from "./dashComps/Button";
 
-import Logo from "./logo.png";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 import SweetAlert from "react-bootstrap-sweetalert";
 
@@ -93,6 +95,8 @@ const Navigation = () => {
 
   const [show, setShow] = useState(false);
 
+  const [isShowing, setIsShowing] = useState(true)
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [alert, setAlert] = React.useState(null);
@@ -101,7 +105,7 @@ const Navigation = () => {
   };
 
   return (
-    <Container>
+    <div className="wrap">
       {alert}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -153,16 +157,6 @@ const Navigation = () => {
         </Modal.Footer>
       </Modal>
       <Navbar bg="light" expand="lg" className="navbar">
-      <div style={{
-        margin: "0 auto"
-      }}>
-        <Navbar.Brand>
-          <img src={Logo} alt="our logo" className="logoimage" style={{
-            paddingLeft: "3%",
-            height: "75px"
-          }} />
-        </Navbar.Brand>
-      </div>
         <div
           style={{
             display: "flex",
@@ -214,7 +208,7 @@ const Navigation = () => {
                     opacity: "100%",
                   }}
                 >
-                  Store
+                  Products
                 </Button>
                 <Button
                   color="warning"
@@ -243,6 +237,22 @@ const Navigation = () => {
                   Contact Us
                 </Button>
               </Nav>
+              <div
+                style={{ marginLeft: "5%", marginRight: "5%", width: "20%" }}
+              >
+                <Button color="warning" className="snipcart-checkout" style={{
+                  display: "flex",
+                  justifyContent: "space-evenly"
+                }}>
+                  <ShoppingCartIcon />
+                  <span class="snipcart-items-count"></span>
+                  <span style={{
+                    marginLeft: "0.5%",
+                    marginRight: "0.5%"
+                  }}> / </span>
+                  <span class="snipcart-total-price"></span>
+                </Button>
+              </div>
             </Navbar.Collapse>
           </Row>
           <Row
@@ -255,7 +265,7 @@ const Navigation = () => {
           </Row>
         </div>
       </Navbar>
-    </Container>
+    </div>
   );
 };
 

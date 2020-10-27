@@ -138,7 +138,6 @@ const TeamPage = () => {
         <Nav />
     <Container>
     <Row style={{
-      marginTop: "14%"
     }}>
         <div style={{
             width: "70%",
@@ -171,7 +170,7 @@ const TeamPage = () => {
         </Row>
     </Col>
     </Container>
-
+        <Footer />
 </div>
     )
 }

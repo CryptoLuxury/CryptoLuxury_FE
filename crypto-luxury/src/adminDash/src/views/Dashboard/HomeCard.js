@@ -1,15 +1,28 @@
 import React from "react";
 
-import "./HomeCard.css";
+import axios from "axios";
 
 const HomeCard = ({itemInfo}) => {
 
-    const { image, title, subtitle, link } = itemInfo;
+    const { id, image, title, subtitle, link } = itemInfo;
+
+    const handleDeleteCard = (id) => {
+        axios
+          .delete(`https://crypto-luxury.herokuapp.com/api/store/features/:${id}`)
+          .then((res) => {
+            alert("success");
+            console.log(res);
+          })
+          .catch((err) => {
+            alert("Failed to Delete");
+            console.log(err);
+          });
+      };
 
     return (
-        <div onClick={() => {
-            window.open(`${link}`)
-        }} style={{
+        <div onClick={(e) => {
+            handleDeleteCard(e, {id});
+          }} style={{
             height: "200px",
             width: "200px",
             margin: ".1%"

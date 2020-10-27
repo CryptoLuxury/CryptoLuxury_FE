@@ -97,26 +97,27 @@ const NewCardWatch = ({ watchInfo }) => {
           />
         }
         actions={[
-          <ViewIcon onClick={handleShow} key="setting" />,
-          <button
-            class="snipcart-add-item"
-            data-item-id={`${name}`}
-            data-item-price={price}
-            data-item-url=""
-            data-item-description={`${description}`}
-            data-item-name={`${name}`}
-          >
-            Add to cart
-          </button>,
-          <AccountIcon
-            onClick={() => {
-              window.open(`${bitpay}`);
-            }}
-            key="ellipsis"
-          />,
+          <Button justIcon onClick={handleShow}>
+            <ViewIcon />
+          </Button>,
+          <Button color="warning" justIcon
+          className="snipcart-add-item"
+          data-item-id={`${name}`}
+          data-item-price={price.toFixed(2)}
+          data-item-url="http://localhost:3000"
+          data-item-description={`${description}`}
+          data-item-name={`${name}`}
+        >
+          <AddIcon />
+        </Button>,
+        <Button color="warning" justIcon onClick={() => {
+          window.open(`${bitpay}`)
+        }}>
+        <AccountIcon />
+        </Button>,
         ]}
       >
-        <Meta title={name} description={price} />
+        <Meta title={name} description={'$' + `${price}`} />
       </Card>
     </div>
   );

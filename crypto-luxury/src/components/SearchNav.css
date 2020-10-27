@@ -11,8 +11,9 @@
 	height: 50px;
 	max-width: 200px;
 }
-.search-label {
+.search-label-nav {
 	position: relative;
+	width: 650px;
 }
 .container-search-nav input {
 	width: 100%;
@@ -34,19 +35,8 @@
 }
 
 /* Results */
-.results-container {
-	display: flex;
-	flex-flow: wrap;
-}
-.result-items {
-	position: relative;
-	padding: 16px;
-	border: 1px solid #898989;
-	margin: 16px;
-	text-align: center;
-	min-width: 200px;
-	text-decoration: none;
-	box-shadow: 2px 2px 2px #898989;
+.results {
+	width: 400px;
 }
 .image-username {
 	color: coral;
