@@ -38,7 +38,7 @@ export default() => {
             <Row style={{
               display: "flex",
               justifyContent: "center",
-              marginTop: "5%"
+              marginTop: "10%"
             }}>
             { homeCards.map(item => ( 
               <HomeCard itemInfo={item} key={item.id}/> 

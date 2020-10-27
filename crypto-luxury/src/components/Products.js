@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 
-import Nav from "./Nav.js";
+import { Modal, Form } from "react-bootstrap";
+
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import Search from "./Search.js";
+
+import image from "./logo.png";
 
 import { useHistory } from "react-router-dom";
 
@@ -34,8 +38,6 @@ const Products = () => {
         ])
       })
     }, []);
-
-    console.log(watches)
 
     useEffect(() => {
       axios.get(`https://crypto-luxury.herokuapp.com/api/store/cards`)
@@ -78,13 +80,85 @@ const Products = () => {
 
     return (
       <div>
-        <div style={{
-          width: "100%"
-        }}>
-        <Nav />
-        </div>
-    <Row style={{width: "100%" , textAlign: "center", marginTop: "9%"}}>
+      {alert}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Submit a Ticket</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div>
+            <Form>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Your Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter Name"
+                  name="name"
+                  onChange={handleContactChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter Email"
+                  name="email"
+                  onChange={handleContactChange}
+                />
+                <Form.Text className="text-muted">
+                  We'll never share your email with anyone else.
+                </Form.Text>
+              </Form.Group>
+              <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Message</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows="3"
+                  name="message"
+                  onChange={handleContactChange}
+                />
+              </Form.Group>
+            </Form>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button color="warning" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button color="warning" onClick={handleContactSubmit}>
+            Send Ticket
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Row style={{
+        display: "flex",
+        justifyContent: "center",
+        paddingTop: "5%"
+      }}>
+        <img src={image} alt="advanced logo" />
+      </Row>
+    <Row style={{width: "100%" , textAlign: "center", margin: "0 auto", marginTop: "3%"}}>
         <Search />
+    </Row>
+    <Row style={{
+      width: "100%",
+      display: "flex",
+      justifyContent: "center"
+    }}>
+    <div>
+    <Button color="warning" className="snipcart-checkout" style={{
+      display: "flex",
+      justifyContent: "space-evenly"
+    }}>
+      <ShoppingCartIcon />
+      <span class="snipcart-items-count"></span>
+      <span style={{
+        marginLeft: "0.5%",
+        marginRight: "0.5%"
+      }}> / </span>
+      <span class="snipcart-total-price"></span>
+    </Button>
+  </div>
     </Row>
     <Container>
               <Row style={{
