@@ -29,21 +29,6 @@ export default() => {
       })
     }, []);
 
-    const contentStyle = {
-        height: '160px',
-        color: '#fff',
-        lineHeight: '160px',
-        textAlign: 'center',
-        background: '#364d79',
-      };
-      const contentStyle2 = {
-        height: '160px',
-        color: '#fff',
-        lineHeight: '160px',
-        textAlign: 'center',
-        background: 'red',
-      };
-
     return (
         <Container style={{
             height: "92vh",
@@ -53,7 +38,7 @@ export default() => {
             <Row style={{
               display: "flex",
               justifyContent: "center",
-              marginTop: "14%"
+              marginTop: "5%"
             }}>
             { homeCards.map(item => ( 
               <HomeCard itemInfo={item} key={item.id}/> 

@@ -19,3 +19,7 @@ code {
 .carousel thumb {
   display: none;
 }
+
+#root {
+  margin-top: 15%;
+}
