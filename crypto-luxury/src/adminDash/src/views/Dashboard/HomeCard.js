@@ -8,7 +8,7 @@ const HomeCard = ({itemInfo}) => {
 
     const handleDeleteCard = (id) => {
         axios
-          .delete(`https://crypto-luxury.herokuapp.com/api/store/features/:${id}`, {data: {id}})
+          .delete(`https://crypto-luxury.herokuapp.com/api/store/features/:${id}`)
           .then((res) => {
             alert("success");
             console.log(res);
@@ -20,8 +20,8 @@ const HomeCard = ({itemInfo}) => {
       };
 
     return (
-        <div onClick={() => {
-            handleDeleteCard({id});
+        <div onClick={(e) => {
+            handleDeleteCard(e, {id});
           }} style={{
             height: "200px",
             width: "200px",

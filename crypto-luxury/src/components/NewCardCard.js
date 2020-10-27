@@ -82,11 +82,7 @@ const NewCardWatch = ({cardInfo}) => {
         }
         actions={[
           <ViewIcon onClick={handleShow} key="setting" />,
-          <Button  style={{
-            background: "none",
-            borderRadius: "3px"
-          }}
-            simple justIcon
+          <Button justIcon
           className="snipcart-add-item"
           data-item-id={`${name}`}
           data-item-price={price.toFixed(2)}
