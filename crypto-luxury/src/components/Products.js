@@ -87,20 +87,6 @@ const Products = () => {
         <Search />
     </Row>
     <Container>
-    <div hidden id="snipcart" data-api-key="NThiZmE2M2EtNDQ4Yy00MGMzLWEwYTYtOTNmNDJjYjZlMTlhNjM3MzkxMjM3MjA2MDc3NDcw" data-config-add-product-behavior="none">
-    <billing section="bottom">
-      <fieldset class="snipcart-form__set">
-          <div class="snipcart-form__field">
-              <div class="snipcart-form__field-checkbox">
-                  <snipcart-checkbox name="subscribeToNewsletter"></snipcart-checkbox>
-                  <snipcart-label for="subscribeToNewsletter" class="snipcart__font--tiny snipcart-form__label--checkbox" for="subscribeToNewsletter">
-                      Subscribe to newsletter
-                  </snipcart-label>
-              </div>
-          </div>
-      </fieldset>
-  </billing>
-  </div>
               <Row style={{
               marginBottom: "5%",
               display: "flex",

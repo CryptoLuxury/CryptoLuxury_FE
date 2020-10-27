@@ -20,6 +20,6 @@ code {
   display: none;
 }
 
-#root {
-  margin-top: 15%;
+#snipcart .snipcart-checkout {
+  margin-top: 20%;
 }

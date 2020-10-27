@@ -41,9 +41,6 @@ const Navigation = () => {
     message: "",
   });
 
-  //Context APO
-  const cartItems = useCart();
-
   const history = useHistory();
 
   const handleContactChange = (e) => {
@@ -103,6 +100,8 @@ const Navigation = () => {
   };
 
   const [show, setShow] = useState(false);
+
+  const [isShowing, setIsShowing] = useState(true)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -171,6 +170,13 @@ const Navigation = () => {
             width: "100%",
           }}
         >
+        <div
+        className="navtop"
+        style={{
+            textAlign: "center",
+        }}>
+              
+            </div>
           <Row>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse className="collapse" id="basic-navbar-nav">
@@ -184,7 +190,9 @@ const Navigation = () => {
               >
                 <Button
                   color="warning"
-                  href="/"
+                  onClick={() => {
+                    history.push('/')
+                  }}
                   style={{
                     width: "100px",
                     margin: "0 auto",
@@ -196,7 +204,9 @@ const Navigation = () => {
                 </Button>
                 <Button
                   color="warning"
-                  href="/products"
+                  onClick={() => {
+                    history.push('/products')
+                  }}
                   style={{
                     width: "100px",
                     margin: "0 auto",
@@ -208,7 +218,9 @@ const Navigation = () => {
                 </Button>
                 <Button
                   color="warning"
-                  href="/team"
+                  onClick={() => {
+                    history.push('/team')
+                  }}
                   style={{
                     width: "100px",
                     margin: "0 auto",
@@ -234,8 +246,17 @@ const Navigation = () => {
               <div
                 style={{ marginLeft: "5%", marginRight: "5%", width: "20%" }}
               >
-                <Button color-="warning" class="snipcart-checkout">
-                  Click here to checkout
+                <Button color="warning" className="snipcart-checkout" style={{
+                  display: "flex",
+                  justifyContent: "space-evenly"
+                }}>
+                  <ShoppingCartIcon />
+                  <span class="snipcart-items-count"></span>
+                  <span style={{
+                    marginLeft: "0.5%",
+                    marginRight: "0.5%"
+                  }}> / </span>
+                  <span class="snipcart-total-price"></span>
                 </Button>
               </div>
             </Navbar.Collapse>
@@ -247,17 +268,6 @@ const Navigation = () => {
               justifyContent: "flex-start",
             }}
           >
-            <div
-              className="navtop"
-              style={{
-                textAlign: "center",
-              }}
-            >
-              <Navbar.Brand href="/">CryptoLuxury</Navbar.Brand>
-            </div>
-            <div>
-              <Search />
-            </div>
           </Row>
         </div>
       </Navbar>
