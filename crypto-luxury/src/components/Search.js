@@ -69,7 +69,7 @@ const Search = () => {
                         onChange={handleChange}
 					/>
                     <i className="fa fa-search search-icon"/>
-                    <div className="results">
+                    <div className="results" style={{width: "55px", margin: "0 auto"}}>
                     {searchResults.map(item => {
                       if(searchTerm !== '') {
                         return(<WatchCard key={item.id} watchInfo={item} />)

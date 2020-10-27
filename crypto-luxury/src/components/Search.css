@@ -36,10 +36,10 @@
 	right: 18px;
 }
 
+
 /* Results */
 .results-container {
 	display: flex;
-	flex-flow: wrap;
 }
 .result-items {
 	position: relative;
@@ -47,7 +47,6 @@
 	border: 1px solid #898989;
 	margin: 16px;
 	text-align: center;
-	min-width: 100px;
 	text-decoration: none;
 	box-shadow: 2px 2px 2px #898989;
 }
