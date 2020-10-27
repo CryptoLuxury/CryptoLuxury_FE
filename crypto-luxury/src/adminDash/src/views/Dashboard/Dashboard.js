@@ -80,7 +80,6 @@ export default function Dashboard() {
     name: "",
     email: "",
     message: "",
-    link: ""
   })
   const [homeCard, setHomeCard] = useState({
     image: "",

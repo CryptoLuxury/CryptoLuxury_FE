@@ -25,7 +25,7 @@ const useStyles = makeStyles(styles);
 const ProductManagerCardCard = ({ cardInfo }) => {
   const { id, title, price, description } = cardInfo;
 
-  const handleDelete = () => {
+  const handleDelete = (id) => {
     axios
       .delete(`https://crypto-luxury.herokuapp.com/api/store/cards/${id}`)
       .then((res) => {
@@ -72,7 +72,7 @@ const ProductManagerCardCard = ({ cardInfo }) => {
               <Button
                 color="danger"
                 onClick={() => {
-                  handleDelete();
+                  handleDelete(id);
                 }}
                 simple
                 justIcon

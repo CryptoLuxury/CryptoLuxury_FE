@@ -1,21 +1,79 @@
 import React from "react";
 
 import Card from "react-bootstrap/Card";
+
+import axios from "axios";
 import Button from "../../components/CustomButtons/Button";
+import SweetAlert from "react-bootstrap-sweetalert";
+import { makeStyles } from "@material-ui/core/styles";
+
+import styles from "../../assets/jss/material-dashboard-pro-react/views/errorPageStyles.js";
+
+const useStyles = makeStyles(styles);
 
 const ContactTicket = ({ticketInfo}) => {
 
-    const { name, email, message } = ticketInfo;
+    const classes = useStyles();
+
+    const { id, name, email, message } = ticketInfo;
+
+    const [alert, setAlert] = React.useState(null);
+    const hideAlert = () => {
+      setAlert(null);
+    }
+
+    const successAlert = () => {
+        setAlert(
+          <SweetAlert
+            success
+            style={{ display: "block", marginTop: "100px" }}
+            title="Success!"
+            onConfirm={() => hideAlert()}
+            onCancel={() => hideAlert()}
+            confirmBtnCssClass={classes.button + " " + classes.success}
+          >
+            You've closed this ticket!
+          </SweetAlert>
+        );
+      };
+    
+      const errorAlert = () => {
+        setAlert(
+          <SweetAlert
+            danger
+            style={{ display: "block", marginTop: "80px" }}
+            title="Oh No!"
+            onConfirm={() => hideAlert()}
+            onCancel={() => hideAlert()}
+            confirmBtnCssClass={classes.button + " " + classes.success}
+          >
+            That's didn't work :( , if this consists, email Carl: sachscarl@gmail.com
+          </SweetAlert>
+        );
+      };
+
+    const handleDelete = (id) => {
+        axios.delete(`https://crypto-luxury.herokuapp.com/api/form/contact/${id}`)
+        .then(res => {
+          successAlert();
+        })
+        .catch(err => {
+          errorAlert();
+        })
+      }
 
     return (
         <Card style={{ width: '18rem' }}>
             <Card.Body>
-                <Card.Title>{ticketInfo.name}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{ticketInfo.email}</Card.Subtitle>
+            {alert}
+                <Card.Title>{name}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">{email}</Card.Subtitle>
                 <Card.Text>
-                    {ticketInfo.message}
+                    {message}
                 </Card.Text>
-                <Button color="danger">Delete</Button>
+                <Button color="danger" onClick={() => {
+                    handleDelete(id);
+                }}>Delete</Button>
             </Card.Body>
             </Card>
     )

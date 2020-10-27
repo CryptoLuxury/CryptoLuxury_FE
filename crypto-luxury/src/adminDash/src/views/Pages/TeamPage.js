@@ -40,6 +40,10 @@ export default function TeamPage() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [showHelp, setShowHelp] = useState(false);
+
+  const handleHelpClose = () => setShowHelp(false);
+  const handleHelpShow = () => setShowHelp(true);
   const classes = useStyles();
   const [alert, setAlert] = React.useState(null);
   const hideAlert = () => {
@@ -154,7 +158,7 @@ export default function TeamPage() {
   return (
     <Container>
     {alert}
-                  <Modal show={show} onHide={handleClose}>
+                  <Modal show={showHelp} onHide={handleHelpClose}>
                   <Modal.Header closeButton>
                     <Modal.Title>New Member</Modal.Title>
                   </Modal.Header>
@@ -171,8 +175,8 @@ export default function TeamPage() {
                   </Form>
                   </Modal.Body>
                   <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                      Close
+                    <Button color="danger" onClick={handleHelpClose}>
+                      Cancel
                     </Button>
                     <Button color="warning" onClick={handleMemberSubmit}>
                       LETS GOOO!
@@ -217,7 +221,7 @@ export default function TeamPage() {
             marginTop: "2%",
             marginBottom: "2%"
           }}>
-            <Button rounded color="warning" onClick={handleShow}>Add New Member</Button>
+            <Button rounded color="warning" onClick={handleHelpShow}>Add New Member</Button>
           </Col>
           <Col style={{
             marginTop: "2%",
