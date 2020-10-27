@@ -402,7 +402,8 @@ export default function ProductManager() {
           display: "flex",
           justifyContent: "space-evenly",
           width: "100%",
-          height: "50px"
+          height: "50px",
+          marginTop: "5%"
         }}>
         <Button color="warning" onClick={() => setWatchShow(true)}>Add Watch</Button>
         <Button color="warning" onClick={() => setCardShow(true)}>Add Card</Button>

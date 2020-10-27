@@ -8,7 +8,8 @@ import SweetAlert from "react-bootstrap-sweetalert";
 
 // core components
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row"
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import DevTicket from "./DevTicket";
 
 import styles from "../../assets/jss/material-dashboard-pro-react/views/errorPageStyles.js";
@@ -37,17 +38,17 @@ export default function DevTicketsPage() {
   return (
     <Container>
     {alert}
-      <Row>
-        <h2>Manage Dev Tickets</h2>
+      <Row style={{width: "100%", display : "flex", justifyContent: "center"}}>
+        <h2 style={{textAlign: "center"}}>Manage Dev Tickets</h2>
       </Row>
-      <Row>
-        <div style={{
+      <Row style={{display: "flex", flexFlow: "row nowrap", justifyContent: "center"}}>
+        <Col style={{
           margin: "2%"
         }}>
         { openDevTickets.map(ticket => ( 
           <DevTicket ticketInfo={ticket} key={ticket.id}/> 
       ))}
-        </div>
+        </Col>
       </Row>
     </Container>
   );

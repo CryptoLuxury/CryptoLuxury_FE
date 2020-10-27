@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import {Modal, Form} from "react-bootstrap";
+
 import axios from "axios";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -25,22 +27,51 @@ import { ContactPhone } from "@material-ui/icons";
 const useStyles = makeStyles(styles);
 
 const ProductManagerCardWatch = ({ watchInfo }) => {
+
+  const [edited, setEdited] = useState({
+    name: "",
+    description: "",
+    price: 0.00,
+    quantity: 0,
+    bitpay: ""
+  })
   const classes = useStyles();
   const { id, title, price, description, bitpay } = watchInfo;
 
+  const [editShow, setEditShow] = useState(false);
+
+  const handleEditClose = () => setEditShow(false);
+  const handleEditShow = () => setEditShow(true);
+
   const handleDeleteListing = (id) => {
-    console.log(id, "$$$$$$%$$$$$$$");
     axios
-      .delete(`https://crypto-luxury.herokuapp.com/api/store/watches/:${id}`)
+      .delete(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`)
       .then((res) => {
         alert("success");
-        console.log(res);
       })
       .catch((err) => {
         alert("Failed to Delete");
-        console.log(err);
       });
   };
+
+  const handleWatchChange = (e) => {
+    e.preventDefault();
+    setEdited({
+    ...edited,
+    [e.target.name]: e.target.value
+    })
+}
+
+const handleEditSubmit = (id) => {
+axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`, edited)
+.then(res => {
+  alert("working");
+  setEditShow(false);
+})
+.catch(err => {
+  alert("not working");
+})
+}
 
   return (
     <div
@@ -52,6 +83,45 @@ const ProductManagerCardWatch = ({ watchInfo }) => {
       }}
     >
       <Card product className={classes.cardHover}>
+      <Modal show={editShow} onHide={handleEditClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Add Watch</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+      <Form>
+      <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Listing Title</Form.Label>
+        <Form.Control type="text" placeholder="Title of Product" onChange={handleWatchChange} name="name" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput1">
+      <Form.Label>Price (USD)</Form.Label>
+      <Form.Control type="number" placeholder="4500, 45000" onChange={handleWatchChange} name="price" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput1">
+      <Form.Label>Quantity</Form.Label>
+      <Form.Control type="number" placeholder="number 1-10" onChange={handleWatchChange} name="quantity" />
+      </Form.Group>
+        <Form.Group controlId="exampleForm.ControlTextarea1">
+        <Form.Label>Listing Description</Form.Label>
+        <Form.Control as="textarea" placeholder="Description" rows="3" onChange={handleWatchChange} name="description" />
+      </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Bitpay Product Link</Form.Label>
+        <Form.Control type="text" placeholder="Title..." onChange={handleWatchChange} name="bitpay" />
+      </Form.Group>
+      </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button color="danger" onClick={handleEditClose}>
+          Cancel
+        </Button>
+        <Button color="warning" onClick={() => {
+          handleEditSubmit(id)
+        }}>
+          Submit
+        </Button>
+      </Modal.Footer>
+    </Modal>
         <CardHeader image className={classes.cardHeaderHover}>
           <div>
             <img
@@ -68,7 +138,9 @@ const ProductManagerCardWatch = ({ watchInfo }) => {
               placement="bottom"
               classes={{ tooltip: classes.tooltip }}
             >
-              <Edit color="warning" simple justIcon>
+              <Edit color="warning" simple justIcon onClick={() => {
+                handleEditShow(true);
+              }}>
                 <AddIcon className={classes.underChartIcons} />
               </Edit>
             </Tooltip>

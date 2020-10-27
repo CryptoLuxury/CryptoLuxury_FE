@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import TicketTable from "../Tables/TicketTable";
 
 import ContactTicket from "./ContactTicket";
@@ -33,16 +34,18 @@ export default function TicketsPage() {
 
   return (
     <Container>
-      <Row>
-        <h2>Manage Tickets</h2>
+      <Row style={{width: "100%", display : "flex", justifyContent: "center"}}>
+        <h2 style={{textAlign: "center"}}>Manage Tickets</h2>
       </Row>
-      <Row>
-        <div>
+      <Row style={{display: "flex", flexFlow: "row nowrap", justifyContent: "center"}}>
+        <Col style={{
+          margin: "2%"
+        }}>
         { openTickets.map(ticket => ( 
           <ContactTicket ticketInfo={ticket} key={ticket.id}/> 
       ))}
-        </div>
-      </Row>
+        </Col> 
+        </Row>
     </Container>
   );
 }
