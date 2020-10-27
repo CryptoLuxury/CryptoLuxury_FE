@@ -168,6 +168,9 @@ const Navigation = () => {
             display: "flex",
             flexFlow: "column wrap",
             width: "100%",
+            margin: "0 auto",
+            alignSelf: "center",
+            alignItems: "center"
           }}
         >
         <div
