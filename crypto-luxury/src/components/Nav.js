@@ -6,6 +6,7 @@ import {
   Nav,
   Form,
   Modal,
+  Container
 } from "react-bootstrap";
 import Button from "./dashComps/Button";
 
@@ -102,7 +103,7 @@ const Navigation = () => {
   };
 
   return (
-    <div className="wrap">
+    <Container>
       {alert}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -256,7 +257,7 @@ const Navigation = () => {
           </Row>
         </div>
       </Navbar>
-    </div>
+    </Container>
   );
 };
 

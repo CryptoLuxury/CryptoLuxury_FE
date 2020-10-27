@@ -171,7 +171,7 @@ const TeamPage = () => {
         </Row>
     </Col>
     </Container>
-
+        <Footer />
 </div>
     )
 }

@@ -12,10 +12,6 @@ import Fade from "react-reveal/Fade";
 
 import HomeCard from "./HomeCard";
 
-//typing
-import Typing from "react-typing-animation";
-import { Carousel } from 'antd';
-
 export default() => {
 
   const [homeCards, setHomeCards] = useState([]);
@@ -31,14 +27,13 @@ export default() => {
 
     return (
         <Container style={{
-            height: "92vh",
             display: "flex",
-            flexFlow: "column nowrap",
+            flexFlow: "column wrap",
         }}>
-            <Row style={{
+            <Row className="toprow" style={{
               display: "flex",
               justifyContent: "center",
-              marginTop: "17%"
+              marginTop: "25%"
             }}>
             { homeCards.map(item => ( 
               <HomeCard itemInfo={item} key={item.id}/> 

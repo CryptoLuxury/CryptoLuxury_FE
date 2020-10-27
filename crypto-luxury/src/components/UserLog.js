@@ -166,8 +166,8 @@ export default function Pages(props) {
           </form>
         </GridItem>
       </GridContainer>
-          <Footer white />
         </Container>
+        <Footer />
       </div>
   );
 }

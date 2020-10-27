@@ -15,14 +15,19 @@ const HomeCard = ({itemInfo}) => {
             margin: ".1%"
         }}>
         <img style={{ height: "200px", width: "200px", opacity: ".7", position: "absolute", zIndex: "-1"}} src={image} alt="homecard" />
-        <div style={{marginTop: "40%", paddingLeft: "5%"}}>
+        <div style={{paddingLeft: "1.5%"}}>
             <h2 className="title" style={{
                 opacity: "100%",
-                color: "black"  
+                color: "black",
+                paddingTop: "5%",
+                paddingLeft: "2%"
             }}>{title}</h2>
             <h4 className="subtitle" style={{
                 opacity: "100%",
-                color: "black"
+                color: "black",
+                paddingTop: "40%",
+                marginLeft: "45%",
+                paddingRight: ".5%"
             }}>{subtitle}</h4>
             </div>
         </div>
