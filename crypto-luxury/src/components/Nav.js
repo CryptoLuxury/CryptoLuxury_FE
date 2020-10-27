@@ -12,11 +12,7 @@ import {
 } from "react-bootstrap";
 import Button from "./dashComps/Button";
 
-import Search from "./SearchNav";
-
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-
-import Marble from "./Marble.png";
 
 import SweetAlert from "react-bootstrap-sweetalert";
 
@@ -27,8 +23,6 @@ import styles from "./dashComps/dashboardStyle";
 import "./Nav.css";
 
 import { Row, Col } from "react-bootstrap";
-
-import { useCart } from "../CartContext";
 
 const useStyles = makeStyles(styles);
 
@@ -111,7 +105,7 @@ const Navigation = () => {
   };
 
   return (
-    <div className="wrap">
+    <div className="wrap" style={{display: (isShowing ? 'block' : 'none')}}>
       {alert}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -246,7 +240,9 @@ const Navigation = () => {
               <div
                 style={{ marginLeft: "5%", marginRight: "5%", width: "20%" }}
               >
-                <Button color="warning" className="snipcart-checkout" style={{
+                <Button color="warning" onClick={() => {
+                  setIsShowing(false)
+                }} className="snipcart-checkout" style={{
                   display: "flex",
                   justifyContent: "space-evenly"
                 }}>
