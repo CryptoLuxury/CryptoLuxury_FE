@@ -10,11 +10,11 @@ const HomeCard = ({itemInfo}) => {
         <div onClick={() => {
             window.open(`${link}`)
         }} style={{
-            height: "200px",
-            width: "200px",
+            height: "300px",
+            width: "300px",
             margin: ".1%"
         }}>
-        <img style={{ height: "200px", width: "200px", opacity: ".7", position: "absolute", zIndex: "-1"}} src={image} alt="homecard" />
+        <img style={{ height: "300px", width: "300px", opacity: ".7", position: "absolute", zIndex: "-1"}} src={image} alt="homecard" />
         <div style={{paddingLeft: "1.5%"}}>
             <h2 className="title" style={{
                 opacity: "100%",
