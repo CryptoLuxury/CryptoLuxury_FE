@@ -213,7 +213,7 @@ export default function TeamPage() {
                 </Modal.Footer>
               </Modal>
         <Row style={{display: "flex", justifyContent: "center"}}>
-        <h3 style={{textAlign: "center"}}>Manage the Team</h3>
+        <h3 style={{textAlign: "center", color: "#523c0d"}}>Manage the Team</h3>
         </Row>
         <Row style={{display: "flex", width: "100%", justifyContent: "space-evenly", marginTop: "5%"}}>
             <Button rounded color="warning" onClick={handleHelpShow}>Add New Member</Button>

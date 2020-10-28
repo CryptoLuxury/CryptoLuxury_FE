@@ -526,16 +526,19 @@ export default function Dashboard() {
           </Card>
         </GridItem>
       </GridContainer>
-      <h3>Manage Home Cards</h3>
+      <h3 style={{width: "100%", textAlign: "center"}}>Manage Home Cards</h3>
       <br />
       <Row style={{
-        marginLeft: "2%"
+        display: "flex",
+        justifyContent: "center"
       }}>
       <Button color="warning" onClick={() => setHomeCardShow(true)}>Add Card</Button>
       </Row>
       <br />
       <Container>
       <Row style={{
+        display: "flex",
+        justifyContent: "center",
         marginTop: "2%"
       }}>
         <div style={{

@@ -149,12 +149,12 @@ const TeamPage = () => {
         <h2 style={{
             textAlign: "center",
             marginTop: "2%",
-            color: "black"
+            color: "#523c0d"
         }}>Meet our Team</h2>
         <h5 style={{
             textAlign: "center",
             marginTop: "2%",
-            color: "black"
+            color: "#e0a72b"
         }}>We at Crypto Luxury are committed to bringing you the highest-quality service to match our high-quality products and prices.  Meet the people responsible.</h5>
         </div>
     </Row>

@@ -12,7 +12,7 @@ import Button from "../../components/CustomButtons/Button";
 import Card from "../../components/Card/Card.js";
 import CardHeader from "../../components/Card/CardHeader.js";
 import CardBody from "../../components/Card/CardBody.js";
-import CardFooter from "../../components/Card/CardFooter.js";
+import SweetAlert from "react-bootstrap-sweetalert";
 
 //icons
 import FlightIcon from "@material-ui/icons/FlightTakeoff";
@@ -21,12 +21,59 @@ import ViewIcon from "@material-ui/icons/Visibility";
 import AddIcon from "@material-ui/icons/AddShoppingCart";
 import SweepIcon from "@material-ui/icons/DeleteSweep";
 
-import blastoise from "../Dashboard/blastoise.png";
-import { ContactPhone } from "@material-ui/icons";
-
 const useStyles = makeStyles(styles);
 
 const ProductManagerCardWatch = ({ watchInfo }) => {
+
+  const [alert, setAlert] = React.useState(null);
+  const hideAlert = () => {
+    setAlert(null);
+  }
+
+  const successEditAlert = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "100px" }}
+          title="Nice!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          You've edited this watch!
+        </SweetAlert>
+      );
+    };
+
+    const successDeleteAlert = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "100px" }}
+          title="Nice!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          You've deleted this watch!
+        </SweetAlert>
+      );
+    };
+  
+    const errorAlert = () => {
+      setAlert(
+        <SweetAlert
+          danger
+          style={{ display: "block", marginTop: "80px" }}
+          title="Oh No!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          That's didn't work :( , if this consists, email Carl: sachscarl@gmail.com
+        </SweetAlert>
+      );
+    };
 
   const [edited, setEdited] = useState({
     name: "",
@@ -47,10 +94,10 @@ const ProductManagerCardWatch = ({ watchInfo }) => {
     axios
       .delete(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`)
       .then((res) => {
-        alert("success");
+        successDeleteAlert();
       })
       .catch((err) => {
-        alert("Failed to Delete");
+        errorAlert();
       });
   };
 
@@ -65,11 +112,11 @@ const ProductManagerCardWatch = ({ watchInfo }) => {
 const handleEditSubmit = (id) => {
 axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`, edited)
 .then(res => {
-  alert("working");
+  successEditAlert();
   setEditShow(false);
 })
 .catch(err => {
-  alert("not working");
+  errorAlert();
 })
 }
 
@@ -82,10 +129,11 @@ axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`, edited)
         marginTop: "5%",
       }}
     >
+    {alert}
       <Card product className={classes.cardHover}>
       <Modal show={editShow} onHide={handleEditClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Add Watch</Modal.Title>
+        <Modal.Title>Edit Watch</Modal.Title>
       </Modal.Header>
       <Modal.Body>
       <Form>

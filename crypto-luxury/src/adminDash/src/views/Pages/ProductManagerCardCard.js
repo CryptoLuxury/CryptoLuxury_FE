@@ -4,6 +4,8 @@ import axios from "axios";
 
 import {Modal, Form} from "react-bootstrap";
 
+import SweetAlert from "react-bootstrap-sweetalert";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Icon from "@material-ui/core/Icon";
@@ -26,6 +28,56 @@ const useStyles = makeStyles(styles);
 
 const ProductManagerCardCard = ({ cardInfo }) => {
   const { id, title, price, description } = cardInfo;
+
+  const [alert, setAlert] = React.useState(null);
+  const hideAlert = () => {
+    setAlert(null);
+  }
+
+  const successEditAlert = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "100px" }}
+          title="Nice!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          You've edited this card!
+        </SweetAlert>
+      );
+    };
+
+    const successDeleteAlert = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "100px" }}
+          title="Nice!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          You've deleted this card!
+        </SweetAlert>
+      );
+    };
+  
+    const errorAlert = () => {
+      setAlert(
+        <SweetAlert
+          danger
+          style={{ display: "block", marginTop: "80px" }}
+          title="Oh No!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          That's didn't work :( , if this consists, email Carl: sachscarl@gmail.com
+        </SweetAlert>
+      );
+    };
 
   const [editShow, setEditShow] = useState(false);
 
@@ -51,11 +103,11 @@ const ProductManagerCardCard = ({ cardInfo }) => {
   const handleEditSubmit = (id) => {
     axios.put(`https://crypto-luxury.herokuapp.com/api/store/cards/${id}`, edited)
     .then(res => {
-      alert("working");
+      successEditAlert();
       setEditShow(false);
     })
     .catch(err => {
-      alert("not working");
+      errorAlert();
     })
   }
 
@@ -63,9 +115,9 @@ const ProductManagerCardCard = ({ cardInfo }) => {
     axios
       .delete(`https://crypto-luxury.herokuapp.com/api/store/cards/${id}`)
       .then((res) => {
-        alert("success");
+        successDeleteAlert();
       })
-      .catch((err) => {alert("Failed")});
+      .catch((err) => {errorAlert();});
   };
 
   const classes = useStyles();
@@ -82,7 +134,7 @@ const ProductManagerCardCard = ({ cardInfo }) => {
       <Card product className={classes.cardHover}>
       <Modal show={editShow} onHide={handleEditClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Add Card</Modal.Title>
+        <Modal.Title>Edit Card</Modal.Title>
       </Modal.Header>
       <Modal.Body>
       <Form>

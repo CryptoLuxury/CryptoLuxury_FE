@@ -35,7 +35,7 @@ export default function TicketsPage() {
   return (
     <Container>
       <Row style={{width: "100%", display : "flex", justifyContent: "center"}}>
-        <h2 style={{textAlign: "center"}}>Manage Tickets</h2>
+        <h2 style={{textAlign: "center", color: "#523c0d"}}>Manage Tickets</h2>
       </Row>
       <Row style={{display: "flex", flexFlow: "row nowrap", justifyContent: "center"}}>
         <Col style={{

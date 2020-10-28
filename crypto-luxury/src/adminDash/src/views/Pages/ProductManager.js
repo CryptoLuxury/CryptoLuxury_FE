@@ -319,7 +319,7 @@ export default function ProductManager() {
       paddingBottom: "5%"
     }}>
     {alert}
-        <h2 style={{width: "100%", textAlign: "center"}}>Product Manager</h2>
+        <h2 style={{width: "100%", textAlign: "center", color: "#523c0d"}}>Product Manager</h2>
         <Container style={{
             display: "flex",
             flexDirection: "row"

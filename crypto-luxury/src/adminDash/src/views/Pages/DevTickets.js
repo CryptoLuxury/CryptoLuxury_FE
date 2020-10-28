@@ -39,7 +39,7 @@ export default function DevTicketsPage() {
     <Container>
     {alert}
       <Row style={{width: "100%", display : "flex", justifyContent: "center"}}>
-        <h2 style={{textAlign: "center"}}>Manage Dev Tickets</h2>
+        <h2 style={{textAlign: "center", color: "#523c0d"}}>Manage Dev Tickets</h2>
       </Row>
       <Row style={{display: "flex", flexFlow: "row nowrap", justifyContent: "center"}}>
         <Col style={{
