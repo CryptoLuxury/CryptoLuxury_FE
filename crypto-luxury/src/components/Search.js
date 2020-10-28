@@ -8,8 +8,6 @@ import WatchCard from "./WatchNavCard";
 
 import Form from "react-bootstrap/Form";
 
-import "./Search.css";
-
 
 const Search = () => {
 
@@ -64,17 +62,17 @@ const Search = () => {
 
       <Form>
       <Form.Group controlId="formBasicEmail">
-        <Form.Control type="text" placeholder="Search Collection" onChange={handleChange} />
+        <Form.Control type="text" placeholder="Search Full Collection" onChange={handleChange} />
       </Form.Group>
       </Form>
-      <div className="results" style={{width: "55px", margin: "0 auto"}}>
+      <div style={{width: "55px", margin: "0 auto"}}>
       {searchResults.map(item => {
-        if(searchTerm !== '') {
+        if(searchTerm !== null) {
           return(<WatchCard key={item.id} watchInfo={item} />)
         }
       })}
         {cardResults.map(item => {
-          if(searchTerm !== '') {
+          if(searchTerm !== null) {
           return(<NewCardCard key={item.id} cardInfo={item} />)
         }})}
       </div>
