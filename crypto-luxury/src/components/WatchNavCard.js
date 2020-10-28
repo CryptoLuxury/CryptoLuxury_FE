@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import { axiosWithAuthUser } from "../utils/AxiosWithAuthUser";
 
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 import { Card, Avatar } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
@@ -49,7 +50,6 @@ const NewCardWatch = ({watchInfo}) => {
 
     return (
         <div style={{
-          backgroundColor: "#f2f2f2"
         }}>
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -81,28 +81,22 @@ const NewCardWatch = ({watchInfo}) => {
             justifyContent: "space-evenly"
           }}>
           <Col>
-          <img src="https://i.ebayimg.com/images/g/4Z4AAOSwePRd-U1P/s-l500.jpg" alt="adamaaa" style={{
-            height: "50px",
-            width: "50px"
-          }} /> 
-          </Col>
-            <Col style={{
+            <Row style={{
               marginTop: "2%",
-              width: "100px"
             }}>
               <h4 style={{
                 color: "#24221e",
                 fontSize: ".75rem",
               }}>{name}</h4>
-            </Col>
-              <Col style={{
+            </Row>
+              <Row style={{
                 marginTop: "3%",
-                width: "100px"
               }}>
               <h4 style={{
                 color: "#24221e",
                 fontSize: ".75rem"
               }}>${price}</h4>
+            </Row>
             </Col>
             <Col>
             <Button justIcon onClick={handleShow}>

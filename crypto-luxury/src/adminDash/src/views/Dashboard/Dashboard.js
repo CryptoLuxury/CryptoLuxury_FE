@@ -526,7 +526,7 @@ export default function Dashboard() {
           </Card>
         </GridItem>
       </GridContainer>
-      <h3 style={{width: "100%", textAlign: "center"}}>Manage Home Cards</h3>
+      <h3 style={{width: "100%", textAlign: "center", color: "#523c0d"}}>Manage Home Cards</h3>
       <br />
       <Row style={{
         display: "flex",

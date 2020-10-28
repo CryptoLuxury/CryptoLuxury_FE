@@ -18,13 +18,15 @@ const HomeCard = ({itemInfo}) => {
         <div style={{paddingLeft: "1.5%"}}>
             <h2 className="title" style={{
                 opacity: "100%",
-                color: "black",
-                paddingTop: "5%",
+                fontFamily: "Roboto, sans",
+                color: "#523c0d",
+                paddingTop: "10%",
                 paddingLeft: "2%"
             }}>{title}</h2>
             <h4 className="subtitle" style={{
                 opacity: "100%",
-                color: "black",
+                fontFamily: "Roboto, sans",
+                color: "#523c0d",
                 paddingTop: "40%",
                 marginLeft: "45%",
                 paddingRight: ".5%"
