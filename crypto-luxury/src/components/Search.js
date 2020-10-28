@@ -6,8 +6,7 @@ import NewCardCard from "./CardNavCard";
 
 import WatchCard from "./WatchNavCard";
 
-import { Card } from "antd";
-import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
 
 import "./Search.css";
 
@@ -59,29 +58,27 @@ const Search = () => {
 
 
 	return(
-            <div className="container-search">
-				<label className="search-label" htmlFor="search-input">
-					<input
-						type="text"
-						id="search-input"
-                        placeholder="Search our Collection"
-                        value={searchTerm}
-                        onChange={handleChange}
-					/>
-                    <i className="fa fa-search search-icon"/>
-                    <div className="results" style={{width: "55px", margin: "0 auto"}}>
-                    {searchResults.map(item => {
-                      if(searchTerm !== '') {
-                        return(<WatchCard key={item.id} watchInfo={item} />)
-                      }
-                    })}
-                      {cardResults.map(item => {
-                        if(searchTerm !== '') {
-                        return(<NewCardCard key={item.id} cardInfo={item} />)
-                      }})}
-                    </div>
-                </label>
-				
+      <div style={{
+        margin: "0 auto"
+      }}>
+
+      <Form>
+      <Form.Group controlId="formBasicEmail">
+        <Form.Control type="text" placeholder="Search Collection" onChange={handleChange} />
+      </Form.Group>
+      </Form>
+      <div className="results" style={{width: "55px", margin: "0 auto"}}>
+      {searchResults.map(item => {
+        if(searchTerm !== '') {
+          return(<WatchCard key={item.id} watchInfo={item} />)
+        }
+      })}
+        {cardResults.map(item => {
+          if(searchTerm !== '') {
+          return(<NewCardCard key={item.id} cardInfo={item} />)
+        }})}
+      </div>
+
 			</div>
     )
 }
