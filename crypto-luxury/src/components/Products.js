@@ -188,18 +188,8 @@ const Products = () => {
         marginTop: "3%"
       }}>
       <div>
-      <Button color="warning" className="snipcart-checkout" style={{
-        display: "flex",
-        marginBottom: "3%",
-        justifyContent: "space-evenly"
-      }}>
+      <Button color="warning" className="snipcart-checkout">
         <ShoppingCartIcon />
-        <span class="snipcart-items-count"></span>
-        <span style={{
-          marginLeft: "0.5%",
-          marginRight: "0.5%"
-        }}> / </span>
-        <span class="snipcart-total-price"></span>
       </Button>
     </div>
       </Row>

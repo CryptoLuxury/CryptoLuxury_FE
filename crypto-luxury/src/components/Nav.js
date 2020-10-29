@@ -10,6 +10,8 @@ import {
 } from "react-bootstrap";
 import Button from "./dashComps/Button";
 
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+
 import Logo from "./logo.png";
 
 import SweetAlert from "react-bootstrap-sweetalert";
@@ -21,6 +23,8 @@ import styles from "./dashComps/dashboardStyle";
 import "./Nav.css";
 
 import { Row, Col } from "react-bootstrap";
+
+import Search from "./Search";
 
 const useStyles = makeStyles(styles);
 
@@ -101,7 +105,7 @@ const Navigation = () => {
   };
 
   return (
-    <Container>
+    <div>
       {alert}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -152,16 +156,43 @@ const Navigation = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Navbar bg="light" expand="lg" className="navbar">
+      <Navbar bg="dark" expand="lg" className="navbar">
+      <div style={{width: "100%"}}>
       <div style={{
-        margin: "0 auto"
+        width: "100%",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center"
+      }}>
+      <div style={{
+        display: "flex",
+        justifyContent: "flex-start"
       }}>
         <Navbar.Brand>
           <img src={Logo} alt="our logo" className="logoimage" style={{
             paddingLeft: "3%",
-            height: "75px"
+            height: "50px"
           }} />
         </Navbar.Brand>
+        </div>
+        <div style={{
+          margin: "0 auto",
+          alignSelf: "center",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center"
+        }}>
+          <Search />
+        </div>
+        <div style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "flex-end"
+        }}>
+        <Button color="warning" simple justIcon className="snipcart-checkout">
+          <ShoppingCartIcon />
+        </Button>
+      </div>
       </div>
         <div
           style={{
@@ -193,6 +224,7 @@ const Navigation = () => {
               >
                 <Button
                   color="warning"
+                  simple
                   onClick={() => {
                     history.push('/')
                   }}
@@ -261,8 +293,9 @@ const Navigation = () => {
           >
           </Row>
         </div>
+        </div>
       </Navbar>
-    </Container>
+    </div>
   );
 };
 

@@ -63,7 +63,7 @@ const Search = () => {
 
       <Form>
       <Form.Group controlId="formBasicEmail">
-        <Form.Control type="text" placeholder="Search Full Collection" onChange={handleChange} />
+        <Form.Control type="text" placeholder="Search" onChange={handleChange} />
       </Form.Group>
       </Form>
       <div style={{width: "55px", margin: "0 auto"}}>

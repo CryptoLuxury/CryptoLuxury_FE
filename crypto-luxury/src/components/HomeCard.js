@@ -9,7 +9,7 @@ const HomeCard = ({itemInfo}) => {
     return (
         <div onClick={() => {
             window.open(`${link}`)
-        }} style={{
+        }} className="homecardstyle" style={{
             height: "300px",
             width: "300px",
             margin: ".1%"

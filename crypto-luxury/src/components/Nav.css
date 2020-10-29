@@ -1,23 +1,6 @@
-.wrap {
-    background-image: url('./Marble.png');
-    height: "200px";
-}
-
 .navbar {
-    background-image: url('./Marble.png');
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 0px 10px rgba(0,0,0,0.22);
 }
 .mr-auto {
     margin: 0 auto;
-}
-
-
-.collapse {
-    opacity: .7;
-}
-
-.navbar {
-    @media all and (max-width: 800px) {
-        height: 50px;
-    }
 }
