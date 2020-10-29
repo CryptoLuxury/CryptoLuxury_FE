@@ -66,14 +66,16 @@ const ContactTicket = ({ticketInfo}) => {
         <Card style={{ width: '18rem' }}>
             <Card.Body>
             {alert}
-                <Card.Title>{name}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{email}</Card.Subtitle>
-                <Card.Text>
+                <Card.Title style={{textAlign: "center"}}>{name}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted" style={{textAlign: "center"}}>{email}</Card.Subtitle>
+                <Card.Text style={{textAlign: "center"}}>
                     {message}
                 </Card.Text>
+                <div style={{display: "flex", justifyContent: "center"}}>
                 <Button color="danger" onClick={() => {
                     handleDelete(id);
                 }}>Delete</Button>
+                </div>
             </Card.Body>
             </Card>
     )

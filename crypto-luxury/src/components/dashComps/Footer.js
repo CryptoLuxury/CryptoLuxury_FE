@@ -81,9 +81,7 @@ export default function Footer() {
         }, 1500);
       })
       .catch((err) => {
-        alert(
-          "There was an error, if the issue persists, email us: Z@cryptoluxury.com"
-        );
+        errorAlert();
         console.log(err);
       });
   };

@@ -33,9 +33,11 @@ export default function TicketsPage() {
   return (
     <Container>
       <Row style={{
-          marginBottom: "2.5%"
+        display: "flex",
+        justifyContent: "center",
+        marginBottom: "2.5%",
       }}>
-        <h2>Manage Subscriber Info</h2>
+        <h2 style={{textAlign: "center"}}>Manage Subscriber Info</h2>
       </Row>
       <Row>
         <div>

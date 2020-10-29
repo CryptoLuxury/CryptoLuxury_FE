@@ -47,14 +47,12 @@ export default function ProductManager() {
         name: "",
         description: "",
         price: 0.00,
-        quantity: 0,
         bitpay: ""
     })
     const [watchProduct, setWatchProduct] = useState({
         name: "",
         description: "",
         price: 0.00,
-        quantity: 0,
         bitpay: ""
     })
 
@@ -319,7 +317,7 @@ export default function ProductManager() {
       paddingBottom: "5%"
     }}>
     {alert}
-        <h2 style={{width: "100%", textAlign: "center"}}>Product Manager</h2>
+        <h2 style={{width: "100%", textAlign: "center", color: "#523c0d"}}>Product Manager</h2>
         <Container style={{
             display: "flex",
             flexDirection: "row"
@@ -337,10 +335,6 @@ export default function ProductManager() {
         <Form.Group controlId="exampleForm.ControlInput1">
         <Form.Label>Price (USD)</Form.Label>
         <Form.Control type="number" placeholder="100, 100,000" onChange={handleCardChange} name="price" />
-        </Form.Group>
-        <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Label>Quantity</Form.Label>
-        <Form.Control type="number" placeholder="input a number" onChange={handleCardChange} name="quantity" />
         </Form.Group>
           <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Listing Description</Form.Label>
@@ -375,10 +369,6 @@ export default function ProductManager() {
       <Form.Label>Price (USD)</Form.Label>
       <Form.Control type="number" placeholder="100, 100,000" onChange={handleWatchChange} name="price" />
       </Form.Group>
-      <Form.Group controlId="exampleForm.ControlInput1">
-      <Form.Label>Quantity</Form.Label>
-      <Form.Control type="number" placeholder="input a number" onChange={handleWatchChange} name="quantity" />
-      </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
         <Form.Label>Listing Description</Form.Label>
         <Form.Control as="textarea" rows="3" onChange={handleWatchChange} name="description" />
@@ -402,7 +392,8 @@ export default function ProductManager() {
           display: "flex",
           justifyContent: "space-evenly",
           width: "100%",
-          height: "50px"
+          height: "50px",
+          marginTop: "5%"
         }}>
         <Button color="warning" onClick={() => setWatchShow(true)}>Add Watch</Button>
         <Button color="warning" onClick={() => setCardShow(true)}>Add Card</Button>

@@ -60,19 +60,20 @@ const ContactTicket = ({ticketInfo}) => {
       }
 
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem', margin: "1%" }}>
         {alert}
             <Card.Body>
-                <Card.Title>{name}</Card.Title>
-                                <Card.Subtitle>
+                <Card.Title style={{textAlign: "center"}}>{name}</Card.Title>
+                                <Card.Subtitle style={{textAlign: "center"}}>
                     {email}
                 </Card.Subtitle>
-                <Card.Text>
+                <Card.Text style={{textAlign: "center"}}>
                     {message}
                 </Card.Text>
+                <div style={{display: "flex", justifyContent: "center"}}>
                 <Button color="danger" onClick={() => {
                   handleDelete(id)
-                }}>Delete</Button>
+                }}>Delete</Button></div>
             </Card.Body>
             </Card>
     )

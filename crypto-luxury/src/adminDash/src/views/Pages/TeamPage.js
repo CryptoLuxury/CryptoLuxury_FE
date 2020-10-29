@@ -212,29 +212,17 @@ export default function TeamPage() {
                   </Button>
                 </Modal.Footer>
               </Modal>
-        <Row>
-        <h3>Manage the Team</h3>
+        <Row style={{display: "flex", justifyContent: "center"}}>
+        <h3 style={{textAlign: "center", color: "#523c0d"}}>Manage the Team</h3>
         </Row>
-        <Row>
-        <Row>
-          <Col style={{
-            marginTop: "2%",
-            marginBottom: "2%"
-          }}>
+        <Row style={{display: "flex", width: "100%", justifyContent: "space-evenly", marginTop: "5%"}}>
             <Button rounded color="warning" onClick={handleHelpShow}>Add New Member</Button>
-          </Col>
-          <Col style={{
-            marginTop: "2%",
-            marginBottom: "2%"
-          }}>
             <Button rounded color="warning" onClick={handleShow}>Submit Dev Ticket</Button>
-          </Col>
-        </Row>
         </Row>
         <Col style={{
           marginTop: "5%"
         }}>
-            <div>
+            <div style={{marginTop: "15%"}}>
             { team.map(member => ( 
               <TeamCard membersInfo={member} key={member.id}/> 
               ))}

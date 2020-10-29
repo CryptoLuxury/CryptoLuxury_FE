@@ -2,7 +2,10 @@ import React, {useState} from "react";
 
 import { axiosWithAuthUser } from "../utils/AxiosWithAuthUser";
 
+
+
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 import { Card, Avatar } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
@@ -19,7 +22,9 @@ const { Meta } = Card;
 
 const NewCardWatch = ({watchInfo}) => {
 
-    const { id, name, price, description, bitpay } = watchInfo;
+    const { id, watchId, name, price, description, bitpay } = watchInfo;
+
+
 
     const [show, setShow] = useState(false);
 
@@ -49,26 +54,30 @@ const NewCardWatch = ({watchInfo}) => {
 
     return (
         <div style={{
-          backgroundColor: "#f2f2f2"
         }}>
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title wariant="warning">{name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <div style={{width: "100%"}}>
+            <div style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>
             <img src="https://i.ebayimg.com/images/g/4Z4AAOSwePRd-U1P/s-l500.jpg" style={{height: "200px", width: "200px"}} alt="product info" />
             </div>
             <div>
-                <p>{description}</p>
+                <p style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>{description}</p>
             </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="warning" onClick={() => {
-              addToCart()
-          }}>
-            Add to Fiat Cart
-          </Button>
+        <Button color="warning" justIcon
+        className="buy-button snipcart-add-item"
+        data-item-id={`${id}`}
+        data-item-price={price}
+        data-item-url={`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`}
+        data-item-description={`${description}`}
+        data-item-name={`${name}`}
+        >
+        <AddIcon />
+        </Button>
           <Button color="warning" onClick={() => {
             window.open(`${bitpay}`)
           }}>
@@ -81,28 +90,22 @@ const NewCardWatch = ({watchInfo}) => {
             justifyContent: "space-evenly"
           }}>
           <Col>
-          <img src="https://i.ebayimg.com/images/g/4Z4AAOSwePRd-U1P/s-l500.jpg" alt="adamaaa" style={{
-            height: "50px",
-            width: "50px"
-          }} /> 
-          </Col>
-            <Col style={{
+            <Row style={{
               marginTop: "2%",
-              width: "100px"
             }}>
               <h4 style={{
                 color: "#24221e",
                 fontSize: ".75rem",
               }}>{name}</h4>
-            </Col>
-              <Col style={{
+            </Row>
+              <Row style={{
                 marginTop: "3%",
-                width: "100px"
               }}>
               <h4 style={{
                 color: "#24221e",
                 fontSize: ".75rem"
               }}>${price}</h4>
+            </Row>
             </Col>
             <Col>
             <Button justIcon onClick={handleShow}>
@@ -112,9 +115,9 @@ const NewCardWatch = ({watchInfo}) => {
             <Col>
             <Button color="warning" justIcon
             className="snipcart-add-item"
-            data-item-id={`${name}`}
-            data-item-price={price.toFixed(2)}
-            data-item-url="http://localhost:3000"
+            data-item-id={`${id}`}
+            data-item-price={price}
+            data-item-url={`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`}
             data-item-description={`${description}`}
             data-item-name={`${name}`}
             >
