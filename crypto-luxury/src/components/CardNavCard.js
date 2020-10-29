@@ -2,7 +2,9 @@ import React, {useState} from "react";
 
 import { axiosWithAuthUser } from "../utils/AxiosWithAuthUser";
 
+
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 import { Card, Avatar } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
@@ -48,27 +50,30 @@ const NewCardWatch = ({cardInfo}) => {
   }
 
     return (
-        <div style={{
-          backgroundColor: "#f2f2f2",
-        }}>
+        <div>
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title wariant="warning">{name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <div style={{width: "100%"}}>
-            <img src="https://i.ebayimg.com/images/g/4Z4AAOSwePRd-U1P/s-l500.jpg" style={{height: "200px", width: "200px"}} alt="product info" />
+            <div style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>
+            <img src="https://i.ebayimg.com/images/g/4Z4AAOSwePRd-U1P/s-l500.jpg" style={{height: "200px", width: "200px", display: "flex", justifyContent: "center"}} alt="product info" />
             </div>
             <div>
-                <p>{description}</p>
+                <p style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>{description}</p>
             </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="warning" onClick={() => {
-              addToCart()
-          }}>
-            Add to Fiat Cart
-          </Button>
+        <Button color="warning" justIcon
+        className="snipcart-add-item"
+        data-item-id={`${id}`}
+        data-item-price={price}
+        data-item-url={`https://crypto-luxury.herokuapp.com/api/store/cards/${id}`}
+        data-item-description={`${description}`}
+        data-item-name={`${name}`}
+        >
+        <AddIcon />
+        </Button>
           <Button color="warning" onClick={() => {
             window.open(`${bitpay}`)
           }}>
@@ -76,57 +81,53 @@ const NewCardWatch = ({cardInfo}) => {
           </Button>
         </Modal.Footer>
       </Modal>
-          <div style={{
-            display: "flex",
-            justifyContent: "space-evenly"
+      <div style={{
+        display: "flex",
+        justifyContent: "space-evenly"
+      }}>
+      <Col>
+        <Row style={{
+          marginTop: "2%",
+        }}>
+          <h4 style={{
+            color: "#24221e",
+            fontSize: ".75rem",
+          }}>{name}</h4>
+        </Row>
+          <Row style={{
+            marginTop: "3%",
           }}>
-          <Col>
-          <img src="https://i.imgur.com/V0gtztn.png" alt="pokemon" style={{
-            height: "50px",
-            width: "50px"
-          }} /> 
-          </Col>
-            <Col style={{
-              marginTop: "2%"
-            }}>
-              <h4 style={{
-                color: "#24221e",
-                fontSize: ".75rem",
-              }}>{name}</h4>
-            </Col>
-              <Col style={{
-                marginTop: "3%"
-              }}>
-              <h4 style={{
-                color: "#24221e",
-                fontSize: ".75rem"
-              }}>${price}</h4>
-            </Col>
-            <Col>
-            <Button justIcon onClick={handleShow}>
-            <ViewIcon />
-            </Button>
-            </Col>
-            <Col>
-            <Button color="warning" justIcon
-            className="snipcart-add-item"
-            data-item-id={`${name}`}
-            data-item-price={price.toFixed(2)}
-            data-item-url="http://localhost:3000"
-            data-item-description={`${description}`}
-            data-item-name={`${name}`}
-            >
-            <AddIcon />
-            </Button>
-          </Col>
-            <Col>
-            <Button color="warning" justIcon onClick={() => {
-              window.open(`${bitpay}`)
-              }}>
-              <AccountIcon />
-            </Button>
-          </Col>
-          </div>
+          <h4 style={{
+            color: "#24221e",
+            fontSize: ".75rem"
+          }}>${price}</h4>
+        </Row>
+        </Col>
+        <Col>
+        <Button justIcon onClick={handleShow}>
+        <ViewIcon />
+        </Button>
+        </Col>
+        <Col>
+        <Button color="warning" justIcon
+        className="snipcart-add-item"
+        data-item-id={`${id}`}
+        data-item-price={price}
+        data-item-url={`https://crypto-luxury.herokuapp.com/api/store/cards/${id}`}
+        data-item-description={`${description}`}
+        data-item-name={`${name}`}
+        >
+        <AddIcon />
+        </Button>
+      </Col>
+        <Col>
+        <Button color="warning" justIcon onClick={() => {
+          window.open(`${bitpay}`)
+          }}>
+          <AccountIcon />
+        </Button>
+      </Col>
+      </div>
       </div>
     )
 }

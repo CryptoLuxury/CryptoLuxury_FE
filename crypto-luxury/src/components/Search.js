@@ -36,7 +36,7 @@ const Search = () => {
         })
       }, []);
     const handleChange = event => {
-       setSearchTerm(event.target.value);
+       setSearchTerm(event.target.value.toLowerCase());
      };
 
      useEffect(() => {
@@ -45,6 +45,7 @@ const Search = () => {
         );
         setSearchResults(results);
       }, [searchTerm]);
+
 
       useEffect(() => {
         const results = allCards.filter(card =>
@@ -67,12 +68,12 @@ const Search = () => {
       </Form>
       <div style={{width: "55px", margin: "0 auto"}}>
       {searchResults.map(item => {
-        if(searchTerm !== null) {
+        if(searchTerm !== '') {
           return(<WatchCard key={item.id} watchInfo={item} />)
         }
       })}
         {cardResults.map(item => {
-          if(searchTerm !== null) {
+          if(searchTerm !== '') {
           return(<NewCardCard key={item.id} cardInfo={item} />)
         }})}
       </div>

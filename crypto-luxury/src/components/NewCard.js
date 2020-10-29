@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import { axiosWithAuthUser } from "../utils/AxiosWithAuthUser";
 
+
+
 import { Card, Avatar } from "antd";
 import {
   EditOutlined,
@@ -20,7 +22,6 @@ const { Meta } = Card;
 
 const NewCardWatch = ({ watchInfo }) => {
   const { id, name, price, description, bitpay } = watchInfo;
-
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -59,10 +60,13 @@ const NewCardWatch = ({ watchInfo }) => {
     >
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{name}</Modal.Title>
+          <Modal.Title style={{
+            display: "flex",
+            justifyContent: "center"
+          }}>{name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div style={{ width: "100%" }}>
+          <div style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>
             <img
               src="https://i.ebayimg.com/images/g/4Z4AAOSwePRd-U1P/s-l500.jpg"
               style={{ height: "200px", width: "200px" }}
@@ -70,18 +74,20 @@ const NewCardWatch = ({ watchInfo }) => {
             />
           </div>
           <div>
-            <p>{description}</p>
+            <p style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>{description}</p>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            color="warning"
-            onClick={() => {
-              addToCart();
-            }}
-          >
-            Add to Fiat Cart
-          </Button>
+        <Button color="warning" justIcon
+        className="snipcart-add-item"
+        data-item-id={`${id}`}
+        data-item-price={price}
+        data-item-url={`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`}
+        data-item-description={`${description}`}
+        data-item-name={`${name}`}
+      >
+        <AddIcon />
+      </Button>
 
           <Button color="warning" onClick={handleClose}>
             Add to Crypto Cart
@@ -102,9 +108,9 @@ const NewCardWatch = ({ watchInfo }) => {
           </Button>,
           <Button color="warning" justIcon
           className="snipcart-add-item"
-          data-item-id={`${name}`}
-          data-item-price={price.toFixed(2)}
-          data-item-url="http://localhost:3000"
+          data-item-id={`${id}`}
+          data-item-price={price}
+          data-item-url={`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`}
           data-item-description={`${description}`}
           data-item-name={`${name}`}
         >

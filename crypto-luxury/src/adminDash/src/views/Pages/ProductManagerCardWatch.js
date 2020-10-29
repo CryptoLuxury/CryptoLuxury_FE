@@ -79,7 +79,6 @@ const ProductManagerCardWatch = ({ watchInfo }) => {
     name: "",
     description: "",
     price: 0.00,
-    quantity: 0,
     bitpay: ""
   })
   const classes = useStyles();
@@ -144,10 +143,6 @@ axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`, edited)
       <Form.Group controlId="exampleForm.ControlInput1">
       <Form.Label>Price (USD)</Form.Label>
       <Form.Control type="number" placeholder="4500, 45000" onChange={handleWatchChange} name="price" />
-      </Form.Group>
-      <Form.Group controlId="exampleForm.ControlInput1">
-      <Form.Label>Quantity</Form.Label>
-      <Form.Control type="number" placeholder="number 1-10" onChange={handleWatchChange} name="quantity" />
       </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
         <Form.Label>Listing Description</Form.Label>

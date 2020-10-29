@@ -2,6 +2,8 @@ import React, {useState} from "react";
 
 import { axiosWithAuthUser } from "../utils/AxiosWithAuthUser";
 
+
+
 import { Card, Avatar } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import ViewIcon from '@material-ui/icons/Visibility';
@@ -54,20 +56,25 @@ const NewCardWatch = ({cardInfo}) => {
           <Modal.Title>{name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <div>
+            <div style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>
             <img style={{height: "100px", width: "100px"}} src="https://i.imgur.com/V0gtztn.png" alt="product info" />
             </div>
             <div>
-                <p>{description}</p>
+                <p style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>{description}</p>
             </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="warning" onClick={() => {
-              addToCart()
-          }}>
-            Add to Fiat Cart
-          </Button>
-          <Button variant="warning" onClick={handleClose}>
+        <Button color="warning" justIcon
+        className="snipcart-add-item"
+        data-item-id={`${id}`}
+        data-item-price={price}
+        data-item-url={`https://crypto-luxury.herokuapp.com/api/store/cards/${id}`}
+        data-item-description={`${description}`}
+        data-item-name={`${name}`}
+      >
+        <AddIcon />
+      </Button>
+          <Button color="warning" onClick={handleClose}>
             Add to Crypto Cart
           </Button>
         </Modal.Footer>
@@ -86,9 +93,9 @@ const NewCardWatch = ({cardInfo}) => {
           </Button>,
           <Button color="warning" justIcon
           className="snipcart-add-item"
-          data-item-id={`${name}`}
-          data-item-price={price.toFixed(2)}
-          data-item-url="http://localhost:3000"
+          data-item-id={`${id}`}
+          data-item-price={price}
+          data-item-url={`https://crypto-luxury.herokuapp.com/api/store/cards/${id}`}
           data-item-description={`${description}`}
           data-item-name={`${name}`}
         >

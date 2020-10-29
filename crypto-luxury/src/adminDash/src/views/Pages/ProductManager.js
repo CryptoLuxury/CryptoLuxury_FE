@@ -47,14 +47,12 @@ export default function ProductManager() {
         name: "",
         description: "",
         price: 0.00,
-        quantity: 0,
         bitpay: ""
     })
     const [watchProduct, setWatchProduct] = useState({
         name: "",
         description: "",
         price: 0.00,
-        quantity: 0,
         bitpay: ""
     })
 
@@ -338,10 +336,6 @@ export default function ProductManager() {
         <Form.Label>Price (USD)</Form.Label>
         <Form.Control type="number" placeholder="100, 100,000" onChange={handleCardChange} name="price" />
         </Form.Group>
-        <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Label>Quantity</Form.Label>
-        <Form.Control type="number" placeholder="input a number" onChange={handleCardChange} name="quantity" />
-        </Form.Group>
           <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Listing Description</Form.Label>
           <Form.Control as="textarea" rows="3" onChange={handleCardChange} name="description" />
@@ -374,10 +368,6 @@ export default function ProductManager() {
       <Form.Group controlId="exampleForm.ControlInput1">
       <Form.Label>Price (USD)</Form.Label>
       <Form.Control type="number" placeholder="100, 100,000" onChange={handleWatchChange} name="price" />
-      </Form.Group>
-      <Form.Group controlId="exampleForm.ControlInput1">
-      <Form.Label>Quantity</Form.Label>
-      <Form.Control type="number" placeholder="input a number" onChange={handleWatchChange} name="quantity" />
       </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
         <Form.Label>Listing Description</Form.Label>
