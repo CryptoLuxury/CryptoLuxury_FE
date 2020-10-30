@@ -5,6 +5,8 @@ import Fade from "react-reveal/Fade";
 import Slide from "react-reveal/Slide";
 import Footer from "./dashComps/Footer";
 
+import "./LandingPage.css";
+
 import Nav from "./Nav";
 
 import Row from "react-bootstrap/Row";
@@ -48,9 +50,7 @@ const LandingPage = () => {
         }}>
         {alert}
         <Nav />
-            <div style={{
-              marginBottom: "25%"
-            }}><TopSection /></div>
+            <div><TopSection /></div>
         <div>
         <Footer />
         </div>

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import { useHistory } from "react-router-dom";
 
+import { axiosWithAuthUser } from "../../../../utils/AxiosWithAuthUser";
+
 import axios from "axios";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -62,8 +64,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
-
 export default function Dashboard() {
 
   const [show, setShow] = useState(false);
@@ -71,6 +71,9 @@ export default function Dashboard() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleHomeCardClose = () => setHomeCardShow(false);
+  const handleHomeCardShow = () => setHomeCardShow(true);
 
   let history = useHistory();
   
@@ -84,7 +87,7 @@ export default function Dashboard() {
   const [homeCard, setHomeCard] = useState({
     image: "",
     title: "",
-    subtitle: ""
+    link: ""
   })
 
   const [homeCards, setHomeCards] = useState([]);
@@ -150,7 +153,7 @@ export default function Dashboard() {
 
   const handleDevTicketSubmit = (e) => {
     e.preventDefault();
-    axios.post(`https://crypto-luxury.herokuapp.com/api/form/devTicket`, devTicket)
+    axiosWithAuthUser().post(`/api/form/devTicket`, devTicket)
     .then(res => {
       successAlert();
       setTimeout(() => {
@@ -172,7 +175,7 @@ export default function Dashboard() {
 
   const handleHomeCardSubmit = (e) => {
     e.preventDefault();
-    axios.post(`https://crypto-luxury.herokuapp.com/api/store/features`, homeCard)
+    axiosWithAuthUser().post(`/api/store/features`, homeCard)
     .then(res => {
       successAlert();
       setTimeout(() => {
@@ -185,7 +188,7 @@ export default function Dashboard() {
   }
 
   useEffect(() => {
-    axios.get(`https://crypto-luxury.herokuapp.com/api/store/watches`)
+    axiosWithAuthUser().get(`/api/store/watches`)
     .then(res => {
       setWatches([
         ...res.data
@@ -194,7 +197,7 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
-    axios.get(`https://crypto-luxury.herokuapp.com/api/store/features`)
+    axiosWithAuthUser().get(`/api/store/features`)
     .then(res => {
       setHomeCards([
         ...res.data
@@ -202,20 +205,12 @@ export default function Dashboard() {
     })
   }, []);
 
-  useEffect(() => {
-    axios.get(`https://crypto-luxury.herokuapp.com/api/store/cards`)
-    .then(res => {
-      setCards([
-        ...res.data
-      ])
-    })
-  }, []);
 
   return (
     <div>
     {alert}
       <div>
-        <Modal show={homeCardShow} onHide={handleClose}>
+        <Modal show={homeCardShow} onHide={handleHomeCardClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add a HomeCard</Modal.Title>
         </Modal.Header>
@@ -229,10 +224,6 @@ export default function Dashboard() {
         <Form.Label>Title</Form.Label>
         <Form.Control type="email" placeholder="25% OFF" onChange={handleCardChange} name="title" />
       </Form.Group>
-        <Form.Group controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Subtitle</Form.Label>
-        <Form.Control type="text" rows="8" placeholder="PSA 10s" onChange={handleCardChange} name="subtitle" />
-      </Form.Group>
       <Form.Group controlId="exampleForm.ControlTextarea1">
       <Form.Label>Redirect Link</Form.Label>
       <Form.Control type="text" rows="8" placeholder="https/www.cryptoluxury.io" onChange={handleCardChange} name="link" />
@@ -240,7 +231,7 @@ export default function Dashboard() {
         </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="danger" onClick={handleClose}>
+          <Button color="danger" onClick={handleHomeCardClose}>
             Cancel
           </Button>
           <Button color="warning" onClick={handleHomeCardSubmit}>

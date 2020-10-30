@@ -15,10 +15,10 @@ const HomeCard = ({itemInfo}) => {
         </div>
             <div style={{
                 width: "100%",
-                textAlign: "center",
+                textAlign: "right",
                 marginTop: "88%",
             }}>
-                <h4 style={{color: "#38342d"}}>{title}</h4>
+                <h4 style={{color: "#38342d", paddingRight: "3%"}}>{title}</h4>
             </div>
         </div>
     )

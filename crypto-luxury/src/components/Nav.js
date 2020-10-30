@@ -187,6 +187,7 @@ const Navigation = () => {
           width: "100%",
           display: "flex",
           justifyContent: "center",
+          paddingTop: "1%"
         }}>
           <Search />
         </div>

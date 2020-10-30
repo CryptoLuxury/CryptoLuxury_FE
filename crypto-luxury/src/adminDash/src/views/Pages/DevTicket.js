@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import axios from "axios";
+import { axiosWithAuthUser } from "../../../../utils/AxiosWithAuthUser";
+
 
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "../../components/CustomButtons/Button";
@@ -50,7 +51,7 @@ const ContactTicket = ({ticketInfo}) => {
       };
 
     const handleDelete = (id) => {
-        axios.delete(`https://crypto-luxury.herokuapp.com/api/form/devTicket/${id}`)
+        axiosWithAuthUser().delete(`/api/form/devTicket/${id}`)
         .then(res => {
           successAlert();
         })

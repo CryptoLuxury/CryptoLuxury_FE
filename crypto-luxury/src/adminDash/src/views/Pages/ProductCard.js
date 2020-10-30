@@ -123,8 +123,6 @@ axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`, edited)
   return (
     <div
       style={{
-        height: "60vh",
-        width: "33%",
         margin: ".5%",
         marginTop: "5%",
       }}

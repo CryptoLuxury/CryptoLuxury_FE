@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 
 import { useHistory } from "react-router-dom";
 
+import { axiosWithAuthUser } from "../../../../utils/AxiosWithAuthUser";
+
 import axios from "axios";
 
-import ProductManagerCardWatch from "./ProductCard";
+import ProductManagerCardWatch from "./NewCard";
 import ProductManagerCardCard from "./ProductManagerCardCard";
 
 import SweetAlert from "react-bootstrap-sweetalert";
@@ -67,7 +69,7 @@ export default function ProductManager() {
           onCancel={() => hideAlert()}
           confirmBtnCssClass={classes.button + " " + classes.success}
         >
-          You've added a new watch!  Sell them bitches!
+          You've added a new product!
         </SweetAlert>
       );
     };
@@ -96,7 +98,7 @@ export default function ProductManager() {
           onCancel={() => hideAlert()}
           confirmBtnCssClass={classes.button + " " + classes.success}
         >
-          You've edited this watch!
+          You've edited this product!
         </SweetAlert>
       );
     };
@@ -180,7 +182,7 @@ export default function ProductManager() {
 
     const handleEditProduct = (e, id) => {
       e.preventDefault();
-      axios.put(`https://crypto-luxury.herokuapp.com/api/store/products/${id}` , product)
+      axiosWithAuthUser().put(`/api/store/products/${id}` , product)
       .then(res => {
         editAlertSuccessWatch();
       })
@@ -190,7 +192,7 @@ export default function ProductManager() {
     } 
 
     const handleSureWatch = () => {
-      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/products`)
+      axiosWithAuthUser().delete(`/api/store/products`)
       .then(res => {
         successDelete();
       })
@@ -201,7 +203,7 @@ export default function ProductManager() {
 
 
     useEffect(() => {
-      axios.get(`https://crypto-luxury.herokuapp.com/api/store/products`)
+      axiosWithAuthUser().get(`/api/store/products`)
       .then(res => {
         setProducts([
           ...res.data
@@ -219,7 +221,7 @@ export default function ProductManager() {
 
 
     const handleDeleteListing = (id) => {
-      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/products/:${id}`)
+      axiosWithAuthUser().delete(`/api/store/products/:${id}`)
       .then(res => {
         successAlertWatch();
       })
@@ -230,7 +232,7 @@ export default function ProductManager() {
 
   const handleProductSubmit = (e) => {
     e.preventDefault();
-    axios.post(`https://crypto-luxury.herokuapp.com/api/store/products`, product)
+    axiosWithAuthUser().post(`/api/store/products`, product)
     .then(res => {
         successAlertWatch();
         setCardShow(false)
@@ -292,7 +294,8 @@ export default function ProductManager() {
           justifyContent: "space-evenly",
           width: "100%",
           height: "50px",
-          marginTop: "5%"
+          marginTop: "5%",
+          marginBottom: "3%"
         }}>
         <Button color="warning" onClick={() => setCardShow(true)}>Add Product</Button>
         <Button color="danger" onClick={SureWatch}>Delete All Products</Button>
@@ -301,13 +304,14 @@ export default function ProductManager() {
         <Row style={{
           marginBottom: "5%",
           display: "flex",
-          justifyContent: "space-evenly",
+          justifyContent: "center",
           paddingBottom: "3%"
         }}>
         <Col style={{
           margin: "2%",
           display: "flex",
-          flexFlow: "row nowrap",
+          flexFlow: "row wrap",
+          justifyContent: "space-evenly"
         }}>
           { products.map(product => {
             return (

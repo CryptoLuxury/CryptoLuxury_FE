@@ -1,6 +1,8 @@
 import React from "react";
 
 import Card from "react-bootstrap/Card";
+import { axiosWithAuthUser } from "../../../../utils/AxiosWithAuthUser";
+
 
 import axios from "axios";
 import Button from "../../components/CustomButtons/Button";
@@ -53,7 +55,7 @@ const ContactTicket = ({ticketInfo}) => {
       };
 
     const handleDelete = (id) => {
-        axios.delete(`https://crypto-luxury.herokuapp.com/api/form/contact/${id}`)
+        axiosWithAuthUser().delete(`/api/form/contact/${id}`)
         .then(res => {
           successAlert();
         })

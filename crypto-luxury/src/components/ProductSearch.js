@@ -41,7 +41,7 @@ const NewCardWatch = ({productInfo}) => {
             <img src={image} style={{height: "200px", width: "200px"}} alt="product info" />
             </div>
             <div>
-                <p style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>{description}</p>
+                <p style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto", paddingTop: "3%"}}>{description}</p>
             </div>
         </Modal.Body>
         <Modal.Footer>
@@ -68,10 +68,10 @@ const NewCardWatch = ({productInfo}) => {
           }}>
           <Col>
             <Row style={{
-              marginTop: "2%",
+              marginTop: "25%",
             }}>
               <h4 style={{
-                color: "#24221e",
+                color: "#cca964",
                 fontSize: ".75rem",
               }}>{name}</h4>
             </Row>
@@ -79,7 +79,7 @@ const NewCardWatch = ({productInfo}) => {
                 marginTop: "3%",
               }}>
               <h4 style={{
-                color: "#24221e",
+                color: "#cca964",
                 fontSize: ".75rem"
               }}>${price}</h4>
             </Row>

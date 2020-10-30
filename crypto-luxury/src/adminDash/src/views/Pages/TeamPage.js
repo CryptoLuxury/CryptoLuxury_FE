@@ -20,6 +20,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
 import SweetAlert from "react-bootstrap-sweetalert";
+import { axiosWithAuthUser } from "../../../../utils/AxiosWithAuthUser";
 
 const useStyles = makeStyles(styles);
 
@@ -50,19 +51,9 @@ export default function TeamPage() {
     setAlert(null);
   }
 
-  const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
-  React.useEffect(() => {
-    let id = setTimeout(function() {
-      setCardAnimation("");
-    }, 700);
-    // Specify how to clean up after this effect:
-    return function cleanup() {
-      window.clearTimeout(id);
-    };
-  });
 
   useEffect(() => {
-    axios.get(`https://crypto-luxury.herokuapp.com/api/team`)
+    axiosWithAuthUser().get(`/api/team`)
     .then(res => {
       setTeam([
         ...res.data
@@ -123,7 +114,7 @@ export default function TeamPage() {
 
     const handleMemberSubmit = (e) => {
     e.preventDefault();
-    axios.post(`https://crypto-luxury.herokuapp.com/api/team`, members)
+    axiosWithAuthUser().post(`/api/team`, members)
     .then(res => {
       successAlert();
     })
@@ -142,7 +133,7 @@ export default function TeamPage() {
 
   const handleDevSubmit = (e) => {
     e.preventDefault();
-    axios.post(`https://crypto-luxury.herokuapp.com/api/form/devTicket`, devTicket)
+    axiosWithAuthUser().post(`/api/form/devTicket`, devTicket)
     .then(res => {
       successAlertDev();
       setTimeout(() => {
