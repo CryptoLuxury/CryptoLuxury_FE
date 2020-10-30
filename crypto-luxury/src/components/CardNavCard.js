@@ -68,7 +68,7 @@ const NewCardWatch = ({cardInfo}) => {
         className="snipcart-add-item"
         data-item-id={`${id}`}
         data-item-price={price}
-        data-item-url={`https://crypto-luxury.herokuapp.com/api/store/cards/${id}`}
+        data-item-url={`/cards/${id}`}
         data-item-description={`${description}`}
         data-item-name={`${name}`}
         >
@@ -113,7 +113,7 @@ const NewCardWatch = ({cardInfo}) => {
         className="snipcart-add-item"
         data-item-id={`${id}`}
         data-item-price={price}
-        data-item-url={`https://crypto-luxury.herokuapp.com/api/store/cards/${id}`}
+        data-item-url={`/cards/${id}`}
         data-item-description={`${description}`}
         data-item-name={`${name}`}
         >

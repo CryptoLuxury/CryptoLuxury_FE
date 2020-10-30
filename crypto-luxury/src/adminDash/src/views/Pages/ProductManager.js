@@ -202,9 +202,9 @@ export default function ProductManager() {
       );
     };
 
-    const handleEditWatch = (e, id) => {
+    const handleEditWatch = (e, watchId) => {
       e.preventDefault();
-      axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches:${id}` , watchProduct)
+      axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches:${watchId}` , watchProduct)
       .then(res => {
         editAlertSuccessWatch();
       })
@@ -278,8 +278,8 @@ export default function ProductManager() {
     }
 
 
-    const handleDeleteListing = (id) => {
-      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/watches/:${id}`)
+    const handleDeleteListing = (watchId) => {
+      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/watches/:${watchId}`)
       .then(res => {
         console.log(res)
       })

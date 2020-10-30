@@ -8,6 +8,28 @@
     font-family: 'Raleway', sans-serif;
 }
 
+.homecardstyle {
+    height: 300px;
+    width: 300px;
+    margin: .1%;
+}
+
+.imagehome {
+    height: 300px;
+    width: 300px;
+}
+
+@media only screen and (max-width: 800px) {
+    .homecardstyle {
+        height: 200px;
+        width: 200px;
+    }
+    .imagehome {
+        height: 200px;
+        width: 200px;
+    }
+}
+
 .homecardstyle:hover {
     cursor: pointer;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);

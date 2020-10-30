@@ -20,6 +20,7 @@ import WatchCard from "./NewCard";
 import CardCard from "./NewCardCard";
 import Footer from "./dashComps/Footer";
 
+import Nav from "./Nav.js";
 import Button from "./dashComps/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "./dashComps/dashboardStyle";
@@ -174,80 +175,17 @@ const Products = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Row style={{
-        display: "flex",
-        justifyContent: "center",
-        paddingTop: "5%"
-      }}>
-        <img src={image} alt="advanced logo" />
-      </Row>
-      <Row style={{
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        marginTop: "3%"
-      }}>
-      <div>
-      <Button color="warning" className="snipcart-checkout">
-        <ShoppingCartIcon />
-      </Button>
-    </div>
-      </Row>
-      <Row style={{
-        display: "flex",
-        justifyContent: "space-evenly",
-        width: "100%",
-        margin: "0 auto",
-        marginTop: "4%"
-      }}>
-      <Button
-      color="warning"
-      simple
-      onClick={() => {
-        history.push('/')
-      }}
-      style={{
-        width: "100px",
-        margin: "0 auto",
-        marginBottom: ".2%",
-        opacity: "100%",
-      }}
-    >
-      Home
-    </Button>
-    <Button
-      color="warning"
-      simple
-      onClick={() => {
-        history.push('/team')
-      }}
-      style={{
-        width: "100px",
-        margin: "0 auto",
-        marginBottom: ".2%",
-        opacity: "100%",
-      }}
-    >
-      Team
-    </Button>
-    <Button
-      color="warning"
-      simple
-      onClick={handleShow}
-      style={{
-        width: "100px",
-        margin: "0 auto",
-        marginBottom: ".2%",
-        opacity: "100%",
-      }}
-    >
-      Contact Us
-    </Button>
-      </Row>
+      <Nav />
+      <Row>
+      <h2 style={{width: "100%", textAlign: "center", marginTop: "3%"}}>Browse Our Collection</h2>
+  </Row>
     <Row style={{width: "100%" , textAlign: "center", margin: "0 auto", marginTop: "3%"}}>
         <Search />
     </Row>
     <Container>
+            <Row style={{marginTop: "5%"}}>
+                <h3 style={{width: "100%", textAlign: "center"}}>Watches</h3>
+            </Row>
               <Row style={{
               marginBottom: "5%",
               display: "flex",
@@ -263,12 +201,31 @@ const Products = () => {
               { watches.map(watch => ( 
               <WatchCard watchInfo={watch} key={watch.id}/> 
               ))}
-              { cards.map(card => ( 
-              <CardCard cardInfo={card} key={card.id}/> 
-              ))}
             </Col>
             </Row>
             </Container>
+            <Container>
+            <Row>
+                <h2 style={{width: "100%", textAlign: "center"}}>Cards</h2>
+            </Row>
+            <Row style={{
+            marginBottom: "5%",
+            display: "flex",
+            justifyContent: "space-evenly",
+            paddingBottom: "3%"
+          }}>
+          <Col style={{
+            margin: "2%",
+            display: "flex",
+            flexFlow: "row wrap",
+            justifyContent: "space-evenly"
+          }}>
+            { cards.map(card => ( 
+            <CardCard cardInfo={card} key={card.id}/> 
+            ))}
+          </Col>
+          </Row>
+          </Container>
                 <Footer />
         </div>
     )

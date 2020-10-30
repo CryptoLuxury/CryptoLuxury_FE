@@ -21,36 +21,11 @@ import Button from "./dashComps/Button";
 const { Meta } = Card;
 
 const NewCardWatch = ({ watchInfo }) => {
-  const { id, name, price, description, bitpay } = watchInfo;
+  const { watchId, name, price, description, bitpay } = watchInfo;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const [order, setOrder] = useState({
-    name: `${name}`,
-    price: watchInfo.price,
-    quantity: watchInfo.quantity,
-  });
-
-  const [cartInfo, setCartInfo] = useState({
-    user_id: window.localStorage.getItem("id"),
-    watch_id: watchInfo.id,
-  });
-
-  const addToCart = () => {
-    axiosWithAuthUser()
-      .post(
-        `https://crypto-luxury.herokuapp.com/api/form/watchOrders`,
-        cartInfo
-      )
-      .then((res) => {
-        alert("success");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <div
@@ -80,9 +55,9 @@ const NewCardWatch = ({ watchInfo }) => {
         <Modal.Footer>
         <Button color="warning" justIcon
         className="snipcart-add-item"
-        data-item-id={`${id}`}
+        data-item-id={`${watchId}`}
         data-item-price={price}
-        data-item-url={`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`}
+        data-item-url={`/watches/${watchId}`}
         data-item-description={`${description}`}
         data-item-name={`${name}`}
       >
@@ -108,9 +83,9 @@ const NewCardWatch = ({ watchInfo }) => {
           </Button>,
           <Button color="warning" justIcon
           className="snipcart-add-item"
-          data-item-id={`${id}`}
+          data-item-id={`${watchId}`}
           data-item-price={price}
-          data-item-url={`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`}
+          data-item-url={`/watches/${watchId}`}
           data-item-description={`${description}`}
           data-item-name={`${name}`}
         >

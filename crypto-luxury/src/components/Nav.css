@@ -1,6 +1,22 @@
 .navbar {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 0px 10px rgba(0,0,0,0.22);
+    padding-bottom: 0;
 }
 .mr-auto {
     margin: 0 auto;
+}
+
+.navbutton {
+    border-bottom: 3px solid transparent;
+    color: white;
+    font-size: 1.1rem;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.navbutton:hover {
+    border-bottom: 3px solid #ffbe33;
+    color:#fffbf2;
+    transition: 1s;
+    cursor: pointer;
 }

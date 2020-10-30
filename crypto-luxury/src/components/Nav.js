@@ -166,7 +166,8 @@ const Navigation = () => {
       }}>
       <div style={{
         display: "flex",
-        justifyContent: "flex-start"
+        justifyContent: "flex-start",
+        width: "100%"
       }}>
         <Navbar.Brand>
           <img src={Logo} alt="our logo" className="logoimage" style={{
@@ -180,7 +181,7 @@ const Navigation = () => {
           alignSelf: "center",
           width: "100%",
           display: "flex",
-          justifyContent: "center"
+          justifyContent: "center",
         }}>
           <Search />
         </div>
@@ -219,68 +220,28 @@ const Navigation = () => {
                 style={{
                   display: "flex",
                   width: "100%",
-                  justifyContent: "space-evenly",
-                }}
-              >
-                <Button
-                  color="warning"
-                  simple
-                  onClick={() => {
-                    history.push('/')
-                  }}
-                  style={{
-                    width: "100px",
-                    margin: "0 auto",
-                    marginBottom: ".2%",
-                    opacity: "100%",
-                    marginLeft: "2%"
-                  }}
-                >
+                  justifyContent: "space-evenly"
+                }}>
+              <div style={{width: "100%", display: "flex", justifyContent: "space-evenly"}}>
+                <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={() => {
+                  history.push('/')
+                }}>
                   Home
-                </Button>
-                <Button
-                  color="warning"
-                  onClick={() => {
-                    history.push('/products')
-                  }}
-                  style={{
-                    width: "100px",
-                    margin: "0 auto",
-                    marginBottom: ".2%",
-                    opacity: "100%",
-                    marginLeft: "2%"
-                  }}
-                >
+                </div>
+                <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={() => {
+                  history.push('/products')
+                }}>
                   Store
-                </Button>
-                <Button
-                  color="warning"
-                  onClick={() => {
-                    history.push('/team')
-                  }}
-                  style={{
-                    width: "100px",
-                    margin: "0 auto",
-                    marginBottom: ".2%",
-                    opacity: "100%",
-                    marginLeft: "2%"
-                  }}
-                >
-                  Team
-                </Button>
-                <Button
-                  color="warning"
-                  onClick={handleShow}
-                  style={{
-                    width: "100px",
-                    margin: "0 auto",
-                    marginBottom: ".2%",
-                    opacity: "100%",
-                    marginLeft: "2%"
-                  }}
-                >
-                  Contact Us
-                </Button>
+                </div>
+                <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={() => {
+                  history.push('/team')
+                }}>
+                Team
+              </div>
+              <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={handleShow}>
+              Contact
+            </div>
+            </div>
               </Nav>
             </Navbar.Collapse>
           </Row>

@@ -82,7 +82,7 @@ const ProductManagerCardWatch = ({ watchInfo }) => {
     bitpay: ""
   })
   const classes = useStyles();
-  const { id, title, price, description, bitpay } = watchInfo;
+  const { watchId, title, price, description, bitpay } = watchInfo;
 
   const [editShow, setEditShow] = useState(false);
 
@@ -91,7 +91,7 @@ const ProductManagerCardWatch = ({ watchInfo }) => {
 
   const handleDeleteListing = (id) => {
     axios
-      .delete(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`)
+      .delete(`https://crypto-luxury.herokuapp.com/api/store/watches/${watchId}`)
       .then((res) => {
         successDeleteAlert();
       })
@@ -109,7 +109,7 @@ const ProductManagerCardWatch = ({ watchInfo }) => {
 }
 
 const handleEditSubmit = (id) => {
-axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`, edited)
+axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches/${watchId}`, edited)
 .then(res => {
   successEditAlert();
   setEditShow(false);
@@ -159,7 +159,7 @@ axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`, edited)
           Cancel
         </Button>
         <Button color="warning" onClick={() => {
-          handleEditSubmit(id)
+          handleEditSubmit(watchId)
         }}>
           Submit
         </Button>
@@ -196,7 +196,7 @@ axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`, edited)
               <Button
                 color="danger"
                 onClick={() => {
-                  handleDeleteListing(id);
+                  handleDeleteListing(watchId);
                 }}
                 simple
                 justIcon
