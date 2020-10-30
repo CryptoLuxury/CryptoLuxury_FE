@@ -20,8 +20,8 @@ import Button from "./dashComps/Button";
 
 const { Meta } = Card;
 
-const NewCardWatch = ({ watchInfo }) => {
-  const { watchId, name, price, description, bitpay } = watchInfo;
+const NewCardWatch = ({ productInfo }) => {
+  const { id, name, image, price, description, bitpay } = productInfo;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -43,7 +43,7 @@ const NewCardWatch = ({ watchInfo }) => {
         <Modal.Body>
           <div style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>
             <img
-              src="https://i.ebayimg.com/images/g/4Z4AAOSwePRd-U1P/s-l500.jpg"
+              src={image}
               style={{ height: "200px", width: "200px" }}
               alt="product info"
             />
@@ -55,9 +55,9 @@ const NewCardWatch = ({ watchInfo }) => {
         <Modal.Footer>
         <Button color="warning" justIcon
         className="snipcart-add-item"
-        data-item-id={`${watchId}`}
+        data-item-id={`${id}`}
         data-item-price={price}
-        data-item-url={`/watches/${watchId}`}
+        data-item-url={`/products/:${id}`}
         data-item-description={`${description}`}
         data-item-name={`${name}`}
       >
@@ -65,7 +65,7 @@ const NewCardWatch = ({ watchInfo }) => {
       </Button>
 
           <Button color="warning" onClick={handleClose}>
-            Add to Crypto Cart
+            <AccountIcon />
           </Button>
         </Modal.Footer>
       </Modal>
@@ -74,7 +74,8 @@ const NewCardWatch = ({ watchInfo }) => {
         cover={
           <img
             alt="product"
-            src="https://i.ebayimg.com/images/g/4Z4AAOSwePRd-U1P/s-l500.jpg"
+            src={image}
+            style={{height: "200px", width: "200px"}}
           />
         }
         actions={[
@@ -83,9 +84,9 @@ const NewCardWatch = ({ watchInfo }) => {
           </Button>,
           <Button color="warning" justIcon
           className="snipcart-add-item"
-          data-item-id={`${watchId}`}
+          data-item-id={`${id}`}
           data-item-price={price}
-          data-item-url={`/watches/${watchId}`}
+          data-item-url={`/products/:${id}`}
           data-item-description={`${description}`}
           data-item-name={`${name}`}
         >

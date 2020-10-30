@@ -1,6 +1,8 @@
 .navbar {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 0px 10px rgba(0,0,0,0.22);
     padding-bottom: 0;
+    background: rgb(47,47,47);
+    background: radial-gradient(circle, rgba(47,47,47,0.8694542253521127) 0%, rgba(24,24,24,1) 100%);
 }
 .mr-auto {
     margin: 0 auto;
@@ -12,6 +14,7 @@
     font-size: 1.1rem;
     margin-left: 5%;
     margin-right: 5%;
+    padding-bottom: 2%;
 }
 
 .navbutton:hover {

@@ -4,7 +4,7 @@ import axios from "axios";
 
 import NewCardCard from "./CardNavCard";
 
-import WatchCard from "./WatchNavCard";
+import WatchCard from "./ProductSearch";
 
 import { Card } from "antd";
 import Modal from "react-bootstrap/Modal";

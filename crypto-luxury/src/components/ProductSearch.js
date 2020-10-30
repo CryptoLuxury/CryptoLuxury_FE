@@ -20,11 +20,9 @@ import Button from "./dashComps/Button";
 
 const { Meta } = Card;
 
-const NewCardWatch = ({watchInfo}) => {
+const NewCardWatch = ({productInfo}) => {
 
-    const { watchId, name, price, description, bitpay } = watchInfo;
-
-
+    const { id, image, name, price, description, bitpay } = productInfo;
 
     const [show, setShow] = useState(false);
 
@@ -36,11 +34,11 @@ const NewCardWatch = ({watchInfo}) => {
         }}>
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title wariant="warning">{name}</Modal.Title>
+          <Modal.Title variant="warning">{name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <div style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>
-            <img src="https://i.ebayimg.com/images/g/4Z4AAOSwePRd-U1P/s-l500.jpg" style={{height: "200px", width: "200px"}} alt="product info" />
+            <img src={image} style={{height: "200px", width: "200px"}} alt="product info" />
             </div>
             <div>
                 <p style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>{description}</p>
@@ -49,9 +47,9 @@ const NewCardWatch = ({watchInfo}) => {
         <Modal.Footer>
         <Button color="warning" justIcon
         className="buy-button snipcart-add-item"
-        data-item-id={`${watchId}`}
+        data-item-id={`${id}`}
         data-item-price={price}
-        data-item-url={`/watches/${watchId}`}
+        data-item-url={`/products/:${id}`}
         data-item-description={`${description}`}
         data-item-name={`${name}`}
         >
@@ -94,9 +92,9 @@ const NewCardWatch = ({watchInfo}) => {
             <Col>
             <Button color="warning" justIcon
             className="snipcart-add-item"
-            data-item-id={`${watchId}`}
+            data-item-id={`${id}`}
             data-item-price={price}
-            data-item-url={`/watches/${watchId}`}
+            data-item-url={`/products/:${id}`}
             data-item-description={`${description}`}
             data-item-name={`${name}`}
             >

@@ -9,8 +9,6 @@ import SweetAlert from "react-bootstrap-sweetalert"
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import Search from "./Search.js";
 
-import image from "./logo.png";
-
 import { useHistory } from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
@@ -41,27 +39,16 @@ const Products = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [ watches, setWatches ] = useState([]);
-    const [ cards, setCards ] = useState([]);
+    const [ products, setProducts ] = useState([]);
 
     useEffect(() => {
-      axios.get(`https://crypto-luxury.herokuapp.com/api/store/watches`)
+      axios.get(`https://crypto-luxury.herokuapp.com/api/store/products`)
       .then(res => {
-        setWatches([
+        setProducts([
           ...res.data
         ])
       })
     }, []);
-
-    useEffect(() => {
-      axios.get(`https://crypto-luxury.herokuapp.com/api/store/cards`)
-      .then(res => {
-        setCards([
-          ...res.data
-        ])
-      })
-    }, []);
-
 
     const [contact, setContact] = useState({
         name: "",
@@ -82,14 +69,12 @@ const Products = () => {
         axios.post(`https://crypto-luxury.herokuapp.com/api/form/contact`, contact)
         .then(res => {
           successAlert();
-          console.log(res)
           setTimeout(() => {
             setShow(false)
           }, 1500);
         })
         .catch(err => {
           errorAlert();
-          console.log(err)
         })
       }
 
@@ -183,9 +168,6 @@ const Products = () => {
         <Search />
     </Row>
     <Container>
-            <Row style={{marginTop: "5%"}}>
-                <h3 style={{width: "100%", textAlign: "center"}}>Watches</h3>
-            </Row>
               <Row style={{
               marginBottom: "5%",
               display: "flex",
@@ -198,34 +180,12 @@ const Products = () => {
               flexFlow: "row wrap",
               justifyContent: "space-evenly"
             }}>
-              { watches.map(watch => ( 
-              <WatchCard watchInfo={watch} key={watch.id}/> 
+              { products.map(product => ( 
+              <WatchCard productInfo={product} key={product.id}/> 
               ))}
             </Col>
             </Row>
             </Container>
-            <Container>
-            <Row>
-                <h2 style={{width: "100%", textAlign: "center"}}>Cards</h2>
-            </Row>
-            <Row style={{
-            marginBottom: "5%",
-            display: "flex",
-            justifyContent: "space-evenly",
-            paddingBottom: "3%"
-          }}>
-          <Col style={{
-            margin: "2%",
-            display: "flex",
-            flexFlow: "row wrap",
-            justifyContent: "space-evenly"
-          }}>
-            { cards.map(card => ( 
-            <CardCard cardInfo={card} key={card.id}/> 
-            ))}
-          </Col>
-          </Row>
-          </Container>
                 <Footer />
         </div>
     )

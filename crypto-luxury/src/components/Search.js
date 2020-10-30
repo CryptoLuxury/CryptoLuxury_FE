@@ -4,54 +4,36 @@ import axios from "axios";
 
 import NewCardCard from "./CardNavCard";
 
-import WatchCard from "./WatchNavCard";
+import ProductCard from "./ProductSearch";
 
 import Form from "react-bootstrap/Form";
 
 
 const Search = () => {
 
-    const [allWatches, setAllWatches] = useState([]);
-    const [allCards, setAllCards] = useState([]);
+    const [products, setProducts] = useState([]);
 
     const [searchTerm, setSearchTerm] = React.useState("");
     const [searchResults, setSearchResults] = React.useState([]);
-    const [cardResults, setCardResults] = React.useState([]);
 
     useEffect(() => {
-        axios.get(`https://crypto-luxury.herokuapp.com/api/store/watches`)
+        axios.get(`https://crypto-luxury.herokuapp.com/api/store/products`)
         .then(res => {
-          setAllWatches([
+          setProducts([
             ...res.data
           ])
         })
       }, []);
 
-      useEffect(() => {
-        axios.get(`https://crypto-luxury.herokuapp.com/api/store/cards`)
-        .then(res => {
-          setAllCards([
-            ...res.data
-          ])
-        })
-      }, []);
     const handleChange = event => {
        setSearchTerm(event.target.value.toLowerCase());
      };
 
      useEffect(() => {
-        const results = allWatches.filter(watch =>
-          watch.name.toLowerCase().includes(searchTerm)
+        const results = products.filter(product =>
+          product.name.toLowerCase().includes(searchTerm)
         );
         setSearchResults(results);
-      }, [searchTerm]);
-
-
-      useEffect(() => {
-        const results = allCards.filter(card =>
-          card.name.toLowerCase().includes(searchTerm)
-        );
-        setCardResults(results);
       }, [searchTerm]);
 
 
@@ -67,15 +49,11 @@ const Search = () => {
       </Form.Group>
       </Form>
       <div style={{width: "55px", margin: "0 auto"}}>
-      {searchResults.map(item => {
+      {searchResults.map(product => {
         if(searchTerm !== '') {
-          return(<WatchCard key={item.id} watchInfo={item} />)
+          return(<ProductCard key={product.id} productInfo={product} />)
         }
       })}
-        {cardResults.map(item => {
-          if(searchTerm !== '') {
-          return(<NewCardCard key={item.id} cardInfo={item} />)
-        }})}
       </div>
 
 			</div>

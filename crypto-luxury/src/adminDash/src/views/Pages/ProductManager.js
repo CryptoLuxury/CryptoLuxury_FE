@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 
-import ProductManagerCardWatch from "./ProductManagerCardWatch";
+import ProductManagerCardWatch from "./ProductCard";
 import ProductManagerCardCard from "./ProductManagerCardCard";
 
 import SweetAlert from "react-bootstrap-sweetalert";
@@ -43,21 +43,15 @@ export default function ProductManager() {
   const handleWatchShow = () => setWatchShow(true);
 
     // useState
-    const [cardProduct, setCardProduct] = useState({
+    const [product, setProduct] = useState({
         name: "",
-        description: "",
-        price: 0.00,
-        bitpay: ""
-    })
-    const [watchProduct, setWatchProduct] = useState({
-        name: "",
+        image: "",
         description: "",
         price: 0.00,
         bitpay: ""
     })
 
-    const [watches, setWatches] = useState([]);
-    const [cards, setCards] = useState([]);
+    const [products, setProducts] = useState([])
     const [alert, setAlert] = React.useState(null);
     const hideAlert = () => {
       setAlert(null);
@@ -155,24 +149,6 @@ export default function ProductManager() {
         </SweetAlert>
       );
     };
-    const SureCard = () => {
-      setAlert(
-        <SweetAlert
-          warning
-          style={{ display: "block", marginTop: "100px" }}
-          title="Are you sure?"
-          onConfirm={() => handleSureCard()}
-          onCancel={() => cancelDetele()}
-          confirmBtnCssClass={classes.button + " " + classes.success}
-          cancelBtnCssClass={classes.button + " " + classes.danger}
-          confirmBtnText="Yes, delete it!"
-          cancelBtnText="Cancel"
-          showCancel
-        >
-          You will not be able to recover these card listings!
-        </SweetAlert>
-      );
-    };
     const successDelete = () => {
       setAlert(
         <SweetAlert
@@ -202,20 +178,9 @@ export default function ProductManager() {
       );
     };
 
-    const handleEditWatch = (e, watchId) => {
+    const handleEditProduct = (e, id) => {
       e.preventDefault();
-      axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches:${watchId}` , watchProduct)
-      .then(res => {
-        editAlertSuccessWatch();
-      })
-      .catch(err => {
-        errorAlert();
-      })
-    } 
-
-    const handleEditCard = (e, id) => {
-      e.preventDefault();
-      axios.put(`https://crypto-luxury.herokuapp.com/api/store/card:${id}` , cardProduct)
+      axios.put(`https://crypto-luxury.herokuapp.com/api/store/products/${id}` , product)
       .then(res => {
         editAlertSuccessWatch();
       })
@@ -225,7 +190,7 @@ export default function ProductManager() {
     } 
 
     const handleSureWatch = () => {
-      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/watches`)
+      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/products`)
       .then(res => {
         successDelete();
       })
@@ -234,78 +199,41 @@ export default function ProductManager() {
       })
     }
 
-    const handleSureCard = () => {
-      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/cards`)
+
+    useEffect(() => {
+      axios.get(`https://crypto-luxury.herokuapp.com/api/store/products`)
       .then(res => {
-        successDelete();
+        setProducts([
+          ...res.data
+        ])
+      })
+    }, []);
+
+    const handleProductChange = (e) => {
+        e.preventDefault();
+        setProduct({
+        ...product,
+        [e.target.name]: e.target.value
+        })
+    }
+
+
+    const handleDeleteListing = (id) => {
+      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/products/:${id}`)
+      .then(res => {
+        successAlertWatch();
       })
       .catch(err => {
         errorAlert();
-      })
-    }
-
-    useEffect(() => {
-      axios.get(`https://crypto-luxury.herokuapp.com/api/store/watches`)
-      .then(res => {
-        setWatches([
-          ...res.data
-        ])
-      })
-    }, []);
-    useEffect(() => {
-      axios.get(`https://crypto-luxury.herokuapp.com/api/store/cards`)
-      .then(res => {
-        setCards([
-          ...res.data
-        ])
-      })
-    }, []);
-
-    const handleWatchChange = (e) => {
-        e.preventDefault();
-        setWatchProduct({
-        ...watchProduct,
-        [e.target.name]: e.target.value
-        })
-    }
-
-    const handleCardChange = (e) => {
-        e.preventDefault();
-        setCardProduct({
-        ...cardProduct,
-        [e.target.name]: e.target.value
-        })
-    }
-
-
-    const handleDeleteListing = (watchId) => {
-      axios.delete(`https://crypto-luxury.herokuapp.com/api/store/watches/:${watchId}`)
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => {
-        console.log(err)
       })
     } 
 
-  const handleWatchSubmit = (e) => {
+  const handleProductSubmit = (e) => {
     e.preventDefault();
-    axios.post(`https://crypto-luxury.herokuapp.com/api/store/watches`, watchProduct)
+    axios.post(`https://crypto-luxury.herokuapp.com/api/store/products`, product)
     .then(res => {
         successAlertWatch();
-        setWatchShow(false)
-    })
-    .catch(err => {
-      errorAlert();
-    })
-  }
-
-  const handleCardSubmit = (e) => {
-    e.preventDefault();
-    axios.post(`https://crypto-luxury.herokuapp.com/api/store/cards`, cardProduct)
-    .then(res => {
-      successAlertCard();
-      setCardShow(false);
+        setCardShow(false)
     })
     .catch(err => {
       errorAlert();
@@ -324,25 +252,29 @@ export default function ProductManager() {
         }}>
         <Modal show={cardShow} onHide={handleCardClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Card</Modal.Title>
+          <Modal.Title>Add Product</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <Form>
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>Listing Title</Form.Label>
-          <Form.Control type="text" placeholder="Title..." onChange={handleCardChange} name="name" />
+          <Form.Control type="text" placeholder="Title..." onChange={handleProductChange} name="name" />
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Image</Form.Label>
+        <Form.Control type="text" placeholder="Image" onChange={handleProductChange} name="image" />
+      </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
         <Form.Label>Price (USD)</Form.Label>
-        <Form.Control type="number" placeholder="100, 100,000" onChange={handleCardChange} name="price" />
+        <Form.Control type="number" placeholder="100, 100,000" onChange={handleProductChange} name="price" />
         </Form.Group>
           <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Listing Description</Form.Label>
-          <Form.Control as="textarea" rows="3" onChange={handleCardChange} name="description" />
+          <Form.Control as="textarea" rows="3" onChange={handleProductChange} name="description" />
         </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>Bitpay Product Link</Form.Label>
-          <Form.Control type="text" placeholder="Title..." onChange={handleCardChange} name="bitpay" />
+          <Form.Control type="text" placeholder="Title..." onChange={handleProductChange} name="bitpay" />
         </Form.Group>
         </Form>
         </Modal.Body>
@@ -350,44 +282,11 @@ export default function ProductManager() {
           <Button variant="danger" onClick={handleCardClose}>
             Cancel
           </Button>
-          <Button variant="warning" onClick={handleCardSubmit}>
+          <Button variant="warning" onClick={handleProductSubmit}>
             Submit
           </Button>
         </Modal.Footer>
       </Modal>
-      <Modal show={watchShow} onHide={handleWatchClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Add Watch</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-      <Form>
-      <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Label>Listing Title</Form.Label>
-        <Form.Control type="text" placeholder="Title..." onChange={handleWatchChange} name="name" />
-      </Form.Group>
-      <Form.Group controlId="exampleForm.ControlInput1">
-      <Form.Label>Price (USD)</Form.Label>
-      <Form.Control type="number" placeholder="100, 100,000" onChange={handleWatchChange} name="price" />
-      </Form.Group>
-        <Form.Group controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Listing Description</Form.Label>
-        <Form.Control as="textarea" rows="3" onChange={handleWatchChange} name="description" />
-      </Form.Group>
-        <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Label>Bitpay Product Link</Form.Label>
-        <Form.Control type="text" placeholder="Title..." onChange={handleWatchChange} name="bitpay" />
-      </Form.Group>
-      </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="danger" onClick={handleWatchClose}>
-          Cancel
-        </Button>
-        <Button variant="warning" onClick={handleWatchSubmit}>
-          Submit
-        </Button>
-      </Modal.Footer>
-    </Modal>
         <Row style={{
           display: "flex",
           justifyContent: "space-evenly",
@@ -395,10 +294,8 @@ export default function ProductManager() {
           height: "50px",
           marginTop: "5%"
         }}>
-        <Button color="warning" onClick={() => setWatchShow(true)}>Add Watch</Button>
-        <Button color="warning" onClick={() => setCardShow(true)}>Add Card</Button>
-        <Button color="danger" onClick={SureWatch}>Delete All Watches</Button>
-        <Button color="danger" onClick={SureCard}>Delete All Cards</Button>
+        <Button color="warning" onClick={() => setCardShow(true)}>Add Product</Button>
+        <Button color="danger" onClick={SureWatch}>Delete All Products</Button>
         </Row>
         </Container>
         <Row style={{
@@ -412,29 +309,12 @@ export default function ProductManager() {
           display: "flex",
           flexFlow: "row nowrap",
         }}>
-          { watches.map(watch => {
-            console.log(watch)
+          { products.map(product => {
             return (
-              <ProductManagerCardWatch watchInfo={watch} key={watch.id} id={watch.id}/>
+              <ProductManagerCardWatch productInfo={product} key={product.id} id={product.id}/>
             )
           } 
           )}
-        </Col>
-        </Row>
-        <Row style={{
-          marginBottom: "5%",
-          display: "flex",
-          justifyContent: "space-evenly",
-          paddingBottom: "3%"
-        }}>
-        <Col style={{
-          margin: "2%",
-          display: "flex",
-          flexFlow: "row nowrap",
-        }}>
-          { cards.map(card => ( 
-          <ProductManagerCardCard cardInfo={card} key={card.id}/> 
-          ))}
         </Col>
         </Row>
 
