@@ -49,7 +49,7 @@ const NewCardWatch = ({productInfo}) => {
         className="buy-button snipcart-add-item"
         data-item-id={`${id}`}
         data-item-price={price}
-        data-item-url={`/products/:${id}`}
+        data-item-url={`/api/store/products/${id}`}
         data-item-description={`${description}`}
         data-item-name={`${name}`}
         >
@@ -94,7 +94,7 @@ const NewCardWatch = ({productInfo}) => {
             className="snipcart-add-item"
             data-item-id={`${id}`}
             data-item-price={price}
-            data-item-url={`/products/:${id}`}
+            data-item-url={`/api/store/products/${id}`}
             data-item-description={`${description}`}
             data-item-name={`${name}`}
             >

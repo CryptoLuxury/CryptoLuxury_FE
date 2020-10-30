@@ -1,17 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,600&display=swap');
-
-.title {
-    font-family: 'Raleway', sans-serif;
-}
-
-.subtitle {
-    font-family: 'Raleway', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .homecardstyle {
     height: 300px;
     width: 300px;
     margin: .1%;
+    font-family: 'Bebas Neue', cursive;
 }
 
 .imagehome {
@@ -42,6 +36,7 @@
 }
 
 .homecardstyle:hover {
+    transition: .5s;
     cursor: pointer;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }

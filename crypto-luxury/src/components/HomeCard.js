@@ -13,6 +13,13 @@ const HomeCard = ({itemInfo}) => {
         <div>
         <img className="imagehome" style={{ opacity: ".7", position: "absolute", zIndex: "-1"}} src={image} alt="homecard" />
         </div>
+            <div style={{
+                width: "100%",
+                textAlign: "center",
+                marginTop: "88%",
+            }}>
+                <h4 style={{color: "#38342d"}}>{title}</h4>
+            </div>
         </div>
     )
 }

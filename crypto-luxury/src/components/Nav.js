@@ -162,7 +162,9 @@ const Navigation = () => {
         width: "100%",
         display: "flex",
         flexDirection: "row",
-        justifyContent: "center"
+        justifyContent: "center",
+        borderBottom: ".35px solid #e0c470",
+        paddingBottom: "1%"
       }}>
       <div style={{
         display: "flex",
@@ -171,8 +173,11 @@ const Navigation = () => {
       }}>
         <Navbar.Brand>
           <img src={Logo} alt="our logo" className="logoimage" style={{
-            paddingLeft: "3%",
+            paddingLeft: "5%",
+            paddingTop: "3%",
             height: "50px"
+          }} onClick={() => {
+            history.push('/')
           }} />
         </Navbar.Brand>
         </div>
@@ -188,7 +193,8 @@ const Navigation = () => {
         <div style={{
           width: "100%",
           display: "flex",
-          justifyContent: "flex-end"
+          justifyContent: "flex-end",
+          paddingRight: "2%"
         }}>
         <Button color="warning" simple justIcon className="snipcart-checkout">
           <ShoppingCartIcon />
@@ -220,7 +226,8 @@ const Navigation = () => {
                 style={{
                   display: "flex",
                   width: "100%",
-                  justifyContent: "space-evenly"
+                  justifyContent: "space-evenly",
+                  paddingTop: "3%"
                 }}>
               <div style={{width: "100%", display: "flex", justifyContent: "space-evenly"}}>
                 <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={() => {

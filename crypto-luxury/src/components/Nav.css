@@ -18,7 +18,7 @@
 }
 
 .navbutton:hover {
-    border-bottom: 3px solid #ffbe33;
+    border-bottom: 3px solid #e0c470;
     color:#fffbf2;
     transition: 1s;
     cursor: pointer;
