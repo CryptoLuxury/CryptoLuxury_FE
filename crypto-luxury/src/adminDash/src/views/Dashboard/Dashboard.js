@@ -404,14 +404,14 @@ export default function Dashboard() {
                 classes={{ tooltip: classes.tooltip }}
               >
                 <Button color="warning" onClick={() => {
-                  console.log("hello")
+                  window.open('https://app.snipcart.com/dashboard')
                 }} simple justIcon>
                   <MoneyIcon className={classes.underChartIcons} />
                 </Button>
               </Tooltip>
               </div>
-              <h4 className={classes.cardTitle}>Orders</h4>
-              <p className={classes.cardCategory}>View and Manage Orders</p>
+              <h4 className={classes.cardTitle}>Products</h4>
+              <p className={classes.cardCategory}>View and Manage Products</p>
             </CardBody>
             <CardFooter chart>
               <div className={classes.stats}>

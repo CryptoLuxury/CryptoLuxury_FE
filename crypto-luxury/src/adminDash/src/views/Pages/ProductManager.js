@@ -64,26 +64,12 @@ export default function ProductManager() {
         <SweetAlert
           success
           style={{ display: "block", marginTop: "100px" }}
-          title="Watch Added!"
+          title="Product Added!"
           onConfirm={() => hideAlert()}
           onCancel={() => hideAlert()}
           confirmBtnCssClass={classes.button + " " + classes.success}
         >
           You've added a new product!
-        </SweetAlert>
-      );
-    };
-    const successAlertCard = () => {
-      setAlert(
-        <SweetAlert
-          success
-          style={{ display: "block", marginTop: "100px" }}
-          title="Card Added!"
-          onConfirm={() => hideAlert()}
-          onCancel={() => hideAlert()}
-          confirmBtnCssClass={classes.button + " " + classes.success}
-        >
-          You've added a new card!  Sell them bitches!
         </SweetAlert>
       );
     };
@@ -281,10 +267,10 @@ export default function ProductManager() {
         </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleCardClose}>
+          <Button color="danger" onClick={handleCardClose}>
             Cancel
           </Button>
-          <Button variant="warning" onClick={handleProductSubmit}>
+          <Button color="warning" onClick={handleProductSubmit}>
             Submit
           </Button>
         </Modal.Footer>

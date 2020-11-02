@@ -43,7 +43,7 @@ const Products = () => {
     const [ products, setProducts ] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [productsPerPage, setProductsPerPage] = useState(2);
+    const [productsPerPage, setProductsPerPage] = useState(8);
 
     useEffect(() => {
       const fetchProducts = async () => {
@@ -177,7 +177,7 @@ const Products = () => {
       </Modal>
       <Nav />
       <Row>
-      <h2 style={{width: "100%", textAlign: "center", marginTop: "3%"}}>Browse Our Collection</h2>
+      <h2 style={{width: "100%", textAlign: "center", marginTop: "3%", color: "#523c0d"}}>Browse Our Collection</h2>
   </Row>
     <Row style={{width: "100%" , textAlign: "center", margin: "0 auto", marginTop: "1%"}}>
         <Search />
@@ -186,7 +186,9 @@ const Products = () => {
             <ProductMap products={currentProducts} loading={loading} />
             <Row style={{
               width: "100%",
-              margin: "0 auto"
+              margin: "0 auto",
+              display: "flex",
+              justifyContent: "center"
             }}>
               <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />
             </Row>

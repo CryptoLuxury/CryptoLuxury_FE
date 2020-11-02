@@ -9,18 +9,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Nav from "./Nav";
 
-//modal
-import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
-
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Navbar from "react-bootstrap/Navbar";
-import Dropdown from "react-bootstrap/Dropdown";
-import GridContainer from "./dashComps/GridContainer";
-import GridItem from "./dashComps/GridItem";
-import Button from "./dashComps/Button";
 
 import TeamCardTwo from "./dashComps/TeamCardTwo";
 
@@ -36,8 +27,6 @@ const TeamPage = () => {
     email: "",
     message: ""
   })
-  const [watches, setWatches] = useState([]);
-  const [cards, setCards] = useState([]);
   const [alert, setAlert] = React.useState(null);
   const hideAlert = () => {
     setAlert(null);
@@ -94,21 +83,6 @@ const TeamPage = () => {
       })
     }
 
-    const handleContactSubmit = (e) => {
-      e.preventDefault();
-      axios.post(`https://crypto-luxury.herokuapp.com/api/form/contact`, contact)
-      .then(res => {
-        alert("POST SUCCESS")
-        console.log(res)
-        setTimeout(() => {
-          setShow(false)
-        }, 1500);
-      })
-      .catch(err => {
-        alert("There was an error, if the issue persists, email us: Z@cryptoluxury.com")
-        console.log(err)
-      })
-    }
 
     const classes = useStyles();
     const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
