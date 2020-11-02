@@ -30,7 +30,7 @@ const NewCardWatch = ({ productInfo }) => {
   return (
     <div
       style={{
-        marginBottom: "1%",
+        margin: "3%"
       }}
     >
       <Modal show={show} onHide={handleClose}>

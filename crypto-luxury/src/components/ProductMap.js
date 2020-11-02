@@ -5,7 +5,11 @@ const ProductMap = ({ products, loading }) => {
     return <h2>Loading...</h2>;
   }
   return (
-      <div>
+      <div style={{
+        width: "100%",
+        display: "flex",
+        flexFlow: "row wrap"
+      }}>
       {products.map(product => (
         <ItemCard key={product.id} productInfo={product} />
       ))}

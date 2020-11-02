@@ -183,22 +183,11 @@ const Products = () => {
         <Search />
     </Row>
     <Container>
-              <Row style={{
-              marginBottom: "5%",
-              display: "flex",
-              justifyContent: "space-evenly",
-              paddingBottom: "3%"
-            }}>
-            <Col style={{
-              margin: "2%",
-              display: "flex",
-              flexFlow: "row wrap",
-              justifyContent: "space-evenly"
-            }}>
             <ProductMap products={currentProducts} loading={loading} />
-            </Col>
-            </Row>
-            <Row>
+            <Row style={{
+              width: "100%",
+              margin: "0 auto"
+            }}>
               <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />
             </Row>
             </Container>

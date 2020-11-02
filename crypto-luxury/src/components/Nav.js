@@ -148,7 +148,7 @@ const Navigation = () => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="warning" onClick={handleClose}>
+          <Button color="danger" onClick={handleClose}>
             Cancel
           </Button>
           <Button color="warning" onClick={handleContactSubmit}>
