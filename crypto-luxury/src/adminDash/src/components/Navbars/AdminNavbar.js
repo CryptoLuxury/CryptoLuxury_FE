@@ -68,7 +68,7 @@ export default function AdminNavbar(props) {
           <Button href="#" className={classes.title} color="transparent">
             {brandText}
           </Button>
-          <Button color="warning" onClick={() => {
+          <Button color="warning" size="sm" onClick={() => {
             window.localStorage.removeItem('token')
             history.push('/login')
           }}>Logout</Button>

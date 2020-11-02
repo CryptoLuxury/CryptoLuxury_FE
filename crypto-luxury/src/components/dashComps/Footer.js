@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React, {useState} from "react";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import cx from "classnames";
@@ -72,8 +73,7 @@ export default function Footer() {
     );
   };
 
-  const handleContactSubmit = (e) => {
-    e.preventDefault();
+  const handleContactSubmit = () => {
     axios
       .post(`https://crypto-luxury.herokuapp.com/api/form/contact`, contact)
       .then((res) => {
@@ -84,7 +84,6 @@ export default function Footer() {
       })
       .catch((err) => {
         errorAlert();
-        console.log(err);
       });
   };
 
