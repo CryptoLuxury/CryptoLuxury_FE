@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+import Pagination from './Pagination.js';
+import ProductMap from "./ProductMap";
+
 import axios from "axios";
 
 import { Modal, Form } from "react-bootstrap";
@@ -14,8 +17,6 @@ import { useHistory } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import WatchCard from "./NewCard";
-import CardCard from "./NewCardCard";
 import Footer from "./dashComps/Footer";
 
 import Nav from "./Nav.js";
@@ -40,15 +41,28 @@ const Products = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [ products, setProducts ] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage, setProductsPerPage] = useState(2);
 
     useEffect(() => {
-      axios.get(`https://crypto-luxury.herokuapp.com/api/store/products`)
-      .then(res => {
-        setProducts([
-          ...res.data
-        ])
-      })
-    }, []);
+      const fetchProducts = async () => {
+        setLoading(true);
+        const res = await axios.get(`https://crypto-luxury.herokuapp.com/api/store/products`);
+        setProducts(res.data);
+        setLoading(false);
+    };
+    fetchProducts();
+   }, []);
+
+   const indexOfLastProduct = currentPage * productsPerPage;
+   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+   const paginate = pageNumber => {
+     setCurrentPage(pageNumber)
+   }
+
 
     const [contact, setContact] = useState({
         name: "",
@@ -107,6 +121,7 @@ const Products = () => {
           </SweetAlert>
         );
       };
+
 
     return (
       <div>
@@ -180,10 +195,11 @@ const Products = () => {
               flexFlow: "row wrap",
               justifyContent: "space-evenly"
             }}>
-              { products.map(product => ( 
-              <WatchCard productInfo={product} key={product.id}/> 
-              ))}
+            <ProductMap products={currentProducts} loading={loading} />
             </Col>
+            </Row>
+            <Row>
+              <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />
             </Row>
             </Container>
                 <Footer />

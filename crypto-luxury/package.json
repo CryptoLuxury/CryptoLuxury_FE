@@ -32,6 +32,7 @@
     "react-google-maps": "^9.4.5",
     "react-health-card": "^1.4.0",
     "react-jvectormap": "0.0.16",
+    "react-paginate": "^6.5.0",
     "react-redux": "^7.2.1",
     "react-responsive-carousel": "^3.2.10",
     "react-reveal": "^1.2.2",
