@@ -14,6 +14,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import styles from "./dashboardStyle";
 
+import "./Footer.css";
+
 import {Modal, Form} from "react-bootstrap"
 
 import { Container, Col, Row } from "react-bootstrap";
@@ -105,10 +107,7 @@ export default function Footer() {
   };
 
   return (
-    <div style={{
-      width: "100%",
-      backgroundColor: "#fffcf7"
-    }}>
+    <div className="footbomb">
           {alert}
         <Modal show={vaultingModal} onHide={handleVaultingClose}>
           <Modal.Header closeButton>
@@ -176,7 +175,9 @@ export default function Footer() {
           <Button color="danger" onClick={handleClose}>
             Cancel
           </Button>
-          <Button color="warning" onClick={handleContactSubmit}>
+          <Button color="warning" onClick={() => {
+            handleContactSubmit()
+          }}>
             Send Ticket
           </Button>
         </Modal.Footer>
@@ -185,7 +186,7 @@ export default function Footer() {
       <Row style={{
         width: "100%",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "space-evenly",
         paddingTop: "3%",
         marginRight: "0",
         marginLeft: "0"
@@ -214,7 +215,6 @@ export default function Footer() {
         width: "100%",
         margin: "0 auto",
         marginTop: "2%",
-        paddingBottom: "2%"
       }}>
       <Button
       color="warning"

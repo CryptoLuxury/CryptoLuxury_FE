@@ -20,51 +20,28 @@ import Button from "./dashComps/Button";
 
 const { Meta } = Card;
 
-const NewCardWatch = ({watchInfo}) => {
+const NewCardWatch = ({productInfo}) => {
 
-    const { id, watchId, name, price, description, bitpay } = watchInfo;
-
-
+    const { id, image, name, price, description, bitpay } = productInfo;
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [order, setOrder] = useState({
-        name: `${name}`,
-        price: watchInfo.price,
-        quantity: watchInfo.quantity
-      })
-
-    const [cartInfo, setCartInfo] = useState({
-        user_id: window.localStorage.getItem('id'),
-        watch_id: watchInfo.id
-    })
-
-    const addToCart = () => {
-    axiosWithAuthUser().post(`https://crypto-luxury.herokuapp.com/api/form/watchOrders`, cartInfo)
-    .then(res => {
-      alert('success')
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  }
-
     return (
         <div style={{
         }}>
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title wariant="warning">{name}</Modal.Title>
+          <Modal.Title variant="warning">{name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <div style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>
-            <img src="https://i.ebayimg.com/images/g/4Z4AAOSwePRd-U1P/s-l500.jpg" style={{height: "200px", width: "200px"}} alt="product info" />
+            <img src={image} style={{height: "200px", width: "200px"}} alt="product info" />
             </div>
             <div>
-                <p style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>{description}</p>
+                <p style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto", paddingTop: "3%"}}>{description}</p>
             </div>
         </Modal.Body>
         <Modal.Footer>
@@ -72,7 +49,7 @@ const NewCardWatch = ({watchInfo}) => {
         className="buy-button snipcart-add-item"
         data-item-id={`${id}`}
         data-item-price={price}
-        data-item-url={`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`}
+        data-item-url={`/api/store/products/${id}`}
         data-item-description={`${description}`}
         data-item-name={`${name}`}
         >
@@ -91,10 +68,10 @@ const NewCardWatch = ({watchInfo}) => {
           }}>
           <Col>
             <Row style={{
-              marginTop: "2%",
+              marginTop: "25%",
             }}>
               <h4 style={{
-                color: "#24221e",
+                color: "#cca964",
                 fontSize: ".75rem",
               }}>{name}</h4>
             </Row>
@@ -102,7 +79,7 @@ const NewCardWatch = ({watchInfo}) => {
                 marginTop: "3%",
               }}>
               <h4 style={{
-                color: "#24221e",
+                color: "#cca964",
                 fontSize: ".75rem"
               }}>${price}</h4>
             </Row>
@@ -117,7 +94,7 @@ const NewCardWatch = ({watchInfo}) => {
             className="snipcart-add-item"
             data-item-id={`${id}`}
             data-item-price={price}
-            data-item-url={`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`}
+            data-item-url={`/api/store/products/${id}`}
             data-item-description={`${description}`}
             data-item-name={`${name}`}
             >

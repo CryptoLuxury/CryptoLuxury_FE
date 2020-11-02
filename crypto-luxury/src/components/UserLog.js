@@ -49,8 +49,7 @@ export default function Pages(props) {
   const handleShow = () => setShow(true);
 
   const [userLogin, setUserLogin] = useState({
-    name: "",
-    email: "",
+    username: "",
     password: ""
   })
 
@@ -72,8 +71,7 @@ export default function Pages(props) {
     e.preventDefault();
     axiosWithAuthUser().post(`https://crypto-luxury.herokuapp.com/api/form/contact`, contact)
     .then(res => {
-      alert("POST SUCCESS")
-      console.log(res)
+      alert("SUCCESS!")
       setTimeout(() => {
         setShow(false)
       }, 1500);
@@ -94,18 +92,15 @@ export default function Pages(props) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    axios.post(`https://crypto-luxury.herokuapp.com/api/users/login`, userLogin)
+    axios.post(`https://crypto-luxury.herokuapp.com/api/auth/loginadmin`, userLogin)
     .then(res => {
-      alert("SUCCESS")
       window.localStorage.setItem('token', res.data.token)
-      window.localStorage.setItem('id', res.data.id)
       setTimeout(() => {
-        history.push('/cart')
+        history.push('/admin/dashboard')
       })
-      console.log(res)
     })
     .catch(err => {
-      console.log(err)
+      alert("error! Try again!")
     })
   }
   // ref for the wrapper div
@@ -120,9 +115,7 @@ export default function Pages(props) {
   return (
     <div>
       <Nav />
-      <Container style={{
-        marginTop: "10%"
-      }}>
+      <Container>
         <GridContainer justify="center">
         <GridItem xs={12} sm={6} md={4}>
           <form>
@@ -136,15 +129,8 @@ export default function Pages(props) {
               <CardBody>
               <Form>
               <Form.Group controlId="formBasicEmail">
-                <Form.Label>Your Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter Name" name="name" onChange={handleChange} />
-              </Form.Group>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Enter Email" name="email" onChange={handleChange} />
-                <Form.Text className="text-muted">
-                  We'll never share your email with anyone else.
-                </Form.Text>
+                <Form.Label>Username</Form.Label>
+                <Form.Control type="text" placeholder="Enter your username" name="username" onChange={handleChange} />
               </Form.Group>
               <Form.Group controlId="formBasicEmail">
               <Form.Label>Password</Form.Label>
@@ -154,13 +140,8 @@ export default function Pages(props) {
               </CardBody>
               <CardFooter className={classes.justifyContentCenter}>
                 <Button onClick={handleLogin} color="warning" simple size="lg" block>
-                  Let{"'"}s Go
+                  Let{"'"}s Go!
                 </Button>
-                <Button onClick={() => {
-                  history.push('register')
-                }} color="warning" simple size="lg" block>
-                or Register
-              </Button>
               </CardFooter>
             </Card>
           </form>

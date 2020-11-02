@@ -26,26 +26,6 @@ const NewCardWatch = ({cardInfo}) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [order, setOrder] = useState({
-        name: `${name}`,
-        price: cardInfo.price,
-        quantity: cardInfo.quantity
-      })
-
-    const [cartInfo, setCartInfo] = useState({
-        user_id: window.localStorage.getItem('id'),
-        card_id: cardInfo.id
-    })
-
-    const addToCart = () => {
-    axiosWithAuthUser().post(`https://crypto-luxury.herokuapp.com/api/form/cardOrders`, cartInfo)
-    .then(res => {
-      alert('success')
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  }
 
     return (
         <div style={{
@@ -68,7 +48,7 @@ const NewCardWatch = ({cardInfo}) => {
         className="snipcart-add-item"
         data-item-id={`${id}`}
         data-item-price={price}
-        data-item-url={`https://crypto-luxury.herokuapp.com/api/store/cards/${id}`}
+        data-item-url={`/cards/${id}`}
         data-item-description={`${description}`}
         data-item-name={`${name}`}
       >
@@ -95,7 +75,7 @@ const NewCardWatch = ({cardInfo}) => {
           className="snipcart-add-item"
           data-item-id={`${id}`}
           data-item-price={price}
-          data-item-url={`https://crypto-luxury.herokuapp.com/api/store/cards/${id}`}
+          data-item-url={`/cards/${id}`}
           data-item-description={`${description}`}
           data-item-name={`${name}`}
         >

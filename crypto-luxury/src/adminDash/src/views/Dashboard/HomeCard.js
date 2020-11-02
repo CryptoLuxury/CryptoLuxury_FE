@@ -1,53 +1,82 @@
 import React from "react";
 
-import {useHistory} from "react-router-dom";
-
 import axios from "axios";
+
+import SweetAlert from 'react-bootstrap-sweetalert';
+
+import "./HomeCard.css";
+
+import styles from "../../assets/jss/material-dashboard-pro-react/views/dashboardStyle.js";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(styles);
 
 const HomeCard = ({itemInfo}) => {
 
+  const classes = useStyles();
+
     const { id, image, title, subtitle, link } = itemInfo;
 
-    let history = useHistory();
+    const [alert, setAlert] = React.useState(null);
+    const hideAlert = () => {
+      setAlert(null);
+    }
+  
+    const successAlert = () => {
+      setAlert(
+        <SweetAlert
+          success
+          style={{ display: "block", marginTop: "100px" }}
+          title="Success!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          You've deleted that card!
+        </SweetAlert>
+      );
+    };
+  
+    const errorAlert = () => {
+      setAlert(
+        <SweetAlert
+          danger
+          style={{ display: "block", marginTop: "80px" }}
+          title="Error!"
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          confirmBtnCssClass={classes.button + " " + classes.success}
+        >
+          That's not supposed to happen :(
+        </SweetAlert>
+      );
+    };
 
     const handleDeleteCard = (id) => {
         axios
           .delete(`https://crypto-luxury.herokuapp.com/api/store/features/${id}`)
           .then((res) => {
-            alert("success");
-            console.log(res);
+            successAlert()
           })
           .catch((err) => {
-            alert("Failed to Delete");
-            console.log(err);
+            errorAlert();
           });
       };
 
-      console.log(id)
-
     return (
         <div onClick={() => {
-            handleDeleteCard(id);
-          }} style={{
-            height: "200px",
-            width: "200px",
-            margin: ".1%"
-        }}>
-        <img style={{ height: "200px", width: "200px", opacity: ".7", position: "absolute", zIndex: "-1"}} src={image} alt="homecard" />
-        <div style={{paddingLeft: "1.5%"}}>
-            <h2 className="title" style={{
-                opacity: "100%",
-                color: "black",
-                paddingTop: "5%",
-                paddingLeft: "2%"
-            }}>{title}</h2>
-            <h4 className="subtitle" style={{
-                opacity: "100%",
-                color: "black",
-                paddingTop: "40%",
-                marginLeft: "45%",
-                paddingRight: ".5%"
-            }}>{subtitle}</h4>
+            handleDeleteCard(id)
+          }} className="homecardstyle">
+        <div>
+        {alert}
+        <img className="imagehome" style={{ opacity: ".7", position: "absolute", zIndex: "-1"}} src={image} alt="homecard" />
+        </div>
+            <div style={{
+                width: "100%",
+                textAlign: "right",
+                marginTop: "88%",
+            }}>
+                <h4 style={{color: "#38342d", paddingRight: "3%"}}>{title}</h4>
             </div>
         </div>
     )

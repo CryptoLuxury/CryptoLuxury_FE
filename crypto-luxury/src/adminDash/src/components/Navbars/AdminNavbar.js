@@ -10,6 +10,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Hidden from "@material-ui/core/Hidden";
 
 // material-ui icons
+import { useHistory } from "react-router-dom";
 import Menu from "@material-ui/icons/Menu";
 import MoreVert from "@material-ui/icons/MoreVert";
 import ViewList from "@material-ui/icons/ViewList";
@@ -23,6 +24,8 @@ import styles from "../../assets/jss/material-dashboard-pro-react/components/adm
 const useStyles = makeStyles(styles);
 
 export default function AdminNavbar(props) {
+
+  let history = useHistory();
   const classes = useStyles();
   const { color, rtlActive, brandText } = props;
   const appBarClasses = cx({
@@ -65,6 +68,10 @@ export default function AdminNavbar(props) {
           <Button href="#" className={classes.title} color="transparent">
             {brandText}
           </Button>
+          <Button color="warning" onClick={() => {
+            window.localStorage.removeItem('token')
+            history.push('/login')
+          }}>Logout</Button>
         </div>
         <Hidden mdUp implementation="css">
           <Button

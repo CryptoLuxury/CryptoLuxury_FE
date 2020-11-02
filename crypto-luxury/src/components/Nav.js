@@ -10,6 +10,8 @@ import {
 } from "react-bootstrap";
 import Button from "./dashComps/Button";
 
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+
 import Logo from "./logo.png";
 
 import SweetAlert from "react-bootstrap-sweetalert";
@@ -21,6 +23,8 @@ import styles from "./dashComps/dashboardStyle";
 import "./Nav.css";
 
 import { Row, Col } from "react-bootstrap";
+
+import Search from "./Search";
 
 const useStyles = makeStyles(styles);
 
@@ -101,7 +105,7 @@ const Navigation = () => {
   };
 
   return (
-    <Container>
+    <div>
       {alert}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -144,7 +148,7 @@ const Navigation = () => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="warning" onClick={handleClose}>
+          <Button color="danger" onClick={handleClose}>
             Cancel
           </Button>
           <Button color="warning" onClick={handleContactSubmit}>
@@ -152,16 +156,51 @@ const Navigation = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Navbar bg="light" expand="lg" className="navbar">
+      <Navbar bg="dark" expand="lg" className="navbar">
+      <div style={{width: "100%"}}>
       <div style={{
-        margin: "0 auto"
+        width: "100%",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        borderBottom: ".35px solid #e0c470",
+        paddingBottom: "1%"
+      }}>
+      <div style={{
+        display: "flex",
+        justifyContent: "flex-start",
+        width: "100%"
       }}>
         <Navbar.Brand>
           <img src={Logo} alt="our logo" className="logoimage" style={{
-            paddingLeft: "3%",
-            height: "75px"
+            paddingLeft: "5%",
+            paddingTop: "3%",
+            height: "50px"
+          }} onClick={() => {
+            history.push('/')
           }} />
         </Navbar.Brand>
+        </div>
+        <div style={{
+          margin: "0 auto",
+          alignSelf: "center",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          paddingTop: "1%"
+        }}>
+          <Search />
+        </div>
+        <div style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "flex-end",
+          paddingRight: "2%"
+        }}>
+        <Button color="warning" simple justIcon className="snipcart-checkout">
+          <ShoppingCartIcon />
+        </Button>
+      </div>
       </div>
         <div
           style={{
@@ -189,66 +228,28 @@ const Navigation = () => {
                   display: "flex",
                   width: "100%",
                   justifyContent: "space-evenly",
-                }}
-              >
-                <Button
-                  color="warning"
-                  onClick={() => {
-                    history.push('/')
-                  }}
-                  style={{
-                    width: "100px",
-                    margin: "0 auto",
-                    marginBottom: ".2%",
-                    opacity: "100%",
-                    marginLeft: "2%"
-                  }}
-                >
+                  paddingTop: "3%"
+                }}>
+              <div style={{width: "100%", display: "flex", justifyContent: "space-evenly"}}>
+                <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={() => {
+                  history.push('/')
+                }}>
                   Home
-                </Button>
-                <Button
-                  color="warning"
-                  onClick={() => {
-                    history.push('/products')
-                  }}
-                  style={{
-                    width: "100px",
-                    margin: "0 auto",
-                    marginBottom: ".2%",
-                    opacity: "100%",
-                    marginLeft: "2%"
-                  }}
-                >
+                </div>
+                <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={() => {
+                  history.push('/products')
+                }}>
                   Store
-                </Button>
-                <Button
-                  color="warning"
-                  onClick={() => {
-                    history.push('/team')
-                  }}
-                  style={{
-                    width: "100px",
-                    margin: "0 auto",
-                    marginBottom: ".2%",
-                    opacity: "100%",
-                    marginLeft: "2%"
-                  }}
-                >
-                  Team
-                </Button>
-                <Button
-                  color="warning"
-                  onClick={handleShow}
-                  style={{
-                    width: "100px",
-                    margin: "0 auto",
-                    marginBottom: ".2%",
-                    opacity: "100%",
-                    marginLeft: "2%"
-                  }}
-                >
-                  Contact Us
-                </Button>
+                </div>
+                <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={() => {
+                  history.push('/team')
+                }}>
+                Team
+              </div>
+              <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={handleShow}>
+              Contact
+            </div>
+            </div>
               </Nav>
             </Navbar.Collapse>
           </Row>
@@ -261,8 +262,9 @@ const Navigation = () => {
           >
           </Row>
         </div>
+        </div>
       </Navbar>
-    </Container>
+    </div>
   );
 };
 

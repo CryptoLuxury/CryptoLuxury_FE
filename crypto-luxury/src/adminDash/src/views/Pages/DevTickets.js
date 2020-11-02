@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 
 import axios from "axios";
+import { axiosWithAuthUser } from "../../../../utils/AxiosWithAuthUser";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -26,7 +27,7 @@ export default function DevTicketsPage() {
   }
 
   useEffect(() => {
-    axios.get(`https://crypto-luxury.herokuapp.com/api/form/devTicket/`)
+    axiosWithAuthUser().get(`/api/form/devTicket/`)
     .then(res => {
       setOpenDevTickets([
         ...res.data

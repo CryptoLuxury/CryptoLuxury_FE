@@ -30,6 +30,13 @@ export default() => {
             display: "flex",
             flexFlow: "column wrap",
         }}>
+        <Col className="images" style={{
+          backgroundColor: "black",
+          display: "flex",
+          justifyContent: "center",
+          alignSelf: "center",
+          margin: ".1%",
+        }}><div className="images"></div></Col>
             <Row className="toprow" style={{
               display: "flex",
               justifyContent: "center",
@@ -42,3 +49,4 @@ export default() => {
         </Container>
     )
 }
+

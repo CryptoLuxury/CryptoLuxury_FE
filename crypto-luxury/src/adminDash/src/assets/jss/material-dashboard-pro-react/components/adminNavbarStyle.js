@@ -13,7 +13,7 @@ import {
 
 const headerStyle = () => ({
   appBar: {
-    backgroundColor: "#F7E0BA",
+    backgroundColor: "#333230",
     boxShadow: "3.5px",
     borderBottom: "0",
     marginBottom: "0",

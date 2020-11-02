@@ -20,14 +20,6 @@ import EmailIcon from '@material-ui/icons/AlternateEmail';
 
 var dashRoutes = [
   {
-    path: "/login",
-    name: "Login",
-    rtlName: "لوحة القيادة",
-    icon: Login,
-    component: LoginPage,
-    layout: "/admin"
-  },
-  {
     path: "/dashboard",
     name: "Dashboard",
     rtlName: "لوحة القيادة",

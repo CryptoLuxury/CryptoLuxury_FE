@@ -23,7 +23,7 @@ import SweepIcon from "@material-ui/icons/DeleteSweep";
 
 const useStyles = makeStyles(styles);
 
-const ProductManagerCardWatch = ({ watchInfo }) => {
+const ProductManagerCardWatch = ({ productInfo }) => {
 
   const [alert, setAlert] = React.useState(null);
   const hideAlert = () => {
@@ -77,12 +77,13 @@ const ProductManagerCardWatch = ({ watchInfo }) => {
 
   const [edited, setEdited] = useState({
     name: "",
+    image: "",
     description: "",
     price: 0.00,
     bitpay: ""
   })
   const classes = useStyles();
-  const { id, title, price, description, bitpay } = watchInfo;
+  const { id, name, image, price, description, bitpay } = productInfo;
 
   const [editShow, setEditShow] = useState(false);
 
@@ -91,7 +92,7 @@ const ProductManagerCardWatch = ({ watchInfo }) => {
 
   const handleDeleteListing = (id) => {
     axios
-      .delete(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`)
+      .delete(`https://crypto-luxury.herokuapp.com/api/store/products/${id}`)
       .then((res) => {
         successDeleteAlert();
       })
@@ -100,7 +101,7 @@ const ProductManagerCardWatch = ({ watchInfo }) => {
       });
   };
 
-  const handleWatchChange = (e) => {
+  const handleProductChange = (e) => {
     e.preventDefault();
     setEdited({
     ...edited,
@@ -122,8 +123,6 @@ axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`, edited)
   return (
     <div
       style={{
-        height: "60vh",
-        width: "33%",
         margin: ".5%",
         marginTop: "5%",
       }}
@@ -137,20 +136,24 @@ axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`, edited)
       <Modal.Body>
       <Form>
       <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Label>Listing Title</Form.Label>
-        <Form.Control type="text" placeholder="Title of Product" onChange={handleWatchChange} name="name" />
+        <Form.Label>Product Title</Form.Label>
+        <Form.Control type="text" placeholder="Title of Product" onChange={handleProductChange} name="name" />
       </Form.Group>
       <Form.Group controlId="exampleForm.ControlInput1">
+      <Form.Label>Image</Form.Label>
+      <Form.Control type="text" placeholder="Image" onChange={handleProductChange} name="image" />
+    </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput1">
       <Form.Label>Price (USD)</Form.Label>
-      <Form.Control type="number" placeholder="4500, 45000" onChange={handleWatchChange} name="price" />
+      <Form.Control type="number" placeholder="4500, 45000" onChange={handleProductChange} name="price" />
       </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
         <Form.Label>Listing Description</Form.Label>
-        <Form.Control as="textarea" placeholder="Description" rows="3" onChange={handleWatchChange} name="description" />
+        <Form.Control as="textarea" placeholder="Description" rows="3" onChange={handleProductChange} name="description" />
       </Form.Group>
         <Form.Group controlId="exampleForm.ControlInput1">
         <Form.Label>Bitpay Product Link</Form.Label>
-        <Form.Control type="text" placeholder="Title..." onChange={handleWatchChange} name="bitpay" />
+        <Form.Control type="text" placeholder="Title..." onChange={handleProductChange} name="bitpay" />
       </Form.Group>
       </Form>
       </Modal.Body>
@@ -168,8 +171,9 @@ axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`, edited)
         <CardHeader image className={classes.cardHeaderHover}>
           <div>
             <img
-              src="https://cdn.swisswatchexpo.com/productphotos/7/2/rolex-president-datejust-yellow-gold-pyramid-diamond-bezel-watch-69258-28273_010e2.jpg"
-              alt="watch"
+              src={image}
+
+              alt="product image"
             />
           </div>
         </CardHeader>
@@ -216,7 +220,7 @@ axios.put(`https://crypto-luxury.herokuapp.com/api/store/watches/${id}`, edited)
               href="#pablo"
               onClick={(e) => e.preventDefault()}
             >
-              {title}
+              {name}
             </a>
           </h4>
           <p

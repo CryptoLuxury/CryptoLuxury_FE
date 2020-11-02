@@ -26,17 +26,13 @@ function App() {
           <Route exact path="/">
             <LandingPage />
           </Route>
-
-          <Route path="/admin" component={AdminLayout} />
-          <Route path="/admin/rtl" component={RtlLayout} />
-          <Route path="/admin/login" component={AuthLayout} />
+          <PrivateRoute path="/admin" component={AdminLayout} />
           {/* 
           <Route path="/cart" component={Cart} /> */}
 
           <Route path="/products" component={Products} />
           <Route path="/team" component={Team} />
           <Route path="/login" component={UserLogin} />
-          <Route path="/register" component={UserRegister} />
       </Switch>
     </Router>
   );
