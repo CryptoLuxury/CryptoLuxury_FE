@@ -28,8 +28,10 @@ const { Meta } = Card;
 const NewCardWatch = ({ productInfo }) => {
 
   const classes = useStyles();
-  const { id, name, image, price, description, bitpay } = productInfo;
+  const { id, type, brand, name, image, price, description, bitpay } = productInfo;
   const [edited, setEdited] = useState({
+    type: "",
+    brand: "",
     name: "",
     image: "",
     description: "",
@@ -141,7 +143,15 @@ const NewCardWatch = ({ productInfo }) => {
     <Modal.Body>
     <Form>
     <Form.Group controlId="exampleForm.ControlInput1">
-      <Form.Label>Product Title</Form.Label>
+    <Form.Label>type</Form.Label>
+    <Form.Control type="text" placeholder="Card or Watch" onChange={handleProductChange} name="type" />
+  </Form.Group>
+    <Form.Group controlId="exampleForm.ControlInput1">
+    <Form.Label>Brand</Form.Label>
+    <Form.Control type="text" placeholder="Title of Product" onChange={handleProductChange} name="brand" />
+  </Form.Group>
+    <Form.Group controlId="exampleForm.ControlInput1">
+      <Form.Label>Title/Model</Form.Label>
       <Form.Control type="text" placeholder="Title of Product" onChange={handleProductChange} name="name" />
     </Form.Group>
     <Form.Group controlId="exampleForm.ControlInput1">
@@ -178,7 +188,7 @@ const NewCardWatch = ({ productInfo }) => {
           <Modal.Title style={{
             display: "flex",
             justifyContent: "center"
-          }}>{name}</Modal.Title>
+          }}>{brand} <span style={{color: "#f5bf42"}}>x</span> {name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>

@@ -237,9 +237,14 @@ const Navigation = () => {
                   Home
                 </div>
                 <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={() => {
-                  history.push('/products')
+                  history.push('/watches')
                 }}>
-                  Store
+                  Watches
+                </div>
+                <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={() => {
+                  history.push('/cards')
+                }}>
+                  Cards
                 </div>
                 <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={() => {
                   history.push('/team')

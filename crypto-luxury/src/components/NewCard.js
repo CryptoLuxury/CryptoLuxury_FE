@@ -2,14 +2,9 @@ import React, { useState } from "react";
 
 import { axiosWithAuthUser } from "../utils/AxiosWithAuthUser";
 
-
+import "./NewCard.css";
 
 import { Card, Avatar } from "antd";
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
 import ViewIcon from "@material-ui/icons/Visibility";
 import AddIcon from "@material-ui/icons/AddShoppingCart";
 import AccountIcon from "@material-ui/icons/AccountBalanceWallet";
@@ -21,7 +16,7 @@ import Button from "./dashComps/Button";
 const { Meta } = Card;
 
 const NewCardWatch = ({ productInfo }) => {
-  const { id, name, image, price, description, bitpay } = productInfo;
+  const { id, type, brand, name, image, price, description, bitpay } = productInfo;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -33,12 +28,15 @@ const NewCardWatch = ({ productInfo }) => {
         margin: "3%"
       }}
     >
+    <div style={{color: "black", borderTop: "2px solid #f5bf42", width: "50%", margin: "0 auto", textAlign: "center", fontSize: "1.1rem", paddingBottom: "1%"}}>
+    {brand}
+  </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title style={{
             display: "flex",
             justifyContent: "center"
-          }}>{name}</Modal.Title>
+          }}>{brand} <span style={{color: "#f5bf42"}}> x </span> {name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>
@@ -75,7 +73,7 @@ const NewCardWatch = ({ productInfo }) => {
           <img
             alt="product"
             src={image}
-            style={{height: "200px", width: "200px"}}
+            style={{backgroundSize: "contain"}}
           />
         }
         actions={[

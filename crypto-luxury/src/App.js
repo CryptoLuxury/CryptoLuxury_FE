@@ -7,11 +7,12 @@ import AdminLayout from "../src/adminDash/src/layouts/Admin";
 import AuthLayout from "../src/adminDash/src/layouts/Auth";
 import RtlLayout from "../src/adminDash/src/layouts/RTL";
 import Cart from "./components/Cart";
-import Products from "./components/Products";
+import Products from "./components/Watches";
 import Team from "./components/TeamPage";
 import UserLogin from "./components/UserLog";
 import UserRegister from "./components/UserRegister";
 import PrivateRoute from "./utils/PrivateRoute";
+import Cards from "./components/Cards";
 
 import { createBrowserHistory } from "history";
 import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
@@ -30,7 +31,8 @@ function App() {
           {/* 
           <Route path="/cart" component={Cart} /> */}
 
-          <Route path="/products" component={Products} />
+          <Route path="/watches" component={Products} />
+          <Route path="/cards" component={Cards} />
           <Route path="/team" component={Team} />
           <Route path="/login" component={UserLogin} />
       </Switch>

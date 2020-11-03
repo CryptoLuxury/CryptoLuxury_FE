@@ -46,6 +46,8 @@ export default function ProductManager() {
 
     // useState
     const [product, setProduct] = useState({
+      type: "",
+        brand: "",
         name: "",
         image: "",
         description: "",
@@ -245,7 +247,15 @@ export default function ProductManager() {
         <Modal.Body>
         <Form>
         <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>Listing Title</Form.Label>
+        <Form.Label>Type</Form.Label>
+        <Form.Control type="text" placeholder="Card or Watch" onChange={handleProductChange} name="type" />
+      </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Brand</Form.Label>
+        <Form.Control type="text" placeholder="Brand" onChange={handleProductChange} name="brand" />
+      </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Title/Model</Form.Label>
           <Form.Control type="text" placeholder="Title..." onChange={handleProductChange} name="name" />
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlInput1">

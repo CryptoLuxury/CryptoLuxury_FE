@@ -10,7 +10,7 @@ import { Modal, Form } from "react-bootstrap";
 import SweetAlert from "react-bootstrap-sweetalert"
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import Search from "./Search.js";
+import Search from "./CardSearch.js";
 
 import { useHistory } from "react-router-dom";
 
@@ -48,7 +48,7 @@ const Products = () => {
     useEffect(() => {
       const fetchProducts = async () => {
         setLoading(true);
-        const res = await axios.get(`https://crypto-luxury.herokuapp.com/api/store/products`);
+        const res = await axios.get(`https://crypto-luxury.herokuapp.com/api/store/products/type/Card`);
         setProducts(res.data);
         setLoading(false);
     };
@@ -177,7 +177,7 @@ const Products = () => {
       </Modal>
       <Nav />
       <Row>
-      <h2 style={{width: "100%", textAlign: "center", marginTop: "3%", color: "#523c0d"}}>Browse Our Collection</h2>
+      <h2 style={{width: "100%", textAlign: "center", marginTop: "3%", color: "#523c0d"}}>Cards</h2>
   </Row>
     <Row style={{width: "100%" , textAlign: "center", margin: "0 auto", marginTop: "1%"}}>
         <Search />
