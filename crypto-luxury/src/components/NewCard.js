@@ -68,6 +68,7 @@ const NewCardWatch = ({ productInfo }) => {
         </Modal.Footer>
       </Modal>
       <Card
+        style={{ width: 200, margin: "0 auto" }}
         cover={
           <img
             alt="product"
