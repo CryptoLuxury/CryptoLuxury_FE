@@ -47,7 +47,7 @@ const NewCardWatch = ({ productInfo }) => {
             />
           </div>
           <div>
-            <p style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>{description}</p>
+            <p style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto", marginTop: "2%"}}>{description}</p>
           </div>
         </Modal.Body>
         <Modal.Footer>
@@ -68,7 +68,6 @@ const NewCardWatch = ({ productInfo }) => {
         </Modal.Footer>
       </Modal>
       <Card
-        style={{ width: 200 }}
         cover={
           <img
             alt="product"

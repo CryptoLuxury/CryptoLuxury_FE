@@ -249,7 +249,7 @@ export default function Footer() {
     color="warning"
     simple
     onClick={() => {
-      history.push('/products')
+      history.push('/watches')
     }}
     style={{
       width: "100px",
@@ -258,8 +258,23 @@ export default function Footer() {
       opacity: "100%",
     }}
   >
-    Store
+    Watches
   </Button>
+  <Button
+  color="warning"
+  simple
+  onClick={() => {
+    history.push('/cards')
+  }}
+  style={{
+    width: "100px",
+    margin: "0 auto",
+    marginBottom: ".2%",
+    opacity: "100%",
+  }}
+>
+  Cards
+</Button>
     <Button
       color="warning"
       simple

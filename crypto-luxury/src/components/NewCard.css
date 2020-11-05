@@ -1,0 +1,10 @@
+.productcardant {
+    width: 200px;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 400px) {
+    .productcardant {
+        width: 120px;
+    }
+}
