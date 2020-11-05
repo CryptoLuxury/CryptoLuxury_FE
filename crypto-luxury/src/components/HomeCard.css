@@ -27,12 +27,12 @@
 
 @media (min-width: 350px) and (max-width: 599px) {
     .homecardstyle {
-        height: 130px;
-        width: 130px;
+        height: 100px;
+        width: 100px;
     }
     .imagehome {
-        height: 130px;
-        width: 130px;
+        height: 100px;
+        width: 100px;
     }
 }
 
