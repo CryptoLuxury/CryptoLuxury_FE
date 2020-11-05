@@ -25,7 +25,7 @@ const NewCardWatch = ({ productInfo }) => {
   return (
     <div
       style={{
-        margin: "3%"
+        margin: "0 auto"
       }}
     >
     <div style={{color: "black", borderTop: "2px solid #f5bf42", width: "50%", margin: "0 auto", textAlign: "center", fontSize: "1.1rem", paddingBottom: "1%"}}>
@@ -82,6 +82,7 @@ const NewCardWatch = ({ productInfo }) => {
           </Button>,
           <Button color="warning" justIcon
           className="snipcart-add-item"
+          data-item-image={image}
           data-item-id={`${id}`}
           data-item-price={price}
           data-item-url={`/api/store/products/${id}`}

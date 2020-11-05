@@ -48,8 +48,6 @@ class SidebarWrapper extends React.Component {
     const { className, user, headerLinks, links } = this.props;
     return (
       <div className={className} ref={this.sidebarWrapper}>
-        {user}
-        {headerLinks}
         {links}
       </div>
     );
@@ -351,9 +349,6 @@ class Sidebar extends React.Component {
       });
     var user = (
       <div className={userWrapperClass}>
-        <div className={photo}>
-          <img src={avatar} className={classes.avatarImg} alt="..." />
-        </div>
         <List className={classes.list}>
           <ListItem className={classes.item + " " + classes.userItem}>
             <NavLink
@@ -476,7 +471,6 @@ class Sidebar extends React.Component {
             {brand}
             <SidebarWrapper
               className={sidebarWrapper}
-              user={user}
               links={links}
             />
             {image !== undefined ? (

@@ -4,10 +4,9 @@ import { useHistory } from "react-router-dom";
 
 import { axiosWithAuthUser } from "../../../../utils/AxiosWithAuthUser";
 
-import axios from "axios";
+import "./ProductManager.css";
 
 import ProductManagerCardWatch from "./NewCard";
-import ProductManagerCardCard from "./ProductManagerCardCard";
 
 import SweetAlert from "react-bootstrap-sweetalert";
 
@@ -297,7 +296,7 @@ export default function ProductManager() {
         <Button color="danger" onClick={SureWatch}>Delete All Products</Button>
         </Row>
         </Container>
-        <Row style={{
+        <Row className="spoton" style={{
           marginBottom: "5%",
           display: "flex",
           justifyContent: "center",

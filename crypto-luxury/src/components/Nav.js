@@ -226,7 +226,7 @@ const Navigation = () => {
                 className="mr-auto"
                 style={{
                   display: "flex",
-                  width: "40%",
+                  width: "60%",
                   justifyContent: "space-evenly",
                   paddingTop: "3%"
                 }}>

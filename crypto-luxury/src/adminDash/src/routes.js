@@ -1,6 +1,5 @@
 
 import Dashboard from "./views/Dashboard/Dashboard.js";
-import LoginPage from "./views/Pages/LoginPage.js";
 
 import TeamPage from "./views/Pages/TeamPage.js";
 import ProjectManager from "./views/Pages/ProductManager";
@@ -10,7 +9,6 @@ import SubscriberPage from "./views/Pages/SubcriberPage";
 
 // @material-ui/icons
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import Login from '@material-ui/icons/VpnKey';
 import GroupIcon from '@material-ui/icons/Group';
 import BuildIcon from '@material-ui/icons/Build';
 import HealingIcon from '@material-ui/icons/Healing';

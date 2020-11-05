@@ -24,3 +24,15 @@
     transition: 1s;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 977px) {
+    .mr-auto {
+        width: 100%;
+    }
+    .navbutton {
+        width: 30px;
+        font-size: .8rem;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}

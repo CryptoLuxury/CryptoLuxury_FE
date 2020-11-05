@@ -23,3 +23,14 @@ code {
 .page-link:hover {
   cursor: pointer;
 }
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media only screen and (max-width: 997px){
+  .body {
+    overflow-x: hidden;
+  }
+}
