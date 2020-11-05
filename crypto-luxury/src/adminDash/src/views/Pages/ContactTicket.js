@@ -65,7 +65,7 @@ const ContactTicket = ({ticketInfo}) => {
       }
 
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem', margin: "1%" }}>
             <Card.Body>
             {alert}
                 <Card.Title style={{textAlign: "center"}}>{name}</Card.Title>

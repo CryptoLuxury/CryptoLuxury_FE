@@ -1,6 +1,6 @@
 import React from "react";
 
-import axios from "axios";
+import { axiosWithAuthUser } from "../../../../utils/AxiosWithAuthUser";
 
 import SweetAlert from 'react-bootstrap-sweetalert';
 
@@ -53,8 +53,8 @@ const HomeCard = ({itemInfo}) => {
     };
 
     const handleDeleteCard = (id) => {
-        axios
-          .delete(`https://crypto-luxury.herokuapp.com/api/store/features/${id}`)
+        axiosWithAuthUser()
+          .delete(`/api/store/features/${id}`)
           .then((res) => {
             successAlert()
           })

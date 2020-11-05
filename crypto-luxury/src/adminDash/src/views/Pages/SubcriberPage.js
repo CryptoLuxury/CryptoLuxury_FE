@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import axios from "axios";
+import { axiosWithAuthUser } from "../../../../utils/AxiosWithAuthUser";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -22,7 +22,7 @@ export default function TicketsPage() {
   const [ subscribers, setSubscribers ] = useState([]);
 
   useEffect(() => {
-    axios.get(`https://crypto-luxury.herokuapp.com/api/form/enlist`)
+    axiosWithAuthUser().get(`/api/form/enlist`)
     .then(res => {
       setSubscribers([
         ...res.data

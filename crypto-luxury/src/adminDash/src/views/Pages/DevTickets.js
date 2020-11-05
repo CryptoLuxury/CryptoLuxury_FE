@@ -1,16 +1,12 @@
 import React, {useState, useEffect} from "react";
-
-import axios from "axios";
 import { axiosWithAuthUser } from "../../../../utils/AxiosWithAuthUser";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import SweetAlert from "react-bootstrap-sweetalert";
 
 // core components
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import DevTicket from "./DevTicket";
 
 import styles from "../../assets/jss/material-dashboard-pro-react/views/errorPageStyles.js";
@@ -42,14 +38,10 @@ export default function DevTicketsPage() {
       <Row style={{width: "100%", display : "flex", justifyContent: "center"}}>
         <h2 style={{textAlign: "center", color: "#523c0d"}}>Manage Dev Tickets</h2>
       </Row>
-      <Row style={{display: "flex", flexFlow: "row nowrap", justifyContent: "center"}}>
-        <Col style={{
-          margin: "2%"
-        }}>
+      <Row style={{display: "flex", flexFlow: "row wrap", justifyContent: "center"}}>
         { openDevTickets.map(ticket => ( 
           <DevTicket ticketInfo={ticket} key={ticket.id}/> 
       ))}
-        </Col>
       </Row>
     </Container>
   );
