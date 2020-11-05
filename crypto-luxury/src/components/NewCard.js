@@ -36,7 +36,7 @@ const NewCardWatch = ({ productInfo }) => {
           <Modal.Title style={{
             display: "flex",
             justifyContent: "center"
-          }}>{brand} <span style={{color: "#f5bf42"}}> x </span> {name}</Modal.Title>
+          }}>{brand} {name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>

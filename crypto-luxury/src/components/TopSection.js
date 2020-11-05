@@ -39,6 +39,7 @@ export default() => {
         }}><div className="images"></div></Col>
             <Row className="toprow" style={{
               display: "flex",
+              flexFlow: "row wrap",
               justifyContent: "center",
             }}>
             { homeCards.map(item => ( 

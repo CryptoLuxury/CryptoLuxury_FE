@@ -13,7 +13,8 @@
     width: 300px;
 }
 
-@media only screen and (max-width: 800px) {
+
+@media (min-width: 600px) and (max-width: 800px) {
     .homecardstyle {
         height: 200px;
         width: 200px;
@@ -24,16 +25,18 @@
     }
 }
 
-@media only screen and (max-width: 375px) {
+@media (min-width: 350px) and (max-width: 599px) {
     .homecardstyle {
-        height: 175px;
-        width: 175px;
+        height: 130px;
+        width: 130px;
     }
     .imagehome {
-        height: 175px;
-        width: 175px;
+        height: 130px;
+        width: 130px;
     }
 }
+
+
 
 .homecardstyle:hover {
     transition: .5s;

@@ -1,8 +1,9 @@
 import React from 'react';
 import ItemCard from "./NewCard";
+import { Spin } from "antd";
 const ProductMap = ({ products, loading }) => {
   if (loading) {
-    return <h2>Loading...</h2>;
+    return <Spin style={{display: "flex", justifyContent: "center"}} size="large" />;
   }
   return (
       <div style={{

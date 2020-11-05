@@ -4,7 +4,7 @@ import "./HomeCard.css";
 
 const HomeCard = ({itemInfo}) => {
 
-    const { image, title, subtitle, link } = itemInfo;
+    const { image, title, link } = itemInfo;
 
     return (
         <div onClick={() => {
