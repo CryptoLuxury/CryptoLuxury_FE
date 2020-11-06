@@ -41,8 +41,8 @@ const Search = () => {
         margin: "0 auto"
       }}>
 
-      <form action="">
-      <input type="search" placeholder="Search Watches" onChange={handleChange} name="searchTerm" />
+      <form className="formclass" action="">
+      <input className="imputclass" type="search" placeholder="Search Watches" onChange={handleChange} name="searchTerm" />
       <i class="fa fa-search"></i>
       </form>
       <div style={{width: "55px", margin: "0 auto"}}>

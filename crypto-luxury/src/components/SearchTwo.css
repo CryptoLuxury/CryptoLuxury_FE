@@ -5,7 +5,7 @@ body {
     background: #07051a;
 }
 
-form{
+.formclass{
     display: flex;
     padding-top: 5%;
     justify-content: center;
@@ -51,16 +51,16 @@ input{
     transition: all 1s;
 }
 
-form:hover{
+.formclass:hover{
     width: 200px;
     cursor: pointer;
 }
 
-form:hover input{
+.formclass:hover input{
     display: block;
 }
 
-form:hover .fa{
+.formclass:hover .fa{
     background: #07051a;
     color: white;
 }
