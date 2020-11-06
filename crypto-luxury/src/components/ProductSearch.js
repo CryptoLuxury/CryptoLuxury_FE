@@ -68,7 +68,7 @@ const NewCardWatch = ({productInfo}) => {
             justifyContent: "space-evenly"
           }}>
           <Col>
-          <img src={image} alt="product searchnail" style={{width: "30px", height: "30px", paddingTop: "20%"}} />
+          <img src={image} alt="product searchnail" style={{width: "30px", height: "30px", paddingTop: "40%"}} />
           </Col>
           <Col>
           <Row style={{

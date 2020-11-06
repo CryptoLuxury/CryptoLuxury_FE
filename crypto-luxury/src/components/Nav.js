@@ -13,6 +13,7 @@ import Button from "./dashComps/Button";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 import Logo from "./logo.png";
+import LogoSmall from "./Logosmall.png";
 
 import SweetAlert from "react-bootstrap-sweetalert";
 
@@ -181,15 +182,21 @@ const Navigation = () => {
           }} onClick={() => {
             history.push('/')
           }} />
+          <img src={LogoSmall} alt="our logo" className="logoimagesmall" style={{
+            paddingLeft: "5%",
+            paddingTop: "3%",
+            height: "50px"
+          }} onClick={() => {
+            history.push('/')
+          }} />
         </Navbar.Brand>
         </div>
-        <div style={{
+        <div className="searchcontainer" style={{
           margin: "0 auto",
           alignSelf: "center",
           width: "100%",
           display: "flex",
           justifyContent: "center",
-          paddingTop: "3%"
         }}>
           <Search />
         </div>

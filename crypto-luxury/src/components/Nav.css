@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
-
 .navbar {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 0px 10px rgba(0,0,0,0.22);
     padding-bottom: 0;
     padding: 0;
     background: rgb(47,47,47);
     background: radial-gradient(circle, rgba(47,47,47,0.8694542253521127) 0%, rgba(24,24,24,1) 100%);
+}
+.searchcontainer {
+    padding-top: 3%;
 }
 .mr-auto {
     margin: 0 auto;
@@ -28,6 +30,9 @@
     transition: 1s;
     cursor: pointer;
 }
+.logoimagesmall{
+    display: none;
+}
 
 @media only screen and (max-width: 977px) {
     .mr-auto {
@@ -38,6 +43,18 @@
         font-size: .8rem;
         margin-left: 5%;
         margin-right: 5%;
+    }
+    .searchcontainer {
+        padding-top: 5%;
+    }
+}
+
+@media only screen and (max-width: 771px) {
+    .logoimage {
+        display: none;
+    }
+    .logoimagesmall {
+        display: block;
     }
 }
 
@@ -50,5 +67,17 @@
         font-size: .8rem;
         margin-left: 5%;
         margin-right: 5%;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .searchcontainer {
+        padding-top: 7.5%;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .searchcontainer {
+        padding-top: 9%;
     }
 }

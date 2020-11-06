@@ -6,7 +6,7 @@ import ProductCard from "./ProductSearch";
 
 import Form from "react-bootstrap/Form";
 
-import "./SearchTwo.css";
+import "./SearchNavTwo.css";
 
 
 const Search = () => {
