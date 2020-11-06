@@ -7,6 +7,7 @@ import "./LandingPage.css";
 
 import Nav from "./Nav";
 import Button from "./dashComps/Button";
+import Browse from "./Browse";
 
 import "./Navbar.css"
 
@@ -31,6 +32,9 @@ const LandingPage = () => {
             <div className="topTwo">
                 <h6>Ask us about how we authenticate and store our products!</h6>
             </div>
+            <div className="topTwo">
+            <h6>All of our cards are verified legitimate by our third party firm!</h6>
+        </div>
         </Carousel>
     </div>
         <div className="carouselHome">
@@ -49,6 +53,7 @@ const LandingPage = () => {
                 </div>
             </Carousel>
         </div>
+        <div><Browse /></div>
             <div><TopSection /></div>
         <div>
         <Footer />

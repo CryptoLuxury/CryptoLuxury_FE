@@ -1,0 +1,76 @@
+.allcards {
+    box-sizing: border-box;
+    width: 902px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.boxbrowse {
+    margin-top: 15%;
+}
+
+.browseOne {
+    width: 300px;
+    height: 200px;
+    border: 1px solid #e0c470;
+    margin: .1%;
+    border-radius: 5px;
+}
+
+.browseOne:hover {
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    transition: .5s;
+}
+
+.firstb {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+.secondb {
+    font-family: 'Raleway', sans-serif;
+    color: #e0c470;
+}
+
+@media only screen and (max-width: 990px) {
+    .allcards {
+        width: 600px;
+    }
+    .browseOne {
+        width: 200px;
+        height: 200px;
+    }
+    .boxbrowse {
+        margin-top: 30%;
+    }
+}
+
+@media only screen and (max-width: 765px) {
+    .allcards {
+        width: 400px;
+        display: "flex";
+        flex-flow: column nowrap;
+    }
+    .browseOne {
+        width: 400px;
+        height: 150px;
+    }
+    .boxbrowse {
+        margin-top: 5%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .allcards {
+        width: 340px;
+        margin-top: .5%;
+        margin-bottom: .5%;
+
+    }
+    .browseOne {
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+    .boxbrowse {
+        margin-top: 2%;
+    }
+}

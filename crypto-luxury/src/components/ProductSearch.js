@@ -22,7 +22,7 @@ const { Meta } = Card;
 
 const NewCardWatch = ({productInfo}) => {
 
-    const { id, image, name, price, description, bitpay } = productInfo;
+    const { id, brand, image, name, price, description, bitpay } = productInfo;
 
     const [show, setShow] = useState(false);
 
@@ -34,7 +34,7 @@ const NewCardWatch = ({productInfo}) => {
         }}>
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title variant="warning">{name}</Modal.Title>
+          <Modal.Title variant="warning">{brand} {name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <div style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto"}}>
@@ -48,6 +48,7 @@ const NewCardWatch = ({productInfo}) => {
         <Button color="warning" justIcon
         className="buy-button snipcart-add-item"
         data-item-id={`${id}`}
+        data-item-image={image}
         data-item-price={price}
         data-item-url={`/api/store/products/${id}`}
         data-item-description={`${description}`}
@@ -67,8 +68,19 @@ const NewCardWatch = ({productInfo}) => {
             justifyContent: "space-evenly"
           }}>
           <Col>
+          <img src={image} alt="product searchnail" style={{width: "30px", height: "30px", paddingTop: "20%"}} />
+          </Col>
+          <Col>
+          <Row style={{
+            paddingTop: "15%",
+          }}>
+            <h4 style={{
+              color: "#cca964",
+              fontSize: ".75rem",
+            }}>{brand}</h4>
+          </Row>
             <Row style={{
-              marginTop: "25%",
+              marginTop: "3%",
             }}>
               <h4 style={{
                 color: "#cca964",

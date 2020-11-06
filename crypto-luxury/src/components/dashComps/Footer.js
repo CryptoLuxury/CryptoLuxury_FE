@@ -181,33 +181,6 @@ export default function Footer() {
           </Button>
         </Modal.Footer>
       </Modal>
-      <Col style={{width: "100%"}}>
-      <Row style={{
-        width: "100%",
-        display: "flex",
-        justifyContent: "space-evenly",
-        paddingTop: "3%",
-        marginRight: "0",
-        marginLeft: "0"
-      }}>
-        <Button color="rose" style={{
-          width: "100px"
-        }} onClick={() => {
-          window.open('https://www.instagram.com/collectibles_guru/')
-        }}><InstagramIcon /></Button>
-        <Button color="twitter" style={{
-          width: "100px"
-        }} onClick={() => {
-          window.open('https://twitter.com/CryptoLuxury_io')
-        }}><TwitterIcon /></Button>
-        <Button color="twitter" style={{
-          width: "100px"
-        }} onClick={handleVaultingShow}>Vaulting</Button>
-        <Button color="twitter" style={{
-          width: "100px"
-        }} onClick={handleWhiteShow}>White Glove</Button>
-      </Row>
-      </Col>
       <Row style={{
         display: "flex",
         justifyContent: "space-evenly",
@@ -216,7 +189,6 @@ export default function Footer() {
         marginTop: "2%",
       }}>
       <Button
-      color="warning"
       simple
       onClick={() => {
         history.push('/')
@@ -226,12 +198,12 @@ export default function Footer() {
         margin: "0 auto",
         marginBottom: ".2%",
         opacity: "100%",
+        color: "#e0c470"
       }}
     >
       Home
     </Button>
     <Button
-      color="warning"
       simple
       onClick={() => {
         history.push('/team')
@@ -241,6 +213,7 @@ export default function Footer() {
         margin: "0 auto",
         marginBottom: ".2%",
         opacity: "100%",
+        color: "#e0c470"
       }}
     >
       Team
@@ -256,12 +229,12 @@ export default function Footer() {
       margin: "0 auto",
       marginBottom: ".2%",
       opacity: "100%",
+      color: "#e0c470"
     }}
   >
     Watches
   </Button>
   <Button
-  color="warning"
   simple
   onClick={() => {
     history.push('/cards')
@@ -271,12 +244,12 @@ export default function Footer() {
     margin: "0 auto",
     marginBottom: ".2%",
     opacity: "100%",
+    color: "#e0c470"
   }}
 >
   Cards
 </Button>
     <Button
-      color="warning"
       simple
       onClick={handleShow}
       style={{
@@ -284,6 +257,7 @@ export default function Footer() {
         margin: "0 auto",
         marginBottom: ".2%",
         opacity: "100%",
+        color: "#e0c470"
       }}
     >
       Contact Us

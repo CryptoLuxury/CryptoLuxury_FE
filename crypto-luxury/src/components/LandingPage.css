@@ -57,4 +57,10 @@
     .carouselHome {
         width: 340px;
     }
+    .topOne {
+        font-size: .2rem;
+    }
+    .topTwo {
+        font-size: .2rem;
+    }
 }

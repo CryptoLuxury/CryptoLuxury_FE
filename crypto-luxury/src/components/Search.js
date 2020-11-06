@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react';
 
 import axios from "axios";
 
-import NewCardCard from "./CardNavCard";
-
 import ProductCard from "./ProductSearch";
 
 import Form from "react-bootstrap/Form";
+
+import "./SearchTwo.css";
 
 
 const Search = () => {
@@ -43,11 +43,10 @@ const Search = () => {
         margin: "0 auto"
       }}>
 
-      <Form>
-      <Form.Group controlId="formBasicEmail">
-        <Form.Control type="text" placeholder="Search" onChange={handleChange} />
-      </Form.Group>
-      </Form>
+      <form action="">
+      <input type="search" placeholder="Search Collection" onChange={handleChange} name="searchTerm" />
+      <i class="fa fa-search"></i>
+      </form>
       <div style={{width: "55px", margin: "0 auto"}}>
       {searchResults.map(product => {
         if(searchTerm !== '') {

@@ -179,7 +179,7 @@ const Products = () => {
       <Row>
       <h2 style={{width: "100%", textAlign: "center", marginTop: "3%", color: "#523c0d", fontFamily: "'Raleway', sans-serif"}}>Cards</h2>
   </Row>
-    <Row style={{width: "100%" , textAlign: "center", margin: "0 auto", marginTop: "1%", marginBottom: "1.5%"}}>
+    <Row style={{width: "100%" , textAlign: "center", margin: "0 auto", marginTop: "3%", marginBottom: "1.5%"}}>
         <Search />
     </Row>
     <Container>
