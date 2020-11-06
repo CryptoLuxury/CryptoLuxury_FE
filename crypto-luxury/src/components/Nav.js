@@ -162,14 +162,16 @@ const Navigation = () => {
         width: "100%",
         display: "flex",
         flexDirection: "row",
-        justifyContent: "center",
+        justifyContent: "space-evenly",
         borderBottom: ".35px solid #e0c470",
         paddingBottom: "1%"
       }}>
       <div style={{
         display: "flex",
         justifyContent: "flex-start",
-        width: "100%"
+        width: "100%",
+        paddingLeft: "3%",
+        marginTop: "1%"
       }}>
         <Navbar.Brand>
           <img src={Logo} alt="our logo" className="logoimage" style={{
@@ -187,7 +189,7 @@ const Navigation = () => {
           width: "100%",
           display: "flex",
           justifyContent: "center",
-          paddingTop: "1%"
+          paddingTop: "2%"
         }}>
           <Search />
         </div>
@@ -195,9 +197,10 @@ const Navigation = () => {
           width: "100%",
           display: "flex",
           justifyContent: "flex-end",
-          paddingRight: "2%"
+          paddingRight: "3%",
+          marginTop: '1.5%'
         }}>
-        <Button color="warning" simple justIcon className="snipcart-checkout">
+        <Button style={{color: "#e0c470"}} simple justIcon className="snipcart-checkout">
           <ShoppingCartIcon />
         </Button>
       </div>
@@ -231,27 +234,27 @@ const Navigation = () => {
                   paddingTop: "3%"
                 }}>
               <div style={{width: "100%", display: "flex", justifyContent: "space-evenly"}}>
-                <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={() => {
+                <div className="navbutton" style={{width: "75px", textAlign: "center"}} onClick={() => {
                   history.push('/')
                 }}>
                   Home
                 </div>
-                <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={() => {
+                <div className="navbutton" style={{width: "75px", textAlign: "center"}} onClick={() => {
                   history.push('/watches')
                 }}>
                   Watches
                 </div>
-                <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={() => {
+                <div className="navbutton" style={{width: "75px", textAlign: "center"}} onClick={() => {
                   history.push('/cards')
                 }}>
                   Cards
                 </div>
-                <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={() => {
+                <div className="navbutton" style={{width: "75px", textAlign: "center"}} onClick={() => {
                   history.push('/team')
                 }}>
                 Team
               </div>
-              <div className="navbutton" style={{width: "75px", textAlign: "center", fontFamily: "Roboto, sans-serif"}} onClick={handleShow}>
+              <div className="navbutton" style={{width: "75px", textAlign: "center"}} onClick={handleShow}>
               Contact
             </div>
             </div>

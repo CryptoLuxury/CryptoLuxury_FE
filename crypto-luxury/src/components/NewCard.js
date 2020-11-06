@@ -25,10 +25,12 @@ const NewCardWatch = ({ productInfo }) => {
   return (
     <div
       style={{
-        margin: "0 auto"
+        margin: "0 auto",
+        marginTop: "1.25%",
+        marginBottom: "1.25%"
       }}
     >
-    <div style={{color: "black", borderTop: "2px solid #f5bf42", width: "50%", margin: "0 auto", textAlign: "center", fontSize: "1.1rem", paddingBottom: "1%"}}>
+    <div style={{color: "black", borderTop: "2px solid #e0c470", width: "50%", margin: "0 auto", textAlign: "center", fontSize: "1.1rem", paddingBottom: "1%", fontFamily: "'Raleway', sans-serif"}}>
     {brand}
   </div>
       <Modal show={show} onHide={handleClose}>
@@ -47,13 +49,14 @@ const NewCardWatch = ({ productInfo }) => {
             />
           </div>
           <div>
-            <p style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto", marginTop: "2%"}}>{description}</p>
+            <p style={{width: "100%", display: "flex", justifyContent: "center", margin: "0 auto", marginTop: "5%"}}>{description}</p>
           </div>
         </Modal.Body>
         <Modal.Footer>
-        <Button color="warning" justIcon
+        <Button style={{color: "#e0c470"}} justIcon simple
         className="snipcart-add-item"
         data-item-id={`${id}`}
+        data-item-image={image}
         data-item-price={price}
         data-item-url={`/api/store/products/${id}`}
         data-item-description={`${description}`}
@@ -62,13 +65,13 @@ const NewCardWatch = ({ productInfo }) => {
         <AddIcon />
       </Button>
 
-          <Button color="warning" onClick={handleClose}>
+          <Button style={{color: "#e0c470"}} justIcon simple onClick={handleClose}>
             <AccountIcon />
           </Button>
         </Modal.Footer>
       </Modal>
       <Card
-        style={{ width: 200, margin: "0 auto" }}
+        style={{ width: 200, margin: "0 auto", fontFamily: "'Raleway', sans-serif" }}
         cover={
           <img
             alt="product"
@@ -77,10 +80,10 @@ const NewCardWatch = ({ productInfo }) => {
           />
         }
         actions={[
-          <Button justIcon onClick={handleShow}>
+          <Button style={{color: "#e0c470"}} justIcon simple onClick={handleShow}>
             <ViewIcon />
           </Button>,
-          <Button color="warning" justIcon
+          <Button style={{color: "#e0c470"}} justIcon simple
           className="snipcart-add-item"
           data-item-image={image}
           data-item-id={`${id}`}
@@ -91,7 +94,7 @@ const NewCardWatch = ({ productInfo }) => {
         >
           <AddIcon />
         </Button>,
-        <Button color="warning" justIcon onClick={() => {
+        <Button style={{color: "#e0c470"}} justIcon simple onClick={() => {
           window.open(`${bitpay}`)
         }}>
         <AccountIcon />

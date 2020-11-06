@@ -1,4 +1,60 @@
-.toppromo {
+.carouselHome {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.topOne {
+    text-align: center;
+    padding-top: .5%;
+    font-size: .6rem;
+    font-family: 'Raleway', sans-serif;
+}
+.topTwo {
+    text-align: center;
+    padding-top: .5%;
+    font-size: .6rem;
+    font-family: 'Raleway', sans-serif;
+}
+
+.slideOne {
+    background-image: url('slideonebg.jpg');
+    background-size: cover;
     height: 300px;
-    background: "black"
+    width: 900px;
+}
+.slideTwo {
+    background-image: url('vault.jpg');
+    background-size: cover;
+    height: 300px;
+    width: 900px;
+}
+.slideThree {
+    background-image: url('whiteglove.jpg');
+    background-size: cover;
+    height: 300px;
+    width: 900px;
+}
+.slideFour {
+    background-image: url('pokemon.jpg');
+    background-size: cover;
+    height: 300px;
+    width: 900px;
+}
+
+@media only screen and (max-width: 990px) {
+    .carouselHome {
+        width: 600px;
+    }
+}
+
+@media only screen and (max-width: 765px) {
+    .carouselHome {
+        width: 400px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .carouselHome {
+        width: 340px;
+    }
 }

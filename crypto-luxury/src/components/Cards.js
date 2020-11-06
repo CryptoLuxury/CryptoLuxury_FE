@@ -177,9 +177,9 @@ const Products = () => {
       </Modal>
       <Nav />
       <Row>
-      <h2 style={{width: "100%", textAlign: "center", marginTop: "3%", color: "#523c0d"}}>Cards</h2>
+      <h2 style={{width: "100%", textAlign: "center", marginTop: "3%", color: "#523c0d", fontFamily: "'Raleway', sans-serif"}}>Cards</h2>
   </Row>
-    <Row style={{width: "100%" , textAlign: "center", margin: "0 auto", marginTop: "1%"}}>
+    <Row style={{width: "100%" , textAlign: "center", margin: "0 auto", marginTop: "1%", marginBottom: "1.5%"}}>
         <Search />
     </Row>
     <Container>
@@ -188,7 +188,8 @@ const Products = () => {
               width: "100%",
               margin: "0 auto",
               display: "flex",
-              justifyContent: "center"
+              justifyContent: "center",
+              marginTop: "3%"
             }}>
               <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />
             </Row>

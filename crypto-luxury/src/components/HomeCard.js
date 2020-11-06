@@ -11,14 +11,14 @@ const HomeCard = ({itemInfo}) => {
             window.open(`${link}`)
         }} className="homecardstyle">
         <div>
-        <img className="imagehome" style={{ opacity: ".7", position: "absolute", zIndex: "-1"}} src={image} alt="homecard" />
+        <img className="imagehome" style={{ opacity: ".9", position: "absolute", zIndex: "-1"}} src={image} alt="homecard" />
         </div>
             <div style={{
                 width: "100%",
                 textAlign: "right",
                 marginTop: "88%",
             }}>
-                <h4 style={{color: "#38342d", paddingRight: "3%"}}>{title}</h4>
+                <h4 style={{color: "#e0c470", paddingRight: "3%"}}>{title}</h4>
             </div>
         </div>
     )

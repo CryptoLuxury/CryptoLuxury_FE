@@ -13,6 +13,17 @@
     width: 300px;
 }
 
+.cardtext {
+    width: 100%;
+    text-align: right;
+    margin-top: 88%;
+}
+
+.texthome {
+    color: #38342d;
+    padding-right: 3%;
+}
+
 @media only screen and (max-width: 800px) {
     .homecardstyle {
         height: 200px;
@@ -26,23 +37,12 @@
 
 @media only screen and (max-width: 402px) {
     .homecardstyle {
-        height: 175px;
-        width: 175px;
+        height: 168px;
+        width: 168px;
     }
     .imagehome {
-        height: 175px;
-        width: 175px;
-    }
-}
-
-@media only screen and (max-width: 377px) {
-    .homecardstyle {
-        height: 175px;
-        width: 175px;
-    }
-    .imagehome {
-        height: 175px;
-        width: 175px;
+        height: 168px;
+        width: 168px;
     }
 }
 

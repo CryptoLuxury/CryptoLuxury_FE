@@ -122,13 +122,15 @@ const TeamPage = () => {
         }}>
         <h2 style={{
             textAlign: "center",
-            marginTop: "2%",
-            color: "#523c0d"
+            marginTop: "3%",
+            color: "#523c0d",
+            fontFamily: "'Raleway', sans-serif"
         }}>Meet our Team</h2>
         <h5 style={{
             textAlign: "center",
             marginTop: "2%",
-            color: "#e0a72b"
+            color: "#e0a72b",
+            fontFamily: "'Raleway', sans-serif"
         }}>We at Crypto Luxury are committed to bringing you the highest-quality service to match our high-quality products and prices.  Meet the people responsible.</h5>
         </div>
     </Row>
@@ -136,7 +138,10 @@ const TeamPage = () => {
       marginTop: "5%"
     }}>
         <Row style={{
-          marginBottom: "7.5%"
+          marginBottom: "7.5%",
+          display: "flex",
+          flexFlow: "column nowrap",
+          justifyContent: "center"
         }}>
         { team.map(member => ( 
           <TeamCardTwo membersInfo={member} key={member.id}/> 

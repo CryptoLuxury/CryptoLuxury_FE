@@ -4,6 +4,7 @@ import axios from "axios";
 
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import Fade from "react-reveal";
 
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "../../adminDash/src/assets/jss/material-dashboard-pro-react/views/dashboardStyle.js";
@@ -105,6 +106,7 @@ const TeamCard = ({membersInfo}) => {
     const { name, role } = membersInfo;
 
     return (
+      <Fade bottom>
         <Card
         profile
         className={classes.customCardClass + " " + classes[cardAnimaton]}
@@ -169,6 +171,7 @@ const TeamCard = ({membersInfo}) => {
         </div>
         </CardFooter>
       </Card>
+      </Fade>
     )
 }
 
