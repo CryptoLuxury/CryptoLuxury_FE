@@ -224,6 +224,10 @@ export default function Dashboard() {
         <Form.Label>Title</Form.Label>
         <Form.Control type="email" placeholder="25% OFF" onChange={handleCardChange} name="title" />
       </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput1">
+      <Form.Label>SubTitle</Form.Label>
+      <Form.Control type="email" placeholder="25% OFF" onChange={handleCardChange} name="subtitle" />
+    </Form.Group>
       <Form.Group controlId="exampleForm.ControlTextarea1">
       <Form.Label>Redirect Link</Form.Label>
       <Form.Control type="text" rows="8" placeholder="https/www.cryptoluxury.io" onChange={handleCardChange} name="link" />

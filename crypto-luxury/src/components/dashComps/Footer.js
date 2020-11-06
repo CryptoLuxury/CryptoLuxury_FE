@@ -2,14 +2,9 @@
 import React, {useState} from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import PropTypes from "prop-types";
-import cx from "classnames";
 import Button from "./Button";
-import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import InstagramIcon from '@material-ui/icons/Instagram';
 import SweetAlert from "react-bootstrap-sweetalert";
+import SendIcon from '@material-ui/icons/Send';
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -35,10 +30,22 @@ export default function Footer() {
     message: "",
   });
 
+  const [subscriber, setSubscriber] = useState({
+    email: ""
+  })
+
   const handleContactChange = (e) => {
     e.preventDefault();
     setContact({
       ...contact,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+    const handleSubscriberChange = (e) => {
+    e.preventDefault();
+    setContact({
+      ...subscriber,
       [e.target.name]: e.target.value,
     });
   };
@@ -54,6 +61,21 @@ export default function Footer() {
         confirmBtnCssClass={classes.button + " " + classes.success}
       >
         We've received your ticket, and will get back to you shortly!
+      </SweetAlert>
+    );
+  };
+
+  const successFooterAlert = () => {
+    setAlert(
+      <SweetAlert
+        success
+        style={{ display: "block", marginTop: "100px" }}
+        title="Nice!"
+        onConfirm={() => hideAlert()}
+        onCancel={() => hideAlert()}
+        confirmBtnCssClass={classes.button + " " + classes.success}
+      >
+        Keep an eye out on your inbox!
       </SweetAlert>
     );
   };
@@ -78,6 +100,20 @@ export default function Footer() {
       .post(`https://crypto-luxury.herokuapp.com/api/form/contact`, contact)
       .then((res) => {
         successAlert();
+        setTimeout(() => {
+          setShow(false);
+        }, 1500);
+      })
+      .catch((err) => {
+        errorAlert();
+      });
+  };
+
+  const handleSubscriberSubmit = () => {
+    axios
+      .post(`https://crypto-luxury.herokuapp.com/api/form/enlist`, subscriber)
+      .then((res) => {
+        successFooterAlert();
         setTimeout(() => {
           setShow(false);
         }, 1500);
@@ -198,7 +234,8 @@ export default function Footer() {
         margin: "0 auto",
         marginBottom: ".2%",
         opacity: "100%",
-        color: "#e0c470"
+        color: "#e0c470",
+        fontFamily: "'Raleway', sans-serif"
       }}
     >
       Home
@@ -213,7 +250,8 @@ export default function Footer() {
         margin: "0 auto",
         marginBottom: ".2%",
         opacity: "100%",
-        color: "#e0c470"
+        color: "#e0c470",
+        fontFamily: "'Raleway', sans-serif"
       }}
     >
       Team
@@ -229,7 +267,8 @@ export default function Footer() {
       margin: "0 auto",
       marginBottom: ".2%",
       opacity: "100%",
-      color: "#e0c470"
+      color: "#e0c470",
+      fontFamily: "'Raleway', sans-serif"
     }}
   >
     Watches
@@ -244,7 +283,8 @@ export default function Footer() {
     margin: "0 auto",
     marginBottom: ".2%",
     opacity: "100%",
-    color: "#e0c470"
+    color: "#e0c470",
+    fontFamily: "'Raleway', sans-serif"
   }}
 >
   Cards
@@ -257,11 +297,21 @@ export default function Footer() {
         margin: "0 auto",
         marginBottom: ".2%",
         opacity: "100%",
-        color: "#e0c470"
+        color: "#e0c470",
+        fontFamily: "'Raleway', sans-serif"
       }}
     >
       Contact Us
     </Button>
+      </Row>
+      <Row style={{marginTop: "1%", display: "flex", justifyContent: "center"}}>
+        <div className="form__group">
+        <input type="text" className="form__input" id="name" placeholder="Subscribe to Newsletter" required="" onChange={handleSubscriberChange} />
+        <label for="name" className="form__label">Email Address</label>
+        </div>
+        <Button style={{color: "#e0c470"}} justIcon simple onClick={handleSubscriberSubmit}>
+          <SendIcon />
+        </Button>
       </Row>
     </div>
   );

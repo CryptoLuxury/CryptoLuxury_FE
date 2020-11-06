@@ -2,6 +2,11 @@ import React from "react";
 import Footer from "./dashComps/Footer";
 
 import { Carousel } from "antd";
+import CoolAnim from "./CoolAnimWatch";
+import CoolAnimAll from "./CoolAnimAll";
+import CoolAnimCard from "./CoolAnimCard";
+import Vaulting from "./Vaulting";
+import Glove from "./Glove";
 
 import "./LandingPage.css";
 
@@ -20,7 +25,8 @@ const LandingPage = () => {
     return (
         <div style={{
           display: "flex",
-          flexDirection: "column"
+          flexDirection: "column",
+          overflowX: "hidden"
         }}>
         {alert}
         <Nav />
@@ -40,20 +46,24 @@ const LandingPage = () => {
         <div className="carouselHome">
             <Carousel autoplay dotPosition="top">
                 <div className="slideOne">
-                    <Button style={{color: "#e0c470"}} justIcon simple>Browse Our Watch Collection</Button>
                 </div>
                 <div className="slideTwo">
 
                 </div>
-                <div className="slideThree">
-
-                </div>
-                <div className="slideFour">
-
-                </div>
             </Carousel>
         </div>
-        <div><Browse /></div>
+        <div className="threewrap">
+        <CoolAnim />
+        <CoolAnimCard />
+        </div>
+        <div className="services">
+
+        <Vaulting />
+        <Glove />
+
+        </div>
+
+
             <div><TopSection /></div>
         <div>
         <Footer />

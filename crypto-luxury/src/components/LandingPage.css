@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 .carouselHome {
     width: 900px;
     margin: 0 auto;
@@ -23,13 +27,13 @@
     width: 900px;
 }
 .slideTwo {
-    background-image: url('vault.jpg');
+    background-image: url('luxurylife.jpg');
     background-size: cover;
     height: 300px;
     width: 900px;
 }
 .slideThree {
-    background-image: url('whiteglove.jpg');
+    background-image: url('luxurylife.jpg');
     background-size: cover;
     height: 300px;
     width: 900px;
@@ -39,6 +43,18 @@
     background-size: cover;
     height: 300px;
     width: 900px;
+}
+
+.threewrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.services {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 @media only screen and (max-width: 990px) {
@@ -56,6 +72,16 @@
 @media only screen and (max-width: 400px) {
     .carouselHome {
         width: 340px;
+    }
+    .threewrap {
+        flex-direction: column;
+        width: 340px;
+        margin: 0 auto;
+    }
+    .services {
+        flex-direction: column;
+        width: 340px;
+        margin: 0 auto;
     }
     .topOne {
         font-size: .2rem;

@@ -1,0 +1,219 @@
+*{
+	box-sizing: border-box;
+}
+
+.centerBox{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 300px
+}
+
+.categoryWrapperGlove{
+	height: 300px;
+	width: 450px;
+	background: url("./whiteglove.jpg") no-repeat center center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.categoryWrapperGlove:after{
+	position: absolute;
+	top:0;
+	left: 0;
+	right:0;
+	bottom: 0;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a29ca9+0,95909b+99 */
+background: #a29ca9; /* Old browsers */
+background: -moz-linear-gradient(-45deg, #a29ca9 0%, #95909b 99%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, #a29ca9 0%,#95909b 99%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, #a29ca9 0%,#95909b 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a29ca9', endColorstr='#95909b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	content: '';
+	opacity: 0;
+		-webkit-transition: opacity 0.9s ease 0s; 
+}
+
+.categoryWrapperGlove:hover:after{
+	opacity: 0.4;
+}
+
+.categoryWrapperGlove h1{
+    color:white;
+    font-family: 'Raleway', sans-serif;
+	font-size: 50px;
+	letter-spacing: 2px;
+	-webkit-transition: all 0.15s ease 0s; 
+	position: relative;
+	z-index: 10;
+}
+
+.categoryWrapperGlove:hover h1{
+    transform: translateY(-10px);
+    color: white;
+}
+
+.categoryWrapperGlove button{
+	position: absolute;
+	transform: translatey(60px);
+	-webkit-appearance: none;
+	border: none;
+	background: none;
+	color:white;
+	width: 250px;
+    height:50px;
+    font-family: "Raleway", sans-serif;
+	font-size: 20px;
+	padding: 0;
+	margin: 0;
+	outline: none;
+	z-index: 10;
+}
+
+.categoryWrapperGlove button span{
+	display: block;
+	position: relative;
+	line-height: 50px;
+	height: 50px;
+	cursor: pointer;
+}
+
+.categoryWrapperGlove button > span:after{
+	content:'';
+	position: absolute;
+	top:0;
+	left: 50%;
+	width: 20px;
+	height: 0;
+	
+	border: 1px solid #e0c470;
+	border-left: none;
+	border-bottom: none;
+	
+	    transition: height 0.15s ease-out, width 0.15s ease-out 0.15s;
+}
+
+.categoryWrapperGlove:hover button > span:after{
+	width: calc(50% - 1px);
+	height: calc(100% - 2px);
+	transition: width 0.15s ease-out, height 0.15s ease-out 0.15s;
+}
+
+.categoryWrapperGlove button > span:before{
+	content:'';
+	position: absolute;
+	top:0;
+	right: 50%;
+	width: 20px;
+	height: 0;
+	
+	border: 1px solid white;
+	border-right: none;
+	border-bottom: none;
+	
+	    transition: height 0.15s ease-out, width 0.15s ease-out 0.15s;
+}
+
+.categoryWrapper:hover button > span:before{
+	width: calc(50% - 1px);
+	height: calc(100% - 2px);
+	transition: width 0.15s ease-out, height 0.15s ease-out 0.15s;
+}
+
+.categoryWrapperGlove button > span > span:before{
+	content:'';
+	position: absolute;
+	bottom:0;
+	right: 0%;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	
+}
+
+.categoryWrapperGlove:hover button > span > span:before{
+	opacity: 1;
+	border-bottom: 1px solid white;
+	width: calc(50%);
+	height: 1px;
+	transition: opacity 0s ease-out 0.29s, width 0.15s ease-out 0.3s;
+}
+
+.categoryWrapperGlove button > span > span:after{
+	content:'';
+	position: absolute;
+	bottom:0;
+	left: 0%;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	
+}
+
+.categoryWrapperGlove:hover button > span > span:after{
+	opacity: 1;
+	border-bottom: 1px solid white;
+	width: calc(50%);
+	height: 1px;
+	transition: opacity 0s ease-out 0.29s, width 0.15s ease-out 0.3s;
+}
+
+.categoryWrapperGlove button > span > span > span{
+	transition: color 0.15s ease-out 0.3s;
+	color: transparent;
+}
+
+.categoryWrapperGlove:hover button > span > span > span{
+	color:white;
+}
+
+.categoryWrapperGlove button > span > span > span:after{
+	position: absolute;
+	top:0;left:0;right:0;bottom:0;
+	color:#1f2e4d;
+	content: attr(data-attr-span);
+	width: 0%;
+	height: 100%;
+	background:#e0c470;
+	white-space: nowrap;
+	text-align: center;
+	margin: auto;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	transition: width 0.2s;
+}
+
+.categoryWrapperGlove button:hover > span > span > span:after{
+	width: 100%;
+}
+
+@media only screen and (max-width: 990px) {
+    .categoryWrapperGlove {
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 765px) {
+    .categoryWrapperGlove {
+        width: 200px;
+    }
+    .categoryWrapperGlove button {
+        width: 125px;
+        font-size: 14px;
+    }
+    .categoryWrapperGlove h1 {
+        font-size: 35px;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+    .categoryWrapperGlove {
+		width: 340px;
+	}
+	.whiteglovetext {
+		font-size: 25px;
+	}
+}
